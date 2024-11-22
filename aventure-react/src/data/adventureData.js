@@ -7,13 +7,22 @@ const adventureData = {
       { text: "Monter sur la colline", next: "hill" },
     ],
   },
+  battle: {
+    text: "",
+    choices: [],
+  },
   forest: {
-    text: "La forêt est sombre et inquiétante. Vous entendez des bruits étranges, mais vous trouvez une potion de soin.",
+    text: "La forêt est sombre et inquiétante. Vous entendez des bruits étranges derrière un arbre, et apercevez une potion au sol.",
     choices: [
       {
         text: "Ramasser la potion et retourner en arrière",
         next: "start",
         effect: { inventory: "Potion de soin" },
+      },
+      {
+        text: "Aller voir derrière l'arbre",
+        next: "battle",
+        enemy: "wolf",
       },
     ],
   },

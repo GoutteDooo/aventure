@@ -1,33 +1,39 @@
 import { useState } from 'react';
 import adventureData from '../data/adventureData';
+import Battle from './Battle';
 import { savePlayerData } from '../utils/playerData';
 
 function AdventurePage() {
   const [currentPage, setCurrentPage] = useState('start');
   const [player, setPlayer] = useState(JSON.parse(localStorage.getItem('playerData')));
+  const [inBattle, setInBattle] = useState(false);
+  const [enemy, setEnemy] = useState(null);
 
   const handleChoice = (choice) => {
-    // Applique les effets du choix, s'il y en a
-    if (choice.effect) {
-      const updatedPlayer = { ...player };
-
-      // Ajout d’un objet à l’inventaire
-      if (choice.effect.inventory) {
-        updatedPlayer.inventory.push(choice.effect.inventory);
-      }
-
-      // Modification de la vie
-      if (choice.effect.health) {
-        updatedPlayer.stats.health += choice.effect.health;
-      }
-
-      setPlayer(updatedPlayer);
-      savePlayerData(updatedPlayer);
+    if (choice.enemy) {
+      setInBattle(true);
+      setEnemy(choice.enemy);
+    } else {
+      setCurrentPage(choice.next);
     }
-
-    // Passe à la page suivante
-    setCurrentPage(choice.next);
   };
+
+  const handleBattleEnd = (result) => {
+    setInBattle(false);
+    setEnemy(null);
+
+    if (result === 'victory') {
+      setCurrentPage('start'); // Ou une autre page
+    } else if (result === 'defeat') {
+      alert("Vous êtes mort ! Recommencez l'aventure.");
+      localStorage.removeItem('playerData');
+      window.location.reload();
+    }
+  };
+
+  if (inBattle && enemy) {
+    return <Battle enemyType={enemy} onBattleEnd={handleBattleEnd} />;
+  }
 
   const pageData = adventureData[currentPage];
 
