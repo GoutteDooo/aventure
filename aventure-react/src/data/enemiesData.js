@@ -1,10 +1,10 @@
 // src/data/enemiesData.js
 const enemiesData = {
   wolf: {
-    name: "Epouvantail",
-    health: 20,
-    attack: 0,
-    defense: 0,
+    name: "Loup féroce",
+    health: 100,
+    attack: 5,
+    defense: 1,
   },
   goblin: {
     name: "Gobelin rusé",
