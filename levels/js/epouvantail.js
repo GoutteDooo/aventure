@@ -1,5 +1,5 @@
 const LIFE = 10;
-let liferemaining = LIFE;
+let lifeRemaining = LIFE;
 const mobAttack = 0;
 const mobDefense = 1;
 
