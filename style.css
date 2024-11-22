@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+p {
+  text-align: center;
+  margin: 50px 0;
+  font-style: italic;
+}
+
+.inventaire-container {
+  position: absolute;
+  text-align: center;
+  bottom: 100px;
+  left: 100px;
+}
+
+#inventaire {
+  display: flex;
+  flex-wrap: wrap;
+  height: 300px;
+  width: 200px;
+}
+
+.item {
+  height: 100px;
+  width: 100px;
+  background: grey;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+
+.equipement-container {
+  position: absolute;
+  text-align: center;
+  bottom: 100px;
+  right: 100px;
+  height: 300px;
+}
+
+.equip {
+  height: 100px;
+  width: 200px;
+  background: grey;
+  border: 2px solid black;
+  padding: 20px 0;
+  margin: 10px;
+}
+
+.link {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#start {
+  height: 80px;
+  width: 200px;
+  background: burlywood;
+  border-radius: 50px;
+  border: 3px solid black;
+  box-shadow: 0 10px 0 0 black;
+}
+
+#start:hover {
+  cursor: pointer;
+}
+
+#start:active {
+  transform: translateY(10px);
+  box-shadow: 0 0 0 0;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+#attack,
+#defense {
+  background: lightsalmon;
+  border-radius: 25px;
+  height: 100px;
+  width: 200px;
+  cursor: pointer;
+  box-shadow: 0 10px 0 0 black;
+}
+
+#defense {
+  background: lightcyan;
+}
+
+#attack:hover {
+  background: salmon;
+}
+
+#defense:hover {
+  background: lightblue;
+}
+
+#attack:active,
+#defense:active {
+  transform: translateY(10px);
+  box-shadow: 0 0 0 0;
+} /*# sourceMappingURL=style.css.map */
