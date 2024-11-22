@@ -14,7 +14,7 @@ export function initializePlayer() {
       health: 100,
       attack: 10,
       defense: 5,
-      accuracy: 0.8, // 80% de précision
+      accuracy: 0.5, // 80% de précision
     },
     inventory: [],
     equipment: {
