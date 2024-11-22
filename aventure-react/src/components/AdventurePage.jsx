@@ -21,15 +21,18 @@ function AdventurePage() {
   const handleBattleEnd = (result) => {
     setInBattle(false);
     setEnemy(null);
-
+  
     if (result === 'victory') {
       setCurrentPage('start'); // Ou une autre page
     } else if (result === 'defeat') {
       alert("Vous êtes mort ! Recommencez l'aventure.");
       localStorage.removeItem('playerData');
       window.location.reload();
+    } else if (result === 'fled') {
+      setCurrentPage('start'); // Retourne à une page sécurisée
     }
   };
+  
 
   if (inBattle && enemy) {
     return <Battle enemyType={enemy} onBattleEnd={handleBattleEnd} />;

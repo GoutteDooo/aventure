@@ -9,33 +9,76 @@ function Battle({ enemyType, onBattleEnd }) {
   const [defending, setDefending] = useState(false);
 
   const attackEnemy = () => {
-    const playerDamage = Math.max(player.stats.attack - enemy.defense, 1);
-    const enemyDamage = defending
-      ? Math.max((enemy.attack - player.stats.defense) / 2, 1) // Réduit les dégâts subis
-      : Math.max(enemy.attack - player.stats.defense, 1);
-
-    setEnemy((prev) => ({ ...prev, health: prev.health - playerDamage }));
-    setPlayer((prev) => {
-      const updatedPlayer = {
+    const enemyDefending = Math.random() < 0.3; // 30% de chance que l'adversaire se défende
+  
+    if (enemyDefending) {
+      setBattleLog((prev) => [
         ...prev,
-        stats: { ...prev.stats, health: prev.stats.health - enemyDamage },
-      };
-      savePlayerData(updatedPlayer);
-      return updatedPlayer;
-    });
-
-    setBattleLog((prev) => [
-      ...prev,
-      `Vous infligez ${playerDamage} dégâts à ${enemy.name}.`,
-      `${enemy.name} vous inflige ${enemyDamage} dégâts.`,
-    ]);
-    setDefending(false); // Fin de la défense après un tour
+        `${enemy.name} se met en position défensive et réduit les dégâts !`,
+      ]);
+  
+      // Réduction des dégâts infligés
+      const playerDamage = Math.max(Math.floor((player.stats.attack - enemy.defense) / 2), 1);
+      setEnemy((prev) => ({ ...prev, health: prev.health - playerDamage }));
+  
+      setBattleLog((prev) => [
+        ...prev,
+        `Vous infligez ${playerDamage} dégâts réduits à ${enemy.name}.`,
+      ]);
+    } else {
+      const playerDamage = Math.max(player.stats.attack - enemy.defense, 1);
+      setEnemy((prev) => ({ ...prev, health: prev.health - playerDamage }));
+  
+      setBattleLog((prev) => [
+        ...prev,
+        `Vous infligez ${playerDamage} dégâts à ${enemy.name}.`,
+      ]);
+    }
+  
+    // L'adversaire riposte (s'il n'est pas vaincu)
+    if (enemy.health > 0) {
+      const enemyDamage = Math.max(enemy.attack - player.stats.defense, 1);
+      setPlayer((prev) => {
+        const updatedPlayer = {
+          ...prev,
+          stats: { ...prev.stats, health: prev.stats.health - enemyDamage },
+        };
+        savePlayerData(updatedPlayer);
+        return updatedPlayer;
+      });
+      setBattleLog((prev) => [
+        ...prev,
+        `${enemy.name} vous inflige ${enemyDamage} dégâts en retour.`,
+      ]);
+    }
   };
+  
 
   const defend = () => {
-    setBattleLog((prev) => [...prev, 'Vous vous mettez en position défensive.']);
-    setDefending(true);
+    const enemyAttack = enemy.attack;
+    const playerDefense = player.stats.defense;
+  
+    if (enemyAttack <= playerDefense) {
+      setBattleLog((prev) => [...prev, `${enemy.name} tente une attaque, mais échoue contre votre défense !`]);
+    } else {
+      const damage = Math.ceil((enemyAttack - playerDefense) / 2); // Moitié de la différence
+      setPlayer((prev) => {
+        const updatedPlayer = {
+          ...prev,
+          stats: { ...prev.stats, health: prev.stats.health - damage },
+        };
+        savePlayerData(updatedPlayer);
+        return updatedPlayer;
+      });
+      setBattleLog((prev) => [
+        ...prev,
+        `${enemy.name} vous attaque malgré votre défense et inflige ${damage} dégâts.`,
+      ]);
+    }
+  
+    setDefending(true); // Maintient l’état défensif pour ce tour
   };
+  
 
   const useItem = () => {
     if (player.inventory.length === 0) {
