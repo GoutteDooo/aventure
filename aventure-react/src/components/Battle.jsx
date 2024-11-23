@@ -124,8 +124,10 @@ function Battle({ enemyType, onBattleEnd }) {
 
   return (
     <div className="bg-red-800 text-white p-4 rounded shadow-lg">
-      <h2 className="text-lg font-bold mb-4">Combat : {enemy.name}</h2>
-      <p><strong>Vie de l'ennemi :</strong> {enemy.health}</p>
+      <h2 className="text-lg font-bold mb-4">{enemy.name}</h2>
+      <p><strong>Sa vie :</strong> {enemy.health}</p>
+      <p><strong>Son attaque : </strong> {enemy.attack}</p>
+      <p><strong>Sa défense : </strong> {enemy.defense}</p>
       <p><strong>Votre vie :</strong> {player.stats.health}</p>
 
       <div className="mt-4 flex gap-4">

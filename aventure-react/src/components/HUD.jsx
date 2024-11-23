@@ -22,7 +22,7 @@ function HUD() {
     <div
         className={`fixed top-0 left-0 h-full bg-gray-800 text-white shadow-lg transform ${
           isVisible ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 w-64 p-4 pt-10`}
+        } transition-transform duration-300 w-64 p-4 pt-16`}
       >
       <h2 className="text-lg font-bold mb-2">Statistiques</h2>
       <p><strong>Nom :</strong> {player.name}</p>
