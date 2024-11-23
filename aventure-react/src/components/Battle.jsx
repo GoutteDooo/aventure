@@ -6,7 +6,77 @@ function Battle({ enemyType, onBattleEnd }) {
   const [player, setPlayer] = useState(JSON.parse(localStorage.getItem('playerData')));
   const [enemy, setEnemy] = useState(enemiesData[enemyType]);
   const [battleLog, setBattleLog] = useState([]);
-  const [defending, setDefending] = useState(false);
+  const [defending, setDefending] = useState(false);  
+  const [isPlayerTurn, setIsPlayerTurn] = useState(true); // Détermine le tour actuel
+  const [battleMessage, setBattleMessage] = useState('');
+  const [enemyPreparing, setEnemyPreparing] = useState(false);  
+  
+  // Décider qui commence en fonction de l'initiative
+  useEffect(() => {
+    if (player.stats.initiative >= enemy.initiative) {
+      setBattleMessage("Vous prenez l'initiative et commencez le combat !");
+    } else {
+      setIsPlayerTurn(false);
+      setBattleMessage(`${enemy.name} prend l'initiative et commence !`);
+    }
+  }, []);
+
+  // Action du joueur
+  const playerAction = (action) => {
+    if (!isPlayerTurn) return; // Empêche les actions hors tour
+
+    if (action === 'attack') {
+      const playerDamage = Math.max(player.stats.attack - enemy.defense, 1);
+      setEnemy((prev) => ({ ...prev, health: prev.health - playerDamage }));
+      setBattleLog((prev) => [...prev, `Vous infligez ${playerDamage} dégâts à ${enemy.name}.`]);
+    } else if (action === 'defend') {
+      setBattleLog((prev) => [...prev, "Vous vous préparez à vous défendre."]);
+    }
+
+    // Passe le tour à l'ennemi
+    setIsPlayerTurn(false);
+  };
+
+  // Action de l'ennemi
+  const enemyAction = () => {
+    if (enemy.health <= 0) return; // Ne fait rien si l'ennemi est vaincu
+
+    if (enemyPreparing) {
+      // Exécute l'attaque préparée
+      setBattleLog((prev) => [...prev, `${enemy.name} vous attaque violemment !`]);
+      setEnemyPreparing(false);
+    } else if (enemy.action === 'Prepare') {
+      setBattleLog((prev) => [...prev, `${enemy.name} prépare une attaque !`]);
+      setEnemyPreparing(true); // L'ennemi prépare une attaque
+    } else {
+      setBattleLog((prev) => [...prev, `${enemy.name} ne fait rien...`]);
+    }
+
+    // Passe le tour au joueur
+    setIsPlayerTurn(true);
+  };
+
+  // Contrôle des tours
+  useEffect(() => {
+    if (!isPlayerTurn) {
+      // L'ennemi agit après un délai
+      const timer = setTimeout(() => {
+        enemyAction();
+      }, 2000); // Délai pour simuler un temps de réflexion
+      return () => clearTimeout(timer);
+    }
+  }, [isPlayerTurn]);
+
+  // Vérification de la fin du combat
+  useEffect(() => {
+    if (enemy.health <= 0) {
+      setBattleMessage(`${enemy.name} est vaincu !`);
+      onBattleEnd('victory');
+    } else if (player.stats.health <= 0) {
+      setBattleMessage("Vous êtes vaincu...");
+      onBattleEnd('defeat');
+    }
+  }, [enemy.health, player.stats.health]);
 
   const attackEnemy = () => {
     const enemyDefending = Math.random() < 0.3; // 30% de chance que l'adversaire se défende
@@ -125,6 +195,7 @@ function Battle({ enemyType, onBattleEnd }) {
   return (
     <div className="bg-red-800 text-white p-4 rounded shadow-lg">
       <h2 className="text-lg font-bold mb-4">{enemy.name}</h2>
+      <p className="mb-2">{battleMessage}</p>
       <p><strong>Sa vie :</strong> {enemy.health}</p>
       <p><strong>Son attaque : </strong> {enemy.attack}</p>
       <p><strong>Sa défense : </strong> {enemy.defense}</p>
@@ -157,6 +228,7 @@ function Battle({ enemyType, onBattleEnd }) {
         </button>
       </div>
 
+      {/* Journal de combat */}
       <div className="mt-4">
         <h3 className="font-bold">Journal de combat</h3>
         <ul className="list-disc pl-6">
