@@ -1,10 +1,10 @@
 // src/data/adventureData.js
 const adventureData = {
   start: {
-    text: "Vous vous réveillez dans une clairière, équipé d'un simple bâton. Devant vous, deux chemins s'ouvrent : l'un menant vers une forêt sombre, l'autre vers une colline ensoleillée.",
+    text: "Bienvenue, aventurier. Vous voici prêt à démarrer votre quête pour parvenir à vaincre Le Grand Dragon Zrog qui terrifie le monde. Vous aurez plusieurs choix lors de votre quête. Vos décisions auront des conséquences sur le futur. Alors, faites ce qui vous semble le plus juste. Vous êtes dans une pièce vide, avec un épouvantail en face de vous.",
     choices: [
-      { text: "Explorer la forêt", next: "forest" },
-      { text: "Monter sur la colline", next: "hill" },
+      { text: "Affronter l'épouvantail (didacticiel)", next: "battle" },
+      { text: "Passer votre chemin", next: "level1" },
     ],
   },
   battle: {

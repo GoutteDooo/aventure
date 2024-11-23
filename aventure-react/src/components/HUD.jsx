@@ -3,6 +3,7 @@ import { initializePlayer } from '../utils/playerData';
 
 function HUD() {
   const [player, setPlayer] = useState(initializePlayer());
+  const [isVisible, setIsVisible] = useState(false); // state pour display/hide le HUD
 
   useEffect(() => {
     // Si les données du joueur changent, on les met à jour dans le localStorage
@@ -10,7 +11,19 @@ function HUD() {
   }, [player]);
 
   return (
-    <div className="bg-gray-700 text-white p-4 rounded shadow-lg">
+    <>
+    {/*Bouton pour open/close le panneau*/}
+    <button onClick={() => setIsVisible(!isVisible)} className="fixed top-4 left-4 z-50 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+      >
+      {isVisible ? 'Fermer Stats' : 'Afficher Stats'}
+    </button>
+
+    {/* Panneau HUD */}
+    <div
+        className={`fixed top-0 left-0 h-full bg-gray-800 text-white shadow-lg transform ${
+          isVisible ? 'translate-x-0' : '-translate-x-full'
+        } transition-transform duration-300 w-64 p-4 pt-10`}
+      >
       <h2 className="text-lg font-bold mb-2">Statistiques</h2>
       <p><strong>Nom :</strong> {player.name}</p>
       <p><strong>Vie :</strong> {player.stats.health}</p>
@@ -34,6 +47,7 @@ function HUD() {
         </ul>
       )}
     </div>
+      </>
   );
 }
 

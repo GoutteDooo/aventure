@@ -1,6 +1,6 @@
 // src/data/enemiesData.js
 const enemiesData = {
-  wolf: {
+  epouvantail: {
     name: "Loup féroce",
     health: 100,
     attack: 5,
