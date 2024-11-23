@@ -1,0 +1,194 @@
+/* BASE */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v5.0.2 | 20191019
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Bokor&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bokor&family=Parkinsans:wght@300..800&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none;
+}
+
+body {
+  line-height: 1;
+}
+
+menu, ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 18px;
+  font-family: Bokor;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* COMPONENTS */
+/* LAYOUTS */
+/* PAGES */
+.home {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 100px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #006d77;
+  color: #edf6f9;
+}
+.home .home__h1 {
+  letter-spacing: 1px;
+}
+.home .home__setPlayerName {
+  padding-left: 1rem;
+  border-radius: 15px;
+  height: 50px;
+  background: none;
+  font-size: 1.5rem;
+  border: 1px solid #83c5be;
+}
+.home .home__setPlayerName:focus {
+  border: 3px solid #83c5be;
+  outline: none;
+}
+.home .home__start {
+  border: 2px solid #006d77;
+  border-radius: 15px;
+  padding: 20px;
+  font-size: 1.5rem;
+  background: #e29578;
+  border: 3px solid #edf6f9;
+}
+.home .home__start:hover {
+  background: #ffddd2;
+  color: #83c5be;
+  border: 3px solid #83c5be;
+}
+
+.adventure {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #e29578;
+}
+.adventure .adventure__h1 {
+  letter-spacing: 1px;
+  position: absolute;
+  top: 50px;
+  background: #ffddd2;
+  color: #006d77;
+  width: 100%;
+  text-align: center;
+  padding: 30px;
+}
+.adventure .adventure__story {
+  color: #006d77;
+  background: #ffddd2;
+  height: 330px;
+  border-radius: 35px;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.adventure .adventure__story .adventure__title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+.adventure .adventure__story .adventure_text {
+  padding: 20px;
+  font-family: Parkinsans;
+  font-style: italic;
+  font-size: 0.9rem;
+  height: 100%;
+}
+
+/* THEMES */
+/* VENDORS *//*# sourceMappingURL=main.css.map */
