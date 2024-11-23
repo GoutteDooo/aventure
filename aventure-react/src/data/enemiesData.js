@@ -6,7 +6,7 @@ const enemiesData = {
     attack: 0,
     defense: 1,
     action:
-      "L'épouvantail regarde droit devant lui, totalement indifférent à vos provocations.",
+      "L'épouvantail regarde droit devant lui. Il a l'air d'être totalement indifférent à vos provocations.",
     initiative: 0,
   },
 };
