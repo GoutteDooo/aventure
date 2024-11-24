@@ -4,16 +4,22 @@ import { useEffect, useState } from "react";
 import storySteps from "../data/adventureData";
 
 function Adventure() {
-  const [currentStepId, setCurrentStepId] = useState(1);
+  //Lors du chargement de la page, on récupère les données dans le localStorage s'il y'a. Sinon, on démarre à la 1ere étape.
+  const [currentStepId, setCurrentStepId] = useState(() => {
+    const savedStep = localStorage.getItem("currentStepId");
+    return savedStep ? JSON.parse(savedStep) : 1;
+  });
+
   const currentStep = storySteps.find((step) => step.id === currentStepId);
+
+  useEffect(() => {
+    //Met à jour le localStorage lorsqu'une étape change
+    localStorage.setItem("currentStepId",JSON.stringify(currentStepId));
+  }, [currentStepId]);
 
   const handleChoiceClick = (nextId) => {
     setCurrentStepId(nextId);
   };
-
-  useEffect(() => {
-    console.log(currentStep);
-  }, [currentStepId]);
 
   return (
     <div className="adventure">
