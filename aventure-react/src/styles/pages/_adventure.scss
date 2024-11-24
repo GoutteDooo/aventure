@@ -3,7 +3,7 @@
     @include verticalCenter;
     flex-direction: column;
     background: $light2;
-    .adventure__h1{
+    &__h1{
         letter-spacing: 1px;
         position: absolute;
         top: 50px;
@@ -13,7 +13,7 @@
         text-align: center;
         padding: 30px;
     }
-    .adventure__story {
+    &__story {
         color: $dark2;
         background: $light1;
         height: 330px;
@@ -22,16 +22,29 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 0 50px 100px;
         .adventure__title {
             font-weight: bold;
             font-size: 2rem;
         }
-        .adventure_text {
+        .adventure__text {
             padding: 20px;
-            font-family: Parkinsans;
+            font-family: EB Garamond;
             font-style: italic;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             height: 100%;
+            line-height: 1.5rem;
+            .adventure__speak {
+                font-family: UnifrakturMaguntia;
+                text-align: center;
+                font-size: 1.5rem;
+                line-height: 2rem;
+                letter-spacing: 1px;
+                background: $dark1;
+                margin-top: 30px;
+                padding: 10px;
+            }
         }
     }
 }

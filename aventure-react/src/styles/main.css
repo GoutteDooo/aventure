@@ -5,6 +5,8 @@
 */
 @import url("https://fonts.googleapis.com/css2?family=Bokor&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bokor&family=Parkinsans:wght@300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bokor&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Parkinsans:wght@300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bokor&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Parkinsans:wght@300..800&family=UnifrakturMaguntia&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -64,6 +66,7 @@ html {
   scroll-behavior: smooth;
   font-size: 18px;
   font-family: Bokor;
+  font-weight: 500;
 }
 
 body {
@@ -81,6 +84,12 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+.unifrakturmaguntia-regular {
+  font-family: "UnifrakturMaguntia", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* COMPONENTS */
@@ -151,7 +160,7 @@ h2 {
           flex-direction: column;
   background: #e29578;
 }
-.adventure .adventure__h1 {
+.adventure__h1 {
   letter-spacing: 1px;
   position: absolute;
   top: 50px;
@@ -161,7 +170,7 @@ h2 {
   text-align: center;
   padding: 30px;
 }
-.adventure .adventure__story {
+.adventure__story {
   color: #006d77;
   background: #ffddd2;
   height: 330px;
@@ -177,17 +186,30 @@ h2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0 50px 100px;
 }
-.adventure .adventure__story .adventure__title {
+.adventure__story .adventure__title {
   font-weight: bold;
   font-size: 2rem;
 }
-.adventure .adventure__story .adventure_text {
+.adventure__story .adventure__text {
   padding: 20px;
-  font-family: Parkinsans;
+  font-family: EB Garamond;
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   height: 100%;
+  line-height: 1.5rem;
+}
+.adventure__story .adventure__text .adventure__speak {
+  font-family: UnifrakturMaguntia;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+  background: #83c5be;
+  margin-top: 30px;
+  padding: 10px;
 }
 
 /* THEMES */

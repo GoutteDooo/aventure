@@ -1,21 +1,20 @@
 // src/data/adventureData.js
-const adventureData = {
-  start: {
-    text: "Bienvenue, aventurier. Vous voici prêt à entrer dans le donjon pour affronter Le Grand Dragon Zrog qui terrifie le monde. Face à vous se dresse un épouvantail a l'air maléfique, comme si Zrog méprisait les aventuriers qui oseraient entrer dans son donjon en leur montrant qu'ils ne pourraient même pas vaincre un simple bonhomme de paille.",
+const storySteps = [
+  {
+    id: 1,
+    title: `A l'entrée du donjon`,
+    text: `Vous voici prêt à entrer dans le donjon de Zrog. Le terrible dragon menaçant d'exterminer l'humanité toute entière. 
+            Vous vous sentez gonflé à bloc, prêt à terrasser cette bête ailée. 
+            Un épouvantail se dresse près de la porte, avec un panneau en-dessous indiquant :`,
+    speak: `Même un simple épouvantail est plus fort que vous.
+    Jamais vous n'arrivez à me vaincre, Pauvres âmes faibles !!`,
     choices: [
-      {
-        text: "Affronter l'épouvantail (didacticiel)",
-        next: "battle",
-        enemy: "epouvantail",
-      },
-      { text: "Ouvrir la porte", next: "E13" },
+      { text: `Affronter l'épouvantail (didacticiel)`, nextId: 2 },
+      { text: `Entrer dans le donjon`, nextId: 3 },
     ],
   },
-  battle: {
-    text: "",
-    choices: [],
-  },
-  E13: {
+  /* En dessous à modifier */
+  {
     text: "Salle E13",
     choices: [
       {
@@ -34,7 +33,7 @@ const adventureData = {
       },
     ],
   },
-  E12: {
+  {
     text: "Salle E12",
     choices: [
       {
@@ -47,7 +46,7 @@ const adventureData = {
       },
     ],
   },
-  E11: {
+  {
     text: "Salle E11",
     choices: [
       {
@@ -56,7 +55,7 @@ const adventureData = {
       },
     ],
   },
-  E14: {
+  {
     text: "Salle E14",
     choices: [
       {
@@ -69,7 +68,7 @@ const adventureData = {
       },
     ],
   },
-  E15: {
+  {
     text: "Salle E15",
     choices: [
       {
@@ -86,7 +85,7 @@ const adventureData = {
       },
     ],
   },
-  E16: {
+  {
     text: "Salle E16",
     choices: [
       {
@@ -95,7 +94,7 @@ const adventureData = {
       },
     ],
   },
-  E24: {
+  {
     text: "Salle E24",
     choices: [
       {
@@ -112,7 +111,7 @@ const adventureData = {
       },
     ],
   },
-  E25: {
+  {
     text: "Salle E25",
     choices: [
       {
@@ -121,7 +120,7 @@ const adventureData = {
       },
     ],
   },
-  E23: {
+  {
     text: "Salle E23",
     choices: [
       {
@@ -134,7 +133,7 @@ const adventureData = {
       },
     ],
   },
-  E22: {
+  {
     text: "Salle E22",
     choices: [
       {
@@ -151,7 +150,7 @@ const adventureData = {
       },
     ],
   },
-  E21: {
+  {
     text: "Salle E21",
     choices: [
       {
@@ -160,7 +159,7 @@ const adventureData = {
       },
     ],
   },
-  E32: {
+  {
     text: "Salle E32",
     choices: [
       {
@@ -177,7 +176,7 @@ const adventureData = {
       },
     ],
   },
-  E31: {
+  {
     text: "Salle E31",
     choices: [
       {
@@ -186,7 +185,7 @@ const adventureData = {
       },
     ],
   },
-  E33: {
+  {
     text: "Salle E33",
     choices: [
       {
@@ -199,7 +198,7 @@ const adventureData = {
       },
     ],
   },
-  E34: {
+  {
     text: "Salle E34",
     choices: [
       {
@@ -212,7 +211,7 @@ const adventureData = {
       },
     ],
   },
-  E35: {
+  {
     text: "Salle E35",
     choices: [
       {
@@ -221,7 +220,7 @@ const adventureData = {
       },
     ],
   },
-  E43: {
+  {
     text: "Salle E43",
     choices: [
       {
@@ -234,7 +233,7 @@ const adventureData = {
       },
     ],
   },
-  E44: {
+  {
     text: "Salle E44",
     choices: [
       {
@@ -243,7 +242,7 @@ const adventureData = {
       },
     ],
   },
-  E42: {
+  {
     text: "Salle E42",
     choices: [
       {
@@ -260,7 +259,7 @@ const adventureData = {
       },
     ],
   },
-  E41: {
+  {
     text: "Salle E41",
     choices: [
       {
@@ -273,7 +272,7 @@ const adventureData = {
       },
     ],
   },
-  E52: {
+  {
     text: "Zrog le dragon",
     choices: [
       {
@@ -282,7 +281,7 @@ const adventureData = {
       },
     ],
   },
-  E51: {
+  {
     text: "Salle bonus E51",
     choices: [
       {
@@ -295,6 +294,6 @@ const adventureData = {
       },
     ],
   },
-};
+];
 
-export default adventureData;
+export default storySteps;
