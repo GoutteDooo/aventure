@@ -1,5 +1,5 @@
-import "../styles/main.css"
-import "../data/adventureData"
+import "../styles/main.css";
+import "../data/adventureData";
 import { useEffect, useState } from "react";
 import storySteps from "../data/adventureData";
 
@@ -9,14 +9,11 @@ function Adventure() {
 
   const handleChoiceClick = (nextId) => {
     setCurrentStepId(nextId);
-  }
+  };
 
   useEffect(() => {
     console.log(currentStep);
-  
-  }, [currentStepId])
-  
-  
+  }, [currentStepId]);
 
   return (
     <div className="adventure">
@@ -24,23 +21,23 @@ function Adventure() {
       <div className="adventure__story">
         <div className="adventure__title">{currentStep.title}</div>
         <div className="adventure__text">
-          <p>
-            {currentStep.text}
-          </p>
+          <p>{currentStep.text}</p>
           {currentStep.speak && (
             <div className="adventure__speak">
-            <p>
-              {currentStep.speak}
-            </p>  
-          </div>
+              <p>{currentStep.speak}</p>
+            </div>
           )}
         </div>
         <div className="adventure__choices">
-          {currentStep.choices.map((choice, index) => {
-            <button key={index} className="adventure__choice" onClick={() => handleChoiceClick(choice.nextId)}>
+          {currentStep.choices.map((choice, index) => (
+            <button
+              key={index}
+              className="adventure__choice"
+              onClick={() => handleChoiceClick(choice.nextId)}
+            >
               {choice.text}
             </button>
-          })}
+          ))}
         </div>
       </div>
     </div>

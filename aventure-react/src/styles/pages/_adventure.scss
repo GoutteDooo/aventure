@@ -1,54 +1,65 @@
 .adventure {
-    height: 100vh;
-    @include verticalCenter;
+  height: 100vh;
+  @include verticalCenter;
+  flex-direction: column;
+  background: $light2;
+  &__h1 {
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+    background: $light1;
+    color: $dark2;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+  }
+  &__story {
+    color: $dark2;
+    background: $light1;
+    height: 500px;
+    border-radius: 35px;
+    padding: 20px;
+    display: flex;
     flex-direction: column;
-    background: $light2;
-    &__h1{
-        letter-spacing: 1px;
-        margin-bottom: 50px;
-        background: $light1;
-        color: $dark2;
-        width: 100%;
+    align-items: center;
+    margin: 0 50px 100px;
+    .adventure__title {
+      font-weight: bold;
+      font-size: 2rem;
+    }
+    .adventure__text {
+      padding: 20px;
+      font-family: EB Garamond;
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 600;
+      height: 100%;
+      line-height: 1.5rem;
+      .adventure__speak {
+        font-family: UnifrakturMaguntia;
         text-align: center;
-        padding: 30px;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        letter-spacing: 1px;
+        background: $dark1;
+        margin-top: 30px;
+        padding: 10px;
+      }
     }
-    &__story {
-        color: $dark2;
-        background: $light1;
-        height: 400px;
-        border-radius: 35px;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 50px 100px;
-        .adventure__title {
-            font-weight: bold;
-            font-size: 2rem;
+    .adventure__choices {
+      height: 100px;
+      width: 90%;
+      display: flex;
+      justify-content: space-around;
+      .adventure__choice {
+        background: $dark2;
+        color: $dark1;
+        border-radius: 1rem;
+        padding: 1rem;
+        &:hover {
+          background: $dark1;
+          color: $dark2;
         }
-        .adventure__text {
-            padding: 20px;
-            font-family: EB Garamond;
-            font-style: italic;
-            font-size: 1.1rem;
-            font-weight: 600;
-            height: 100%;
-            line-height: 1.5rem;
-            .adventure__speak {
-                font-family: UnifrakturMaguntia;
-                text-align: center;
-                font-size: 1.5rem;
-                line-height: 2rem;
-                letter-spacing: 1px;
-                background: $dark1;
-                margin-top: 30px;
-                padding: 10px;
-            }
-        }
-        .adventure__choices {
-            background: red;
-            height: 100px;
-            width: 100px;
-        }
+      }
     }
+  }
 }
