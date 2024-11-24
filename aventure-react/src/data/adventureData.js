@@ -7,8 +7,8 @@ const storySteps = [
     text: `Vous voici prêt à entrer dans le donjon de Zrog. Le terrible dragon menaçant d'exterminer l'humanité toute entière.
             Vous vous sentez gonflé à bloc, prêt à terrasser cette bête ailée. 
             Un épouvantail se dresse près de la porte, avec un panneau en-dessous indiquant :`,
-    speak: `Même un simple épouvantail est plus fort que vous.
-    Jamais vous n'arrivez à me vaincre, Pauvres âmes faibles !!`,
+    speak: `Même cet épouvantail est bien plus fort que vous.
+    Abandonnez. Jamais vous n'arriverez à me vaincre, Pauvres âmes faibles !!`,
     choices: [
       { text: `Affronter l'épouvantail (didacticiel)`, nextId: 2 },
       { text: `Entrer dans le donjon`, nextId: 3 },

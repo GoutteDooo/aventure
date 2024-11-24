@@ -39,10 +39,18 @@
 
 - L'initiative représente la capacité au joueur de pouvoir démarrer en premier lors d'un combat.
 - Plus son initiative est élevée, plus le joueur aura de chance de démarrer en premier.
-- Cela dit, ça ne veut pas dire que le joueur démarrera toujours en premier, une variance sera appliquée, notamment en cas d'attaque par surprise.
+- Cela dit, ça ne veut pas dire que le joueur démarrera toujours en premier, une variance sera appliquée.
 - La formule de l'initiative est la suivante :
   - Chance de jouer le premier = `0.5 * 1,%(Initiative(Joueur) - Initiative(Adversaire))`
   - Un min à 0.0333 et un max a 0.9666 sont définis.
   -
 
 ### Concernant l'attaque par surprise
+
+- Ces attaques apparaissent lorsque le joueur entre dans une salle où des mobs sont présents.
+- Lors d'une attaque surprise, ce sera toujours le mob qui commence en premier.
+- Lorsque le joueur entre dans une salle ou un mob est présent, il y aura 25% de chance d'attaque surprise par défaut. Ensuite, cela varie entre l'initiative du mob et celle du joueur.
+- La formule de la variance de l'attaque surprise se calcule ainsi :
+  - P(surprise) = max(Pmin, min(Pmax, base + diff \* facteur))
+  - avec Pmin définie a 3% et Pmax a 90%.
+  -
