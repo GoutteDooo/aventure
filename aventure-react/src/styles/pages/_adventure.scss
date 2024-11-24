@@ -2,19 +2,19 @@
   height: 100vh;
   @include verticalCenter;
   flex-direction: column;
-  background: $light2;
+  background: $dark1;
   &__h1 {
     letter-spacing: 1px;
     margin-bottom: 50px;
-    background: $light1;
-    color: $dark2;
+    background: $dark2;
+    color: $light1;
     width: 100%;
     text-align: center;
     padding: 30px;
   }
   &__story {
-    color: $dark2;
-    background: $light1;
+    color: $light1;
+    background: $dark2;
     height: 500px;
     border-radius: 35px;
     padding: 20px;
@@ -25,6 +25,7 @@
     .adventure__title {
       font-weight: bold;
       font-size: 2rem;
+      color: $light2;
     }
     .adventure__text {
       padding: 20px;
@@ -39,8 +40,10 @@
         text-align: center;
         font-size: 1.5rem;
         line-height: 2rem;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
         background: $dark1;
+        color: red;
+        border-radius: 1rem;
         margin-top: 30px;
         padding: 10px;
       }
@@ -51,12 +54,12 @@
       display: flex;
       justify-content: space-around;
       .adventure__choice {
-        background: $dark2;
-        color: $dark1;
+        background: $light2;
+        color: $light1;
         border-radius: 1rem;
         padding: 1rem;
         &:hover {
-          background: $dark1;
+          background: $light1;
           color: $dark2;
         }
       }
