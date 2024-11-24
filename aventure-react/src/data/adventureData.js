@@ -8,6 +8,7 @@ const storySteps = [
             Vous vous sentez gonflé à bloc, prêt à terrasser cette bête ailée. 
             Un épouvantail se dresse près de la porte, avec un panneau sur le côté.`,
     speak: ``,
+    isCombat: false,
     choices: [
       { text: `Lire le panneau`, nextId: 2 },
       { text: `Entrer dans le donjon`, nextId: 4 },
@@ -22,6 +23,7 @@ const storySteps = [
             Un épouvantail se dresse près de la porte, avec un panneau en-dessous indiquant :`,
     speak: `Même cet épouvantail est bien plus fort que vous.
     Abandonnez. Jamais vous ne parviendrez à me vaincre moi, Le Grand Dragon Zorg. Pauvres âmes faibles !`,
+    isCombat: false,
     choices: [
       { text: `Affronter l'épouvantail (didacticiel)`, nextId: 3 },
       { text: `Entrer dans le donjon`, nextId: 4 },
@@ -29,13 +31,12 @@ const storySteps = [
   },
   {
     id: 3,
-    main: "Aventure",
-    title: `A l'entrée du donjon`,
-    text: `Vous voici prêt à entrer dans le donjon de Zrog. Le terrible dragon menaçant d'exterminer l'humanité toute entière.
-            Vous vous sentez gonflé à bloc, prêt à terrasser cette bête ailée. 
-            Un épouvantail se dresse près de la porte, avec un panneau en-dessous indiquant :`,
-    speak: `Même cet épouvantail est bien plus fort que vous.
-    Abandonnez. Jamais vous ne parviendrez à me vaincre moi, Le Grand Dragon Zorg. Pauvres âmes faibles !`,
+    main: "Combat",
+    title: `Adversaire : Epouvantail`,
+    text: `L'épouvantail se dresse face à vous, le regard fixe. Il a l'air totalement désintéressé face à vos provocations excessives.`,
+    speak: ``,
+    isCombat: true,
+    enemyId: 1,
     choices: [
       { text: `Affronter l'épouvantail (didacticiel)`, nextId: 3 },
       { text: `Entrer dans le donjon`, nextId: 4 },

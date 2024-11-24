@@ -2,6 +2,8 @@ import "../styles/main.css";
 import "../data/adventureData";
 import { useEffect, useState } from "react";
 import storySteps from "../data/adventureData";
+import enemiesData from "../data/enemiesData";
+import Combat from "../components/Combat";
 
 function Adventure() {
   //Lors du chargement de la page, on récupère les données dans le localStorage s'il y'a. Sinon, on démarre à la 1ere étape.
@@ -11,6 +13,22 @@ function Adventure() {
   });
 
   const currentStep = storySteps.find((step) => step.id === currentStepId);
+
+  //State en cas de combat
+  const [isInCombat, setIsInCombat] = useState(false);
+  const [enemy, setEnemy] = useState(null);//représente l'ennemi s'il y'a
+
+  //Detecte s'il y'a un combat ou non
+  useEffect(() => {
+    if (currentStep.isCombat) {
+      const foundEnemy = enemiesData.find((e) => e.id === currentStep.enemyId);
+      setEnemy(foundEnemy);
+      setIsInCombat(true);
+    } else {
+      setIsInCombat(false);
+      setEnemy(null);
+    }
+  }, [currentStep]);
 
   useEffect(() => {
     //Met à jour le localStorage lorsqu'une étape change
@@ -34,17 +52,22 @@ function Adventure() {
             </div>
           )}
         </div>
+        {isInCombat && enemy ? (
+          <Combat enemy={enemy} />
+        ) : (
+
         <div className="adventure__choices">
-          {currentStep.choices.map((choice, index) => (
-            <button
-              key={index}
-              className="adventure__choice"
-              onClick={() => handleChoiceClick(choice.nextId)}
-            >
-              {choice.text}
-            </button>
-          ))}
+        {currentStep.choices.map((choice, index) => (
+          <button
+          key={index}
+          className="adventure__choice"
+          onClick={() => handleChoiceClick(choice.nextId)}
+          >
+            {choice.text}
+          </button>
+        ))}
         </div>
+        )}
       </div>
     </div>
   );
