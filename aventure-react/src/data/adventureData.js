@@ -2,8 +2,9 @@
 const storySteps = [
   {
     id: 1,
+    main: "Aventure",
     title: `A l'entrée du donjon`,
-    text: `Vous voici prêt à entrer dans le donjon de Zrog. Le terrible dragon menaçant d'exterminer l'humanité toute entière. 
+    text: `Vous voici prêt à entrer dans le donjon de Zrog. Le terrible dragon menaçant d'exterminer l'humanité toute entière.
             Vous vous sentez gonflé à bloc, prêt à terrasser cette bête ailée. 
             Un épouvantail se dresse près de la porte, avec un panneau en-dessous indiquant :`,
     speak: `Même un simple épouvantail est plus fort que vous.

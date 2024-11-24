@@ -3,7 +3,7 @@
    v5.0.2 | 20191019
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css2?family=Bokor&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bokor&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Germania+One&family=Parkinsans:wght@300..800&family=UnifrakturMaguntia&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bokor&family=Parkinsans:wght@300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bokor&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Parkinsans:wght@300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bokor&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Parkinsans:wght@300..800&family=UnifrakturMaguntia&display=swap");
@@ -65,7 +65,7 @@ table {
 html {
   scroll-behavior: smooth;
   font-size: 18px;
-  font-family: Bokor;
+  font-family: Germania One;
   font-weight: 500;
 }
 
@@ -162,8 +162,7 @@ h2 {
 }
 .adventure__h1 {
   letter-spacing: 1px;
-  position: absolute;
-  top: 50px;
+  margin-bottom: 50px;
   background: #ffddd2;
   color: #006d77;
   width: 100%;
@@ -173,7 +172,7 @@ h2 {
 .adventure__story {
   color: #006d77;
   background: #ffddd2;
-  height: 330px;
+  height: 400px;
   border-radius: 35px;
   padding: 20px;
   display: -webkit-box;
@@ -210,6 +209,11 @@ h2 {
   background: #83c5be;
   margin-top: 30px;
   padding: 10px;
+}
+.adventure__story .adventure__choices {
+  background: red;
+  height: 100px;
+  width: 100px;
 }
 
 /* THEMES */
