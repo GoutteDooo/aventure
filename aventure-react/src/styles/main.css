@@ -242,5 +242,107 @@ h2 {
           transform: translateY(10px);
 }
 
+.combat-container {
+  width: 100%;
+  font-size: 1.3rem;
+}
+.combat-container .combat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #4e4a59;
+  border-radius: 25px;
+  padding: 50px;
+  margin: auto;
+}
+.combat-container .combat__player__stats, .combat-container .combat__ennemy__stats {
+  background: #6E6362;
+  padding: 25px;
+  border-radius: 35px;
+}
+.combat-container .combat__player__stats--name, .combat-container .combat__ennemy__stats--name {
+  font-weight: bold;
+  text-align: center;
+  background: #4e4a59;
+  height: 35px;
+  border-radius: 500px;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+}
+.combat-container .combat__player__stats p, .combat-container .combat__ennemy__stats p {
+  padding-bottom: 5px;
+}
+.combat-container .combat__ennemy__stats {
+  background: #394053;
+  cursor: crosshair;
+}
+.combat-container .combat__ennemy__stats--name {
+  color: darkred;
+  background: #4e4a59;
+}
+.combat-container .combat__ennemy__stats p {
+  color: #6E6362;
+}
+.combat-container .combat__ennemy__stats:hover {
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
+}
+.combat-container .combat__play {
+  background: #4f7e4e;
+}
+.combat-container .combat__wait {
+  background: #394053;
+}
+.combat-container .combat__ennemy__wait {
+  background: #394053;
+}
+.combat-container .combat__ennemy__play {
+  background: darkred;
+}
+.combat-container .your-turn {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #4f7e4e;
+  height: 100px;
+  width: 300px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+  color: #edf6f9;
+  -webkit-animation: yourTurn 1s forwards;
+          animation: yourTurn 1s forwards;
+}
+
+@-webkit-keyframes yourTurn {
+  0%, 30%, 50%, 70%, 90%, 100% {
+    opacity: 0;
+  }
+  20%, 40%, 60%, 80%, 95% {
+    opacity: 1;
+  }
+}
+
+@keyframes yourTurn {
+  0%, 30%, 50%, 70%, 90%, 100% {
+    opacity: 0;
+  }
+  20%, 40%, 60%, 80%, 95% {
+    opacity: 1;
+  }
+}
 /* THEMES */
 /* VENDORS *//*# sourceMappingURL=main.css.map */

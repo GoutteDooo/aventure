@@ -1,0 +1,79 @@
+.combat-container {
+    width: 100%;
+    font-size: 1.3rem;
+    .combat {
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        background: $dark2;
+        border-radius: 25px;
+        padding: 50px;
+        margin: auto;
+        &__player__stats, 
+        &__ennemy__stats {
+            background: $dark1;
+            padding: 25px;
+            border-radius: 35px;
+            &--name{
+                font-weight: bold;
+                text-align: center;
+                background: $dark2;
+                height: 35px;
+                border-radius: 500px;
+                padding: 5px 20px;
+                margin-bottom: 10px;
+            }
+            p {
+                padding-bottom: 5px;
+            }
+        }
+        &__ennemy__stats {
+            background: $dark3;
+            cursor: crosshair;
+            &--name{
+                color: darkred;
+                background: $dark2;
+            }
+            p {
+                color: $dark1;
+            }
+            &:hover {
+                filter: brightness(0.8);
+            }
+        }
+        &__play {
+            background: $light1;
+        }
+        &__wait {
+            background: $dark3;
+        }
+        &__ennemy__wait {
+            background: $dark3;
+        }
+        &__ennemy__play {
+            background: darkred;
+        }
+    }
+    .your-turn {
+        position: absolute;
+        @include verticalCenter;
+        background: $light1;
+        height: 100px;
+        width: 300px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        opacity: 0;
+        color: $white;
+        animation: yourTurn 1s forwards;
+    }
+}
+
+@keyframes yourTurn {
+    0%,30%,50%,70%,90%,100% {
+        opacity: 0;
+    }
+    20%,40%,60%,80%,95% {
+        opacity: 1;
+    }
+}
