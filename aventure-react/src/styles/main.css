@@ -111,7 +111,7 @@ h2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #006d77;
+  background: #4e4a59;
   color: #edf6f9;
 }
 .home .home__h1 {
@@ -123,24 +123,24 @@ h2 {
   height: 50px;
   background: none;
   font-size: 1.5rem;
-  border: 1px solid #83c5be;
+  border: 1px solid #6E6362;
 }
 .home .home__setPlayerName:focus {
-  border: 3px solid #83c5be;
+  border: 3px solid #6E6362;
   outline: none;
 }
 .home .home__start {
-  border: 2px solid #006d77;
+  border: 2px solid #4e4a59;
   border-radius: 15px;
   padding: 20px;
   font-size: 1.5rem;
-  background: #e29578;
+  background: #839073;
   border: 3px solid #edf6f9;
 }
 .home .home__start:hover {
-  background: #ffddd2;
-  color: #83c5be;
-  border: 3px solid #83c5be;
+  background: #4f7e4e;
+  color: #6E6362;
+  border: 3px solid #6E6362;
 }
 
 .adventure {
@@ -158,20 +158,20 @@ h2 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: #83c5be;
+  background: #6E6362;
 }
 .adventure__h1 {
   letter-spacing: 1px;
   margin-bottom: 50px;
-  background: #006d77;
-  color: #ffddd2;
+  background: #394053;
+  color: #4f7e4e;
   width: 100%;
   text-align: center;
   padding: 30px;
 }
 .adventure__story {
-  color: #ffddd2;
-  background: #006d77;
+  color: #839073;
+  background: #394053;
   height: 500px;
   border-radius: 35px;
   padding: 20px;
@@ -190,7 +190,7 @@ h2 {
 .adventure__story .adventure__title {
   font-weight: bold;
   font-size: 2rem;
-  color: #e29578;
+  color: #6E6362;
 }
 .adventure__story .adventure__text {
   padding: 20px;
@@ -207,8 +207,8 @@ h2 {
   font-size: 1.5rem;
   line-height: 2rem;
   letter-spacing: 2px;
-  background: #83c5be;
-  color: red;
+  background: #4e4a59;
+  color: rgb(83, 0, 0);
   border-radius: 1rem;
   margin-top: 30px;
   padding: 10px;
@@ -223,14 +223,23 @@ h2 {
       justify-content: space-around;
 }
 .adventure__story .adventure__choices .adventure__choice {
-  background: #e29578;
-  color: #ffddd2;
+  background: #4e4a59;
+  color: #839073;
+  font-size: 1.3rem;
   border-radius: 1rem;
   padding: 1rem;
+  -webkit-box-shadow: 0 10px 0 0 #839073;
+          box-shadow: 0 10px 0 0 #839073;
 }
 .adventure__story .adventure__choices .adventure__choice:hover {
-  background: #ffddd2;
-  color: #006d77;
+  background: #4f7e4e;
+  color: #4e4a59;
+}
+.adventure__story .adventure__choices .adventure__choice:active {
+  -webkit-box-shadow: 0 0 0 0 #839073;
+          box-shadow: 0 0 0 0 #839073;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
 }
 
 /* THEMES */

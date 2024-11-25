@@ -33,7 +33,7 @@ const storySteps = [
     id: 3,
     main: "Combat",
     title: `Adversaire : Epouvantail`,
-    text: `L'épouvantail se dresse face à vous, le regard fixe. Il a l'air totalement désintéressé face à vos provocations excessives.`,
+    text: `L'épouvantail se dresse face à vous, le regard fixe. Il a l'air totalement indifférent face à vos provocations.`,
     speak: ``,
     isCombat: true,
     enemyId: 1,

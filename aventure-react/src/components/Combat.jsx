@@ -17,8 +17,10 @@ const Combat = ({enemy}) => {
 
     return (
         <div className="combat">
-          <h2>Combat contre {enemy.name}</h2>
-          <p>Vie de l'ennemi : {enemy.health}</p>
+          <div className="combat__ennemi-stats">
+            <h2>{enemy.name}</h2>
+            <p>Vie de l'ennemi : {enemy.health}</p>
+          </div>
           <p>Votre vie : {playerStats.stats.health}</p>
           <button onClick={""}>Attaquer</button>
         </div>

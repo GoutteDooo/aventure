@@ -6,15 +6,15 @@
   &__h1 {
     letter-spacing: 1px;
     margin-bottom: 50px;
-    background: $dark2;
+    background: $dark3;
     color: $light1;
     width: 100%;
     text-align: center;
     padding: 30px;
   }
   &__story {
-    color: $light1;
-    background: $dark2;
+    color: $light2;
+    background: $dark3;
     height: 500px;
     border-radius: 35px;
     padding: 20px;
@@ -25,7 +25,7 @@
     .adventure__title {
       font-weight: bold;
       font-size: 2rem;
-      color: $light2;
+      color: $dark1;
     }
     .adventure__text {
       padding: 20px;
@@ -41,8 +41,8 @@
         font-size: 1.5rem;
         line-height: 2rem;
         letter-spacing: 2px;
-        background: $dark1;
-        color: red;
+        background: $dark2;
+        color: rgb(83, 0, 0);
         border-radius: 1rem;
         margin-top: 30px;
         padding: 10px;
@@ -54,13 +54,19 @@
       display: flex;
       justify-content: space-around;
       .adventure__choice {
-        background: $light2;
-        color: $light1;
+        background: $dark2;
+        color: $light2;
+        font-size: 1.3rem;
         border-radius: 1rem;
         padding: 1rem;
+        box-shadow: 0 10px 0 0 $light2;
         &:hover {
           background: $light1;
           color: $dark2;
+        }
+        &:active {
+          box-shadow: 0 0 0 0 $light2;
+          transform: translateY(10px);
         }
       }
     }
