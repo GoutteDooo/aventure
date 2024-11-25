@@ -30,6 +30,11 @@ const Combat = ({enemy}) => {
       setIsAttacking(false);
       setIsInAction(false);
       setPlayerTurn(false);
+      /* TEST */
+      setTimeout(() => {
+        setPlayerTurn(true);
+        
+      }, 2000);
     }
   }
 
