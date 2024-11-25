@@ -258,6 +258,8 @@ h2 {
   border-radius: 25px;
   padding: 50px;
   margin: auto;
+  /* ENNEMI STYLE */
+  /* STYLES PLAYING */
 }
 .combat-container .combat__player__stats, .combat-container .combat__ennemy__stats {
   background: #6E6362;
@@ -289,6 +291,10 @@ h2 {
 .combat-container .combat__ennemy__stats:hover {
   -webkit-filter: brightness(0.8);
           filter: brightness(0.8);
+}
+.combat-container .combat__ennemy__attack {
+  -webkit-animation: enemyAttack 1s forwards ease-out;
+          animation: enemyAttack 1s forwards ease-out;
 }
 .combat-container .combat__play {
   background: #4f7e4e;
@@ -482,6 +488,34 @@ h2 {
   100% {
     -webkit-transform: translateX(0);
             transform: translateX(0);
+  }
+}
+@-webkit-keyframes enemyAttack {
+  0%, 100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  70% {
+    -webkit-transform: translateX(50px) rotate(10deg);
+            transform: translateX(50px) rotate(10deg);
+  }
+  90% {
+    -webkit-transform: translateX(-350px) rotate(-20deg);
+            transform: translateX(-350px) rotate(-20deg);
+  }
+}
+@keyframes enemyAttack {
+  0%, 100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  70% {
+    -webkit-transform: translateX(50px) rotate(10deg);
+            transform: translateX(50px) rotate(10deg);
+  }
+  90% {
+    -webkit-transform: translateX(-350px) rotate(-20deg);
+            transform: translateX(-350px) rotate(-20deg);
   }
 }
 /* THEMES */

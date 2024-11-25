@@ -7,11 +7,14 @@ const Combat = ({enemy}) => {
   const [isInAction, setIsInAction] = useState(false);
   const [enemyAttacked, setEnemyAttacked] = useState(false);
 
-  const handlePlayerTurn = () => {
-    if (playerTurn) {
-      return;
+  //Charger les données du joueur depuis le localStorage
+  useEffect(() => {
+    const storedPlayerData = localStorage.getItem("playerData");
+    if (storedPlayerData) {
+      setPlayerStats(JSON.parse(storedPlayerData));
     }
-  }
+  }, [])
+
   const handleAttack = () => {
     if (!isInAction) {
       setIsInAction(true);
@@ -42,13 +45,6 @@ const Combat = ({enemy}) => {
     }
   }, [isInAction, enemyAttacked])
 
-  //Charger les données du joueur depuis le localStorage
-  useEffect(() => {
-    const storedPlayerData = localStorage.getItem("playerData");
-    if (storedPlayerData) {
-      setPlayerStats(JSON.parse(storedPlayerData));
-    }
-  }, [])
 
   if (!playerStats) {
     return <p className='animate-pulsing animate-iteration-count-infinite'>Chargement des données du joueur...</p>
@@ -65,7 +61,7 @@ const Combat = ({enemy}) => {
             <p>Adresse : {playerStats.stats.accuracy}</p>
             <p>Initiative : {playerStats.stats.initiative}</p>
           </div>
-          <div className={`combat__ennemy__stats ${playerTurn ? "combat__ennemy__wait" : "combat__ennemy__play"} ${enemyAttacked ? "combat__hit" : ""}`}
+          <div className={`combat__ennemy__stats ${playerTurn ? "combat__ennemy__wait" : "combat__ennemy__play"} ${enemyAttacked ? "combat__hit" : ""} combat__ennemy__attack`}
           onClick={handleEnemyClick}>
             <div className="combat__ennemy__stats--name">
               {enemy.name}

@@ -27,6 +27,7 @@
                 padding-bottom: 5px;
             }
         }
+        /* ENNEMI STYLE */
         &__ennemy__stats {
             background: $dark3;
             &--name{
@@ -40,6 +41,11 @@
                 filter: brightness(0.8);
             }
         }
+        &__ennemy__attack {
+            animation: enemyAttack 1s forwards ease-out;
+        }
+
+        /* STYLES PLAYING */
         &__play {
             background: $light1;
             p {
@@ -168,5 +174,17 @@
     }
     100% {
         transform: translateX(0);
+    }
+}
+
+@keyframes enemyAttack {
+    0%,100% {
+        transform: translateX(0);
+    }
+    70% {
+        transform: translateX(50px) rotate(10deg);
+    }
+    90% {
+        transform: translateX(-350px) rotate(-20deg);
     }
 }
