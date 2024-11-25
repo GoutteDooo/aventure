@@ -278,7 +278,6 @@ h2 {
 }
 .combat-container .combat__ennemy__stats {
   background: #394053;
-  cursor: crosshair;
 }
 .combat-container .combat__ennemy__stats--name {
   color: darkred;

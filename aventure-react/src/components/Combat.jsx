@@ -5,6 +5,7 @@ const Combat = ({enemy}) => {
   const [playerTurn, setPlayerTurn] = useState(true); //vérifie si joueur a l'initiative avant de pouvoir attaquer
   const [isAttacking, setIsAttacking] = useState(false);
   const [isInAction, setIsInAction] = useState(false);
+  const [enemyAttacked, setEnemyAttacked] = useState(false);
 
   const handlePlayerTurn = () => {
     if (playerTurn) {
@@ -18,12 +19,28 @@ const Combat = ({enemy}) => {
     }
   }
 
+  const handleEnemyClick = () => {
+    if (isAttacking && playerTurn) {
+      setEnemyAttacked(true);
+      const damage = Math.max(0, playerStats.stats.attack - enemy.defense);
+      enemy.health -= damage;
+      setIsAttacking(false);
+      setIsInAction(false);
+      setPlayerTurn(false);
+    }
+  }
+
   useEffect(() => {
     //Si n'est plus en action, alors on décoche tout les states de combat
     if (!isInAction) {
       setIsAttacking(false);
     }
-  }, [isInAction])
+    if (enemyAttacked) {
+      setTimeout(() => {
+        setEnemyAttacked(false);
+      }, 600);
+    }
+  }, [isInAction, enemyAttacked])
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -48,7 +65,8 @@ const Combat = ({enemy}) => {
             <p>Adresse : {playerStats.stats.accuracy}</p>
             <p>Initiative : {playerStats.stats.initiative}</p>
           </div>
-          <div className={`combat__ennemy__stats ${playerTurn ? "combat__ennemy__wait" : "combat__ennemy__play"}`}>
+          <div className={`combat__ennemy__stats ${playerTurn ? "combat__ennemy__wait" : "combat__ennemy__play"} ${enemyAttacked ? "combat__hit" : ""}`}
+          onClick={handleEnemyClick}>
             <div className="combat__ennemy__stats--name">
               {enemy.name}
             </div>
