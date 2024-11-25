@@ -382,6 +382,26 @@ h2 {
 .combat-container .combat__player__turn .combat__button__fled {
   background: rgb(70, 70, 70);
 }
+.combat-container .combat__button__cancel {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 25px;
+  height: 50px;
+  border-radius: 35px;
+  padding: 25px;
+  background: #394053;
+}
 .combat-container .ennemy-turn {
   position: absolute;
   display: -webkit-box;
@@ -404,6 +424,10 @@ h2 {
           animation: yourTurn 1s forwards;
   color: #6E6362;
   background: darkred;
+}
+
+.combat--attacking {
+  cursor: crosshair;
 }
 
 @-webkit-keyframes yourTurn {
