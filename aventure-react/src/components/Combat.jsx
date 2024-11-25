@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const Combat = ({enemy}) => {
   const [playerStats, setPlayerStats] = useState(null);
-  const [playerTurn, setPlayerTurn] = useState(false); //vérifie si joueur a l'initiative avant de pouvoir attaquer
+  const [playerTurn, setPlayerTurn] = useState(true); //vérifie si joueur a l'initiative avant de pouvoir attaquer
 
   const handlePlayerTurn = () => {
     if (playerTurn) {
@@ -43,8 +43,18 @@ const Combat = ({enemy}) => {
             </div>
         </div>
         {/* Si tour du joueur, alors afficher*/}
-        {playerTurn && (
-          <div className="your-turn">C'est votre tour</div>
+        {playerTurn ? (
+          <>
+            <div className="your-turn">C'est votre tour</div>
+            <div className="combat__player__turn">
+              <button className="combat__button__attack">Attaquer</button>
+              <button className="combat__button__defense">Se protéger</button>
+              <button className="combat__button__use">Utiliser</button>
+              <button className="combat__button__fled">Fuir</button>
+            </div>
+          </>
+        ) : (
+          <div className="ennemy-turn">Au tour de votre adversaire</div>
         )}
       </div>
     );

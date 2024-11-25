@@ -294,6 +294,9 @@ h2 {
 .combat-container .combat__play {
   background: #4f7e4e;
 }
+.combat-container .combat__play p {
+  color: #394053;
+}
 .combat-container .combat__wait {
   background: #394053;
 }
@@ -302,6 +305,10 @@ h2 {
 }
 .combat-container .combat__ennemy__play {
   background: darkred;
+}
+.combat-container .combat__hit {
+  -webkit-animation: hit 0.6s forwards;
+          animation: hit 0.6s forwards;
 }
 .combat-container .your-turn {
   position: absolute;
@@ -326,22 +333,132 @@ h2 {
   -webkit-animation: yourTurn 1s forwards;
           animation: yourTurn 1s forwards;
 }
+.combat-container .combat__player__turn {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 50px;
+  margin-top: 25px;
+  height: 150px;
+  border-radius: 35px;
+}
+.combat-container .combat__player__turn .combat__button__attack, .combat-container .combat__player__turn .combat__button__defense, .combat-container .combat__player__turn .combat__button__use, .combat-container .combat__player__turn .combat__button__fled {
+  padding: 20px;
+  border-radius: 25px;
+  -webkit-box-shadow: 0 10px 0 0 black;
+          box-shadow: 0 10px 0 0 black;
+  width: 150px;
+}
+.combat-container .combat__player__turn .combat__button__attack:hover, .combat-container .combat__player__turn .combat__button__defense:hover, .combat-container .combat__player__turn .combat__button__use:hover, .combat-container .combat__player__turn .combat__button__fled:hover {
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
+  color: #edf6f9;
+}
+.combat-container .combat__player__turn .combat__button__attack:active, .combat-container .combat__player__turn .combat__button__defense:active, .combat-container .combat__player__turn .combat__button__use:active, .combat-container .combat__player__turn .combat__button__fled:active {
+  -webkit-box-shadow: 0 0 0 0;
+          box-shadow: 0 0 0 0;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+}
+.combat-container .combat__player__turn .combat__button__attack {
+  background: darkred;
+}
+.combat-container .combat__player__turn .combat__button__defense {
+  background: #4f7e4e;
+}
+.combat-container .combat__player__turn .combat__button__use {
+  background: orangered;
+}
+.combat-container .combat__player__turn .combat__button__fled {
+  background: rgb(70, 70, 70);
+}
+.combat-container .ennemy-turn {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100px;
+  width: 300px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+  -webkit-animation: yourTurn 1s forwards;
+          animation: yourTurn 1s forwards;
+  color: #6E6362;
+  background: darkred;
+}
 
 @-webkit-keyframes yourTurn {
-  0%, 30%, 50%, 70%, 90%, 100% {
+  0%, 30%, 50%, 70%, 90% {
     opacity: 0;
   }
   20%, 40%, 60%, 80%, 95% {
     opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
   }
 }
 
 @keyframes yourTurn {
-  0%, 30%, 50%, 70%, 90%, 100% {
+  0%, 30%, 50%, 70%, 90% {
     opacity: 0;
   }
   20%, 40%, 60%, 80%, 95% {
     opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+@-webkit-keyframes hit {
+  0%, 30%, 50%, 70%, 90% {
+    background: red;
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@keyframes hit {
+  0%, 30%, 50%, 70%, 90% {
+    background: red;
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 /* THEMES */
