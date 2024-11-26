@@ -37,7 +37,7 @@ const Combat = ({ enemy }) => {
     if (isAttacking && playerTurn) {
       setEnemyAttacked(true);
       const damages = Math.max(
-        0,
+        playerStats.stats.attack * 0.1,
         damage(
           playerStats.stats.attack,
           playerStats.stats.accuracy,
@@ -57,7 +57,7 @@ const Combat = ({ enemy }) => {
       setEnemyAttacking(true);
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
-          0,
+          enemy.attack * 0.1,
           damage(enemy.attack, enemy.accuracy, enemy.chance) -
             playerStats.stats.defense
         );
@@ -124,8 +124,8 @@ const Combat = ({ enemy }) => {
           <p>Vie : {playerStats.stats.health}</p>
           <p>Attaque : {playerStats.stats.attack}</p>
           <p>Défense : {playerStats.stats.defense}</p>
-          <p>Adresse : {playerStats.stats.accuracy}</p>
-          <p>Chance : {playerStats.stats.chance}</p>
+          <p>Adresse : {playerStats.stats.accuracy * 100}</p>
+          <p>Chance : {playerStats.stats.chance * 100}</p>
           <p>Initiative : {playerStats.stats.initiative}</p>
         </div>
         <div
