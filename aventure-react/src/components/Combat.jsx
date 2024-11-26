@@ -7,6 +7,7 @@ const Combat = ({ enemy }) => {
   const [isInAction, setIsInAction] = useState(false);
   const [enemyAttacked, setEnemyAttacked] = useState(false);
   const [enemyAttacking, setEnemyAttacking] = useState(false);
+  const [isAttacked, setIsAttacked] = useState(false);
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -34,12 +35,11 @@ const Combat = ({ enemy }) => {
     }
   };
 
+  //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
     if (!playerTurn) {
       setEnemyAttacking(true);
       const enemyAction = setTimeout(() => {
-        console.log("enemyAction ON");
-
         const enemyDamage = Math.max(
           0,
           enemy.attack - playerStats.stats.defense
@@ -52,13 +52,12 @@ const Combat = ({ enemy }) => {
             health: prevStats.stats.health - enemyDamage,
           },
         }));
-
+        setIsAttacked(true);
         setPlayerTurn(true); // Retourne au tour du joueur
       }, 2000);
 
       // Nettoyage du timeout si le composant est démonté ou si la dépendance change
       return () => {
-        console.log("enemyAction CLEARED");
         setEnemyAttacking(false);
         clearTimeout(enemyAction);
       };
@@ -77,6 +76,15 @@ const Combat = ({ enemy }) => {
     }
   }, [isInAction, enemyAttacked]);
 
+  //Gère l'animation du joueur quand attaqué
+  useEffect(() => {
+    if (isAttacked) {
+      setTimeout(() => {
+        setIsAttacked(false);
+      }, 1500);
+    }
+  }, [isAttacked]);
+
   if (!playerStats) {
     return (
       <p className="animate-pulsing animate-iteration-count-infinite">
@@ -93,7 +101,7 @@ const Combat = ({ enemy }) => {
         <div
           className={`combat__player__stats ${
             playerTurn ? "combat__play" : "combat__wait"
-          }`}
+          } ${isAttacked ? "combat__hit" : ""}`}
         >
           <div className="combat__player__stats--name">{playerStats.name}</div>
           <p>Vie : {playerStats.stats.health}</p>
