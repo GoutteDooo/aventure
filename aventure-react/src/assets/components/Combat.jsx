@@ -116,7 +116,7 @@ const Combat = ({ enemy }) => {
     );
   }
 
-  return (
+  return !combatFinished ? (
     <div
       className={`combat-container ${isAttacking ? "combat--attacking" : ""}`}
     >
@@ -173,6 +173,13 @@ const Combat = ({ enemy }) => {
       ) : (
         <div className="ennemy-turn">Au tour de votre adversaire</div>
       )}
+    </div>
+  ) : (
+    <div className="combat__finished__container">
+      <div className="pop-up__finished--bg">
+        <p>Combat terminé</p>
+      </div>
+      <div className="finish__pop-up">{/* <Loot /> */}</div>
     </div>
   );
 };

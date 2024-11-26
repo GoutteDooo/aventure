@@ -279,6 +279,40 @@ h2 {
     transform: translateX(-350px) rotate(-20deg);
   }
 }
+/* COMBAT FINISHED */
+.combat__finished__container .pop-up__finished--bg {
+  position: absolute;
+  width: 100%;
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.446);
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  color: #4f7e4e;
+}
+.combat__finished__container .pop-up__finished--bg p {
+  width: 100%;
+  display: block;
+  animation: combatFinished 2s infinite;
+}
+
+@keyframes combatFinished {
+  0% {
+    left: -200%;
+  }
+  20% {
+    left: 40%;
+  }
+  80% {
+    left: 60%;
+  }
+  100% {
+    left: 200%;
+  }
+}
 /* LAYOUTS */
 /* PAGES */
 .home {
