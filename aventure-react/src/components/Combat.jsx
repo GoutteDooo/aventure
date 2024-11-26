@@ -17,6 +17,14 @@ const Combat = ({ enemy }) => {
     }
   }, []);
 
+  const damage = (attack, accuracy) => {
+    const rng = Math.random();
+    const brutDamages = Math.round(attack - (1 - accuracy) * rng * attack);
+    console.log("damages : ", brutDamages);
+
+    return brutDamages;
+  };
+
   const handleAttack = () => {
     if (!isInAction) {
       setIsInAction(true);
@@ -27,8 +35,12 @@ const Combat = ({ enemy }) => {
   const handleEnemyClick = () => {
     if (isAttacking && playerTurn) {
       setEnemyAttacked(true);
-      const damage = Math.max(0, playerStats.stats.attack - enemy.defense);
-      enemy.health -= damage;
+      const damages = Math.max(
+        0,
+        damage(playerStats.stats.attack, playerStats.stats.accuracy) -
+          enemy.defense
+      );
+      enemy.health -= damages;
       setIsAttacking(false);
       setIsInAction(false);
       setPlayerTurn(false);
@@ -42,7 +54,7 @@ const Combat = ({ enemy }) => {
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
           0,
-          enemy.attack - playerStats.stats.defense
+          damage(enemy.attack, enemy.accuracy) - playerStats.stats.defense
         );
 
         setPlayerStats((prevStats) => ({
