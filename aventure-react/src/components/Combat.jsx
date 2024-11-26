@@ -109,6 +109,14 @@ const Combat = ({ enemy }) => {
     }
   }, [isAttacked]);
 
+  //Gère l'état lorsque le combat est terminé
+  useEffect(() => {
+    if (combatFinished) {
+      // localStorage.setItem("currentStepId", JSON.stringify(0));
+      return;
+    }
+  },[combatFinished])
+
   if (!playerStats) {
     return (
       <p className="animate-pulsing animate-iteration-count-infinite">

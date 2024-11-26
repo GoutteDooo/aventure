@@ -1,6 +1,15 @@
 // src/data/adventureData.js
 const storySteps = [
   {
+    id: 0,
+    main: "Fin du Combat",
+    title: ``,
+    text: ``,
+    speak: ``,
+    isCombat: false,
+    choices: [],
+  },
+  {
     id: 1,
     main: "Aventure",
     title: `A l'entrée du donjon`,
