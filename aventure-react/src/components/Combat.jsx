@@ -31,12 +31,39 @@ const Combat = ({ enemy }) => {
       setIsAttacking(false);
       setIsInAction(false);
       setPlayerTurn(false);
-      /* TEST */
-      setTimeout(() => {
-        setPlayerTurn(true);
-      }, 2000);
     }
   };
+
+  useEffect(() => {
+    if (!playerTurn) {
+      setEnemyAttacking(true);
+      const enemyAction = setTimeout(() => {
+        console.log("enemyAction ON");
+
+        const enemyDamage = Math.max(
+          0,
+          enemy.attack - playerStats.stats.defense
+        );
+
+        setPlayerStats((prevStats) => ({
+          ...prevStats,
+          stats: {
+            ...prevStats.stats,
+            health: prevStats.stats.health - enemyDamage,
+          },
+        }));
+
+        setPlayerTurn(true); // Retourne au tour du joueur
+      }, 2000);
+
+      // Nettoyage du timeout si le composant est démonté ou si la dépendance change
+      return () => {
+        console.log("enemyAction CLEARED");
+        setEnemyAttacking(false);
+        clearTimeout(enemyAction);
+      };
+    }
+  }, [playerTurn]);
 
   useEffect(() => {
     //Si n'est plus en action, alors on décoche tout les states de combat
@@ -48,14 +75,7 @@ const Combat = ({ enemy }) => {
         setEnemyAttacked(false);
       }, 600);
     }
-    if (!playerTurn) {
-      setEnemyAttacking(true);
-
-      setTimeout(() => {
-        setEnemyAttacking(false);
-      }, 600);
-    }
-  }, [isInAction, enemyAttacked, enemyAttacking]);
+  }, [isInAction, enemyAttacked]);
 
   if (!playerStats) {
     return (

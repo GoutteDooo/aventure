@@ -4,7 +4,7 @@ const enemiesData = [
     id: 1,
     name: "Epouvantail",
     health: "20",
-    attack: "0",
+    attack: "10",
     defense: "1",
     chance: "0",
     initiative: "0",
