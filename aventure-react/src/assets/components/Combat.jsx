@@ -8,6 +8,7 @@ const Combat = ({ enemy }) => {
   const [enemyAttacked, setEnemyAttacked] = useState(false);
   const [enemyAttacking, setEnemyAttacking] = useState(false);
   const [isAttacked, setIsAttacked] = useState(false);
+  const [combatFinished, setCombatFinished] = useState(false);
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -17,6 +18,7 @@ const Combat = ({ enemy }) => {
     }
   }, []);
 
+  //Fonction calcul des dommages avec coup critique
   const damage = (attack, accuracy, chance) => {
     const rngStrike = Math.random();
     const rngAttack = Math.random();
@@ -33,6 +35,7 @@ const Combat = ({ enemy }) => {
     }
   };
 
+  //Lorsque le joueur attaque l'ennemi
   const handleEnemyClick = () => {
     if (isAttacking && playerTurn) {
       setEnemyAttacked(true);
@@ -53,7 +56,7 @@ const Combat = ({ enemy }) => {
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
-    if (!playerTurn) {
+    if (!playerTurn && enemy.health > 0) {
       setEnemyAttacking(true);
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
@@ -78,11 +81,14 @@ const Combat = ({ enemy }) => {
         setEnemyAttacking(false);
         clearTimeout(enemyAction);
       };
+    } else if (enemy.health <= 0) {
+      setCombatFinished(true);
+      console.log("Combat terminé !");
     }
   }, [playerTurn]);
 
+  //Si n'est plus en action, alors on décoche tout les states de combat
   useEffect(() => {
-    //Si n'est plus en action, alors on décoche tout les states de combat
     if (!isInAction) {
       setIsAttacking(false);
     }
