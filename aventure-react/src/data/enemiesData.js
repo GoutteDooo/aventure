@@ -9,6 +9,7 @@ const enemiesData = [
     chance: "0.1",
     accuracy: "0.8",
     initiative: "0",
+    loots: ["Chapeau de paille"],
   },
 ];
 

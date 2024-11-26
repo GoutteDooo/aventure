@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loot from "./Loot";
 
 const Combat = ({ enemy }) => {
   const [playerStats, setPlayerStats] = useState(null);
@@ -179,7 +180,9 @@ const Combat = ({ enemy }) => {
       <div className="pop-up__finished--bg">
         <p>Combat terminé</p>
       </div>
-      <div className="finish__pop-up">{/* <Loot /> */}</div>
+      <div className="finish__pop-up">
+        <Loot loots={enemy.loots} />
+      </div>
     </div>
   );
 };
