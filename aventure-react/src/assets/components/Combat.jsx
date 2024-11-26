@@ -17,10 +17,16 @@ const Combat = ({ enemy }) => {
     }
   }, []);
 
-  const damage = (attack, accuracy) => {
-    const rng = Math.random();
-    const brutDamages = Math.round(attack - (1 - accuracy) * rng * attack);
-    console.log("damages : ", brutDamages);
+  const damage = (attack, accuracy, chance) => {
+    const rngStrike = Math.random();
+    const rngAttack = Math.random();
+    let brutDamages = Math.round(attack - (1 - accuracy) * rngAttack * attack);
+    if (rngStrike >= 1 - chance) brutDamages *= 2;
+    console.log(
+      rngStrike >= 1 - chance
+        ? rngStrike + "critique !"
+        : rngStrike + "pas critique!"
+    );
 
     return brutDamages;
   };
@@ -37,8 +43,11 @@ const Combat = ({ enemy }) => {
       setEnemyAttacked(true);
       const damages = Math.max(
         0,
-        damage(playerStats.stats.attack, playerStats.stats.accuracy) -
-          enemy.defense
+        damage(
+          playerStats.stats.attack,
+          playerStats.stats.accuracy,
+          playerStats.stats.chance
+        ) - enemy.defense
       );
       enemy.health -= damages;
       setIsAttacking(false);
@@ -54,7 +63,8 @@ const Combat = ({ enemy }) => {
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
           0,
-          damage(enemy.attack, enemy.accuracy) - playerStats.stats.defense
+          damage(enemy.attack, enemy.accuracy, enemy.chance) -
+            playerStats.stats.defense
         );
 
         setPlayerStats((prevStats) => ({
@@ -120,6 +130,7 @@ const Combat = ({ enemy }) => {
           <p>Attaque : {playerStats.stats.attack}</p>
           <p>Défense : {playerStats.stats.defense}</p>
           <p>Adresse : {playerStats.stats.accuracy}</p>
+          <p>Chance : {playerStats.stats.chance}</p>
           <p>Initiative : {playerStats.stats.initiative}</p>
         </div>
         <div

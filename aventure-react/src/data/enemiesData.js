@@ -6,7 +6,7 @@ const enemiesData = [
     health: "20",
     attack: "10",
     defense: "1",
-    chance: "0",
+    chance: "0.1",
     accuracy: "0.8",
     initiative: "0",
   },
