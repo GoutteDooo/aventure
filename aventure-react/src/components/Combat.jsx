@@ -183,7 +183,9 @@ const Combat = ({ enemy }) => {
         <div className="ennemy-turn">Au tour de votre adversaire</div>
       )}
     </div>
-  ) : (
+  ) 
+  : /* IF COMBAT FINISHED */
+  (
     <div className="combat__finished__container">
       <div className="pop-up__finished--bg">
         <p>Combat terminé</p>

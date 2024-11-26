@@ -51,6 +51,18 @@ const storySteps = [
       { text: `Entrer dans le donjon`, nextId: 4 },
     ],
   },
+  {
+    id: 4,
+    main: "Aventure",
+    title: `Suite`,
+    text: `Entrée dans le donjon.`,
+    speak: ``,
+    isCombat: false,
+    choices: [
+      { text: `Affronter l'épouvantail (didacticiel)`, nextId: 3 },
+      { text: `Entrer dans le donjon`, nextId: 4 },
+    ],
+  },
   /* En dessous à modifier */
   {
     text: "Salle E13",

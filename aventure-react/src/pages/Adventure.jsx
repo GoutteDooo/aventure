@@ -28,7 +28,7 @@ function Adventure() {
       setIsInCombat(false);
       setEnemy(null);
     }
-  }, [currentStep]);
+  }, [currentStep, isInCombat]);
 
   useEffect(() => {
     //Met à jour le localStorage lorsqu'une étape change
