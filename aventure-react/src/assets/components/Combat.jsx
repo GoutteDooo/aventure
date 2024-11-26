@@ -22,11 +22,6 @@ const Combat = ({ enemy }) => {
     const rngAttack = Math.random();
     let brutDamages = Math.round(attack - (1 - accuracy) * rngAttack * attack);
     if (rngStrike >= 1 - chance) brutDamages *= 2;
-    console.log(
-      rngStrike >= 1 - chance
-        ? rngStrike + "critique !"
-        : rngStrike + "pas critique!"
-    );
 
     return brutDamages;
   };
