@@ -3,7 +3,7 @@ import "../data/adventureData";
 import { useEffect, useState } from "react";
 import storySteps from "../data/adventureData";
 import enemiesData from "../data/enemiesData";
-import Combat from "../assets/components/Combat";
+import Combat from "../components/Combat";
 
 function Adventure() {
   //Lors du chargement de la page, on récupère les données dans le localStorage s'il y'a. Sinon, on démarre à la 1ere étape.

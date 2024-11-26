@@ -224,7 +224,8 @@
     p {
       width: 100%;
       display: block;
-      animation: combatFinished 2s infinite;
+      position: absolute;
+      animation: combatFinished 2s forwards ease-in-out;
     }
   }
 }
@@ -233,11 +234,8 @@
   0% {
     left: -200%;
   }
-  20% {
+  30%,70%{
     left: 40%;
-  }
-  80% {
-    left: 60%;
   }
   100% {
     left: 200%;
