@@ -372,6 +372,7 @@ h2 {
 /* COMBAT FINISHED */
 .combat__finished__container .pop-up__finished--bg {
   position: absolute;
+  opacity: 0;
   width: 100%;
   height: 150px;
   top: 50%;
@@ -387,6 +388,8 @@ h2 {
       -ms-flex-align: center;
           align-items: center;
   color: #4f7e4e;
+  -webkit-animation: popUp 3s forwards;
+          animation: popUp 3s forwards;
 }
 .combat__finished__container .pop-up__finished--bg p {
   width: 100%;
@@ -417,6 +420,22 @@ h2 {
   }
   100% {
     left: 200%;
+  }
+}
+@-webkit-keyframes popUp {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+}
+@keyframes popUp {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
   }
 }
 /* LAYOUTS */

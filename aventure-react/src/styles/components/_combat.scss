@@ -211,6 +211,7 @@
   .pop-up__finished--bg {
     // display: none;
     position: absolute;
+    opacity: 0;
     width: 100%;
     height: 150px;
     top: 50%;
@@ -221,6 +222,7 @@
     display: flex;
     align-items: center;
     color: $light1;
+    animation: popUp 3s forwards;
     p {
       width: 100%;
       display: block;
@@ -239,5 +241,14 @@
   }
   100% {
     left: 200%;
+  }
+}
+
+@keyframes popUp {
+  0%,100% {
+    opacity: 0;
+  }
+  10%,90%{
+    opacity: 1;
   }
 }
