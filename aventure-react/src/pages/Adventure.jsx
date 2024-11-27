@@ -72,8 +72,7 @@ function Adventure() {
                 className="adventure__choice"
                 onClick={() => handleChoiceClick(choice.nextId)}
               >
-                {" "}
-                Etape suivante :{choice.text}
+                {choice.text}
               </button>
             ))}
           </div>
