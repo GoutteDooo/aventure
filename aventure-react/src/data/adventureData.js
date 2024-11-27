@@ -20,7 +20,7 @@ const storySteps = [
     isCombat: false,
     choices: [
       { text: `Lire le panneau`, nextId: 2 },
-      { text: `Entrer dans le donjon`, nextId: 4 },
+      { text: `Entrer dans le donjon`, nextId: 5 },
     ],
   },
   {
@@ -35,7 +35,7 @@ const storySteps = [
     isCombat: false,
     choices: [
       { text: `Affronter l'épouvantail (didacticiel)`, nextId: 3 },
-      { text: `Entrer dans le donjon`, nextId: 4 },
+      { text: `Entrer dans le donjon`, nextId: 5 },
     ],
   },
   {
@@ -64,7 +64,7 @@ const storySteps = [
     id: 5,
     main: "Aventure",
     title: `Salle 13`,
-    text: `Après avoir parcouru un long corridor, vous voici dans une grande salle ornée de nombreux cadres et têtes d'animaux sur les murs.
+    text: `Après avoir parcouru un long corridor, vous voici dans une grande salle ornée de nombreux cadres anciens et têtes d'animaux sur les murs.
     Au centre, une vieille fontaine usagée et craquelée par le temps. Plus aucune goutte d'eau ne subsiste. Une lueur étrange provient du centre de la fontaine cependant. Sur votre gauche, une grande porte en bois. Sur votre droite, un couloir d'où proviennent de nombreux échos. Ces sons vous font penser à de mystérieuses créatures sortant des limbes les plus profondes du monde.`,
     speak: ``,
     isCombat: false,

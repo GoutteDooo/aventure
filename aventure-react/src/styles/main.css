@@ -73,7 +73,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 h1 {
@@ -98,9 +99,13 @@ h2 {
   font-size: 1.3rem;
 }
 .combat-container .combat {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 90%;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background: #4e4a59;
   border-radius: 25px;
   padding: 50px;
@@ -136,10 +141,12 @@ h2 {
   color: #6E6362;
 }
 .combat-container .combat__ennemy__stats:hover {
-  filter: brightness(0.8);
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
 }
 .combat-container .combat__ennemy__attack {
-  animation: enemyAttack 1s forwards ease-out;
+  -webkit-animation: enemyAttack 1s forwards ease-out;
+          animation: enemyAttack 1s forwards ease-out;
 }
 .combat-container .combat__play {
   background: #4f7e4e;
@@ -157,30 +164,46 @@ h2 {
   background: darkred;
 }
 .combat-container .combat__hit {
-  animation: hit 0.6s forwards;
+  -webkit-animation: hit 0.6s forwards;
+          animation: hit 0.6s forwards;
 }
 .combat-container .your-turn {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background: #4f7e4e;
   height: 100px;
   width: 300px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   opacity: 0;
   color: #edf6f9;
-  animation: yourTurn 1s forwards;
+  -webkit-animation: yourTurn 1s forwards;
+          animation: yourTurn 1s forwards;
 }
 .combat-container .combat__player__turn {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 50px;
   margin-top: 25px;
   height: 150px;
@@ -189,16 +212,20 @@ h2 {
 .combat-container .combat__player__turn .combat__button__attack, .combat-container .combat__player__turn .combat__button__defense, .combat-container .combat__player__turn .combat__button__use, .combat-container .combat__player__turn .combat__button__fled {
   padding: 20px;
   border-radius: 25px;
-  box-shadow: 0 10px 0 0 black;
+  -webkit-box-shadow: 0 10px 0 0 black;
+          box-shadow: 0 10px 0 0 black;
   width: 150px;
 }
 .combat-container .combat__player__turn .combat__button__attack:hover, .combat-container .combat__player__turn .combat__button__defense:hover, .combat-container .combat__player__turn .combat__button__use:hover, .combat-container .combat__player__turn .combat__button__fled:hover {
-  filter: brightness(0.8);
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
   color: #edf6f9;
 }
 .combat-container .combat__player__turn .combat__button__attack:active, .combat-container .combat__player__turn .combat__button__defense:active, .combat-container .combat__player__turn .combat__button__use:active, .combat-container .combat__player__turn .combat__button__fled:active {
-  box-shadow: 0 0 0 0;
-  transform: translateY(10px);
+  -webkit-box-shadow: 0 0 0 0;
+          box-shadow: 0 0 0 0;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
 }
 .combat-container .combat__player__turn .combat__button__attack {
   background: darkred;
@@ -215,10 +242,17 @@ h2 {
 .combat-container .combat__button__cancel {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 25px;
   height: 50px;
   border-radius: 35px;
@@ -227,22 +261,43 @@ h2 {
 }
 .combat-container .ennemy-turn {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100px;
   width: 300px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   opacity: 0;
-  animation: yourTurn 1s forwards;
+  -webkit-animation: yourTurn 1s forwards;
+          animation: yourTurn 1s forwards;
   color: #6E6362;
   background: darkred;
 }
 
 .combat--attacking {
   cursor: crosshair;
+}
+
+@-webkit-keyframes yourTurn {
+  0%, 30%, 50%, 70%, 90% {
+    opacity: 0;
+  }
+  20%, 40%, 60%, 80%, 95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
 
 @keyframes yourTurn {
@@ -257,27 +312,62 @@ h2 {
     display: none;
   }
 }
+@-webkit-keyframes hit {
+  0%, 30%, 50%, 70%, 90% {
+    background: red;
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
 @keyframes hit {
   0%, 30%, 50%, 70%, 90% {
     background: red;
-    transform: translateX(-10px);
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
   }
   20%, 40%, 60%, 80% {
-    transform: translateX(10px);
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
   }
   100% {
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@-webkit-keyframes enemyAttack {
+  0%, 100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  70% {
+    -webkit-transform: translateX(50px) rotate(10deg);
+            transform: translateX(50px) rotate(10deg);
+  }
+  90% {
+    -webkit-transform: translateX(-350px) rotate(-20deg);
+            transform: translateX(-350px) rotate(-20deg);
   }
 }
 @keyframes enemyAttack {
   0%, 100% {
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
   70% {
-    transform: translateX(50px) rotate(10deg);
+    -webkit-transform: translateX(50px) rotate(10deg);
+            transform: translateX(50px) rotate(10deg);
   }
   90% {
-    transform: translateX(-350px) rotate(-20deg);
+    -webkit-transform: translateX(-350px) rotate(-20deg);
+            transform: translateX(-350px) rotate(-20deg);
   }
 }
 /* COMBAT FINISHED */
@@ -292,19 +382,26 @@ h2 {
   height: 150px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   background: rgba(255, 255, 255, 0.446);
   font-size: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #4f7e4e;
-  animation: popUp 3s forwards;
+  -webkit-animation: popUp 3s forwards;
+          animation: popUp 3s forwards;
 }
 .combat__finished__container .pop-up__finished--bg p {
   width: 100%;
   display: block;
   position: absolute;
-  animation: combatFinished 2s forwards ease-in-out;
+  -webkit-animation: combatFinished 2s forwards ease-in-out;
+          animation: combatFinished 2s forwards ease-in-out;
 }
 .combat__finished__container .finish__pop-up {
   width: 100%;
@@ -313,6 +410,18 @@ h2 {
   background: #4e4a59;
   border: 10px solid #839073;
   padding: 1rem;
+}
+
+@-webkit-keyframes combatFinished {
+  0% {
+    left: -200%;
+  }
+  30%, 70% {
+    left: 40%;
+  }
+  100% {
+    left: 200%;
+  }
 }
 
 @keyframes combatFinished {
@@ -324,6 +433,18 @@ h2 {
   }
   100% {
     left: 200%;
+  }
+}
+@-webkit-keyframes popUp {
+  0% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
   }
 }
 @keyframes popUp {
@@ -341,6 +462,8 @@ h2 {
 .loots {
   height: 100%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .loots h1 {
@@ -362,11 +485,20 @@ h2 {
 /* PAGES */
 .home {
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 100px;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: #4e4a59;
   color: #edf6f9;
 }
@@ -401,10 +533,19 @@ h2 {
 
 .adventure {
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background: #6E6362;
 }
 .adventure__h1 {
@@ -423,9 +564,16 @@ h2 {
   width: 1000px;
   border-radius: 35px;
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0 50px 100px;
 }
 .adventure__story .adventure__title {
@@ -457,8 +605,11 @@ h2 {
 .adventure__story .adventure__choices {
   height: 100px;
   width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 .adventure__story .adventure__choices .adventure__choice {
   background: #4e4a59;
@@ -466,15 +617,19 @@ h2 {
   font-size: 1.3rem;
   border-radius: 1rem;
   padding: 1rem;
-  box-shadow: 0 10px 0 0 #839073;
+  -webkit-box-shadow: 0 10px 0 0 #839073;
+          box-shadow: 0 10px 0 0 #839073;
+  width: 30%;
 }
 .adventure__story .adventure__choices .adventure__choice:hover {
   background: #4f7e4e;
   color: #4e4a59;
 }
 .adventure__story .adventure__choices .adventure__choice:active {
-  box-shadow: 0 0 0 0 #839073;
-  transform: translateY(10px);
+  -webkit-box-shadow: 0 0 0 0 #839073;
+          box-shadow: 0 0 0 0 #839073;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
 }
 
 /* THEMES */
