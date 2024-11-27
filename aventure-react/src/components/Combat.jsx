@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Loot from "./Loot";
 
-const Combat = ({ enemy }) => {
+const Combat = ({ enemy, onCombatFinish }) => {
   const [playerStats, setPlayerStats] = useState(null);
   const [playerTurn, setPlayerTurn] = useState(true); //vérifie si joueur a l'initiative avant de pouvoir attaquer
   const [isAttacking, setIsAttacking] = useState(false);
@@ -112,10 +112,11 @@ const Combat = ({ enemy }) => {
   //Gère l'état lorsque le combat est terminé
   useEffect(() => {
     if (combatFinished) {
+      onCombatFinish();
       // localStorage.setItem("currentStepId", JSON.stringify(0));
       return;
     }
-  },[combatFinished])
+  }, [combatFinished, onCombatFinish]);
 
   if (!playerStats) {
     return (
@@ -183,9 +184,8 @@ const Combat = ({ enemy }) => {
         <div className="ennemy-turn">Au tour de votre adversaire</div>
       )}
     </div>
-  ) 
-  : /* IF COMBAT FINISHED */
-  (
+  ) : (
+    /* IF COMBAT FINISHED */
     <div className="combat__finished__container">
       <div className="pop-up__finished--bg">
         <p>Combat terminé</p>
