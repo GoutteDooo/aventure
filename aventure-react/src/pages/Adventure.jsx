@@ -18,6 +18,11 @@ function Adventure() {
   const [isInCombat, setIsInCombat] = useState(false);
   const [enemy, setEnemy] = useState(null); //représente l'ennemi s'il y'a
 
+  //Gère l'état pour passer à l'étape suivante dans d'autres composants
+  const handleNextStep = () => {
+    const nextStep = currentStep.choices?.[0]?.nextId || currentStepId + 1;
+    setCurrentStepId(nextStep);
+  };
   //Detecte s'il y'a un combat ou non
   useEffect(() => {
     if (currentStep.isCombat) {
@@ -53,7 +58,7 @@ function Adventure() {
           )}
         </div>
         {isInCombat && enemy ? (
-          <Combat enemy={enemy} />
+          <Combat enemy={enemy} onCombatFinish={handleNextStep} />
         ) : (
           <div className="adventure__choices">
             {currentStep.choices.map((choice, index) => (
