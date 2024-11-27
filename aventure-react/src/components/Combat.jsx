@@ -85,7 +85,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
       };
     } else if (enemy.health <= 0) {
       setCombatFinished(true);
-      console.log("Combat terminé !");
+      console.log("Combat: Combat terminé !");
     }
   }, [playerTurn]);
 
@@ -118,7 +118,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   }, [combatFinished, showLoot]);
 
   const handleCloseLoot = () => {
-    console.log("Close loot activated !");
+    console.log("Combat: Close loot activated !");
     setShowLoot(false);
     onCombatFinish();
   }
@@ -197,7 +197,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         <p>Combat terminé</p>
       </div>
       <div className="finish__pop-up">
-        <Loot loots={enemy.loots} onCLose={handleCloseLoot} />
+        <Loot loots={enemy.loots} onClose={handleCloseLoot} />
       </div>
     </div>
   );

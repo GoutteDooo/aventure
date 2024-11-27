@@ -47,21 +47,18 @@ const storySteps = [
     isCombat: true,
     enemyId: 1,
     choices: [
-      { text: `Affronter l'épouvantail (didacticiel)`, nextId: 3 },
-      { text: `Entrer dans le donjon`, nextId: 4 },
+      { text: `Affronter l'épouvantail (didacticiel)`, nextId: 4 },
+      { text: `Entrer dans le donjon`, nextId: 5 },
     ],
   },
   {
     id: 4,
     main: "Aventure",
-    title: `Suite`,
-    text: `Entrée dans le donjon.`,
+    title: `Suite entrée du donjon`,
+    text: `L'épouvantail est vaincu. Dans un excès de colère, vous avez détruit le panneau de Zrog. "Pourquoi tant de rage ? Il va falloir apprendre à me maîtriser."`,
     speak: ``,
     isCombat: false,
-    choices: [
-      { text: `Affronter l'épouvantail (didacticiel)`, nextId: 3 },
-      { text: `Entrer dans le donjon`, nextId: 4 },
-    ],
+    choices: [{ text: `Entrer dans le donjon`, nextId: 5 }],
   },
   /* En dessous à modifier */
   {

@@ -12,7 +12,7 @@ const Loot = ({loots, onClose}) => {
                 ))}
             </ul>
             </div>
-            <button className="loots__next" onClick={() => onClose}>Etape suivante</button>
+            <button className="loots__next" onClick={onClose}>Etape suivante</button>
         </div>
     );
 };
