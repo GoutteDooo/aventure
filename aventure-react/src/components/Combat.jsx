@@ -10,6 +10,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [enemyAttacking, setEnemyAttacking] = useState(false);
   const [isAttacked, setIsAttacked] = useState(false);
   const [combatFinished, setCombatFinished] = useState(false);
+  const [showLoot, setShowLoot] = useState(false);
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -111,13 +112,18 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Gère l'état lorsque le combat est terminé
   useEffect(() => {
-    if (combatFinished) {
-      onCombatFinish();
-      // localStorage.setItem("currentStepId", JSON.stringify(0));
-      return;
-    }
-  }, [combatFinished, onCombatFinish]);
+    if (combatFinished  && !showLoot) {
+      setShowLoot(true);
+      }
+  }, [combatFinished, showLoot]);
 
+  const handleCloseLoot = () => {
+    console.log("Close loot activated !");
+    setShowLoot(false);
+    onCombatFinish();
+  }
+
+  //Ecran de chargement
   if (!playerStats) {
     return (
       <p className="animate-pulsing animate-iteration-count-infinite">
@@ -126,7 +132,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     );
   }
 
-  return !combatFinished ? (
+  return !showLoot ? (
     <div
       className={`combat-container ${isAttacking ? "combat--attacking" : ""}`}
     >
@@ -191,7 +197,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         <p>Combat terminé</p>
       </div>
       <div className="finish__pop-up">
-        <Loot loots={enemy.loots} />
+        <Loot loots={enemy.loots} onCLose={handleCloseLoot} />
       </div>
     </div>
   );

@@ -1,13 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 
-const Loot = ({loots}) => {
-    const savedStep = JSON.parse(localStorage.getItem("currentStepId"));
-    const [currentStepId, setCurrentStepId] = useState(savedStep);
-
-    useEffect(() => {
-      //Met à jour le localStorage lorsqu'une étape change
-      localStorage.setItem("currentStepId", JSON.stringify(currentStepId));
-    }, [currentStepId]);
+const Loot = ({loots, onClose}) => {
 
     return (
         <div className='loots'>
@@ -19,7 +12,7 @@ const Loot = ({loots}) => {
                 ))}
             </ul>
             </div>
-            <button className="loots__next" onClick={() => setCurrentStepId(savedStep+1)}>Etape suivante</button>
+            <button className="loots__next" onClick={() => onClose}>Etape suivante</button>
         </div>
     );
 };

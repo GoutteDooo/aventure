@@ -20,6 +20,8 @@ function Adventure() {
 
   //Gère l'état pour passer à l'étape suivante dans d'autres composants
   const handleNextStep = () => {
+    console.log("combat terminé. handleNextStep activé");
+    
     const nextStep = currentStep.choices?.[0]?.nextId || currentStepId + 1;
     setCurrentStepId(nextStep);
   };
