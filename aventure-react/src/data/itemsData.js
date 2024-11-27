@@ -24,3 +24,5 @@ const itemsData = [
     value: 1,
   },
 ];
+
+export default itemsData;

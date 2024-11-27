@@ -82,7 +82,12 @@ const storySteps = [
     Au centre, une vieille fontaine usagée et craquelée par le temps. Plus aucune goutte d'eau ne subsiste. Une lueur étrange provient du centre de la fontaine cependant. Sur votre gauche, une grande porte en bois. Sur votre droite, un couloir d'où proviennent de nombreux échos. Ces sons vous font penser à de mystérieuses créatures sortant des limbes les plus profondes du monde.`,
     speak: `Vous venez de trouver une potion de santé !`,
     isCombat: false,
-    items: ["health potion"],
+    events: [
+      {
+        type: "item",
+        itemId: 1,
+      },
+    ],
     choices: [
       { text: `Ouvrir la porte de gauche`, nextId: 7 },
       { text: `Parcourir le couloir de droite`, nextId: 8 },

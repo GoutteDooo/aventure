@@ -1,8 +1,8 @@
 import "../styles/main.css";
-import "../data/adventureData";
 import { useEffect, useState } from "react";
 import storySteps from "../data/adventureData";
 import enemiesData from "../data/enemiesData";
+import itemsData from "../data/itemsData";
 import Combat from "../components/Combat";
 
 function Adventure() {
@@ -28,6 +28,18 @@ function Adventure() {
     
     setCurrentStepId(nextStep);
   };
+
+  currentStep.events?.forEach((event) => {
+    switch (event.type) {
+      case "item":
+        const foundItem = itemsData.find((item) => item.id === event.itemId);
+        // addItemsToInventory([foundItem]);
+        break;
+      default:
+        break;
+    }
+  })
+
   //Detecte s'il y'a un combat ou non
   useEffect(() => {
     if (currentStep.isCombat) {
