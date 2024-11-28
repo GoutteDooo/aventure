@@ -751,6 +751,13 @@ button:active {
   height: 100px;
   width: 250px;
 }
+.status .restartButton {
+  position: absolute;
+  bottom: 50px;
+  height: 50px;
+  width: 300px;
+  margin-top: 50px;
+}
 
 /* THEMES */
 /* VENDORS *//*# sourceMappingURL=main.css.map */
