@@ -7,12 +7,9 @@
 @import "./base/base";
 @import "./base/typography";
 /* COMPONENTS */
-@import "./components/buttons";
-@import "./components/cards";
-@import "./components/form";
-@import "./components/navbar";
 @import "./components/combat";
 @import "./components/loots";
+@import "./components/inventory";
 /* LAYOUTS */
 @import "./layouts/containers";
 @import "./layouts/footer";
@@ -24,6 +21,7 @@
 @import "./pages/contact";
 @import "./pages/home";
 @import "./pages/adventure";
+@import "./pages/status";
 /* THEMES */
 @import "./themes/dark";
 @import "./themes/light";

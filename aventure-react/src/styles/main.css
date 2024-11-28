@@ -96,6 +96,7 @@ button {
 }
 button:hover {
   color: #edf6f9;
+  background: #4e4a59;
 }
 button:active {
   -webkit-box-shadow: 0 0px 0 0 black;
@@ -574,6 +575,10 @@ button:active {
     opacity: 1;
   }
 }
+.inventory {
+  background: red;
+}
+
 /* LAYOUTS */
 /* PAGES */
 .home {
@@ -733,6 +738,18 @@ button:active {
           box-shadow: 0 0 0 0 #839073;
   -webkit-transform: translateY(10px);
           transform: translateY(10px);
+}
+.adventure__status {
+  height: 75px;
+  width: 200px;
+}
+.adventure__status:hover {
+  background: #4e4a59;
+}
+
+.status__return {
+  height: 100px;
+  width: 250px;
 }
 
 /* THEMES */

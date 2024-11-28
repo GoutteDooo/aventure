@@ -4,6 +4,7 @@ import storySteps from "../data/adventureData";
 import enemiesData from "../data/enemiesData";
 import itemsData from "../data/itemsData";
 import Combat from "../components/Combat";
+import { useNavigate } from "react-router-dom";
 
 function Adventure() {
   //Lors du chargement de la page, on récupère les données dans le localStorage s'il y'a. Sinon, on démarre à la 1ere étape.
@@ -11,6 +12,7 @@ function Adventure() {
     const savedStep = localStorage.getItem("currentStepId");
     return savedStep ? JSON.parse(savedStep) : 1;
   });
+  const navigate = useNavigate();
 
   const currentStep = storySteps.find((step) => step.id === currentStepId);
 
@@ -90,6 +92,7 @@ function Adventure() {
           </div>
         )}
       </div>
+      <button className="adventure__status" onClick={() => navigate("/status")}>Status</button>
     </div>
   );
 }

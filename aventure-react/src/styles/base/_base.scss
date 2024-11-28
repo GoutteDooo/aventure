@@ -29,6 +29,7 @@ button {
     box-shadow: 0 10px 0 0 black;
     &:hover {
       color: $white;
+      background: $dark2;
     }
     &:active {
     box-shadow: 0 0px 0 0 black;

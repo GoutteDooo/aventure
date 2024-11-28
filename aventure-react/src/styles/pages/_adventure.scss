@@ -83,4 +83,11 @@
       }
     }
   }
+  &__status {
+    height: 75px;
+    width: 200px;
+    &:hover {
+      background: $dark2;
+    }
+  }
 }
