@@ -21,3 +21,17 @@ h2 {
   font-weight: bold;
   font-size: 1.5rem;
 }
+
+button {
+    background: $dark3;
+    color: $light1;
+    border-radius: 5000px;
+    box-shadow: 0 10px 0 0 black;
+    &:hover {
+      color: $white;
+    }
+    &:active {
+    box-shadow: 0 0px 0 0 black;
+    transform: translateY(10px);
+    }
+}

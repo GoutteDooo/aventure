@@ -14,9 +14,11 @@
     padding: 30px;
   }
   &__story {
+    min-height: 500px;
+    height: 60%;
+    max-height: 800px;
     color: $light2;
     background: $dark3;
-    height: 500px;
     width: 1000px;
     border-radius: 35px;
     padding: 20px;
@@ -25,17 +27,22 @@
     align-items: center;
     margin: 0 50px 100px;
     .adventure__title {
+      min-height: 35px;
+      height: 5%;
+      max-height: 100px;
       font-weight: bold;
       font-size: 2rem;
       color: $dark1;
     }
     .adventure__text {
+      min-height: 0;
+      height: 75%;
+      max-height: 800px;
       padding: 20px;
       font-family: EB Garamond;
       font-style: italic;
       font-size: 1.1rem;
       font-weight: 600;
-      height: 100%;
       line-height: 1.5rem;
       .adventure__speak {
         font-family: UnifrakturMaguntia;
@@ -51,7 +58,9 @@
       }
     }
     .adventure__choices {
-      height: 100px;
+      min-height: 100px;
+      height: 20%;
+      max-height: 200px;
       width: 90%;
       display: flex;
       justify-content: space-around;
@@ -62,7 +71,7 @@
         border-radius: 1rem;
         padding: 1rem;
         box-shadow: 0 10px 0 0 $light2;
-        width: 30%;
+        width: 250px;
         &:hover {
           background: $light1;
           color: $dark2;

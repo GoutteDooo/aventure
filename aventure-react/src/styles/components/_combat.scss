@@ -225,6 +225,7 @@
     align-items: center;
     color: $light1;
     animation: popUp 3s forwards;
+    z-index: 1000;
     p {
       width: 100%;
       display: block;

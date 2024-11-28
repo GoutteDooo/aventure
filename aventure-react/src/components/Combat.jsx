@@ -197,7 +197,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         <p>Combat terminé</p>
       </div>
       <div className="finish__pop-up">
-        <Loot loots={enemy.loots} onClose={handleCloseLoot} />
+        <Loot loots={enemy.loots} gain={enemy.gain} onClose={handleCloseLoot} />
       </div>
     </div>
   );
