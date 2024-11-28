@@ -1,4 +1,5 @@
 .adventure {
+  position: relative;
   height: 100vh;
   @include verticalCenter;
   flex-direction: column;
