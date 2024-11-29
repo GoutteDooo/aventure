@@ -1,3 +1,14 @@
 .inventory {
-    background: red;
+  background: $dark1;
+  width: 200px;
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    &__item {
+      height: 100px;
+      width: 100px;
+      background: $dark1;
+      border: 2px solid $dark3;
+    }
+  }
 }
