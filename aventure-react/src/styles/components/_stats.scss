@@ -7,8 +7,34 @@
     height: 350px;
     background: $dark2;
     &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 50%;
         height: 100%;
+        margin: 15px auto;
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            th,td {
+                border: 2px solid $dark3;
+                padding: 7px;
+                text-align: center;
+            }
+            th {
+                font-weight: bold;
+                color: $light1;
+                background-color: $dark3;
+            }
+            td {
+                color: black;
+            }
+            tr:nth-child(even) {
+                background: $dark1;
+            }
+        }
+        
     }
     &__equipment {
         width: 50%;

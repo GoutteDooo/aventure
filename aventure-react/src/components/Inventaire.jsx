@@ -68,6 +68,7 @@ const Inventaire = () => {
                 console.log("non");
             }
             break;
+            
         case "stats:chance":
             if (playerStats.stats.chance < 1) {
                 setPlayerStats((prevStats) => ({

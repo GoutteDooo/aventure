@@ -680,8 +680,40 @@ button:active {
   background: #4e4a59;
 }
 .stats__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 50%;
   height: 100%;
+  margin: 15px auto;
+}
+.stats__container table {
+  width: 60%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.stats__container table th, .stats__container table td {
+  border: 2px solid #394053;
+  padding: 7px;
+  text-align: center;
+}
+.stats__container table th {
+  font-weight: bold;
+  color: #4f7e4e;
+  background-color: #394053;
+}
+.stats__container table td {
+  color: black;
+}
+.stats__container table tr:nth-child(even) {
+  background: #6E6362;
 }
 .stats__equipment {
   width: 50%;
