@@ -18,6 +18,11 @@ const Inventaire = () => {
     }
   }
 
+  const findItem = (itemHTML) => {
+    const itemFound = itemsData.find((item) => itemHTML.textContent === item.name);
+    return itemFound;
+  }
+
   return (
     <div className="inventory">
       <div className="inventory__container">
@@ -41,9 +46,13 @@ const Inventaire = () => {
                     <div className="inventory__description--useless">
                         {itemsData.find((item) => item.name === activeItem.textContent).desc_useless}
                     </div>
+                    
                     <div className={`inventory__description--use ${itemsData.find((item) => item.name === activeItem.textContent).desc_class}`}>
                         {itemsData.find((item) => item.name === activeItem.textContent).desc_use}
                     </div>
+                    {(findItem(activeItem).using === "all" || findItem(activeItem).using === "no-combat") && (
+                        <button className="inventory__description__button">Utiliser</button>
+                    )}
                 </>
             )}
         </div>

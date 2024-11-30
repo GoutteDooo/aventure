@@ -616,16 +616,22 @@ button:active {
 }
 .inventory__container__item--active:hover {
   border: 3px solid #4f7e4e;
+  color: #edf6f9;
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
 }
 .inventory__container__item--selected {
   background: #4f7e4e;
+  color: #edf6f9;
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
 }
 .inventory__description {
-  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   background: #4e4a59;
   width: 400px;
   height: 250px;
@@ -638,10 +644,12 @@ button:active {
   font-style: italic;
   color: #839073;
   font-size: 0.95rem;
-  height: 80%;
+  height: 75%;
+  width: 100%;
 }
 .inventory__description--use {
-  height: 20%;
+  height: 25%;
+  width: 70%;
   color: #4f7e4e;
   font-size: 1.2rem;
 }
@@ -653,6 +661,12 @@ button:active {
 }
 .inventory__description--use.negative {
   color: salmon;
+}
+.inventory__description__button {
+  width: 30%;
+}
+.inventory__description__button:hover {
+  background: #394053;
 }
 
 /* LAYOUTS */

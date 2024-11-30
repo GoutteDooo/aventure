@@ -22,18 +22,20 @@
         background: $light2;
         &:hover {
             border: 3px solid $light1;
+            color: $white;
             transform: scale(1.02);
-
         }
       }
       &--selected {
         background: $light1;
+        color: $white;
         transform: scale(1.02);
       }
     }
   }
   &__description {
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
     background: $dark2;
     width: 400px;
     height: 250px;
@@ -45,10 +47,12 @@
         font-style: italic;
         color: $light2;
         font-size: 0.95rem;
-        height: 80%;
+        height: 75%;
+        width: 100%;
     }
     &--use {
-        height: 20%;
+        height: 25%;
+        width: 70%;
         color: $light1;
         font-size: 1.2rem;
         &.positive {
@@ -59,6 +63,12 @@
         }
         &.negative {
             color: salmon;
+        }
+    }
+    &__button {
+        width: 30%;
+        &:hover {
+            background: $dark3;
         }
     }
   }

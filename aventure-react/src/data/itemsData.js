@@ -6,9 +6,10 @@ const itemsData = [
     effect: "heal",
     value: 20,
     desc_useless:
-      "Une vieille fiole poussiéreuse contenant un liquide verdâtre foncé.",
+      "Une vieille fiole poussiéreuse contenant un liquide verdâtre foncé visqueux.",
     desc_use: "Soigne 100% des HP",
     desc_class: "positive",
+    using: "all",
   },
   {
     id: 2,
@@ -50,6 +51,7 @@ const itemsData = [
       "Un délicieux sandwich confectionné avec soin par votre épouse.",
     desc_use: "Soigne 100 HP",
     desc_class: "positive",
+    using: "all",
   },
   {
     id: 6,
@@ -61,6 +63,7 @@ const itemsData = [
       "Une boule de cristal. A l'intérieur, une petite flamme esseulée tournoie indéfiniment dans des directions aléatoires, ne demandant qu'à s'échapper de sa prison de verre.",
     desc_use: "Inflige 100 dégâts de Feu à la cible. (Usage unique) ",
     desc_class: "neutral",
+    using: "combat",
   },
 ];
 
