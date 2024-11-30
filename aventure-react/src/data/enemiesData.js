@@ -3,7 +3,7 @@ const enemiesData = [
   {
     id: 1,
     name: "Epouvantail",
-    health: "2",
+    health: "20",
     attack: "1",
     defense: "1",
     chance: "0.1",

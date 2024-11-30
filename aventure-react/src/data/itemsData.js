@@ -69,7 +69,7 @@ const itemsData = [
     id: 7,
     name: "Trèfle à quatre feuilles",
     direction: "inventory",
-    effect: "stats",
+    effect: "stats:chance",
     value: 1,
     desc_useless:
       "Ce trèfle paraît parfait, tant les dimensions des feuilles et de la tige sont symétriques. Sa beauté vous ouvre l'appétit.",

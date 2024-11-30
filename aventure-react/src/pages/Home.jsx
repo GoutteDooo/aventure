@@ -12,6 +12,7 @@ function Home() {
       const playerData = {
         name: playerName,
         stats: {
+          maxHealth:100,
           health: 100,
           attack: 10,
           defense: 0,
@@ -24,7 +25,7 @@ function Home() {
           outfit: "Tenue de paysan",
           weapon: "Bâton en bois",
         },
-        inventory: [],
+        inventory: ["Sandwich à l'ail","","","","",""],
       };
       // Sauvegarde le nom dans le localStorage
       localStorage.setItem("playerName", playerName);

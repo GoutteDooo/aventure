@@ -1,13 +1,17 @@
-import React, { act, useState } from "react";
+import React, { act, useEffect, useState } from "react";
 import itemsData from "../data/itemsData";
 
 const Inventaire = () => {
   const [inventaire, setInventaire] = useState(() => {
-    const savedInventory = localStorage.getItem("inventory");
+    const savedInventory = localStorage.getItem("playerData.inventory");
     return savedInventory
       ? JSON.parse(savedInventory)
       : ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "", ""];
   });
+  const [playerStats, setPlayerStats] = useState(() => {
+    const savedPlayerStats = localStorage.getItem("playerData");
+    return savedPlayerStats ? JSON.parse(savedPlayerStats) : console.log("erreur lors de la requête des données du joueur.");
+  })
 
   const [activeItem, setActiveItem] = useState(null);
   
@@ -27,17 +31,55 @@ const Inventaire = () => {
     const item = findItem(itemHTML);
     switch (item.effect) {
         case "heal":
-            console.log("heal !");
+            if (playerStats.stats.health < playerStats.stats.maxHealth){
+                setPlayerStats((prevStats) => ({
+                    ...prevStats,
+                    stats: {
+                        ...prevStats.stats,
+                        health: (prevStats.health + item.value) > prevStats.maxHealth ? prevStats.maxHealth : prevStats.health + item.value,
+                    }
+                }))
+                useItem(itemHTML.textContent);
+            } else {
+                console.log("non");
+                
+            }
             break;
-        case "stats":
-            console.log("stats !");
-            break;
+        case "stats:chance":
+            if (playerStats.stats.chance < 1) {
+                setPlayerStats((prevStats) => ({
+                    ...prevStats,
+                    stats: {
+                        ...prevStats.stats,
+                        chance: prevStats.stats.chance + item.value / 100,
+                    }
+                }));
+                console.log("chance : ", playerStats.stats.chance);
+                useItem(itemHTML.textContent);
+            } else {
+                console.log("N'a pas pu ingérer. Chance à son max.");
+            }
+                break;
         default:
             break;
     }
-    
-    
   }
+
+  const useItem = (itemUsing) => {
+    setActiveItem(null);
+    setInventaire((prevInventaire) => {
+         const updatedInventory = prevInventaire.map((item) => item === itemUsing ? "" : item
+        );
+        console.log("inventaire après filtre :", updatedInventory);
+        return updatedInventory;
+    });
+
+  }
+
+  //Permet de mettre à jour les stats du joueur lorsqu'il change d'items, ou en ingère par exemple.
+useEffect(() => {
+    localStorage.setItem("playerData",JSON.stringify(playerStats));
+},[playerStats])
 
   return (
     <div className="inventory">
