@@ -25,13 +25,16 @@ const Inventaire = () => {
     });
 
     const inventaire = playerStats.inventory;
-    
-    const setInventaire = (newInventaire) => {
-        setPlayerStats((prevStats) => ({
-            ...prevStats,
-            inventory: newInventaire,
-        }));
+    const setInventaire = (update) => {
+        setPlayerStats((prevStats) => {
+            const newInventory = typeof update === "function" ? update(prevStats.inventory) : update;
+            return {
+                ...prevStats,
+                inventory: newInventory,
+            }
+        });
     };
+    
 
   const [activeItem, setActiveItem] = useState(null);
   
@@ -55,12 +58,13 @@ const Inventaire = () => {
                 setPlayerStats((prevStats) => ({
                     ...prevStats,
                     stats: {
-                        ...prevStats.stats,
-                        health: (prevStats.stats.health + item.value) > prevStats.stats.maxHealth ? prevStats.stats.maxHealth : prevStats.stats.health + item.value,
-                    }
-                }));
-                console.log('heal used ! Player health : ', playerStats.stats.health);
-                useItem(itemHTML.textContent);
+                      ...prevStats.stats,
+                      health: Math.min(prevStats.stats.health + item.value, prevStats.stats.maxHealth),
+                    },
+                  }));
+                  
+                console.log('heal used ! inventaire : ', inventaire);
+                useItem(item);
             } else {
                 console.log("non");
                 
@@ -76,7 +80,7 @@ const Inventaire = () => {
                     }
                 }));
                 console.log("chance : ", playerStats.stats.chance);
-                useItem(itemHTML.textContent);
+                useItem(item);
             } else {
                 console.log("N'a pas pu ingérer. Chance à son max.");
             }
@@ -88,14 +92,13 @@ const Inventaire = () => {
 
   const useItem = (itemUsing) => {
     setActiveItem(null);
-    setInventaire((prevInventaire) => 
-        prevInventaire.filter((item) => item !== "Potion de santé")
-    );
+    setInventaire((prevInventaire) => prevInventaire.map((it) => it === itemUsing.name ? "" : it))
   }
   
   //Permet de mettre à jour les stats du joueur lorsqu'il change d'items, ou en ingère par exemple.
     useEffect(() => {
         localStorage.setItem("playerData",JSON.stringify(playerStats));
+        console.log(inventaire);
     },[playerStats])
 
   return (
