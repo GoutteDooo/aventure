@@ -577,7 +577,6 @@ button:active {
   }
 }
 .inventory {
-  margin: 20px 0 0 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -667,6 +666,26 @@ button:active {
 }
 .inventory__description__button:hover {
   background: #394053;
+}
+
+.stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 25px;
+  border: 10px solid #394053;
+  border-radius: 25px;
+  width: 100%;
+  height: 350px;
+  background: #4e4a59;
+}
+.stats__container {
+  width: 50%;
+  height: 100%;
+}
+.stats__equipment {
+  width: 50%;
+  height: 100%;
 }
 
 /* LAYOUTS */
@@ -843,6 +862,7 @@ button:active {
   height: 900px;
   width: 1000px;
   margin: auto;
+  padding: 20px;
   border: 10px solid #4e4a59;
   border-radius: 50px;
 }

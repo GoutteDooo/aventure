@@ -63,11 +63,9 @@ const Inventaire = () => {
                     },
                   }));
                   
-                console.log('heal used ! inventaire : ', inventaire);
                 useItem(item);
             } else {
                 console.log("non");
-                
             }
             break;
         case "stats:chance":
@@ -79,7 +77,6 @@ const Inventaire = () => {
                         chance: prevStats.stats.chance + item.value / 100,
                     }
                 }));
-                console.log("chance : ", playerStats.stats.chance);
                 useItem(item);
             } else {
                 console.log("N'a pas pu ingérer. Chance à son max.");
@@ -98,7 +95,6 @@ const Inventaire = () => {
   //Permet de mettre à jour les stats du joueur lorsqu'il change d'items, ou en ingère par exemple.
     useEffect(() => {
         localStorage.setItem("playerData",JSON.stringify(playerStats));
-        console.log(inventaire);
     },[playerStats])
 
   return (
