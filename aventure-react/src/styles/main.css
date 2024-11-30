@@ -68,6 +68,7 @@ html {
   font-family: Germania One;
   font-weight: 500;
   overflow: hidden;
+  background: #394053;
 }
 
 body {
@@ -827,7 +828,7 @@ button:active {
   height: 900px;
   width: 1000px;
   margin: auto;
-  border: 10px solid #394053;
+  border: 10px solid #4e4a59;
   border-radius: 50px;
 }
 .status__return {
