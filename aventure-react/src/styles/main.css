@@ -838,6 +838,7 @@ button:active {
 }
 
 .status {
+  position: relative;
   background: #6E6362;
   height: 900px;
   width: 1000px;

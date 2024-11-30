@@ -6,7 +6,7 @@ const Inventaire = () => {
     const savedInventory = localStorage.getItem("inventory");
     return savedInventory
       ? JSON.parse(savedInventory)
-      : ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "", "", ""];
+      : ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "", ""];
   });
 
   const [activeItem, setActiveItem] = useState(null);
@@ -21,6 +21,22 @@ const Inventaire = () => {
   const findItem = (itemHTML) => {
     const itemFound = itemsData.find((item) => itemHTML.textContent === item.name);
     return itemFound;
+  }
+
+  const handleItemEffect = (itemHTML) => {
+    const item = findItem(itemHTML);
+    switch (item.effect) {
+        case "heal":
+            console.log("heal !");
+            break;
+        case "stats":
+            console.log("stats !");
+            break;
+        default:
+            break;
+    }
+    
+    
   }
 
   return (
@@ -51,7 +67,7 @@ const Inventaire = () => {
                         {itemsData.find((item) => item.name === activeItem.textContent).desc_use}
                     </div>
                     {(findItem(activeItem).using === "all" || findItem(activeItem).using === "no-combat") && (
-                        <button className="inventory__description__button">Utiliser</button>
+                        <button className="inventory__description__button" onClick={() => handleItemEffect(activeItem)}>Utiliser</button>
                     )}
                 </>
             )}
