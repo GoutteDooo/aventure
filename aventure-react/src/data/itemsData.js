@@ -4,7 +4,7 @@ const itemsData = [
     name: "Potion de santé",
     direction: "inventory",
     effect: "heal",
-    value: 20,
+    value: 100000,
     desc_useless:
       "Une vieille fiole poussiéreuse contenant un liquide verdâtre foncé visqueux.",
     desc_use: "Soigne 100% des HP",

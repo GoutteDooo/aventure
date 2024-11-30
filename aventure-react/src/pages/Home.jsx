@@ -13,7 +13,7 @@ function Home() {
         name: playerName,
         stats: {
           maxHealth:100,
-          health: 100,
+          health: 90,
           attack: 10,
           defense: 0,
           chance: 0.1,
@@ -25,7 +25,7 @@ function Home() {
           outfit: "Tenue de paysan",
           weapon: "Bâton en bois",
         },
-        inventory: ["Sandwich à l'ail","","","","",""],
+        inventory: ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "", ""],
       };
       // Sauvegarde le nom dans le localStorage
       localStorage.setItem("playerName", playerName);

@@ -3,11 +3,13 @@ import itemsData from "../data/itemsData";
 
 const Inventaire = () => {
   const [inventaire, setInventaire] = useState(() => {
-    const savedInventory = localStorage.getItem("playerData.inventory");
-    return savedInventory
-      ? JSON.parse(savedInventory)
-      : ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "", ""];
-  });
+    const savedPlayerData = localStorage.getItem("playerData");
+    if (savedPlayerData) {
+        const parsedData = JSON.parse(savedPlayerData);
+        return parsedData.inventory ||
+        ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "", ""];
+    }});
+
   const [playerStats, setPlayerStats] = useState(() => {
     const savedPlayerStats = localStorage.getItem("playerData");
     return savedPlayerStats ? JSON.parse(savedPlayerStats) : console.log("erreur lors de la requête des données du joueur.");
@@ -36,9 +38,10 @@ const Inventaire = () => {
                     ...prevStats,
                     stats: {
                         ...prevStats.stats,
-                        health: (prevStats.health + item.value) > prevStats.maxHealth ? prevStats.maxHealth : prevStats.health + item.value,
+                        health: (prevStats.stats.health + item.value) > prevStats.stats.maxHealth ? prevStats.stats.maxHealth : prevStats.stats.health + item.value,
                     }
-                }))
+                }));
+                console.log('heal used ! Player health : ', playerStats.stats.health);
                 useItem(itemHTML.textContent);
             } else {
                 console.log("non");
@@ -70,10 +73,8 @@ const Inventaire = () => {
     setInventaire((prevInventaire) => {
          const updatedInventory = prevInventaire.map((item) => item === itemUsing ? "" : item
         );
-        console.log("inventaire après filtre :", updatedInventory);
         return updatedInventory;
     });
-
   }
 
   //Permet de mettre à jour les stats du joueur lorsqu'il change d'items, ou en ingère par exemple.

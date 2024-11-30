@@ -101,9 +101,10 @@ const Combat = ({ enemy, onCombatFinish }) => {
     }
   }, [isInAction, enemyAttacked]);
 
-  //Gère l'animation du joueur quand attaqué
+  //Gère l'animation du joueur quand attaqué & localStorage sa health
   useEffect(() => {
     if (isAttacked) {
+      localStorage.setItem("playerData", JSON.stringify(playerStats));
       setTimeout(() => {
         setIsAttacked(false);
       }, 1500);
