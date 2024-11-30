@@ -36,7 +36,7 @@
     position: relative;
     background: $dark2;
     width: 400px;
-    height: 200px;
+    height: 250px;
     margin-left: 50px;
     border-radius: 25px;
     border: 7px solid $dark3;
@@ -45,12 +45,21 @@
         font-style: italic;
         color: $light2;
         font-size: 0.95rem;
+        height: 80%;
     }
     &--use {
-        position: absolute;
-        bottom: 50px;
+        height: 20%;
         color: $light1;
         font-size: 1.2rem;
+        &.positive {
+            color: green;
+        }
+        &.neutral {
+            color: goldenrod;
+        }
+        &.negative {
+            color: salmon;
+        }
     }
   }
 }

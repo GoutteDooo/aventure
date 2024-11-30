@@ -6,7 +6,7 @@ const Inventaire = () => {
     const savedInventory = localStorage.getItem("inventory");
     return savedInventory
       ? JSON.parse(savedInventory)
-      : ["Sandwich à l'ail", "Potion de santé", "", "", "", ""];
+      : ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "", "", ""];
   });
 
   const [activeItem, setActiveItem] = useState(null);
@@ -41,7 +41,7 @@ const Inventaire = () => {
                     <div className="inventory__description--useless">
                         {itemsData.find((item) => item.name === activeItem.textContent).desc_useless}
                     </div>
-                    <div className="inventory__description--use">
+                    <div className={`inventory__description--use ${itemsData.find((item) => item.name === activeItem.textContent).desc_class}`}>
                         {itemsData.find((item) => item.name === activeItem.textContent).desc_use}
                     </div>
                 </>

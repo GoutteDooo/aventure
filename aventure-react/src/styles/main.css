@@ -627,7 +627,7 @@ button:active {
   position: relative;
   background: #4e4a59;
   width: 400px;
-  height: 200px;
+  height: 250px;
   margin-left: 50px;
   border-radius: 25px;
   border: 7px solid #394053;
@@ -637,12 +637,21 @@ button:active {
   font-style: italic;
   color: #839073;
   font-size: 0.95rem;
+  height: 80%;
 }
 .inventory__description--use {
-  position: absolute;
-  bottom: 50px;
+  height: 20%;
   color: #4f7e4e;
   font-size: 1.2rem;
+}
+.inventory__description--use.positive {
+  color: green;
+}
+.inventory__description--use.neutral {
+  color: goldenrod;
+}
+.inventory__description--use.negative {
+  color: salmon;
 }
 
 /* LAYOUTS */
