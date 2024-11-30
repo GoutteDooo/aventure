@@ -1,14 +1,52 @@
 .inventory {
-  background: $dark1;
-  width: 200px;
+  margin: 20px 0 0 20px;
+  display: flex;
+  align-items: center;
   &__container {
+    width: 204px;
+    background: $dark3;
+    border: 2px solid $dark3;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     &__item {
       height: 100px;
       width: 100px;
-      background: $dark1;
+      background: $dark2;
       border: 2px solid $dark3;
+      border-radius: 10px;
+      @include verticalCenter;
+      text-align: center;
+      &--active {
+        cursor: pointer;
+        color: $dark3;
+        background: $light2;
+        &:hover {
+            border: 3px solid $light1;
+            transform: scale(1.02);
+
+        }
+      }
+    }
+  }
+  &__description {
+    position: relative;
+    background: $dark2;
+    width: 400px;
+    height: 200px;
+    margin-left: 50px;
+    border-radius: 25px;
+    border: 7px solid $dark3;
+    padding: 20px;
+    &--useless {
+        font-style: italic;
+        color: $light2;
+        font-size: 0.95rem;
+    }
+    &--use {
+        position: absolute;
+        bottom: 50px;
+        color: $light1;
+        font-size: 1.2rem;
     }
   }
 }

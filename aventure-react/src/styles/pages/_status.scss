@@ -1,13 +1,22 @@
 .status {
+    background: $dark1;
+    height: 900px;
+    width: 1000px;
+    margin: auto;
+    border: 10px solid $dark3;
+    border-radius: 50px;
     &__return {
+        position: absolute;
         height: 100px;
         width: 250px;
+        bottom: 50px;
+        left: 100px;
     }
     .restartButton {
         position: absolute;
-        bottom: 50px;
         height: 50px;
         width: 300px;
-        margin-top: 50px;
+        bottom: 50px;
+        right: 100px;
     }
 }
