@@ -11,13 +11,11 @@ const Inventaire = () => {
 
   const [activeItem, setActiveItem] = useState(null);
   
-  const handleItemActive = (targetItemText) => {
-    // const itemClicked = itemsData.find((item) => target === item.name);
-    const itemClicked = targetItemText;
-    setActiveItem(itemClicked);
-    console.log(itemClicked);
-    
-    
+  const handleItemActive = (targettedItem) => {
+    if (targettedItem.textContent != "") {
+        const itemClicked = targettedItem;
+        setActiveItem(itemClicked);
+    }
   }
 
   return (
@@ -25,24 +23,30 @@ const Inventaire = () => {
       <div className="inventory__container">
         {inventaire &&
           inventaire.map((item, index) => (
-            <div key={index} className={`inventory__container__item ${item ? "inventory__container__item--active" : ""}`} onClick={(e) => handleItemActive(e.target.textContent)}>
+            <div 
+                key={index} 
+                className={
+                    `inventory__container__item 
+                    ${item ? "inventory__container__item--active" : ""} 
+                    ${activeItem && activeItem.textContent === item ? "inventory__container__item--selected" : ""}`}
+                    onClick={(e) => handleItemActive(e.target)}
+            >
               {item}
             </div>
           ))}
-      </div>
-      <div className="inventory__description">
-        {activeItem ? (<>
-            <div className="inventory__description--useless">
-                {itemsData.find((item) => item.name === activeItem).desc_useless}
         </div>
-            <div className="inventory__description--use">
-                {itemsData.find((item) => item.name === activeItem).desc_use}
+        <div className="inventory__description">
+            {activeItem && (
+                <>
+                    <div className="inventory__description--useless">
+                        {itemsData.find((item) => item.name === activeItem.textContent).desc_useless}
+                    </div>
+                    <div className="inventory__description--use">
+                        {itemsData.find((item) => item.name === activeItem.textContent).desc_use}
+                    </div>
+                </>
+            )}
         </div>
-        </>
-    ) : (
-    <></>
-    )}
-      </div>
     </div>
   );
 };

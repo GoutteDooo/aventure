@@ -26,6 +26,10 @@
 
         }
       }
+      &--selected {
+        background: $light1;
+        transform: scale(1.02);
+      }
     }
   }
   &__description {

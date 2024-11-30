@@ -618,6 +618,11 @@ button:active {
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
 }
+.inventory__container__item--selected {
+  background: #4f7e4e;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
 .inventory__description {
   position: relative;
   background: #4e4a59;
