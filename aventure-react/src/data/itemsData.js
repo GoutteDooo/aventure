@@ -58,7 +58,7 @@ const itemsData = [
     effect: "damage",
     value: 100,
     desc_useless:
-      "Une boule de cristal. A l'intérieur, une petite flamme esseulée tournoie indéfiniment, ne demandant qu'à s'échapper de sa prison de verre.",
+      "Une boule de cristal. A l'intérieur, une petite flamme esseulée tournoie indéfiniment dans des directions aléatoires, ne demandant qu'à s'échapper de sa prison de verre.",
     desc_use: "Inflige 100 dégâts de Feu à la cible. (Usage unique) ",
     desc_class: "neutral",
   },
