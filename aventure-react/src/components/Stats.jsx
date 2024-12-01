@@ -23,7 +23,7 @@ const Stats = () => {
         }
         return stat;
     };
-    console.log("stats : ",playerStats.playerStats);
+    console.log("stats : ",playerStats);
     
 
     useEffect(() => {

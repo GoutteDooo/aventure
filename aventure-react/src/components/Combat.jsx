@@ -4,6 +4,10 @@ import Loot from "./Loot";
 const Combat = ({ enemy, onCombatFinish }) => {
   const [playerStats, setPlayerStats] = useState(null);
   const [playerTurn, setPlayerTurn] = useState(true); //vérifie si joueur a l'initiative avant de pouvoir attaquer
+  const [playerName, setPlayerName] = useState(() => {
+    const savedPlayerName = localStorage.getItem("playerName");
+    return savedPlayerName ? savedPlayerName : "John Doe";
+  });
   const [isAttacking, setIsAttacking] = useState(false);
   const [isInAction, setIsInAction] = useState(false);
   const [enemyAttacked, setEnemyAttacked] = useState(false);
@@ -143,13 +147,13 @@ const Combat = ({ enemy, onCombatFinish }) => {
             playerTurn ? "combat__play" : "combat__wait"
           } ${isAttacked ? "combat__hit" : ""}`}
         >
-          <div className="combat__player__stats--name">{playerStats.name}</div>
+          <div className="combat__player__stats--name">{playerName}</div>
           <p>Vie : {playerStats.stats.health}</p>
-          <p>Attaque : {playerStats.stats.attack}</p>
-          <p>Défense : {playerStats.stats.defense}</p>
-          <p>Adresse : {playerStats.stats.accuracy * 100}</p>
-          <p>Chance : {playerStats.stats.chance * 100}</p>
-          <p>Initiative : {playerStats.stats.initiative}</p>
+          <p>Atk : {playerStats.stats.attack} ~ {playerStats.stats.attack * playerStats.stats.accuracy}</p>
+          <p>Def : {playerStats.stats.defense}</p>
+          <p>Adr : {playerStats.stats.accuracy * 100}</p>
+          <p>Ch : {playerStats.stats.chance * 100}</p>
+          <p>Init : {playerStats.stats.initiative}</p>
         </div>
         <div
           className={`combat__ennemy__stats ${
@@ -161,8 +165,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
         >
           <div className="combat__ennemy__stats--name">{enemy.name}</div>
           <p>Vie : {enemy.health}</p>
-          <p>Attaque : {enemy.attack}</p>
-          <p>Defense : {enemy.defense}</p>
+          <p>Atk : {enemy.attack}</p>
+          <p>Def : {enemy.defense}</p>
         </div>
       </div>
       {/* Si tour du joueur, alors afficher*/}

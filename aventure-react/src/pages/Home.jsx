@@ -10,7 +10,6 @@ function Home() {
     if (playerName.trim()) {
       //Crée les données du Joueur
       const playerData = {
-        name: playerName,
         stats: {
           maxHealth:100,
           health: 90,
