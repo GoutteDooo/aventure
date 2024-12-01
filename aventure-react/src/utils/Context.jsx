@@ -17,7 +17,7 @@ const initialPlayerData = {
         outfit: "Tenue de paysan",
         weapon: "Bâton en bois",
     },
-    inventory: ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "", ""],
+    inventory: ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "Chapeau de paille", ""],
 };
 
 export const PlayerProvider = ({children}) => {

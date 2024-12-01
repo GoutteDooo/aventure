@@ -1,8 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../utils/Context";
+import itemsData from "../data/itemsData";
 
 const Stats = () => {
   const { playerStats, setPlayerStats } = useContext(PlayerContext);
+  const [equipmentActive, setEquipmentActive] = useState("");
 
   const convertKey = (key) => {
     const translations = {
@@ -23,6 +25,10 @@ const Stats = () => {
     }
     return stat;
   };
+
+  const handleEquipmentActive = (selectedEquipment) => {
+    setEquipmentActive(selectedEquipment);
+  }
 
   useEffect(() => {
     localStorage.setItem("playerData", JSON.stringify(playerStats));
@@ -51,18 +57,38 @@ const Stats = () => {
       </div>
       <div className="stats__equipment">
         <div className="stats__equipment__container">
-          <div className="stats__equipment__container__hat">
+          <div 
+          className={`stats__equipment__container__hat ${equipmentActive === playerStats.equipment.hat ? "stats__equipment__container__hat--selected" : ""}`}
+          onClick={(e) => handleEquipmentActive(e.target.textContent)}
+          >
             <p>{playerStats.equipment.hat}</p>
           </div>
-          <div className="stats__equipment__container__outfit">
+          <div 
+          className={`stats__equipment__container__outfit ${equipmentActive === playerStats.equipment.outfit ? "stats__equipment__container__hat--selected" : ""}`}
+          onClick={(e) => handleEquipmentActive(e.target.textContent)}
+          >
             <p>{playerStats.equipment.outfit}</p>
           </div>
-          <div className="stats__equipment__container__weapon">
+          <div 
+          className={`stats__equipment__container__weapon ${equipmentActive === playerStats.equipment.weapon ? "stats__equipment__container__hat--selected" : ""}`}
+          onClick={(e) => handleEquipmentActive(e.target.textContent)}
+          >
             <p>{playerStats.equipment.weapon}</p>
           </div>
         </div>
         <div className="stats__equipment__description">
-          <div className="stats__equipment__description--container"></div>
+          <div className="stats__equipment__description--container">
+            {equipmentActive && (
+                <>
+                    <div className="equipment__active__name">{equipmentActive}</div>
+                    <div className="equipment__active__desc">
+                    {itemsData.find((item) => item.name === equipmentActive).desc_useless} </div>
+                    <div className="equipment__active__effect">
+                        {itemsData.find((item) => item.name === equipmentActive).desc_use} 
+                    </div>
+                </>
+            )}
+          </div>
         </div>
       </div>
     </div>

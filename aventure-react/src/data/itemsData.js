@@ -17,9 +17,11 @@ const itemsData = [
     direction: "equipment",
     effect: "chance",
     value: 3,
-    desc_useless: "",
-    desc_use: "",
+    desc_useless:
+      "Ce chapeau vous rappelle votre oncle, qui le portait régulièrement et en a fini par vous en faire cadeau.",
+    desc_use: "Augmente la chance de 3",
     desc_class: "positive",
+    using: "equip",
   },
   {
     id: 3,
@@ -27,9 +29,11 @@ const itemsData = [
     direction: "equipment",
     effect: "defense",
     value: 1,
-    desc_useless: "",
-    desc_use: "",
+    desc_useless:
+      "Une vieille tenue encore à peu près présentable, sortie du plus profond recoin de votre placard.",
+    desc_use: "Augmente la défense de 1",
     desc_class: "positive",
+    using: "equip",
   },
   {
     id: 4,
@@ -37,9 +41,10 @@ const itemsData = [
     direction: "equipment",
     effect: "attack",
     value: 1,
-    desc_useless: "",
-    desc_use: "",
+    desc_useless: `Un jour, vous avez eu l'idée de devenir berger en voyant ce bâton. Puis, vous avez réalisé que c'était plus intéressant de devenir guerrier.`,
+    desc_use: "Augmente l'attaque de 1",
     desc_class: "positive",
+    using: "equip",
   },
   {
     id: 5,
