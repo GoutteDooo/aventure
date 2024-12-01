@@ -686,7 +686,7 @@ button:active {
   border: 10px solid #394053;
   border-radius: 25px;
   width: 100%;
-  height: 350px;
+  height: 360px;
   background: #4e4a59;
 }
 .stats__container {
@@ -730,17 +730,16 @@ button:active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   justify-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   grid-template-areas: "h h" "w b" "w b";
   width: 50%;
   height: 100%;
   text-align: center;
   gap: 10px;
 }
-.stats__equipment * {
+.stats__equipment__hat, .stats__equipment__outfit, .stats__equipment__weapon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -753,11 +752,37 @@ button:active {
   border: 10px solid #394053;
   background: #6E6362;
   border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+}
+.stats__equipment__hat::before, .stats__equipment__outfit::before, .stats__equipment__weapon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/src/assets/img/equip_hat.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  -webkit-filter: grayscale(100%) opacity(30%);
+          filter: grayscale(100%) opacity(30%);
+}
+.stats__equipment__hat p, .stats__equipment__outfit p, .stats__equipment__weapon p {
+  z-index: 2;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 .stats__equipment__hat {
   grid-area: h;
-  width: 150px;
-  height: 100px;
+  width: 180px;
+  height: 110px;
   border-radius: 50%;
 }
 .stats__equipment__outfit {
@@ -765,10 +790,16 @@ button:active {
   width: 150px;
   height: 200px;
 }
+.stats__equipment__outfit::before {
+  background-image: url("/src/assets/img/equip_outfit.png");
+}
 .stats__equipment__weapon {
   grid-area: w;
   width: 100px;
   height: 200px;
+}
+.stats__equipment__weapon::before {
+  background-image: url("/src/assets/img/equip_weapon.png");
 }
 
 /* LAYOUTS */

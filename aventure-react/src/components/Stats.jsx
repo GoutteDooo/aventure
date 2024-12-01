@@ -52,13 +52,13 @@ const Stats = () => {
             </div>
             <div className="stats__equipment">
                 <div className="stats__equipment__hat">
-                    {playerStats.equipment.hat}
+                    <p>{playerStats.equipment.hat}</p>
                 </div>
                 <div className="stats__equipment__outfit">
-                    {playerStats.equipment.outfit}
+                    <p>{playerStats.equipment.outfit}</p>
                 </div>
                 <div className="stats__equipment__weapon">
-                    {playerStats.equipment.weapon}
+                    <p>{playerStats.equipment.weapon}</p>
                 </div>
             </div>
         </div>
