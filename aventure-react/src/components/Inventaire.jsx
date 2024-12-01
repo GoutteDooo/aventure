@@ -1,28 +1,9 @@
-import React, { act, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import itemsData from "../data/itemsData";
+import { PlayerContext } from "../utils/Context";
 
 const Inventaire = () => {
-  const [playerStats, setPlayerStats] = useState(() => {
-    const savedPlayerData = localStorage.getItem("playerData");
-    return savedPlayerData ? JSON.parse(savedPlayerData) : {
-        name: "John Doe",
-        stats: {
-            maxHealth:100,
-            health: 90,
-            attack: 10,
-            defense: 0,
-            chance: 0.1,
-            accuracy: 0.5,
-            initiative: 10,
-        },
-        equipment: {
-            hat: "Chapeau de paille",
-            outfit: "Tenue de paysan",
-            weapon: "Bâton en bois",
-        },
-        inventory: ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "", ""],
-        }
-    });
+    const {playerStats, setPlayerStats} = useContext(PlayerContext);
 
     const inventaire = playerStats.inventory;
     const setInventaire = (update) => {
@@ -68,7 +49,7 @@ const Inventaire = () => {
                 console.log("non");
             }
             break;
-            
+
         case "stats:chance":
             if (playerStats.stats.chance < 1) {
                 setPlayerStats((prevStats) => ({

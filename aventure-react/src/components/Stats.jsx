@@ -1,27 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { PlayerContext } from '../utils/Context';
 
 const Stats = () => {
-    const [playerStats, setPlayerStats] = useState(() => {
-        const savedPlayerData = localStorage.getItem("playerData");
-        return savedPlayerData ? JSON.parse(savedPlayerData) : {
-            name: "John Doe",
-            stats: {
-                maxHealth:100,
-                health: 90,
-                attack: 10,
-                defense: 0,
-                chance: 0.1,
-                accuracy: 0.5,
-                initiative: 10,
-            },
-            equipment: {
-                hat: "Chapeau de paille",
-                outfit: "Tenue de paysan",
-                weapon: "Bâton en bois",
-            },
-            inventory: ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "", ""],
-            }
-        });
+    const {playerStats, setPlayerStats} = useContext(PlayerContext);
 
     const convertKey = (key) => {
         const translations = {
@@ -42,6 +23,8 @@ const Stats = () => {
         }
         return stat;
     };
+    console.log("stats : ",playerStats.playerStats);
+    
 
     useEffect(() => {
         localStorage.setItem("playerData", JSON.stringify(playerStats));
