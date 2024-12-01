@@ -1,15 +1,14 @@
 .inventory {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   h1 {
     position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 10px;
+    right: 30px;
     background: $dark2;
     color: $light2;
     padding: 5px 15px;
-    border-radius: 5px;
+    border-radius: 500px;
     border: 8px solid $dark3;
   }
   &__container {

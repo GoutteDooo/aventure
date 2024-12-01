@@ -580,20 +580,18 @@ button:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .inventory h1 {
   position: absolute;
-  top: 8px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  top: 10px;
+  right: 30px;
   background: #4e4a59;
   color: #839073;
   padding: 5px 15px;
-  border-radius: 5px;
+  border-radius: 500px;
   border: 8px solid #394053;
 }
 .inventory__container {
@@ -728,8 +726,49 @@ button:active {
   background: #6E6362;
 }
 .stats__equipment {
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  grid-template-areas: "h h" "w b" "w b";
   width: 50%;
   height: 100%;
+  text-align: center;
+  gap: 10px;
+}
+.stats__equipment * {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 10px solid #394053;
+  background: #6E6362;
+  border-radius: 25px;
+}
+.stats__equipment__hat {
+  grid-area: h;
+  width: 150px;
+  height: 100px;
+  border-radius: 50%;
+}
+.stats__equipment__outfit {
+  grid-area: b;
+  width: 150px;
+  height: 200px;
+}
+.stats__equipment__weapon {
+  grid-area: w;
+  width: 100px;
+  height: 200px;
 }
 
 /* LAYOUTS */

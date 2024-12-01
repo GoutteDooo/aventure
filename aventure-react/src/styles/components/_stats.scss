@@ -37,7 +37,39 @@
         
     }
     &__equipment {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        grid-template-areas:
+        "h h"
+        "w b"
+        "w b";
         width: 50%;
         height: 100%;
+        text-align: center;
+        gap: 10px;
+        * {
+            @include verticalCenter;
+            border: 10px solid $dark3;
+            background: $dark1;
+            border-radius: 25px;
+        }
+        &__hat {
+            grid-area: h;
+            width: 150px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        &__outfit {
+            grid-area: b;
+            width: 150px;
+            height: 200px;
+        }
+        &__weapon {
+            grid-area: w;
+            width: 100px;
+            height: 200px;
+        }
     }
 }

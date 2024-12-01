@@ -23,7 +23,6 @@ const Stats = () => {
         }
         return stat;
     };
-    console.log("stats : ",playerStats);
     
 
     useEffect(() => {
@@ -51,7 +50,17 @@ const Stats = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="stats__equipment"></div>
+            <div className="stats__equipment">
+                <div className="stats__equipment__hat">
+                    {playerStats.equipment.hat}
+                </div>
+                <div className="stats__equipment__outfit">
+                    {playerStats.equipment.outfit}
+                </div>
+                <div className="stats__equipment__weapon">
+                    {playerStats.equipment.weapon}
+                </div>
+            </div>
         </div>
     );
 };
