@@ -8,28 +8,8 @@ function Home() {
 
   const handleStart = () => {
     if (playerName.trim()) {
-      //Crée les données du Joueur
-      const playerData = {
-        stats: {
-          maxHealth:100,
-          health: 90,
-          attack: 10,
-          defense: 0,
-          chance: 0.1,
-          accuracy: 0.5,
-          initiative: 10,
-        },
-        equipment: {
-          hat: "Chapeau de paille",
-          outfit: "Tenue de paysan",
-          weapon: "Bâton en bois",
-        },
-        inventory: ["Sandwich à l'ail", "Potion de santé", "Orbe de feu", "Trèfle à quatre feuilles", "", ""],
-      };
       // Sauvegarde le nom dans le localStorage
       localStorage.setItem("playerName", playerName);
-      //et les données du joueur
-      localStorage.setItem("playerData", JSON.stringify(playerData));
       // Redirige vers la page suivante
       navigate("/adventure");
     } else {
