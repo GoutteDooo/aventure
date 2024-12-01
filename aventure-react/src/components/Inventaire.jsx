@@ -3,6 +3,10 @@ import itemsData from "../data/itemsData";
 import { PlayerContext } from "../utils/Context";
 
 const Inventaire = () => {
+    const [playerName, setPlayerName] = useState(() => {
+        const savedPlayerName = localStorage.getItem("playerName");
+        return savedPlayerName ? savedPlayerName : "John Doe";
+    });
     const {playerStats, setPlayerStats} = useContext(PlayerContext);
 
     const inventaire = playerStats.inventory;
@@ -81,6 +85,7 @@ const Inventaire = () => {
 
   return (
     <div className="inventory">
+      <h1>{playerName}</h1>
       <div className="inventory__container">
         {inventaire &&
           inventaire.map((item, index) => (

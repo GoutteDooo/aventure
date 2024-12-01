@@ -580,9 +580,21 @@ button:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.inventory h1 {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: #4e4a59;
+  color: #839073;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 8px solid #394053;
 }
 .inventory__container {
   width: 204px;
