@@ -1,68 +1,72 @@
-import React, { useContext, useEffect } from 'react';
-import { PlayerContext } from '../utils/Context';
+import React, { useContext, useEffect } from "react";
+import { PlayerContext } from "../utils/Context";
 
 const Stats = () => {
-    const {playerStats, setPlayerStats} = useContext(PlayerContext);
+  const { playerStats, setPlayerStats } = useContext(PlayerContext);
 
-    const convertKey = (key) => {
-        const translations = {
-            maxHealth: "Santé max",
-            health: "Santé actuelle",
-            attack: "Attaque max",
-            defense: "Défense",
-            chance: "Chance",
-            accuracy: "Précision",
-            initiative: "Initiative",
-        };
-        return translations[key] || key;
+  const convertKey = (key) => {
+    const translations = {
+      maxHealth: "Santé max",
+      health: "Santé actuelle",
+      attack: "Attaque max",
+      defense: "Défense",
+      chance: "Chance",
+      accuracy: "Précision",
+      initiative: "Initiative",
     };
+    return translations[key] || key;
+  };
 
-    const convertStat = (key, stat) => {
-        if (["chance", "accuracy"].includes(key)) {
-            return stat * 100;
-        }
-        return stat;
-    };
-    
+  const convertStat = (key, stat) => {
+    if (["chance", "accuracy"].includes(key)) {
+      return stat * 100;
+    }
+    return stat;
+  };
 
-    useEffect(() => {
-        localStorage.setItem("playerData", JSON.stringify(playerStats));
-    }, [playerStats]);
+  useEffect(() => {
+    localStorage.setItem("playerData", JSON.stringify(playerStats));
+  }, [playerStats]);
 
-    return (
-        <div className='stats'>
-            <div className="stats__container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Statistiques</th>
-                        <th>Valeurs</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {playerStats && Object.entries(playerStats.stats).map(([key,value], index) => (
-                        <tr key={index}>
-                            <td>{convertKey(key)}</td>
-                            <td>{convertStat(key, value)}</td>
-                        </tr>
-                        )
-                    )}
-                    </tbody>
-                </table>
-            </div>
-            <div className="stats__equipment">
-                <div className="stats__equipment__hat">
-                    <p>{playerStats.equipment.hat}</p>
-                </div>
-                <div className="stats__equipment__outfit">
-                    <p>{playerStats.equipment.outfit}</p>
-                </div>
-                <div className="stats__equipment__weapon">
-                    <p>{playerStats.equipment.weapon}</p>
-                </div>
-            </div>
+  return (
+    <div className="stats">
+      <div className="stats__container">
+        <table>
+          <thead>
+            <tr>
+              <th>Statistiques</th>
+              <th>Valeurs</th>
+            </tr>
+          </thead>
+          <tbody>
+            {playerStats &&
+              Object.entries(playerStats.stats).map(([key, value], index) => (
+                <tr key={index}>
+                  <td>{convertKey(key)}</td>
+                  <td>{convertStat(key, value)}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="stats__equipment">
+        <div className="stats__equipment__container">
+          <div className="stats__equipment__container__hat">
+            <p>{playerStats.equipment.hat}</p>
+          </div>
+          <div className="stats__equipment__container__outfit">
+            <p>{playerStats.equipment.outfit}</p>
+          </div>
+          <div className="stats__equipment__container__weapon">
+            <p>{playerStats.equipment.weapon}</p>
+          </div>
         </div>
-    );
+        <div className="stats__equipment__description">
+          <div className="stats__equipment__description--container"></div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Stats;
