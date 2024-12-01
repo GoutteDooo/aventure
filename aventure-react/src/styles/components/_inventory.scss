@@ -29,6 +29,7 @@
         cursor: pointer;
         color: $dark3;
         background: $light2;
+        transition: 0.1s;
         &:hover {
             border: 3px solid $light1;
             color: $white;
