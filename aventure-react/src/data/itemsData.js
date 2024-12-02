@@ -16,7 +16,7 @@ const itemsData = [
     name: "Chapeau de paille",
     direction: "equipment",
     effect: "chance",
-    value: 3,
+    value: 0.03,
     desc_useless:
       "Ce chapeau vous rappelle votre oncle, qui le portait régulièrement et en a fini par vous en faire cadeau.",
     desc_use: "Augmente la chance de 3",
