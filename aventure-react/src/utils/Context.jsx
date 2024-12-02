@@ -30,6 +30,7 @@ const initialPlayerData = {
 const initialPlayerStatsEquipped = {
   stats: {
     maxHealth: 0,
+    health: 0,
     attack: 0,
     defense: 0,
     chance: 0,
@@ -58,6 +59,28 @@ export const PlayerProvider = ({ children }) => {
     }
   });
 
+  const [playerStatsFull, setPlayerStatsFull] = useState(null);
+
+  const addStats = (currentStats, statsToAdd) => {
+    const combinedStats = {};
+
+    //Parcoure les clés de currentStats (playerStats...)
+    for (const key in currentStats) {
+      if (statsToAdd[key] !== undefined) {
+        combinedStats[key] = currentStats[key] + statsToAdd[key];
+      } else {
+        combinedStats[key] = currentStats[key];
+      }
+    }
+    //Si statsToAdd a des stats que currentStats n'a pas, les ajouter
+    for (const key in statsToAdd) {
+      if (combinedStats[key] === undefined) {
+        combinedStats[key] = statsToAdd[key];
+      }
+    }
+    return combinedStats;
+  };
+
   useEffect(() => {
     localStorage.setItem("playerData", JSON.stringify(playerStats));
   }, [playerStats]);
@@ -75,6 +98,12 @@ export const PlayerProvider = ({ children }) => {
     setPlayerStatsEquipped(initialPlayerStatsEquipped);
   };
 
+  //Update les stats dans playerStatsFull
+  useEffect(() => {
+    const combinedStats = addStats(playerStats.stats, playerStatsEquipped);
+    setPlayerStatsFull(combinedStats);
+  }, [playerStats, playerStatsEquipped]);
+
   return (
     <PlayerContext.Provider
       value={{
@@ -83,6 +112,8 @@ export const PlayerProvider = ({ children }) => {
         resetPlayerData,
         playerStatsEquipped,
         setPlayerStatsEquipped,
+        playerStatsFull,
+        setPlayerStatsFull,
       }}
     >
       {children}

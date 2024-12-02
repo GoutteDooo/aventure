@@ -8,26 +8,29 @@ const Stats = () => {
     setPlayerStats,
     playerStatsEquipped,
     setPlayerStatsEquipped,
+    playerStatsFull,
+    setPlayerStatsFull,
   } = useContext(PlayerContext);
   const [equipmentActive, setEquipmentActive] = useState("");
 
   const applyEquipmentEffects = () => {
     //Réinitialiser les stats avant d'appliquer les effets
-    let updatedStats = { ...playerStats.stats };
+    let updatedStats = { ...playerStatsFull };
 
     //Trouver l'item correspondant à l'équipement équipé
     Object.values(playerStats.equipment).forEach((equipmentName) => {
       const equip = itemsData.find((item) => item.name === equipmentName);
       if (equip && equip.effect) {
         updatedStats[equip.effect] += equip.value;
-        console.log(updatedStats);
       }
     });
+
+    console.log(playerStatsFull);
 
     //Appliquer les effets de chaque équipement
     setPlayerStats((prevStats) => ({
       ...prevStats,
-      stats: updatedStats,
+      stats: prevStats.stats,
     }));
   };
 
