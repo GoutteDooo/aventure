@@ -28,15 +28,13 @@ const initialPlayerData = {
 };
 
 const initialPlayerStatsEquipped = {
-  stats: {
-    maxHealth: 0,
-    health: 0,
-    attack: 0,
-    defense: 0,
-    chance: 0,
-    accuracy: 0,
-    initiative: 0,
-  },
+  maxHealth: 0,
+  health: 0,
+  attack: 0,
+  defense: 0,
+  chance: 0,
+  accuracy: 0,
+  initiative: 0,
 };
 
 export const PlayerProvider = ({ children }) => {
@@ -92,17 +90,17 @@ export const PlayerProvider = ({ children }) => {
     );
   }, [playerStatsEquipped]);
 
-  const resetPlayerData = () => {
-    localStorage.clear();
-    setPlayerStats(initialPlayerData);
-    setPlayerStatsEquipped(initialPlayerStatsEquipped);
-  };
-
   //Update les stats dans playerStatsFull
   useEffect(() => {
     const combinedStats = addStats(playerStats.stats, playerStatsEquipped);
     setPlayerStatsFull(combinedStats);
   }, [playerStats, playerStatsEquipped]);
+
+  const resetPlayerData = () => {
+    localStorage.clear();
+    setPlayerStats(initialPlayerData);
+    setPlayerStatsEquipped(initialPlayerStatsEquipped);
+  };
 
   return (
     <PlayerContext.Provider

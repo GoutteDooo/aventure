@@ -15,7 +15,15 @@ const Stats = () => {
 
   const applyEquipmentEffects = () => {
     //Réinitialiser les stats avant d'appliquer les effets
-    let updatedStats = { ...playerStatsFull };
+    let updatedStats = {
+      maxHealth: 0,
+      health: 0,
+      attack: 0,
+      defense: 0,
+      chance: 0,
+      accuracy: 0,
+      initiative: 0,
+    };
 
     //Trouver l'item correspondant à l'équipement équipé
     Object.values(playerStats.equipment).forEach((equipmentName) => {
@@ -24,14 +32,11 @@ const Stats = () => {
         updatedStats[equip.effect] += equip.value;
       }
     });
-
-    console.log(playerStatsFull);
+    console.log("updatedStats : ", updatedStats);
 
     //Appliquer les effets de chaque équipement
-    setPlayerStats((prevStats) => ({
-      ...prevStats,
-      stats: prevStats.stats,
-    }));
+    setPlayerStatsEquipped(updatedStats);
+    console.log("playerStatsFull : ", playerStatsFull);
   };
 
   useEffect(() => {
