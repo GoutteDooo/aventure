@@ -91,23 +91,45 @@ const Inventaire = () => {
       console.error("Direction d'équipement invalide", equipmentItem.direction);
       return;
     }
-    //S'il y'a déjà une place dans l'équipement, annuler l'action
+    //S'il y'a déjà une place dans l'équipement, échanger les équips
     if (playerStats.equipment[equipmentItem.direction] == "") {
-      console.log("String vide");
+      setPlayerStats((prevStats) => ({
+        ...prevStats,
+        equipment: {
+          ...prevStats.equipment,
+          [equipmentItem.direction]: equipmentItem.name,
+        },
+      }));
+      useItem(equipmentItem);
     } else {
-      console.log("String pleine");
-      console.log(playerStats.equipment[equipmentItem.direction]);
+      const actualItemEquipped = playerStats.equipment[equipmentItem.direction];
+      console.log(actualItemEquipped);
+      setPlayerStats((prevStats) => ({
+        ...prevStats,
+        equipment: {
+          ...prevStats.equipment,
+          [equipmentItem.direction]: equipmentItem.name,
+        },
+      }));
+      useItem(equipmentItem);
+      console.log("équip enlevé de l'inventaire.");
+      pushItem(actualItemEquipped);
     }
+  };
 
-    setPlayerStats((prevStats) => ({
-      ...prevStats,
-      equipment: {
-        ...prevStats.equipment,
-        [equipmentItem.direction]: equipmentItem.name,
-      },
-    }));
+  const pushItem = (itemToPush) => {
+    for (const slot in playerStats.inventory) {
+      const itemName = playerStats.inventory[slot];
 
-    useItem(equipmentItem);
+      if (itemName === "") {
+        console.log("slot n°", slot, " vide !");
+
+        playerStats.inventory[slot] = itemToPush;
+        break;
+      } else {
+        console.log("slot n°", slot, "pris : ", playerStats.inventory[slot]);
+      }
+    }
   };
 
   const useItem = (itemUsing) => {

@@ -14,7 +14,7 @@ const initialPlayerData = {
   },
   equipment: {
     hat: "Chapeau de paille",
-    outfit: "",
+    outfit: "Tenue de paysan",
     weapon: "Bâton en bois",
   },
   inventory: [
@@ -23,7 +23,7 @@ const initialPlayerData = {
     "Orbe de feu",
     "Trèfle à quatre feuilles",
     "Tenue de paysan",
-    "",
+    "Vieille cape grise",
   ],
 };
 

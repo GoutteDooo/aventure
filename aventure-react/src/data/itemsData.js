@@ -82,6 +82,18 @@ const itemsData = [
     desc_class: "positive",
     using: "all",
   },
+  {
+    id: 8,
+    name: "Vieille cape grise",
+    direction: "outfit",
+    effect: "accuracy",
+    value: 5,
+    desc_useless:
+      "En la portant, cette cape vous fait vous sentir comme quelqu'un d'héroïque.",
+    desc_use: "Augmente la précision de 5",
+    desc_class: "positive",
+    using: "equip",
+  },
 ];
 
 export default itemsData;
