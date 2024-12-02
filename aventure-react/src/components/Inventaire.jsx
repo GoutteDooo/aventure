@@ -85,6 +85,7 @@ const Inventaire = () => {
 
   const handlePutOnEquipment = (equipmentHTML) => {
     const equipmentItem = findItem(equipmentHTML);
+    const equipmentName = equipmentHTML.textContent;
 
     //sécurité
     if (!["hat", "outfit", "weapon"].includes(equipmentItem.direction)) {
@@ -102,8 +103,7 @@ const Inventaire = () => {
       }));
       useItem(equipmentItem);
     } else {
-      const actualItemEquipped = playerStats.equipment[equipmentItem.direction];
-      console.log(actualItemEquipped);
+      const actualEquippedItem = playerStats.equipment[equipmentItem.direction];
       setPlayerStats((prevStats) => ({
         ...prevStats,
         equipment: {
@@ -111,9 +111,16 @@ const Inventaire = () => {
           [equipmentItem.direction]: equipmentItem.name,
         },
       }));
+
+      //Détecter dans quel slot l'item à enlever est, et l'enregistrer.
+      const actualEquippedItemSlot = playerStats.inventory.findIndex((item) => item === equipmentName);
+      console.log("slot qui va être vidé : ", actualEquippedItemSlot);
+      
+      //Une fois fait, on remove l'item du slot
+      //Puis, on y insère l'actualEquippedItem
       useItem(equipmentItem);
-      console.log("équip enlevé de l'inventaire.");
-      pushItem(actualItemEquipped);
+    //   console.log("équip enlevé de l'inventaire.");
+      pushItem(actualEquippedItem);
     }
   };
 
@@ -122,12 +129,12 @@ const Inventaire = () => {
       const itemName = playerStats.inventory[slot];
 
       if (itemName === "") {
-        console.log("slot n°", slot, " vide !");
+        // console.log("slot n°", slot, " vide !");
 
         playerStats.inventory[slot] = itemToPush;
         break;
       } else {
-        console.log("slot n°", slot, "pris : ", playerStats.inventory[slot]);
+        // console.log("slot n°", slot, "pris : ", playerStats.inventory[slot]);
       }
     }
   };
