@@ -18,11 +18,11 @@ const initialPlayerData = {
     weapon: "Bâton en bois",
   },
   inventory: [
-    "Sandwich à l'ail",
-    "Potion de santé",
-    "Orbe de feu",
-    "Trèfle à quatre feuilles",
+    "Nunchaku en acier",
     "Tenue de paysan",
+    "Chapeau de paille",
+    "Trèfle à quatre feuilles",
+    "Vieil Heaume en argent",
     "Vieille cape grise",
   ],
 };

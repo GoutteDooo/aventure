@@ -23,15 +23,18 @@
       background: $dark2;
       border: 2px solid $dark3;
       border-radius: 10px;
+      padding: 5px;
+      box-sizing: border-box;
       @include verticalCenter;
       text-align: center;
       &--active {
         cursor: pointer;
-        color: $dark3;
-        background: $light2;
+        color: $light2;
+        background: $dark3;
+        border: 5px solid $dark1;
         transition: 0.1s;
         &:hover {
-            border: 3px solid $light1;
+            border: 5px solid $light2;
             color: $white;
             transform: scale(1.02);
         }
@@ -40,6 +43,7 @@
         background: $light1;
         color: $white;
         transform: scale(1.02);
+        border: 5px solid $light2;
       }
     }
   }

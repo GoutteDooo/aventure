@@ -23,11 +23,8 @@ const Inventaire = () => {
 
   const [activeItem, setActiveItem] = useState(null);
 
-  const handleItemActive = (targettedItem) => {
-    if (targettedItem.textContent != "") {
-      const itemClicked = targettedItem;
-      setActiveItem(itemClicked);
-    }
+  const handleItemActive = (item, index) => {
+    if (item !== "") setActiveItem({item, index});
   };
 
   /**J'AI FAIT UNE BOURDE
@@ -35,15 +32,17 @@ const Inventaire = () => {
    * Donc, lors de la recherche de l'item, il ne prend que le text entre les balises
    * IL NE FAUT DONC PAS INSERER UN TEXTE DANS CETTE FONCTION, MAIS LA LIGNE DE CODE HMTL
    */
-  const findItem = (itemHTML) => {
+  const findItem = (itemToFind) => {
     const itemFound = itemsData.find(
-      (item) => itemHTML.textContent === item.name
+      (item) => item.name === itemToFind
     );
     return itemFound;
   };
 
-  const handleItemEffect = (itemHTML) => {
-    const item = findItem(itemHTML);
+  const handleItemEffect = () => {
+    if (!activeItem) return; //sécurité
+
+    const item = findItem(activeItem.item);
     switch (item.effect) {
       case "heal":
         if (playerStats.stats.health < playerStats.stats.maxHealth) {
@@ -83,9 +82,8 @@ const Inventaire = () => {
     }
   };
 
-  const handlePutOnEquipment = (equipmentHTML) => {
-    const equipmentItem = findItem(equipmentHTML);
-    const equipmentName = equipmentHTML.textContent;
+  const handlePutOnEquipment = (equipmentName) => {
+    const equipmentItem = findItem(equipmentName);
 
     //sécurité
     if (!["hat", "outfit", "weapon"].includes(equipmentItem.direction)) {
@@ -146,11 +144,11 @@ const Inventaire = () => {
               className={`inventory__container__item 
                     ${item ? "inventory__container__item--active" : ""} 
                     ${
-                      activeItem && activeItem.textContent === item
+                      activeItem && activeItem.index === index
                         ? "inventory__container__item--selected"
                         : ""
                     }`}
-              onClick={(e) => handleItemActive(e.target)}
+              onClick={() => handleItemActive(item, index)}
             >
               {item}
             </div>
@@ -161,34 +159,34 @@ const Inventaire = () => {
           <>
             <div className="inventory__description--useless">
               {
-                itemsData.find((item) => item.name === activeItem.textContent)
+                itemsData.find((item) => item.name === activeItem.item)
                   .desc_useless
               }
             </div>
             <div
               className={`inventory__description--use ${
-                itemsData.find((item) => item.name === activeItem.textContent)
+                itemsData.find((item) => item.name === activeItem.item)
                   .desc_class
               }`}
             >
               {
-                itemsData.find((item) => item.name === activeItem.textContent)
+                itemsData.find((item) => item.name === activeItem.item)
                   .desc_use
               }
             </div>
-            {(findItem(activeItem).using === "all" ||
-              findItem(activeItem).using === "no-combat") && (
+            {(findItem(activeItem.item).using === "all" ||
+              findItem(activeItem.item).using === "no-combat") && (
               <button
                 className="inventory__description__button"
-                onClick={() => handleItemEffect(activeItem)}
+                onClick={() => handleItemEffect(activeItem.item)}
               >
                 Utiliser
               </button>
             )}
-            {findItem(activeItem).using === "equip" && (
+            {findItem(activeItem.item).using === "equip" && (
               <button
                 className="inventory__description__button"
-                onClick={() => handlePutOnEquipment(activeItem)}
+                onClick={() => handlePutOnEquipment(activeItem.item)}
               >
                 Equiper
               </button>

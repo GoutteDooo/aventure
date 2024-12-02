@@ -94,6 +94,30 @@ const itemsData = [
     desc_class: "positive",
     using: "equip",
   },
+  {
+    id: 9,
+    name: "Vieil Heaume en argent",
+    direction: "hat",
+    effect: "defense",
+    value: 5,
+    desc_useless:
+      "Cet heaume est tellement grand qu'il vous recouvre presque les épaules. Cela dit, il consitue un excellent moyen défensif.",
+    desc_use: "Augmente la défense de 5",
+    desc_class: "positive",
+    using: "equip",
+  },
+  {
+    id: 10,
+    name: "Nunchaku en acier",
+    direction: "weapon",
+    effect: "attack",
+    value: 4,
+    desc_useless:
+      "Une envie subite de faire le ninja vous prend en voyant cette arme. Mais... qu'est-ce qu'un ninja ?",
+    desc_use: "Augmente l'attaque de 4",
+    desc_class: "positive",
+    using: "equip",
+  },
 ];
 
 export default itemsData;
