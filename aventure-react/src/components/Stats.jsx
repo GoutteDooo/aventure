@@ -32,11 +32,9 @@ const Stats = () => {
         updatedStats[equip.effect] += equip.value;
       }
     });
-    console.log("updatedStats : ", updatedStats);
 
     //Appliquer les effets de chaque équipement
     setPlayerStatsEquipped(updatedStats);
-    console.log("playerStatsFull : ", playerStatsFull);
   };
 
   useEffect(() => {
@@ -82,8 +80,8 @@ const Stats = () => {
             </tr>
           </thead>
           <tbody>
-            {playerStats &&
-              Object.entries(playerStats.stats).map(([key, value], index) => (
+            {playerStatsFull &&
+              Object.entries(playerStatsFull).map(([key, value], index) => (
                 <tr key={index}>
                   <td>{convertKey(key)}</td>
                   <td>{Math.trunc(convertStat(key, value))}</td>

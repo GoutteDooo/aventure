@@ -14,7 +14,7 @@ const itemsData = [
   {
     id: 2,
     name: "Chapeau de paille",
-    direction: "equipment",
+    direction: "hat",
     effect: "chance",
     value: 0.03,
     desc_useless:
@@ -26,7 +26,7 @@ const itemsData = [
   {
     id: 3,
     name: "Tenue de paysan",
-    direction: "equipment",
+    direction: "outfit",
     effect: "defense",
     value: 1,
     desc_useless:
@@ -38,7 +38,7 @@ const itemsData = [
   {
     id: 4,
     name: "Bâton en bois",
-    direction: "equipment",
+    direction: "weapon",
     effect: "attack",
     value: 1,
     desc_useless: `Un jour, vous avez eu l'idée de devenir berger en voyant ce bâton. Puis, vous avez réalisé que c'était plus intéressant de devenir guerrier.`,
