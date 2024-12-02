@@ -18,7 +18,7 @@ const itemsData = [
     effect: "chance",
     value: 0.03,
     desc_useless:
-      "Ce chapeau vous rappelle votre oncle, qui le portait régulièrement et en a fini par vous en faire cadeau.",
+      "Ce chapeau vous rappelle votre oncle, qui le portait régulièrement et a fini par vous en faire cadeau.",
     desc_use: "Augmente la chance de 3",
     desc_class: "positive",
     using: "equip",
@@ -87,9 +87,9 @@ const itemsData = [
     name: "Vieille cape grise",
     direction: "outfit",
     effect: "accuracy",
-    value: 5,
+    value: 0.05,
     desc_useless:
-      "En la portant, cette cape vous fait vous sentir comme quelqu'un d'héroïque.",
+      "En la portant, cette cape vous fait vous sentir comme un vrai héros.",
     desc_use: "Augmente la précision de 5",
     desc_class: "positive",
     using: "equip",

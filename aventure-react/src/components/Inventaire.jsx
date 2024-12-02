@@ -113,37 +113,21 @@ const Inventaire = () => {
       }));
 
       //Détecter dans quel slot l'item à enlever est, et l'enregistrer.
-      const actualEquippedItemSlot = playerStats.inventory.findIndex((item) => item === equipmentName);
-      console.log("slot qui va être vidé : ", actualEquippedItemSlot);
+      const equippingItemSlot = playerStats.inventory.findIndex((item) => item === equipmentName);
+      console.log("slot qui va être vidé : ", equippingItemSlot);
       
       //Une fois fait, on remove l'item du slot
       //Puis, on y insère l'actualEquippedItem
       useItem(equipmentItem);
     //   console.log("équip enlevé de l'inventaire.");
-      pushItem(actualEquippedItem);
-    }
-  };
-
-  const pushItem = (itemToPush) => {
-    for (const slot in playerStats.inventory) {
-      const itemName = playerStats.inventory[slot];
-
-      if (itemName === "") {
-        // console.log("slot n°", slot, " vide !");
-
-        playerStats.inventory[slot] = itemToPush;
-        break;
-      } else {
-        // console.log("slot n°", slot, "pris : ", playerStats.inventory[slot]);
-      }
+    playerStats.inventory[equippingItemSlot] = actualEquippedItem;
     }
   };
 
   const useItem = (itemUsing) => {
     setActiveItem(null);
-    setInventaire((prevInventaire) =>
-      prevInventaire.map((it) => (it === itemUsing.name ? "" : it))
-    );
+    const itemUsingSlot = playerStats.inventory.findIndex((item) => item === itemUsing.name);
+    playerStats.inventory[itemUsingSlot] = "";
   };
 
   //Permet de mettre à jour les stats du joueur lorsqu'il change d'items, ou en ingère par exemple.
