@@ -250,10 +250,10 @@ button:active {
   background: darkred;
 }
 .combat-container .combat__player__turn .combat__button__defense {
-  background: #4f7e4e;
+  background: mediumaquamarine;
 }
 .combat-container .combat__player__turn .combat__button__use {
-  background: orangered;
+  background: burlywood;
 }
 .combat-container .combat__player__turn .combat__button__fled {
   background: rgb(70, 70, 70);

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Loot from "./Loot";
+import { PlayerContext } from "../utils/Context";
 
 const Combat = ({ enemy, onCombatFinish }) => {
-  const [playerStats, setPlayerStats] = useState(null);
+  const {playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull} = useContext(PlayerContext);
   const [playerTurn, setPlayerTurn] = useState(true); //vérifie si joueur a l'initiative avant de pouvoir attaquer
   const [playerName, setPlayerName] = useState(() => {
     const savedPlayerName = localStorage.getItem("playerName");
@@ -46,11 +47,11 @@ const Combat = ({ enemy, onCombatFinish }) => {
     if (isAttacking && playerTurn) {
       setEnemyAttacked(true);
       const damages = Math.max(
-        playerStats.stats.attack * 0.1,
+        playerStatsFull.attack * 0.1,
         damage(
-          playerStats.stats.attack,
-          playerStats.stats.accuracy,
-          playerStats.stats.chance
+          playerStatsFull.attack,
+          playerStatsFull.accuracy,
+          playerStatsFull.chance
         ) - enemy.defense
       );
       enemy.health -= damages;
@@ -66,10 +67,12 @@ const Combat = ({ enemy, onCombatFinish }) => {
       setEnemyAttacking(true);
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
-          enemy.attack * 0.1,
+          Math.trunc(1 + enemy.attack * 0.1),
           damage(enemy.attack, enemy.accuracy, enemy.chance) -
-            playerStats.stats.defense
+            playerStatsFull.defense
         );
+        console.log("dommages adverses : ",enemyDamage);
+        
 
         setPlayerStats((prevStats) => ({
           ...prevStats,
@@ -89,7 +92,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
       };
     } else if (enemy.health <= 0) {
       setCombatFinished(true);
-      console.log("Combat: Combat terminé !");
     }
   }, [playerTurn]);
 
@@ -123,7 +125,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
   }, [combatFinished, showLoot]);
 
   const handleCloseLoot = () => {
-    console.log("Combat: Close loot activated !");
     setShowLoot(false);
     onCombatFinish();
   }
@@ -148,12 +149,12 @@ const Combat = ({ enemy, onCombatFinish }) => {
           } ${isAttacked ? "combat__hit" : ""}`}
         >
           <div className="combat__player__stats--name">{playerName}</div>
-          <p>Vie : {playerStats.stats.health}</p>
-          <p>Atk : {playerStats.stats.attack} ~ {playerStats.stats.attack * playerStats.stats.accuracy}</p>
-          <p>Def : {playerStats.stats.defense}</p>
-          <p>Adr : {playerStats.stats.accuracy * 100}</p>
-          <p>Ch : {playerStats.stats.chance * 100}</p>
-          <p>Init : {playerStats.stats.initiative}</p>
+          <p>Vie : {playerStatsFull.health}</p>
+          <p>Atk : {Math.trunc(playerStatsFull.attack)} ~ {Math.trunc(playerStatsFull.attack * playerStatsFull.accuracy)}</p>
+          <p>Def : {playerStatsFull.defense}</p>
+          <p>Adr : {Math.trunc(playerStatsFull.accuracy * 100)}</p>
+          <p>Ch : {playerStatsFull.chance * 100}</p>
+          <p>Init : {playerStatsFull.initiative}</p>
         </div>
         <div
           className={`combat__ennemy__stats ${

@@ -27,10 +27,8 @@ const Inventaire = () => {
     if (item !== "") setActiveItem({item, index});
   };
 
-  /**J'AI FAIT UNE BOURDE
-   * findItem fonctionne en recherchant le code HTML + le textContent.
-   * Donc, lors de la recherche de l'item, il ne prend que le text entre les balises
-   * IL NE FAUT DONC PAS INSERER UN TEXTE DANS CETTE FONCTION, MAIS LA LIGNE DE CODE HMTL
+  /**Recherche l'item passé en paramètre sous forme de string
+   * et retourne un item : objet JS
    */
   const findItem = (itemToFind) => {
     const itemFound = itemsData.find(
@@ -112,12 +110,10 @@ const Inventaire = () => {
 
       //Détecter dans quel slot l'item à enlever est, et l'enregistrer.
       const equippingItemSlot = playerStats.inventory.findIndex((item) => item === equipmentName);
-      console.log("slot qui va être vidé : ", equippingItemSlot);
       
       //Une fois fait, on remove l'item du slot
-      //Puis, on y insère l'actualEquippedItem
       useItem(equipmentItem);
-    //   console.log("équip enlevé de l'inventaire.");
+      //Puis, on y insère l'actualEquippedItem
     playerStats.inventory[equippingItemSlot] = actualEquippedItem;
     }
   };
