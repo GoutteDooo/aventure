@@ -102,6 +102,8 @@ export const PlayerProvider = ({ children }) => {
     setPlayerStatsEquipped(initialPlayerStatsEquipped);
   };
 
+  const insertItemToInventory = (item) => {};
+
   return (
     <PlayerContext.Provider
       value={{

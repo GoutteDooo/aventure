@@ -1,12 +1,14 @@
 import "../styles/main.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import storySteps from "../data/adventureData";
 import enemiesData from "../data/enemiesData";
 import itemsData from "../data/itemsData";
 import Combat from "../components/Combat";
 import { useNavigate } from "react-router-dom";
+import { PlayerContext } from "../utils/Context";
 
 function Adventure() {
+  const { playerStats, setPlayerStats } = useContext(PlayerContext);
   //Lors du chargement de la page, on récupère les données dans le localStorage s'il y'a. Sinon, on démarre à la 1ere étape.
   const [currentStepId, setCurrentStepId] = useState(() => {
     const savedStep = localStorage.getItem("currentStepId");
@@ -22,12 +24,9 @@ function Adventure() {
 
   //Gère l'état pour passer à l'étape suivante dans d'autres composants
   const handleNextStep = () => {
-    console.log("Adventure: combat terminé. handleNextStep activé");
-    
-    console.log("currentStep: ",currentStep.nextId);
     const nextStep = currentStep.choices?.[0]?.nextId || currentStepId + 1;
     console.log(nextStep);
-    
+
     setCurrentStepId(nextStep);
   };
 
@@ -35,12 +34,17 @@ function Adventure() {
     switch (event.type) {
       case "item":
         const foundItem = itemsData.find((item) => item.id === event.itemId);
-        // addItemsToInventory([foundItem]);
+        const emptyBox = playerStats.inventory.findIndex((item) => item === "");
+        if (emptyBox) {
+          console.log("box vide trouvé : ", emptyBox);
+        } else {
+          console.log("inventaire plein.");
+        }
         break;
       default:
         break;
     }
-  })
+  });
 
   //Detecte s'il y'a un combat ou non
   useEffect(() => {
@@ -92,7 +96,9 @@ function Adventure() {
           </div>
         )}
       </div>
-      <button className="adventure__status" onClick={() => navigate("/status")}>Status</button>
+      <button className="adventure__status" onClick={() => navigate("/status")}>
+        Status
+      </button>
     </div>
   );
 }
