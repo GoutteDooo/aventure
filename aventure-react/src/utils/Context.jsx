@@ -1,7 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 
 export const PlayerContext = createContext();
-
+/**
+ * choiceSaved :
+ * Certains choix sauvegardé pour ne pas qu'ils réapparaissent en cours de jeu
+ */
 const initialPlayerData = {
   stats: {
     maxHealth: 100,
@@ -19,12 +22,13 @@ const initialPlayerData = {
   },
   inventory: [
     "Nunchaku en acier",
-    "Tenue de paysan",
-    "Chapeau de paille",
+    "",
+    "",
     "Trèfle à quatre feuilles",
-    "Vieil Heaume en argent",
-    "Vieille cape grise",
+    "",
+    "",
   ],
+  choiceSaved: []
 };
 
 const initialPlayerStatsEquipped = {

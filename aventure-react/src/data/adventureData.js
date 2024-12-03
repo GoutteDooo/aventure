@@ -69,11 +69,16 @@ const storySteps = [
     speak: ``,
     isCombat: false,
     choices: [
-      { text: `Inspecter le centre de la fontaine`, nextId: 6 },
+      {
+        text: `Inspecter le centre de la fontaine`,
+        nextId: "popUp",
+        popUpId: 1,
+        saveChoiceId: 1,
+      },
       { text: `Ouvrir la porte de gauche`, nextId: 7 },
       { text: `Parcourir le couloir de droite`, nextId: 8 },
     ],
-  },
+  } /*
   {
     id: 6,
     main: "Découverte",
@@ -92,7 +97,7 @@ const storySteps = [
       { text: `Ouvrir la porte de gauche`, nextId: 7 },
       { text: `Parcourir le couloir de droite`, nextId: 8 },
     ],
-  },
+  },*/,
 ];
 
 export default storySteps;

@@ -885,6 +885,44 @@ button:active {
   margin: auto 10px;
 }
 
+.popUp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 300px;
+  width: 700px;
+  background: #6E6362;
+  border: 10px solid #839073;
+  border-radius: 35px;
+  text-align: center;
+}
+.popUp__title {
+  margin-top: 30px;
+  font-size: 1.75rem;
+  color: #edf6f9;
+}
+.popUp__text {
+  margin-top: 50px;
+  font-size: 1.5rem;
+  color: #839073;
+}
+.popUp__close {
+  position: absolute;
+  background: #4e4a59;
+  width: 120px;
+  height: 50px;
+  bottom: 20px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.popUp__close:active {
+  -webkit-transform: translate(-50%, 10px);
+          transform: translate(-50%, 10px);
+}
+
 /* LAYOUTS */
 /* PAGES */
 .home {

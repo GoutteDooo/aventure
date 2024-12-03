@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import storySteps from "../data/adventureData";
 import enemiesData from "../data/enemiesData";
 import itemsData from "../data/itemsData";
+import popUps from "../data/popUpsData";
 import Combat from "../components/Combat";
 import { useNavigate } from "react-router-dom";
 import { PlayerContext } from "../utils/Context";
@@ -14,37 +15,33 @@ function Adventure() {
     const savedStep = localStorage.getItem("currentStepId");
     return savedStep ? JSON.parse(savedStep) : 1;
   });
+
   const navigate = useNavigate();
 
   const currentStep = storySteps.find((step) => step.id === currentStepId);
+
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [popUpToShow, setPopUpToShow] = useState(null);
 
   //State en cas de combat
   const [isInCombat, setIsInCombat] = useState(false);
   const [enemy, setEnemy] = useState(null); //représente l'ennemi s'il y'a
 
   //Gère l'état pour passer à l'étape suivante dans d'autres composants
-  const handleNextStep = () => {
-    const nextStep = currentStep.choices?.[0]?.nextId || currentStepId + 1;
-    console.log(nextStep);
+  const handleNextStep = (selectedNextId) => {
+    const nextStep = currentStep.choices?.[selectedNextId]?.nextId || currentStepId + 1;
+    if (nextStep === "popUp") {
+        const popUpFound = popUps.find((popUpToFind) => popUpToFind.id === currentStep.choices[selectedNextId].popUpId);
 
-    setCurrentStepId(nextStep);
-  };
+        const savedChoiceId = currentStep.choices[selectedNextId].saveChoiceId;
+        playerStats.choiceSaved.push(savedChoiceId);//Enregistré définitivement
 
-  currentStep.events?.forEach((event) => {
-    switch (event.type) {
-      case "item":
-        const foundItem = itemsData.find((item) => item.id === event.itemId);
-        const emptyBox = playerStats.inventory.findIndex((item) => item === "");
-        if (emptyBox) {
-          console.log("box vide trouvé : ", emptyBox);
-        } else {
-          console.log("inventaire plein.");
-        }
-        break;
-      default:
-        break;
+        setPopUpToShow(popUpFound);
+        setShowPopUp(true);
+      } else {
+        setCurrentStepId(nextStep);
     }
-  });
+  };
 
   //Detecte s'il y'a un combat ou non
   useEffect(() => {
@@ -63,9 +60,6 @@ function Adventure() {
     localStorage.setItem("currentStepId", JSON.stringify(currentStepId));
   }, [currentStepId]);
 
-  const handleChoiceClick = (nextId) => {
-    setCurrentStepId(nextId);
-  };
 
   return (
     <div className="adventure">
@@ -88,7 +82,7 @@ function Adventure() {
               <button
                 key={index}
                 className="adventure__choice"
-                onClick={() => handleChoiceClick(choice.nextId)}
+                onClick={() => handleNextStep(index)}
               >
                 {choice.text}
               </button>
@@ -99,6 +93,13 @@ function Adventure() {
       <button className="adventure__status" onClick={() => navigate("/status")}>
         Status
       </button>
+      {showPopUp && (
+        <div className="popUp">
+          <div className="popUp__title animate-pulsing animate-iteration-count-infinite">{popUpToShow ? (popUpToShow.title) : (<>Erreur lors de l'affichage du titre !</>)}</div>
+          <div className="popUp__text">{popUpToShow ? (popUpToShow.text) : (<>Erreur lors de l'affichage du texte !</>)}</div>
+          <button className="popUp__close" onClick={() => setShowPopUp(false)}>Fermer</button>
+        </div>
+      )}
     </div>
   );
 }
