@@ -22,10 +22,10 @@ const initialPlayerData = {
   },
   inventory: [
     "Nunchaku en acier",
-    "",
-    "",
+    "&",
+    "&",
     "Trèfle à quatre feuilles",
-    "",
+    "&",
     "",
   ],
   choiceSaved: []

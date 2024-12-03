@@ -32,16 +32,30 @@ function Adventure() {
     const nextStep = currentStep.choices?.[selectedNextId]?.nextId || currentStepId + 1;
     if (nextStep === "popUp") {
         const popUpFound = popUps.find((popUpToFind) => popUpToFind.id === currentStep.choices[selectedNextId].popUpId);
+        //Si déjà dans la sauvegarde
+        if (playerStats.choiceSaved.find((i) => 
+          popUpFound.id === playerStats.choiceSaved[i-1])) {
+          console.log("déjà passé par là");
 
-        const savedChoiceId = currentStep.choices[selectedNextId].saveChoiceId;
-        playerStats.choiceSaved.push(savedChoiceId);//Enregistré définitivement
-
-        setPopUpToShow(popUpFound);
-        setShowPopUp(true);
+        } else {
+          const savedChoiceId = currentStep.choices[selectedNextId].saveChoiceId;
+          setPlayerStats((prevStats) => ({
+            ...prevStats,
+            choiceSaved: [...prevStats.choiceSaved, savedChoiceId],
+          }))
+          setPopUpToShow(popUpFound);
+          setShowPopUp(true);
+        }
       } else {
         setCurrentStepId(nextStep);
     }
   };
+
+  const isInventoryFull = () => {
+    const inventoryIsFull = playerStats.inventory.find((itemName) => itemName === "");
+     
+    return inventoryIsFull === "" ? false : true;
+  }
 
   //Detecte s'il y'a un combat ou non
   useEffect(() => {
@@ -97,6 +111,8 @@ function Adventure() {
         <div className="popUp">
           <div className="popUp__title animate-pulsing animate-iteration-count-infinite">{popUpToShow ? (popUpToShow.title) : (<>Erreur lors de l'affichage du titre !</>)}</div>
           <div className="popUp__text">{popUpToShow ? (popUpToShow.text) : (<>Erreur lors de l'affichage du texte !</>)}</div>
+          {/* Si inventaire plein, on ne peut pas fermer la popUp, il faut faire du tri */}
+          {isInventoryFull() ? (<>Inventaire plein</>) : (<>Inventaire pas plein</>)}
           <button className="popUp__close" onClick={() => setShowPopUp(false)}>Fermer</button>
         </div>
       )}
