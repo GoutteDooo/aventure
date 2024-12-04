@@ -28,7 +28,7 @@ const initialPlayerData = {
     "&",
     "",
   ],
-  choiceSaved: []
+  choiceSaved: [],
 };
 
 const initialPlayerStatsEquipped = {

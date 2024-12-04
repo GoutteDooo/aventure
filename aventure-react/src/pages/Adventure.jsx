@@ -29,33 +29,41 @@ function Adventure() {
 
   //Gère l'état pour passer à l'étape suivante dans d'autres composants
   const handleNextStep = (selectedNextId) => {
-    const nextStep = currentStep.choices?.[selectedNextId]?.nextId || currentStepId + 1;
+    const nextStep =
+      currentStep.choices?.[selectedNextId]?.nextId || currentStepId + 1;
     if (nextStep === "popUp") {
-        const popUpFound = popUps.find((popUpToFind) => popUpToFind.id === currentStep.choices[selectedNextId].popUpId);
-        //Si déjà dans la sauvegarde
-        if (playerStats.choiceSaved.find((i) => 
-          popUpFound.id === playerStats.choiceSaved[i-1])) {
-          console.log("déjà passé par là");
-
-        } else {
-          const savedChoiceId = currentStep.choices[selectedNextId].saveChoiceId;
-          setPlayerStats((prevStats) => ({
-            ...prevStats,
-            choiceSaved: [...prevStats.choiceSaved, savedChoiceId],
-          }))
-          setPopUpToShow(popUpFound);
-          setShowPopUp(true);
-        }
+      const popUpFound = popUps.find(
+        (popUpToFind) =>
+          popUpToFind.id === currentStep.choices[selectedNextId].popUpId
+      );
+      //Si déjà dans la sauvegarde
+      if (
+        playerStats.choiceSaved.find(
+          (i) => popUpFound.id === playerStats.choiceSaved[i - 1]
+        )
+      ) {
+        console.log("déjà passé par là, action annulée");
       } else {
-        setCurrentStepId(nextStep);
+        const savedChoiceId = currentStep.choices[selectedNextId].saveChoiceId;
+        setPlayerStats((prevStats) => ({
+          ...prevStats,
+          choiceSaved: [...prevStats.choiceSaved, savedChoiceId],
+        }));
+        setPopUpToShow(popUpFound);
+        setShowPopUp(true);
+      }
+    } else {
+      setCurrentStepId(nextStep);
     }
   };
 
   const isInventoryFull = () => {
-    const inventoryIsFull = playerStats.inventory.find((itemName) => itemName === "");
-     
+    const inventoryIsFull = playerStats.inventory.find(
+      (itemName) => itemName === ""
+    );
+
     return inventoryIsFull === "" ? false : true;
-  }
+  };
 
   //Detecte s'il y'a un combat ou non
   useEffect(() => {
@@ -74,7 +82,6 @@ function Adventure() {
     localStorage.setItem("currentStepId", JSON.stringify(currentStepId));
   }, [currentStepId]);
 
-
   return (
     <div className="adventure">
       <h1 className="adventure__h1">{currentStep.main}</h1>
@@ -92,15 +99,22 @@ function Adventure() {
           <Combat enemy={enemy} onCombatFinish={handleNextStep} />
         ) : (
           <div className="adventure__choices">
-            {currentStep.choices.map((choice, index) => (
-              <button
-                key={index}
-                className="adventure__choice"
-                onClick={() => handleNextStep(index)}
-              >
-                {choice.text}
-              </button>
-            ))}
+            {currentStep.choices.map(
+              (choice, index) =>
+                // Si choiceSaved == choiceSavedid, on affiche pas
+                !playerStats.choiceSaved.find(
+                  (choiceId) =>
+                    choiceId === currentStep.choices[index].saveChoiceId
+                ) && (
+                  <button
+                    key={index}
+                    className="adventure__choice"
+                    onClick={() => handleNextStep(index)}
+                  >
+                    {choice.text}
+                  </button>
+                )
+            )}
           </div>
         )}
       </div>
@@ -109,11 +123,29 @@ function Adventure() {
       </button>
       {showPopUp && (
         <div className="popUp">
-          <div className="popUp__title animate-pulsing animate-iteration-count-infinite">{popUpToShow ? (popUpToShow.title) : (<>Erreur lors de l'affichage du titre !</>)}</div>
-          <div className="popUp__text">{popUpToShow ? (popUpToShow.text) : (<>Erreur lors de l'affichage du texte !</>)}</div>
+          <div className="popUp__title animate-pulsing animate-iteration-count-infinite">
+            {popUpToShow ? (
+              popUpToShow.title
+            ) : (
+              <>Erreur lors de l'affichage du titre !</>
+            )}
+          </div>
+          <div className="popUp__text">
+            {popUpToShow ? (
+              popUpToShow.text
+            ) : (
+              <>Erreur lors de l'affichage du texte !</>
+            )}
+          </div>
           {/* Si inventaire plein, on ne peut pas fermer la popUp, il faut faire du tri */}
-          {isInventoryFull() ? (<>Inventaire plein</>) : (<>Inventaire pas plein</>)}
-          <button className="popUp__close" onClick={() => setShowPopUp(false)}>Fermer</button>
+          {isInventoryFull() ? (
+            <>Inventaire plein</>
+          ) : (
+            <>Inventaire pas plein</>
+          )}
+          <button className="popUp__close" onClick={() => setShowPopUp(false)}>
+            Fermer
+          </button>
         </div>
       )}
     </div>
