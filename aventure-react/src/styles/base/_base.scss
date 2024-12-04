@@ -11,6 +11,10 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  &.no-interaction {
+    pointer-events: none;
+    user-select: none;
+  }
 }
 
 h1 {

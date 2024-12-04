@@ -171,7 +171,7 @@ function Adventure() {
           {/* Si inventaire plein, on ne peut pas fermer la popUp, il faut faire du tri */}
           {popUpToShow.event == "find item" && isInventoryFull() ? (
             <>
-              Inventaire plein, faites le tri ou jeter l'item trouvé
+              Inventaire plein, faites le tri ou jetez l'item trouvé
               <button
                 className="popUp__inventory__tri"
                 onClick={() => setSortInventory(true)}
@@ -180,7 +180,7 @@ function Adventure() {
               </button>
               {/* Le composant SortInventory s'active quand le joueur clique sur 'faire le tri' */}
               {sortInventory && (
-                <SortInventory itemFound={popUpToShow.effects.itemId} />
+                <SortInventory itemFound={popUpToShow.effects.itemId} setSortInventory={setSortInventory} />
               )}
               <button
                 className="popUp__close"
