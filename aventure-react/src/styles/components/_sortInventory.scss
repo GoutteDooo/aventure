@@ -88,13 +88,14 @@
         margin: 5px;
         padding: 10px;
         &__useless {
-          margin-top: 10px;
           color: grey;
+          height: 60%;
           font-style: italic;
           font-size: 0.8rem;
           text-align: left;
         }
         &__use {
+          height: 40%;
           color: $light1;
           font-size: 1.1rem;
           padding-top: 5px;

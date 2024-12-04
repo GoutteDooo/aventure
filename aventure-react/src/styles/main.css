@@ -1042,13 +1042,14 @@ button:active {
   padding: 10px;
 }
 .sortInv__content__itemFound__desc__useless {
-  margin-top: 10px;
   color: grey;
+  height: 60%;
   font-style: italic;
   font-size: 0.8rem;
   text-align: left;
 }
 .sortInv__content__itemFound__desc__use {
+  height: 40%;
   color: #4f7e4e;
   font-size: 1.1rem;
   padding-top: 5px;
