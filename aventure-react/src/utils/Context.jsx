@@ -21,7 +21,14 @@ const initialPlayerData = {
     outfit: "Tenue de paysan",
     weapon: "Bâton en bois",
   },
-  inventory: ["Nunchaku en acier", "", "", "Trèfle à quatre feuilles", "", ""],
+  inventory: [
+    "Nunchaku en acier",
+    "&",
+    "&",
+    "Trèfle à quatre feuilles",
+    "&",
+    "&",
+  ],
   choiceSaved: [],
 };
 

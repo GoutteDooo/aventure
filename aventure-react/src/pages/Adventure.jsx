@@ -67,6 +67,11 @@ function Adventure() {
     return inventoryIsFull === "" ? false : true;
   };
 
+  const confirmThrowItem = () => {
+    if (confirm("Êtes-vous sûr de jeter l'objet trouvé ? (Définitif)"))
+      setShowPopUp(false);
+  };
+
   /**
    * @param {itemId} itemId - number
    * vérifie si l'inventaire est plein
@@ -82,6 +87,7 @@ function Adventure() {
       console.log("Inventaire plein");
     }
   };
+
   //Detecte s'il y'a un combat ou non
   useEffect(() => {
     if (currentStep.isCombat) {
@@ -161,14 +167,15 @@ function Adventure() {
             )}
           </div>
           {/* Si inventaire plein, on ne peut pas fermer la popUp, il faut faire du tri */}
-          {isInventoryFull() ? (
+          {popUpToShow.event == "find item" && isInventoryFull() ? (
             <>
               Inventaire plein, faites le tri ou jeter l'item trouvé
+              <button className="popUp__inventory__tri">Faire le tri</button>
               <button
                 className="popUp__close"
-                onClick={() => setShowPopUp(false)}
+                onClick={() => confirmThrowItem()}
               >
-                Fermer
+                Jeter l'objet (définitif)
               </button>
             </>
           ) : (
