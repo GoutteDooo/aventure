@@ -7,7 +7,7 @@ const Inventaire = () => {
     const savedPlayerName = localStorage.getItem("playerName");
     return savedPlayerName ? savedPlayerName : "John Doe";
   });
-  const { playerStats, setPlayerStats } = useContext(PlayerContext);
+  const { playerStats, setPlayerStats, findItem } = useContext(PlayerContext);
 
   const inventaire = playerStats.inventory;
   const setInventaire = (update) => {
@@ -24,17 +24,7 @@ const Inventaire = () => {
   const [activeItem, setActiveItem] = useState(null);
 
   const handleItemActive = (item, index) => {
-    if (item !== "") setActiveItem({item, index});
-  };
-
-  /**Recherche l'item passé en paramètre sous forme de string
-   * et retourne un item : objet JS
-   */
-  const findItem = (itemToFind) => {
-    const itemFound = itemsData.find(
-      (item) => item.name === itemToFind
-    );
-    return itemFound;
+    if (item !== "") setActiveItem({ item, index });
   };
 
   const handleItemEffect = () => {
@@ -109,18 +99,22 @@ const Inventaire = () => {
       }));
 
       //Détecter dans quel slot l'item à enlever est, et l'enregistrer.
-      const equippingItemSlot = playerStats.inventory.findIndex((item) => item === equipmentName);
-      
+      const equippingItemSlot = playerStats.inventory.findIndex(
+        (item) => item === equipmentName
+      );
+
       //Une fois fait, on remove l'item du slot
       useItem(equipmentItem);
       //Puis, on y insère l'actualEquippedItem
-    playerStats.inventory[equippingItemSlot] = actualEquippedItem;
+      playerStats.inventory[equippingItemSlot] = actualEquippedItem;
     }
   };
 
   const useItem = (itemUsing) => {
     setActiveItem(null);
-    const itemUsingSlot = playerStats.inventory.findIndex((item) => item === itemUsing.name);
+    const itemUsingSlot = playerStats.inventory.findIndex(
+      (item) => item === itemUsing.name
+    );
     playerStats.inventory[itemUsingSlot] = "";
   };
 
@@ -165,10 +159,7 @@ const Inventaire = () => {
                   .desc_class
               }`}
             >
-              {
-                itemsData.find((item) => item.name === activeItem.item)
-                  .desc_use
-              }
+              {itemsData.find((item) => item.name === activeItem.item).desc_use}
             </div>
             {(findItem(activeItem.item).using === "all" ||
               findItem(activeItem.item).using === "no-combat") && (

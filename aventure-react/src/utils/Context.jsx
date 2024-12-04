@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import itemsData from "../data/itemsData";
 
 export const PlayerContext = createContext();
 /**
@@ -20,14 +21,7 @@ const initialPlayerData = {
     outfit: "Tenue de paysan",
     weapon: "Bâton en bois",
   },
-  inventory: [
-    "Nunchaku en acier",
-    "&",
-    "&",
-    "Trèfle à quatre feuilles",
-    "&",
-    "",
-  ],
+  inventory: ["Nunchaku en acier", "", "", "Trèfle à quatre feuilles", "", ""],
   choiceSaved: [],
 };
 
@@ -83,6 +77,14 @@ export const PlayerProvider = ({ children }) => {
     return combinedStats;
   };
 
+  /**Recherche le nom de l'item passé en paramètre sous forme de string
+   * et retourne un item sous forme d'objet JS
+   */
+  const findItem = (itemToFind) => {
+    const itemFound = itemsData.find((item) => item.name === itemToFind);
+    return itemFound;
+  };
+
   useEffect(() => {
     localStorage.setItem("playerData", JSON.stringify(playerStats));
   }, [playerStats]);
@@ -106,8 +108,6 @@ export const PlayerProvider = ({ children }) => {
     setPlayerStatsEquipped(initialPlayerStatsEquipped);
   };
 
-  const insertItemToInventory = (item) => {};
-
   return (
     <PlayerContext.Provider
       value={{
@@ -118,6 +118,7 @@ export const PlayerProvider = ({ children }) => {
         setPlayerStatsEquipped,
         playerStatsFull,
         setPlayerStatsFull,
+        findItem,
       }}
     >
       {children}

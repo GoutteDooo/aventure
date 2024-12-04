@@ -65,6 +65,21 @@ function Adventure() {
     return inventoryIsFull === "" ? false : true;
   };
 
+  /**
+   * @param {itemId} itemId - number
+   * vérifie si l'inventaire est plein
+   * si oui, ne rien faire
+   * sinon, switch le box vide avec l'item
+   */
+  const setItemToInventory = (itemId) => {
+    if (!isInventoryFull()) {
+      const emptyBox = playerStats.inventory.findIndex((item) => item === "");
+      const itemName = itemsData.find((item) => item.id === itemId).name;
+      playerStats.inventory[emptyBox] = itemName;
+    } else {
+      console.log("Inventaire plein");
+    }
+  };
   //Detecte s'il y'a un combat ou non
   useEffect(() => {
     if (currentStep.isCombat) {
@@ -139,13 +154,26 @@ function Adventure() {
           </div>
           {/* Si inventaire plein, on ne peut pas fermer la popUp, il faut faire du tri */}
           {isInventoryFull() ? (
-            <>Inventaire plein</>
+            <>
+              Inventaire plein, faites le tri ou jeter l'item trouvé
+              <button
+                className="popUp__close"
+                onClick={() => setShowPopUp(false)}
+              >
+                Fermer
+              </button>
+            </>
           ) : (
-            <>Inventaire pas plein</>
+            <>
+              {setItemToInventory(popUpToShow.effects.itemId)}
+              <button
+                className="popUp__close"
+                onClick={() => setShowPopUp(false)}
+              >
+                Fermer
+              </button>
+            </>
           )}
-          <button className="popUp__close" onClick={() => setShowPopUp(false)}>
-            Fermer
-          </button>
         </div>
       )}
     </div>
