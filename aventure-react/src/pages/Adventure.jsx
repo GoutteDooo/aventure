@@ -7,6 +7,7 @@ import popUps from "../data/popUpsData";
 import Combat from "../components/Combat";
 import { useNavigate } from "react-router-dom";
 import { PlayerContext } from "../utils/Context";
+import SortInventory from "../components/SortInventory";
 
 function Adventure() {
   const { playerStats, setPlayerStats } = useContext(PlayerContext);
@@ -22,6 +23,7 @@ function Adventure() {
 
   const [showPopUp, setShowPopUp] = useState(false);
   const [popUpToShow, setPopUpToShow] = useState(null);
+  const [sortInventory, setSortInventory] = useState(false);
 
   //State en cas de combat
   const [isInCombat, setIsInCombat] = useState(false);
@@ -67,7 +69,7 @@ function Adventure() {
     return inventoryIsFull === "" ? false : true;
   };
 
-  const confirmThrowItem = () => {
+  const confirmThrowAwayItem = () => {
     if (confirm("Êtes-vous sûr de jeter l'objet trouvé ? (Définitif)"))
       setShowPopUp(false);
   };
@@ -170,10 +172,19 @@ function Adventure() {
           {popUpToShow.event == "find item" && isInventoryFull() ? (
             <>
               Inventaire plein, faites le tri ou jeter l'item trouvé
-              <button className="popUp__inventory__tri">Faire le tri</button>
+              <button
+                className="popUp__inventory__tri"
+                onClick={() => setSortInventory(true)}
+              >
+                Faire le tri
+              </button>
+              {/* Le composant SortInventory s'active quand le joueur clique sur 'faire le tri' */}
+              {sortInventory && (
+                <SortInventory itemFound={popUpToShow.effects.itemId} />
+              )}
               <button
                 className="popUp__close"
-                onClick={() => confirmThrowItem()}
+                onClick={() => confirmThrowAwayItem()}
               >
                 Jeter l'objet (définitif)
               </button>

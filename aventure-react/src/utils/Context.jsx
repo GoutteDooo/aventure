@@ -84,12 +84,27 @@ export const PlayerProvider = ({ children }) => {
     return combinedStats;
   };
 
-  /**Recherche le nom de l'item passé en paramètre sous forme de string
-   * et retourne un item sous forme d'objet JS
+  /**
+   * !! Ne pas entrer les deux valeurs, une seule.
+   * Recherche un item dans les données d'items par son nom ou son ID.
+   * Si les deux sont entrées, ce sera id qui sera pris en premier
+   * Pour appeler par un id, écrire dans les paramètres : (null, id)
+   *
+   * @param {string} [itemToFindByName] - Le nom de l'item à rechercher (facultatif).
+   * @param {number} [itemToFindById] - L'ID de l'item à rechercher (facultatif).
+   * @returns {Object | undefined} - L'objet correspondant à l'item trouvé, ou `undefined` s'il n'existe pas.
    */
-  const findItem = (itemToFind) => {
-    const itemFound = itemsData.find((item) => item.name === itemToFind);
-    return itemFound;
+  const findItem = (itemToFindByName = null, itemToFindById = null) => {
+    if (itemToFindById) {
+      const itemFound = itemsData.find((item) => item.id === itemToFindById);
+      return itemFound;
+    }
+    if (itemToFindByName) {
+      const itemFound = itemsData.find((item) => item.name === itemToFind);
+      return itemFound;
+    }
+
+    return undefined;
   };
 
   useEffect(() => {
