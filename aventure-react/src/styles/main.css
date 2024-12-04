@@ -720,6 +720,22 @@ button:active {
   transform: translate(-50%, 10px);
 }
 
+.sortInv {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: red;
+}
+.sortInv__overlay {
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
 /* LAYOUTS */
 /* PAGES */
 .home {

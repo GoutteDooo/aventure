@@ -24,16 +24,16 @@ h2 {
 }
 
 button {
-    background: $dark3;
-    color: $light1;
-    border-radius: 5000px;
-    box-shadow: 0 10px 0 0 black;
-    &:hover {
-      color: $white;
-      background: $dark2;
-    }
-    &:active {
+  background: $dark3;
+  color: $light1;
+  border-radius: 5000px;
+  box-shadow: 0 10px 0 0 black;
+  &:hover {
+    color: $white;
+    background: $dark2;
+  }
+  &:active {
     box-shadow: 0 0px 0 0 black;
     transform: translateY(10px);
-    }
+  }
 }
