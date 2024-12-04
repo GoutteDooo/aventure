@@ -57,6 +57,8 @@ function Adventure() {
     }
   };
 
+  /**Vérifie si l'inventaire est plein, et retourne true le cas échéant, sinon false.
+   */
   const isInventoryFull = () => {
     const inventoryIsFull = playerStats.inventory.find(
       (itemName) => itemName === ""
@@ -96,6 +98,12 @@ function Adventure() {
     //Met à jour le localStorage lorsqu'une étape change
     localStorage.setItem("currentStepId", JSON.stringify(currentStepId));
   }, [currentStepId]);
+
+  useEffect(() => {
+    if (popUpToShow) {
+      setItemToInventory(popUpToShow.effects.itemId);
+    }
+  }, [popUpToShow]);
 
   return (
     <div className="adventure">
@@ -165,7 +173,6 @@ function Adventure() {
             </>
           ) : (
             <>
-              {setItemToInventory(popUpToShow.effects.itemId)}
               <button
                 className="popUp__close"
                 onClick={() => setShowPopUp(false)}
