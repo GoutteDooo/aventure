@@ -14,8 +14,10 @@ const SortInventory = ({ itemFound, setSortInventory, setShowPopUp }) => {
   const [currentItemIdFound, setCurrentItemIdFound] = useState(itemFound);
 
   const handleClose = () => {
-    setSortInventory(false);
-    setShowPopUp(false);
+    if (confirm("Etes-vous sûr de confirmer ces changements ?")) {
+      setSortInventory(false);
+      setShowPopUp(false);
+    }
   }
 
   const handleExchange = () => {
@@ -78,7 +80,6 @@ const SortInventory = ({ itemFound, setSortInventory, setShowPopUp }) => {
           <div className="sortInv__content__itemFound__name">
             <div
               className={`inventory__container__item inventory__container__item--selected`}
-              onClick={() => handleItemActive(item, index)}
             >
               {findItem(null, currentItemIdFound).name}
             </div>

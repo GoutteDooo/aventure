@@ -1015,6 +1015,10 @@ button:active {
   font-size: 0.9rem;
   padding: 5px;
 }
+.sortInv__content__itemDesc__use__button:active {
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
 .sortInv__content__itemFound {
   background: #394053;
   border: 5px solid #4e4a59;
