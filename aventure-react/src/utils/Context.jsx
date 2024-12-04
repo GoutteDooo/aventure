@@ -23,11 +23,11 @@ const initialPlayerData = {
   },
   inventory: [
     "Nunchaku en acier",
-    "&",
-    "&",
     "Trèfle à quatre feuilles",
-    "&",
-    "&",
+    "Trèfle à quatre feuilles",
+    "Trèfle à quatre feuilles",
+    "Trèfle à quatre feuilles",
+    "Trèfle à quatre feuilles",
   ],
   choiceSaved: [],
 };
@@ -85,8 +85,8 @@ export const PlayerProvider = ({ children }) => {
   };
 
   /**
-   * !! Ne pas entrer les deux valeurs, une seule.
    * Recherche un item dans les données d'items par son nom ou son ID.
+   * !! Ne pas entrer les deux valeurs, une seule.
    * Si les deux sont entrées, ce sera id qui sera pris en premier
    * Pour appeler par un id, écrire dans les paramètres : (null, id)
    *
@@ -100,7 +100,7 @@ export const PlayerProvider = ({ children }) => {
       return itemFound;
     }
     if (itemToFindByName) {
-      const itemFound = itemsData.find((item) => item.name === itemToFind);
+      const itemFound = itemsData.find((item) => item.name === itemToFindByName);
       return itemFound;
     }
 

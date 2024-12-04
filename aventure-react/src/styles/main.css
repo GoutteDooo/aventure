@@ -978,12 +978,42 @@ button:active {
   border: 5px solid #4e4a59;
 }
 .sortInv__content__itemDesc {
-  background: green;
+  background: #394053;
+  border: 5px solid #4e4a59;
+  border-radius: 15px;
   width: 300px;
   height: 60%;
   margin-right: 20px;
+  padding: 10px 20px;
   -ms-flex-item-align: center;
       align-self: center;
+}
+.sortInv__content__itemDesc__name {
+  color: #839073;
+  font-size: 1.25rem;
+  margin: 5px 0 10px;
+}
+.sortInv__content__itemDesc__useless {
+  text-align: left;
+  color: #6E6362;
+  height: 80px;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.sortInv__content__itemDesc__use {
+  position: relative;
+  color: #4f7e4e;
+  font-size: 1.2rem;
+  height: 50px;
+}
+.sortInv__content__itemDesc__use__button {
+  position: absolute;
+  left: -10px;
+  bottom: 0;
+  -webkit-box-shadow: 0 5px 0 0 black;
+          box-shadow: 0 5px 0 0 black;
+  font-size: 0.9rem;
+  padding: 5px;
 }
 .sortInv__content__itemFound {
   background: #394053;
@@ -1005,7 +1035,7 @@ button:active {
           box-sizing: border-box;
   height: 170px;
   margin: 5px;
-  padding: 15px;
+  padding: 10px;
 }
 .sortInv__content__itemFound__desc__useless {
   margin-top: 10px;
@@ -1016,17 +1046,38 @@ button:active {
 }
 .sortInv__content__itemFound__desc__use {
   color: #4f7e4e;
-  font-size: 1.2rem;
-  padding-top: 15px;
+  font-size: 1.1rem;
+  padding-top: 5px;
+}
+.sortInv__exchange {
+  position: absolute;
+  bottom: 30px;
+  left: 310px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: 10px;
+  width: 100px;
+  height: 40px;
+  background: #839073;
+  color: #394053;
+}
+.sortInv__exchange:hover {
+  background: #4f7e4e;
+}
+.sortInv__exchange:active {
+  background: #4f7e4e;
+  -webkit-transform: translate(-50%, 10px);
+          transform: translate(-50%, 10px);
 }
 .sortInv__finish {
   position: absolute;
   bottom: 30px;
-  left: 50%;
+  left: 480px;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  width: 120px;
-  height: 50px;
+  padding: 10px;
+  width: 100px;
+  height: 40px;
 }
 .sortInv__finish:active {
   -webkit-transform: translate(-50%, 10px);

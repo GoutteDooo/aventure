@@ -30,11 +30,41 @@
       border: 5px solid $dark2;
     }
     &__itemDesc {
-      background: green;
+      background: $dark3;
+      border: 5px solid $dark2;
+      border-radius: 15px;
       width: 300px;
       height: 60%;
       margin-right: 20px;
+      padding: 10px 20px;
       align-self: center;
+      &__name {
+        color: $light2;
+        font-size: 1.25rem;
+        margin: 5px 0 10px;
+      }
+      &__useless {
+        text-align: left;
+        color: $dark1;
+        height: 80px;
+        font-size: 0.9rem;
+        font-style: italic;
+      }
+      &__use {
+        position: relative;
+        color: $light1;
+        font-size: 1.2rem;
+        height: 50px;
+        &__button {
+          position: absolute;
+          left: -10px;
+          bottom: 0;
+          box-shadow: 0 5px 0 0 black;
+          font-size: 0.9rem;
+          padding: 5px;
+
+        }
+      }
     }
     &__itemFound {
       background: $dark3;
@@ -53,7 +83,7 @@
         box-sizing: border-box;
         height: 170px;
         margin: 5px;
-        padding: 15px;
+        padding: 10px;
         &__useless {
           margin-top: 10px;
           color: grey;
@@ -63,19 +93,39 @@
         }
         &__use {
           color: $light1;
-          font-size: 1.2rem;
-          padding-top: 15px;
+          font-size: 1.1rem;
+          padding-top: 5px;
         }
       }
     }
   }
+  &__exchange {
+    position: absolute;
+    bottom: 30px;
+    left: 310px;
+    transform: translateX(-50%);
+    padding: 10px;
+    width: 100px;
+    height: 40px;
+    background: $light2;
+    color: $dark3;
+    &:hover {
+      background: $light1;
+    }
+    &:active {
+      background: $light1;
+      transform: translate(-50%,10px);
+    }
+
+  }
   &__finish {
     position: absolute;
     bottom: 30px;
-    left: 50%;
+    left: 480px;
     transform: translateX(-50%);
-    width: 120px;
-    height: 50px;
+    padding: 10px;
+    width: 100px;
+    height: 40px;
     &:active {
       transform: translate(-50%,10px);
     }

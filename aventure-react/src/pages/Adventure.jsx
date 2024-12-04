@@ -180,7 +180,8 @@ function Adventure() {
               </button>
               {/* Le composant SortInventory s'active quand le joueur clique sur 'faire le tri' */}
               {sortInventory && (
-                <SortInventory itemFound={popUpToShow.effects.itemId} setSortInventory={setSortInventory} />
+                <SortInventory itemFound={popUpToShow.effects.itemId} setSortInventory={setSortInventory}
+                setShowPopUp={setShowPopUp} />
               )}
               <button
                 className="popUp__close"
