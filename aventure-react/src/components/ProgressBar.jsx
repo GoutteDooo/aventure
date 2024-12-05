@@ -1,25 +1,35 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { PlayerContext } from '../utils/Context';
+import SkillsTree from './SkillsTree';
 
 const ProgressBar = () => {
-    const { playerStats, setPlayerStats, findItem, useItem } =
+    const { playerStats, setPlayerStats } =
       useContext(PlayerContext);
-      
-    const calcProgressBar = () => {
-    const progress = playerStats.statsLevel.actualExp / playerStats.statsLevel.expToNextLevel;
-    return progress * 100;
-    }
+    const [showToolTip, setShowToolTip] = useState(false);
+    
+    const exp = playerStats.statsLevel.actualExp;
+    const expToNextLevel = playerStats.statsLevel.expToNextLevel;
+    const progressPercentage = (exp / expToNextLevel) * 100;
     
     return (
-        <div className="inventory__level">
-          <div className="inventory__level__actualLevel">
+        <div className="progressBar">
+          <div className="progressBar__actualLevel">
             Niveau {playerStats.statsLevel.actualLevel}
-            <div className="inventory__level__actualLevel__progressBar">
+            <div className="progressBar__actualLevel__percentage"
+              onMouseEnter={() => setShowToolTip(true)}
+              onMouseLeave={() => setShowToolTip(false)}>
               <div className="progressBar__fill"
-              style={{width:`${calcProgressBar()}%`}}></div>
+              style={{width:`${progressPercentage}%`}}
+              ></div>
             </div>
           </div>
-          <div className="inventory__level__skillsTree">Arbre des compétences</div>
+          {/* ToolTip */}
+            {showToolTip && (
+              <div className="progressBar__tooltip">
+                {exp} / {expToNextLevel}
+              </div>
+            )}
+          <SkillsTree />
         </div>
     );
 };

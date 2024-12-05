@@ -693,62 +693,6 @@ button:active {
 .inventory__description__button:hover {
   background: #394053;
 }
-.inventory__level {
-  height: 80%;
-  width: 250px;
-  -ms-flex-item-align: end;
-      align-self: end;
-  text-align: center;
-  border: 7px solid #394053;
-  border-radius: 25px;
-  background: #4e4a59;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.inventory__level__actualLevel {
-  position: relative;
-  height: 15%;
-  width: 80%;
-  margin: 10px 0;
-  background: #6E6362;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 25px;
-  font-family: "UnifrakturMaguntia";
-  font-size: 1.25rem;
-  border: 2px solid #394053;
-  overflow: hidden;
-}
-.inventory__level__actualLevel__progressBar {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-.inventory__level__actualLevel__progressBar .progressBar__fill {
-  position: absolute;
-  background: rgba(186, 85, 211, 0.692);
-  height: 100%;
-}
-.inventory__level__skillsTree {
-  background: blue;
-  height: 75px;
-  width: 75px;
-}
 
 .stats {
   display: -webkit-box;
@@ -1149,6 +1093,81 @@ button:active {
 .sortInv__finish:active {
   -webkit-transform: translate(-50%, 10px);
           transform: translate(-50%, 10px);
+}
+
+.progressBar {
+  position: relative;
+  height: 80%;
+  width: 250px;
+  -ms-flex-item-align: end;
+      align-self: end;
+  text-align: center;
+  border: 7px solid #394053;
+  border-radius: 25px;
+  background: #4e4a59;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.progressBar__actualLevel {
+  position: relative;
+  height: 15%;
+  width: 80%;
+  margin: 10px 0;
+  background: #394053;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 25px;
+  font-family: "UnifrakturMaguntia";
+  font-size: 1.25rem;
+  border: 2px solid #6E6362;
+  overflow: hidden;
+}
+.progressBar__actualLevel__percentage {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.progressBar__actualLevel__percentage .progressBar__fill {
+  position: absolute;
+  background: rgba(186, 85, 211, 0.692);
+  height: 100%;
+}
+.progressBar__tooltip {
+  position: absolute;
+  top: -15px; /* Position au-dessus de la barre */
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.skillsTree {
+  display: none;
+  background: blue;
+  height: 75px;
+  width: 75px;
 }
 
 /* LAYOUTS */
