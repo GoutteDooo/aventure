@@ -27,7 +27,7 @@ const initialPlayerData = {
     "Trèfle à quatre feuilles",
     "Trèfle à quatre feuilles",
     "Trèfle à quatre feuilles",
-    "Trèfle à quatre feuilles",
+    "Amanite tue-mouches",
   ],
   choiceSaved: [],
 };
@@ -119,19 +119,25 @@ export const PlayerProvider = ({ children }) => {
   const useItem = (itemToUse = null, indexItem = null) => {
     let itemIsUsed = false;
     switch (itemToUse.effect) {
+      case "accuracy":
+      case "attack":
+      case "chance":
+      case "defense":
+      case "initiative":
+      case "maxHealth":
+        if (playerStats.stats.chance < 1) {
+          upStatsPlayer(itemToUse.effect, itemToUse.value);
+          itemIsUsed = true;
+        }
+        break;
       case "heal":
         if (playerStats.health < playerStats.maxHealth) {
           healPlayer(itemToUse.value);
           itemIsUsed = true;
         }
-      case "chance":
-        if (playerStats.stats.chance < 1) {
-          upStatsPlayer(itemToUse.effect, itemToUse.value);
-          itemIsUsed = true;
-        }
+        break;
     }
     console.log("useItem activé");
-    console.log(itemIsUsed);
 
     if (itemIsUsed) removeItem(indexItem);
   };

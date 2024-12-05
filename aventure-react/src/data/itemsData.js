@@ -118,6 +118,19 @@ const itemsData = [
     desc_class: "positive",
     using: "equip",
   },
+  {
+    id: 11,
+    name: "Amanite tue-mouches",
+    direction: "inventory",
+    effect: "maxHealth",
+    value: 10,
+    desc_useless:
+      "En voyant le rouge vif du chapeau, cela vous rappelle votre grand-mère qui vous prévenait sur des dangers de... vous ne vous rappelez plus.",
+    desc_use: "??? (Usage unique)",
+    desc_surprise: "Santé max augmentée de 10 !",
+    desc_class: "positive",
+    using: "all",
+  },
 ];
 
 export default itemsData;
