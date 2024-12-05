@@ -53,4 +53,38 @@
 - La formule de la variance de l'attaque surprise se calcule ainsi :
   - P(surprise) = max(Pmin, min(Pmax, base + diff \* facteur))
   - avec Pmin définie a 3% et Pmax a 90%.
-  -
+
+## Le Level
+
+- Le système de niveau reflète un peu les systèmes de RPG comme WoW. ?
+- Je pense à faire un système qui reflète le caractère du joueur.
+- Par exemple :
+  - Si le joueur aime attaquer dans les combats, ce sera son attaque qui augmentera principalement
+  - S'il aime se protéger, ce sera sa défense
+  - S'il aime utiliser de la magie, sa magie sera priorisée
+  - S'il aime fuir, ce sera plutôt son initiative
+  - S'il prend bcp de dégâts, ce sera sa santé max.
+  - Toutes les stats prendront quoi qu'il arrive, mais le caractère du joueur influencera la distribution des points gagnés.
+  - Seule la chance ne prendra pas. Il faudra trouver des éléments pour combler cette stat. (le chapeau de paille prendra avec le temps mais le joueur devra le remarquer)
+- J'imagine un système progressif. Plus le level du joueur est élevé, plus les points gagnés pour la distribution des stats seront nombreux. Quelque chose comme ça par exemple (Fibonacci) :
+
+| level | points gagnés |
+| ----- | ------------- |
+| 1     | X             |
+| 2     | 2             |
+| 3     | 3             |
+| 4     | 5             |
+| 5     | 8             |
+| 6     | 13            |
+| 7     | 21            |
+| 8     | 34            |
+| 9     | 55            |
+| 10    | 89            |
+
+| Caractère du joueur | Stat priorisée | Points pris | Points restants à distribuer |
+| ------------------- | -------------- | ----------- | ---------------------------- |
+| Attaque             | Attaque        | 50%         | 50%                          |
+| Défense             | Défense        | 40%         | 60%                          |
+| Magie               | Chance         | 33%         | 67%                          |
+| Fuite               | Initiative     | 80%         | 20%                          |
+| Tank                | maxHealth      | 50%         | 50%                          |
