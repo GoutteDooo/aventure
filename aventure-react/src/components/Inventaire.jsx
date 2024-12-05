@@ -33,6 +33,44 @@ const Inventaire = () => {
     setActiveItem(null);
   };
 
+  const handleItemEffect = () => {
+    if (!activeItem) return; //sécurité
+
+    const item = findItem(activeItem.item);
+    switch (item.effect) {
+      case "heal":
+        if (playerStats.stats.health < playerStats.stats.maxHealth) {
+          setPlayerStats((prevStats) => ({
+            ...prevStats,
+            stats: {
+              ...prevStats.stats,
+              health: Math.min(
+                prevStats.stats.health + item.value,
+                prevStats.stats.maxHealth
+              ),
+            },
+          }));
+          removeItem(item);
+        } else {
+          console.log("N'a pas pu utiliser l'item. Santé déjà au max.");
+        }
+        break;
+
+      case "chance":
+        setPlayerStats((prevStats) => ({
+          ...prevStats,
+          stats: {
+            ...prevStats.stats,
+            chance: prevStats.stats.chance + item.value / 100,
+          },
+        }));
+        removeItem(item);
+        break;
+      default:
+        break;
+    }
+  };
+
   const handlePutOnEquipment = (equipmentName) => {
     const equipmentItem = findItem(equipmentName);
 

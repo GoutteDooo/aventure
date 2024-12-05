@@ -118,6 +118,7 @@ export const PlayerProvider = ({ children }) => {
    */
   const useItem = (itemToUse = null, indexItem = null) => {
     let itemIsUsed = false;
+
     switch (itemToUse.effect) {
       case "accuracy":
       case "attack":
@@ -131,7 +132,10 @@ export const PlayerProvider = ({ children }) => {
         }
         break;
       case "heal":
-        if (playerStats.health < playerStats.maxHealth) {
+        console.log("heal OK");
+
+        if (playerStats.stats.health < playerStats.stats.maxHealth) {
+          console.log("heal activé");
           healPlayer(itemToUse.value);
           itemIsUsed = true;
         }
@@ -157,7 +161,7 @@ export const PlayerProvider = ({ children }) => {
       stats: {
         ...prevStats.stats,
         health: Math.min(
-          prevStats.stats.health + item.value,
+          prevStats.stats.health + healPoints,
           prevStats.stats.maxHealth
         ),
       },
