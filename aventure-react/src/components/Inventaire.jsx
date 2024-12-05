@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import itemsData from "../data/itemsData";
 import { PlayerContext } from "../utils/Context";
+import ProgressBar from "./ProgressBar";
 
 const Inventaire = () => {
   const [playerName, setPlayerName] = useState(() => {
@@ -188,9 +189,7 @@ const Inventaire = () => {
           </>
         )}
       </div>
-      <div className="inventory__level">
-        <div className="inventory__level__actualLevel">Niveau {playerStats.statsLevel.actualLevel}</div>
-      </div>
+      <ProgressBar />
     </div>
   );
 };

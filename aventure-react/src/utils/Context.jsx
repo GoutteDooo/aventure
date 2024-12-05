@@ -31,7 +31,7 @@ const initialPlayerData = {
   ],
   statsLevel: {
     actualLevel:1,
-    actualExp:0,
+    actualExp:44,
     expToNextLevel:100,
   },
   choiceSaved: [],

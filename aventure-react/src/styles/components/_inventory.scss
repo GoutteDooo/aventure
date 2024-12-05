@@ -88,9 +88,43 @@
     }
   }
   &__level {
-    background: red;
     height: 80%;
     width: 250px;
     align-self: end;
+    text-align: center;
+    border: 7px solid $dark3;
+    border-radius: 25px;
+    background: $dark2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__actualLevel { 
+      position: relative;
+      height: 15%;
+      width: 80%;
+      margin: 10px 0;
+      background: $dark1;
+      @include verticalCenter;
+      border-radius: 25px;
+      font-family: "UnifrakturMaguntia";
+      font-size: 1.25rem;
+      border: 2px solid $dark3;
+      overflow: hidden;
+      &__progressBar {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        .progressBar__fill {
+          position: absolute;
+          background: rgba(186, 85, 211, 0.692);
+          height: 100%;
+        }
+      }
+    }
+    &__skillsTree {
+      background: blue;
+      height: 75px;
+      width: 75px;
+    }
   }
 }
