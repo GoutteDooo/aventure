@@ -118,17 +118,20 @@ export const PlayerProvider = ({ children }) => {
    */
   const useItem = (itemToUse = null, indexItem = null) => {
     let itemIsUsed = false;
-    switch (item.effect) {
+    switch (itemToUse.effect) {
       case "heal":
         if (playerStats.health < playerStats.maxHealth) {
-          healPlayer(item.value);
+          healPlayer(itemToUse.value);
           itemIsUsed = true;
         }
       case "chance":
         if (playerStats.stats.chance < 1) {
-          upStatsPlayer(item.effect, item.value);
+          upStatsPlayer(itemToUse.effect, itemToUse.value);
+          itemIsUsed = true;
         }
     }
+    console.log("useItem activé");
+    console.log(itemIsUsed);
 
     if (itemIsUsed) removeItem(indexItem);
   };
@@ -205,6 +208,7 @@ export const PlayerProvider = ({ children }) => {
         playerStatsFull,
         setPlayerStatsFull,
         findItem,
+        useItem,
       }}
     >
       {children}

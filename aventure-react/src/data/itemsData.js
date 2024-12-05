@@ -75,7 +75,7 @@ const itemsData = [
     name: "Trèfle à quatre feuilles",
     direction: "inventory",
     effect: "chance",
-    value: 1,
+    value: 0.01,
     desc_useless:
       "Ce trèfle paraît parfait, tant les dimensions des feuilles et de la tige sont symétriques. Sa beauté vous ouvre l'appétit.",
     desc_use: "Augmente la chance de 1. (Usage unique) ",

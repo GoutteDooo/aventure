@@ -7,7 +7,8 @@ const Inventaire = () => {
     const savedPlayerName = localStorage.getItem("playerName");
     return savedPlayerName ? savedPlayerName : "John Doe";
   });
-  const { playerStats, setPlayerStats, findItem } = useContext(PlayerContext);
+  const { playerStats, setPlayerStats, findItem, useItem } =
+    useContext(PlayerContext);
 
   const inventaire = playerStats.inventory;
   const setInventaire = (update) => {
@@ -25,6 +26,11 @@ const Inventaire = () => {
 
   const handleItemActive = (item, index) => {
     if (item !== "") setActiveItem({ item, index });
+  };
+
+  const handleItemUsed = () => {
+    useItem(findItem(activeItem.item), activeItem.index);
+    setActiveItem(null);
   };
 
   const handleItemEffect = () => {
@@ -165,7 +171,8 @@ const Inventaire = () => {
               findItem(activeItem.item).using === "no-combat") && (
               <button
                 className="inventory__description__button"
-                onClick={() => handleItemEffect(activeItem.item)}
+                // onClick={() => handleItemEffect(activeItem.item)}
+                onClick={() => handleItemUsed()}
               >
                 Utiliser
               </button>
