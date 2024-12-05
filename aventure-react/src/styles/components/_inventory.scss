@@ -1,6 +1,8 @@
 .inventory {
   display: flex;
+  justify-content: space-around;
   align-items: center;
+  height: 304px;
   h1 {
     position: absolute;
     top: 10px;
@@ -53,7 +55,6 @@
     background: $dark2;
     width: 400px;
     height: 250px;
-    margin-left: 50px;
     border-radius: 25px;
     border: 7px solid $dark3;
     padding: 20px;
@@ -85,5 +86,11 @@
             background: $dark3;
         }
     }
+  }
+  &__level {
+    background: red;
+    height: 80%;
+    width: 250px;
+    align-self: end;
   }
 }

@@ -29,8 +29,15 @@ const initialPlayerData = {
     "Trèfle à quatre feuilles",
     "Amanite tue-mouches",
   ],
+  statsLevel: {
+    actualLevel:1,
+    actualExp:0,
+    expToNextLevel:100,
+  },
   choiceSaved: [],
 };
+
+const levelUpExp = [[2,100],[3,200],[4,300],[5,500],[6,800],[7,1300],[8,2100],[9,3400],[10,5500],]
 
 const initialPlayerStatsEquipped = {
   maxHealth: 0,

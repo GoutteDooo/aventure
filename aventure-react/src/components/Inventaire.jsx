@@ -188,6 +188,9 @@ const Inventaire = () => {
           </>
         )}
       </div>
+      <div className="inventory__level">
+        <div className="inventory__level__actualLevel">Niveau {playerStats.statsLevel.actualLevel}</div>
+      </div>
     </div>
   );
 };

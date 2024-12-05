@@ -56,7 +56,6 @@
 
 ## Le Level
 
-- Le système de niveau reflète un peu les systèmes de RPG comme WoW. ?
 - Je pense à faire un système qui reflète le caractère du joueur.
 - Par exemple :
   - Si le joueur aime attaquer dans les combats, ce sera son attaque qui augmentera principalement
@@ -81,10 +80,33 @@
 | 9     | 55            |
 | 10    | 89            |
 
-| Caractère du joueur | Stat priorisée | Points pris | Points restants à distribuer |
-| ------------------- | -------------- | ----------- | ---------------------------- |
-| Attaque             | Attaque        | 50%         | 50%                          |
-| Défense             | Défense        | 40%         | 60%                          |
-| Magie               | Chance         | 33%         | 67%                          |
-| Fuite               | Initiative     | 80%         | 20%                          |
-| Tank                | maxHealth      | 50%         | 50%                          |
+| Caractère du joueur | Stat priorisée | Points pris | Points restants à répartir|
+| ------------------- | -------------- | ----------- | ------------------------- |
+| Attaque             | Attaque        | 60%         | 40%                       |
+| Défense             | Défense        | 40%         | 60%                       |
+| Magie               | Chance         | 33%         | 67%                       |
+| Fuite               | Initiative     | 80%         | 20%                       |
+| Tank                | maxHealth      | 50%         | 50%                       |
+
+- Une fois que le caractère dominant du joueur est tracé, il suit son cours au fil du jeu.
+- Le caractère peut changer en cours de jeu.
+- Un caractère se renforce au fur et à mesure des actions jouées qui vont dans son sens. Mais la valeur d'un caractère atteint un plafond à un moment donné pour ne pas que le caractère devienne irratrapable lors d'un revirement de comportement de la part du joueur.
+- Un caractère qui a été "débloqué" précédemment perd de la valeur lorsqu'il est remplacé par un autre, mais prends beaucoup moins de temps à repartir.
+- Je pense m'inspirer une nouvelle fois de la suite de Fibonacci pour déterminer un trait de caractère.
+- Le caractère prend de la valeur après chaque combat.
+
+### Arbre des compétences
+- Il y'aura un arbre des compétences.
+- Chaque level gagné offre plusieurs points de compétences à distribuer dans l'arbre des compétences.
+- Chaque branche de l'arbre détermine une spécialité
+- Attaque / Vie ou Défense / Magie
+  
+| Niveau br | Attaque | Vie/Défense | Magie |
+| --------- | ------- | ----------- | ----- |
+| 1         | +2 Atk  | +10 Santé   | Feu   |
+| 2         |         | +5 Défense  |       |
+| 3         |         | "Se blinder"|       |
+| 4         | +15 Atk | +50 santé   |       |
+| 5         |         |             |       |
+| 6         |         |             |       |
+| 7         | Perce 50% de la défense adv |             |       |
