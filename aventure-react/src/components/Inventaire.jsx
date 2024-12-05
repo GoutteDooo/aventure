@@ -50,7 +50,7 @@ const Inventaire = () => {
         }
         break;
 
-      case "stats:chance":
+      case "chance":
         setPlayerStats((prevStats) => ({
           ...prevStats,
           stats: {

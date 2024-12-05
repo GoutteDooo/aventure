@@ -9,7 +9,7 @@
   background: $dark1;
   border: 15px solid $light2;
   border-radius: 50px;
-  pointer-events:auto;
+  pointer-events: auto;
   user-select: text;
   &__content {
     display: flex;
@@ -65,7 +65,6 @@
           &:active {
             transform: translateY(5px);
           }
-
         }
       }
     }
@@ -118,9 +117,8 @@
     }
     &:active {
       background: $light1;
-      transform: translate(-50%,10px);
+      transform: translate(-50%, 10px);
     }
-
   }
   &__finish {
     position: absolute;
@@ -131,7 +129,7 @@
     width: 100px;
     height: 40px;
     &:active {
-      transform: translate(-50%,10px);
+      transform: translate(-50%, 10px);
     }
   }
 }

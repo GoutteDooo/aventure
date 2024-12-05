@@ -50,7 +50,7 @@ const itemsData = [
     id: 5,
     name: "Sandwich à l'ail",
     direction: "inventory",
-    effect: "heal",
+    effect: "unique:heal",
     value: 100,
     desc_useless:
       "Un délicieux sandwich confectionné avec soin par votre épouse.",
@@ -74,7 +74,7 @@ const itemsData = [
     id: 7,
     name: "Trèfle à quatre feuilles",
     direction: "inventory",
-    effect: "stats:chance",
+    effect: "chance",
     value: 1,
     desc_useless:
       "Ce trèfle paraît parfait, tant les dimensions des feuilles et de la tige sont symétriques. Sa beauté vous ouvre l'appétit.",

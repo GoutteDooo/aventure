@@ -100,11 +100,75 @@ export const PlayerProvider = ({ children }) => {
       return itemFound;
     }
     if (itemToFindByName) {
-      const itemFound = itemsData.find((item) => item.name === itemToFindByName);
+      const itemFound = itemsData.find(
+        (item) => item.name === itemToFindByName
+      );
       return itemFound;
     }
 
     return undefined;
+  };
+
+  /**
+   *
+   * @param {object} itemToUse - l'item en tant qu'objet
+   * @param {number} indexItem - index de l'item dans l'inventaire
+   * Active l'effet de l'item, et le remove de l'inventaire
+   * setActiveItem sera géré par le composant utilisant cette fonction
+   */
+  const useItem = (itemToUse = null, indexItem = null) => {
+    let itemIsUsed = false;
+    switch (item.effect) {
+      case "heal":
+        if (playerStats.health < playerStats.maxHealth) {
+          healPlayer(item.value);
+          itemIsUsed = true;
+        }
+      case "chance":
+        if (playerStats.stats.chance < 1) {
+          upStatsPlayer(item.effect, item.value);
+        }
+    }
+
+    if (itemIsUsed) removeItem(indexItem);
+  };
+
+  /**
+   *
+   * @param {number} index
+   * Retire l'item de l'inventaire à l'index passé en paramètre
+   */
+  const removeItem = (index) => {
+    playerStats.inventory[index] = "";
+  };
+
+  const healPlayer = (healPoints) => {
+    setPlayerStats((prevStats) => ({
+      ...prevStats,
+      stats: {
+        ...prevStats.stats,
+        health: Math.min(
+          prevStats.stats.health + item.value,
+          prevStats.stats.maxHealth
+        ),
+      },
+    }));
+  };
+
+  /**
+   *
+   * @param {string} statToUp
+   * @param {number} value
+   * Augmente la stat passée en paramètre de value
+   */
+  const upStatsPlayer = (statToUp, value) => {
+    setPlayerStats((prevStats) => ({
+      ...prevStats,
+      stats: {
+        ...prevStats.stats,
+        [statToUp]: prevStats.stats[statToUp] + value,
+      },
+    }));
   };
 
   useEffect(() => {
