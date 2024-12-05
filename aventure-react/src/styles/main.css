@@ -789,14 +789,17 @@ button:active {
   color: #4f7e4e;
   font-size: 1.2rem;
   height: 50px;
+  padding-top: 5px;
 }
 .sortInv__content__itemDesc__use__button {
   position: absolute;
   left: -10px;
-  bottom: 0;
+  bottom: -10px;
   box-shadow: 0 5px 0 0 black;
   font-size: 0.9rem;
   padding: 5px;
+  background: #6E6362;
+  color: #394053;
 }
 .sortInv__content__itemDesc__use__button:active {
   transform: translateY(5px);

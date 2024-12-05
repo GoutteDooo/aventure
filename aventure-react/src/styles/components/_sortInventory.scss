@@ -56,13 +56,16 @@
         color: $light1;
         font-size: 1.2rem;
         height: 50px;
+        padding-top: 5px;
         &__button {
           position: absolute;
           left: -10px;
-          bottom: 0;
+          bottom: -10px;
           box-shadow: 0 5px 0 0 black;
           font-size: 0.9rem;
           padding: 5px;
+          background: $dark1;
+          color: $dark3;
           &:active {
             transform: translateY(5px);
           }
