@@ -44,26 +44,21 @@ const Inventaire = () => {
               ),
             },
           }));
-
-          useItem(item);
+          removeItem(item);
         } else {
-          console.log("non");
+          console.log("N'a pas pu utiliser l'item. Santé déjà au max.");
         }
         break;
 
       case "stats:chance":
-        if (playerStats.stats.chance < 1) {
-          setPlayerStats((prevStats) => ({
-            ...prevStats,
-            stats: {
-              ...prevStats.stats,
-              chance: prevStats.stats.chance + item.value / 100,
-            },
-          }));
-          useItem(item);
-        } else {
-          console.log("N'a pas pu ingérer. Chance à son max.");
-        }
+        setPlayerStats((prevStats) => ({
+          ...prevStats,
+          stats: {
+            ...prevStats.stats,
+            chance: prevStats.stats.chance + item.value / 100,
+          },
+        }));
+        removeItem(item);
         break;
       default:
         break;
@@ -87,7 +82,7 @@ const Inventaire = () => {
           [equipmentItem.direction]: equipmentItem.name,
         },
       }));
-      useItem(equipmentItem);
+      removeItem(equipmentItem);
     } else {
       const actualEquippedItem = playerStats.equipment[equipmentItem.direction];
       setPlayerStats((prevStats) => ({
@@ -104,16 +99,21 @@ const Inventaire = () => {
       );
 
       //Une fois fait, on remove l'item du slot
-      useItem(equipmentItem);
+      removeItem(equipmentItem);
       //Puis, on y insère l'actualEquippedItem
       playerStats.inventory[equippingItemSlot] = actualEquippedItem;
     }
   };
 
-  const useItem = (itemUsing) => {
+  /**
+   *
+   * @param {Object} itemUsing
+   * enlève dans l'inventaire l'item utilisé sans activer son effet
+   */
+  const removeItem = (itemToRemove) => {
     setActiveItem(null);
     const itemUsingSlot = playerStats.inventory.findIndex(
-      (item) => item === itemUsing.name
+      (item) => item === itemToRemove.name
     );
     playerStats.inventory[itemUsingSlot] = "";
   };
