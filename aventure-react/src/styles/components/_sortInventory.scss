@@ -46,9 +46,10 @@
       &__useless {
         text-align: left;
         color: $dark1;
-        height: 80px;
+        height: 66px;
         font-size: 0.9rem;
         font-style: italic;
+        overflow: hidden;
       }
       &__use {
         position: relative;

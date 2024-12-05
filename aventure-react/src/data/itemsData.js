@@ -128,7 +128,7 @@ const itemsData = [
       "En voyant le rouge vif du chapeau, cela vous rappelle votre grand-mère qui vous prévenait sur des dangers de... vous ne vous rappelez plus.",
     desc_use: "??? (Usage unique)",
     desc_surprise: "Santé max augmentée de 10 !",
-    desc_class: "positive",
+    desc_class: "neutral",
     using: "all",
   },
 ];

@@ -3,7 +3,8 @@ import itemsData from "../data/itemsData";
 import { PlayerContext } from "../utils/Context";
 
 const SortInventory = ({ itemFound, setSortInventory, setShowPopUp }) => {
-  const { playerStats, setPlayerStats, findItem } = useContext(PlayerContext);
+  const { playerStats, setPlayerStats, findItem, useItem, insertItem } =
+    useContext(PlayerContext);
   const [activeItem, setActiveItem] = useState(null);
   useEffect(() => {
     document.body.classList.add("no-interaction");
@@ -40,6 +41,27 @@ const SortInventory = ({ itemFound, setSortInventory, setShowPopUp }) => {
     if (item !== "") setActiveItem({ item, index });
   };
 
+  const handleItemUsed = () => {
+    if (
+      confirm(
+        "Êtes-vous sûr d'utiliser cet item ? (Le nouvel objet trouvé ira directement au nouvel emplacement libre)"
+      )
+    ) {
+      useItem(findItem(activeItem.item), activeItem.index);
+      insertItem(itemFound, activeItem.index);
+      setActiveItem(null);
+      setShowPopUp(false);
+      setSortInventory(false);
+    }
+  };
+
+  /**
+   *
+   * @param {string} itemName
+   * Dommage, mais comme activeItem est une string, je dois passer par là
+   * Lorsque viendra la refactorisation, je referais peut-être ça
+   */
+  /*
   const useItem = () => {
     if (!activeItem) return; //sécurité
 
@@ -77,7 +99,7 @@ const SortInventory = ({ itemFound, setSortInventory, setShowPopUp }) => {
         break;
     }
   };
-
+*/
   return (
     <div className="sortInv">
       <div className="sortInv__content">
@@ -110,7 +132,10 @@ const SortInventory = ({ itemFound, setSortInventory, setShowPopUp }) => {
           <div className="sortInv__content__itemDesc__use">
             {activeItem && findItem(activeItem.item).desc_use}
             {activeItem && findItem(activeItem.item).using === "all" && (
-              <button className="sortInv__content__itemDesc__use__button">
+              <button
+                className="sortInv__content__itemDesc__use__button"
+                onClick={handleItemUsed}
+              >
                 Utiliser
               </button>
             )}

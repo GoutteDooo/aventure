@@ -132,18 +132,15 @@ export const PlayerProvider = ({ children }) => {
         }
         break;
       case "heal":
-        console.log("heal OK");
-
         if (playerStats.stats.health < playerStats.stats.maxHealth) {
-          console.log("heal activé");
           healPlayer(itemToUse.value);
           itemIsUsed = true;
         }
         break;
     }
-    console.log("useItem activé");
-
-    if (itemIsUsed) removeItem(indexItem);
+    if (itemIsUsed) {
+      removeItem(indexItem);
+    }
   };
 
   /**
@@ -152,7 +149,30 @@ export const PlayerProvider = ({ children }) => {
    * Retire l'item de l'inventaire à l'index passé en paramètre
    */
   const removeItem = (index) => {
-    playerStats.inventory[index] = "";
+    setPlayerStats((prevStats) => ({
+      ...prevStats,
+      inventory: prevStats.inventory.map((item, i) =>
+        i === index ? "" : item
+      ),
+    }));
+  };
+
+  /**
+   *
+   * @param {number} newItemId
+   * @param {number} index
+   * Cette fonction convertit l'id de l'item passé en paramètre en name
+   * et l'insère dans l'index de l'inventaire du joueur
+   * S'il y'avait un autre item à cette place, il est remplacé définitivement
+   */
+  const insertItem = (newItemId, index) => {
+    const newItemName = findItem(null, newItemId).name;
+    setPlayerStats((prevStats) => ({
+      ...prevStats,
+      inventory: prevStats.inventory.map((item, i) =>
+        i === index ? newItemName : item
+      ),
+    }));
   };
 
   const healPlayer = (healPoints) => {
@@ -219,6 +239,7 @@ export const PlayerProvider = ({ children }) => {
         setPlayerStatsFull,
         findItem,
         useItem,
+        insertItem,
       }}
     >
       {children}

@@ -132,7 +132,7 @@ function Adventure() {
           <div className="adventure__choices">
             {currentStep.choices.map(
               (choice, index) =>
-                // Si choiceSaved == choiceSavedid, on affiche pas
+                // Si le savedChoice du currentStep est dans les datas du joueur, on ré-affiche pas
                 !playerStats.choiceSaved.find(
                   (choiceId) =>
                     choiceId === currentStep.choices[index].saveChoiceId
@@ -180,8 +180,11 @@ function Adventure() {
               </button>
               {/* Le composant SortInventory s'active quand le joueur clique sur 'faire le tri' */}
               {sortInventory && (
-                <SortInventory itemFound={popUpToShow.effects.itemId} setSortInventory={setSortInventory}
-                setShowPopUp={setShowPopUp} />
+                <SortInventory
+                  itemFound={popUpToShow.effects.itemId}
+                  setSortInventory={setSortInventory}
+                  setShowPopUp={setShowPopUp}
+                />
               )}
               <button
                 className="popUp__close"

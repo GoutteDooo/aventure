@@ -779,9 +779,10 @@ button:active {
 .sortInv__content__itemDesc__useless {
   text-align: left;
   color: #6E6362;
-  height: 80px;
+  height: 66px;
   font-size: 0.9rem;
   font-style: italic;
+  overflow: hidden;
 }
 .sortInv__content__itemDesc__use {
   position: relative;
