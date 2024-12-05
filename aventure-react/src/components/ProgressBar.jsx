@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { PlayerContext } from '../utils/Context';
 import SkillsTree from './SkillsTree';
+import HealthBar from './HealthBar';
 
 const ProgressBar = () => {
     const { playerStats, setPlayerStats } =
@@ -30,6 +31,7 @@ const ProgressBar = () => {
               </div>
             )}
           <SkillsTree />
+          <HealthBar />
         </div>
     );
 };
