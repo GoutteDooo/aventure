@@ -18,7 +18,7 @@ const HealthBar = () => {
       >
         <div
           className="healthBar__percentage__fill"
-          style={{ width: `${80}%` }}
+          style={{ width: `${healthPercentage}%` }}
         ></div>
         <p>Santé</p>
       </div>
