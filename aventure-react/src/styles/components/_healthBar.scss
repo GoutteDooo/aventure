@@ -1,9 +1,45 @@
 .healthBar {
+  position: absolute;
+  width: 80%;
+  height: 15%;
+  bottom: 15px;
+  border-radius: 25px;
+  border: 2px solid $dark1;
+  background: $dark3;
+  &__percentage {
     position: absolute;
-    width: 80%;
-    height: 15%;
-    background: green;
-    bottom: 15px;
-    border-radius: 25px;
-    border: 2px solid $dark1;
+    width: 100%;
+    height: 100%;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    border-radius: inherit;
+    overflow: hidden;
+    color: grey;
+    &__fill {
+      position: absolute;
+      height: 100%;
+      background: rgba(0, 128, 0, 0.543);
+      padding: 5px 0;
+    }
+    p {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &__tooltip {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
+  }
 }
