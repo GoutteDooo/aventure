@@ -9,11 +9,12 @@ const Combat = ({ enemy, onCombatFinish }) => {
     const savedPlayerName = localStorage.getItem("playerName");
     return savedPlayerName ? savedPlayerName : "John Doe";
   });
+  const [isIntro, setIsIntro] = useState(true);
   const [isAttacking, setIsAttacking] = useState(false);
+  const [isAttacked, setIsAttacked] = useState(false);
   const [isInAction, setIsInAction] = useState(false);
   const [enemyAttacked, setEnemyAttacked] = useState(false);
   const [enemyAttacking, setEnemyAttacking] = useState(false);
-  const [isAttacked, setIsAttacked] = useState(false);
   const [combatFinished, setCombatFinished] = useState(false);
   const [showLoot, setShowLoot] = useState(false);
   const [combatDesc, setCombatDesc] = useState("");
@@ -142,7 +143,25 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const handleCombatDesc = () => {
     if (enemyAttacking) {
       setCombatDesc(enemy.combatData.attacks[0].desc);
-    } else {
+    }
+    if (playerTurn) {
+      let rng = null;
+      let narrativeOptions = null;
+      let randomIndex = null;
+      let randomText = "";
+      do {
+        rng = Math.random();
+        narrativeOptions = enemy.combatData.narrative.playerTurn;
+        randomIndex = Math.floor(rng * narrativeOptions.length);
+        randomText = narrativeOptions[randomIndex];
+        
+      } while (randomText === combatDesc)
+      console.log(rng, randomText);
+      
+      setCombatDesc(randomText);
+    }
+    if (isIntro) {
+      setIsIntro(false);
       setCombatDesc(enemy.combatData.narrative.intro);
     }
   }

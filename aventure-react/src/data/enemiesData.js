@@ -77,6 +77,10 @@ const enemiesData = [
       narrative: {
         intro:
           "L'épouvantail se dresse face à vous, le regard fixe. Il a l'air totalement indifférent face à vos provocations.",
+        playerTurn: [
+          "L'épouvantail se pavane fièrement en attendant que vous ayez fini de vous décider.",
+          "L'épouvantail essaie de se curer le semblant de nez dessiné sur son visage en attendant que vous ayez fini de réfléchir.",
+        ],
       },
     },
   },
@@ -146,6 +150,11 @@ const enemiesData = [
       narrative: {
         intro:
           "L'épouvantail se dresse face à vous, le regard fixe. Il a l'air totalement indifférent face à vos provocations.",
+        playerTurn: [
+          "L'épouvantail se pavane fièrement en attendant que vous ayez fini de vous décider.",
+          "L'épouvantail essaie de se curer le semblant de nez dessiné sur son visage en attendant que vous ayez fini de réfléchir.",
+          "L'épouvantail tente de s'asseoir sur le rocher à côté de la porte pour se reposer, mais constate qu'il n'a pas d'articulations pour effectuer cette action.",
+        ],
       },
     },
   },
