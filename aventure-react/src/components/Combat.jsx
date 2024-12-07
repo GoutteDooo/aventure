@@ -158,7 +158,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
         randomText = narrativeOptions[randomIndex];
         
       } while (randomText === combatDesc)
-      console.log(rng, randomText);
       
       setCombatDesc(randomText);
     }
@@ -166,6 +165,12 @@ const Combat = ({ enemy, onCombatFinish }) => {
       setIsIntro(false);
       setCombatDesc(enemy.combatData.narrative.intro);
     }
+  }
+
+  const handleMsAnimatedText = () => {
+    if (playerTurn) return 30;
+    if (enemyAttacking) return 10;
+    return 1000;
   }
 
   useEffect(() => {
@@ -192,7 +197,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         </div>
         {/* Fenêtre de description */}
           <div className="combat__display__container">
-            <p>{combatDesc && (<AnimatedText text={combatDesc} ms={20} />)}</p>
+            <p>{combatDesc && (<AnimatedText text={combatDesc} ms={handleMsAnimatedText()} />)}</p>
           </div>
         <div
           className={`combat__ennemy__stats ${
