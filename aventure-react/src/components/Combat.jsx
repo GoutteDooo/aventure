@@ -16,6 +16,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [isAttacked, setIsAttacked] = useState(false);
   const [combatFinished, setCombatFinished] = useState(false);
   const [showLoot, setShowLoot] = useState(false);
+  const [combatDesc, setCombatDesc] = useState("");
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -138,6 +139,18 @@ const Combat = ({ enemy, onCombatFinish }) => {
     );
   }
 
+  const handleCombatDesc = () => {
+    if (enemyAttacking) {
+      setCombatDesc(enemy.combatData.attacks[0].desc);
+    } else {
+      setCombatDesc(enemy.combatData.narrative.intro);
+    }
+  }
+
+  useEffect(() => {
+    handleCombatDesc();
+  },[enemyAttacking, enemy])
+
   return !showLoot ? (
     <div
       className={`combat-container ${isAttacking ? "combat--attacking" : ""}`}
@@ -156,6 +169,10 @@ const Combat = ({ enemy, onCombatFinish }) => {
           <p>Ch : {playerStatsFull.chance * 100}</p>
           <p>Init : {playerStatsFull.initiative}</p>
         </div>
+        {/* Fenêtre de description */}
+          <div className="combat__display__container">
+            <p>{combatDesc}</p>
+          </div>
         <div
           className={`combat__ennemy__stats ${
             playerTurn ? "combat__ennemy__wait" : "combat__ennemy__play"

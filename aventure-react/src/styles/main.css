@@ -195,6 +195,22 @@ button:active {
   -webkit-animation: hit 0.6s forwards;
           animation: hit 0.6s forwards;
 }
+.combat-container .combat__display__container {
+  background: red;
+  height: 250px;
+  width: 280px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  background: #394053;
+  border: 8px solid #4f7e4e;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+.combat-container .combat__display__container p {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-style: italic;
+}
 .combat-container .your-turn {
   position: absolute;
   display: -webkit-box;
