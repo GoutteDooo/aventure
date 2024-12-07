@@ -128,7 +128,9 @@ function Adventure() {
         </div>
         {isInCombat && enemy ? (
           <Combat enemy={enemy} onCombatFinish={handleNextStep} />
-        ) : (
+        ) 
+        : //Si pas en combat
+        (
           <div className="adventure__choices">
             {currentStep.choices.map(
               (choice, index) =>
@@ -149,9 +151,11 @@ function Adventure() {
           </div>
         )}
       </div>
-      <button className="adventure__status" onClick={() => navigate("/status")}>
+      {!isInCombat && (
+        <button className="adventure__status" onClick={() => navigate("/status")}>
         Status
       </button>
+      )}
       {showPopUp && (
         <div className="popUp">
           <div className="popUp__title animate-pulsing animate-iteration-count-infinite">

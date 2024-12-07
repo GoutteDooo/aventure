@@ -187,6 +187,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
                 Attaquer
               </button>
               <button className="combat__button__defense">Se protéger</button>
+              <button className="combat__button__magic">Magie</button>
               <button className="combat__button__use">Utiliser</button>
               <button className="combat__button__fled">Fuir</button>
             </div>

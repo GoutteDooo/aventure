@@ -31,7 +31,7 @@ const storySteps = [
             Vous vous sentez gonflé à bloc, prêt à terrasser cette bête ailée. 
             Un épouvantail se dresse près de la porte, avec un panneau sur le côté.`,
     speak: `Même cet épouvantail est bien plus fort que vous.
-    Abandonnez. Jamais vous ne parviendrez à me vaincre moi, Le Grand Dragon Zorg. Pauvres âmes faibles !`,
+    Abandonnez. Jamais vous ne parviendrez à me vaincre moi, Le Grand Dragon Zrog. Pauvres âmes faibles !`,
     isCombat: false,
     choices: [
       { text: `Affronter l'épouvantail (didacticiel)`, nextId: 3 },

@@ -1,7 +1,7 @@
 // src/data/enemiesData.js
 const enemiesData = [
   {
-    //ennemi template
+    //ENNEMI TEMPLATE
     id: 0,
     name: "Template",
     maxHealth: 100,
@@ -20,6 +20,7 @@ const enemiesData = [
       gold: { value: 1, description: "Pièce" },
     },
     combatData: {
+      // Toutes les données relatives au Combat
       attacks: [
         {
           id: 1,
@@ -35,8 +36,8 @@ const enemiesData = [
           name: "Jet de Paille",
           timerForAttack: 1, //Il faudra attendre 1 tour avant de lancer cette attaque
           isAttackSpecial: true,
-          timeDescBetweenAtk:
-            "L'épouvantail se comporte de manière étrange. Il arrache notamment ses tiges de paille.", //description lors du temps avant l'attaque
+          descBeforeAtk:
+            "L'épouvantail se comporte de manière étrange. Il arrache vigoureusement ses tiges de paille.", //description lors du temps avant l'attaque
           desc: "L'épouvantail vient de se fabriquer une sarbacane, et vous envoie maintenant ses tiges de paille à la figure.",
           damages: 10,
           isConditional: true, //Cette attaque se joue sous condition
@@ -83,7 +84,7 @@ const enemiesData = [
     id: 1,
     name: "Epouvantail",
     maxHealth: 100,
-    health: 100,
+    health: 1,
     attack: 2,
     defense: 0,
     chance: 0.1,
@@ -113,8 +114,8 @@ const enemiesData = [
           name: "Jet de Paille",
           timerForAttack: 1, //Il faudra attendre 1 tour avant de lancer cette attaque
           isAttackSpecial: true,
-          timeDescBetweenAtk:
-            "L'épouvantail se comporte de manière étrange. Il arrache notamment ses tiges de paille.", //description lors du temps avant l'attaque
+          descBeforeAtk:
+            "L'épouvantail se comporte de manière étrange. Il arrache vigoureusement ses tiges de paille.", //description 1 temps avant l'attaque
           desc: "L'épouvantail vient de se fabriquer une sarbacane, et vous envoie maintenant ses tiges de paille à la figure.",
           damages: 10,
           isConditional: true,

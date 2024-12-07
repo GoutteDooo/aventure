@@ -232,24 +232,27 @@ button:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 50px;
+  gap: 30px;
   margin-top: 25px;
   height: 150px;
   border-radius: 35px;
+  background: #4e4a59;
+  padding: 0 50px;
+  border: 10px solid #394053;
 }
-.combat-container .combat__player__turn .combat__button__attack, .combat-container .combat__player__turn .combat__button__defense, .combat-container .combat__player__turn .combat__button__use, .combat-container .combat__player__turn .combat__button__fled {
+.combat-container .combat__player__turn .combat__button__attack, .combat-container .combat__player__turn .combat__button__defense, .combat-container .combat__player__turn .combat__button__use, .combat-container .combat__player__turn .combat__button__fled, .combat-container .combat__player__turn .combat__button__magic {
   padding: 20px;
   border-radius: 25px;
   -webkit-box-shadow: 0 10px 0 0 black;
           box-shadow: 0 10px 0 0 black;
   width: 150px;
 }
-.combat-container .combat__player__turn .combat__button__attack:hover, .combat-container .combat__player__turn .combat__button__defense:hover, .combat-container .combat__player__turn .combat__button__use:hover, .combat-container .combat__player__turn .combat__button__fled:hover {
+.combat-container .combat__player__turn .combat__button__attack:hover, .combat-container .combat__player__turn .combat__button__defense:hover, .combat-container .combat__player__turn .combat__button__use:hover, .combat-container .combat__player__turn .combat__button__fled:hover, .combat-container .combat__player__turn .combat__button__magic:hover {
   -webkit-filter: brightness(0.8);
           filter: brightness(0.8);
   color: #edf6f9;
 }
-.combat-container .combat__player__turn .combat__button__attack:active, .combat-container .combat__player__turn .combat__button__defense:active, .combat-container .combat__player__turn .combat__button__use:active, .combat-container .combat__player__turn .combat__button__fled:active {
+.combat-container .combat__player__turn .combat__button__attack:active, .combat-container .combat__player__turn .combat__button__defense:active, .combat-container .combat__player__turn .combat__button__use:active, .combat-container .combat__player__turn .combat__button__fled:active, .combat-container .combat__player__turn .combat__button__magic:active {
   -webkit-box-shadow: 0 0 0 0;
           box-shadow: 0 0 0 0;
   -webkit-transform: translateY(10px);
@@ -1317,9 +1320,6 @@ button:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -1328,7 +1328,7 @@ button:active {
 }
 .adventure__h1 {
   letter-spacing: 1px;
-  margin-bottom: 50px;
+  margin-bottom: 3%;
   background: #394053;
   color: #4f7e4e;
   width: 100%;

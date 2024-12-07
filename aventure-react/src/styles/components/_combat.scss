@@ -87,15 +87,19 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
     margin-top: 25px;
     height: 150px;
     border-radius: 35px;
+    background: $dark2;
+    padding: 0 50px;
+    border: 10px solid $dark3;
     .combat__button {
       &__attack,
       &__defense,
       &__use,
-      &__fled {
+      &__fled,
+      &__magic {
         padding: 20px;
         border-radius: 25px;
         box-shadow: 0 10px 0 0 black;
