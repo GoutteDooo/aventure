@@ -19,11 +19,12 @@
     &__fill {
       position: absolute;
       height: 100%;
-      background: rgba(0, 128, 0, 0.543);
+      background: green;
       padding: 5px 0;
     }
     p {
       position: absolute;
+      color: $white;
       left: 50%;
       transform: translateX(-50%);
     }

@@ -129,7 +129,10 @@ const SortInventory = ({ itemFound, setSortInventory, setShowPopUp }) => {
           <div className="sortInv__content__itemDesc__useless">
             {activeItem && findItem(activeItem.item).desc_useless}
           </div>
-          <div className="sortInv__content__itemDesc__use">
+          <div className={`sortInv__content__itemDesc__use ${
+                itemsData.find((item) => item.name === activeItem.item)
+                  .desc_class
+              }`}>
             {activeItem && findItem(activeItem.item).desc_use}
             {activeItem && findItem(activeItem.item).using === "all" && (
               <button
@@ -153,7 +156,10 @@ const SortInventory = ({ itemFound, setSortInventory, setShowPopUp }) => {
             <div className="sortInv__content__itemFound__desc__useless">
               {findItem(null, currentItemIdFound).desc_useless}
             </div>
-            <div className="sortInv__content__itemFound__desc__use">
+            <div className={`sortInv__content__itemFound__desc__use ${
+                itemsData.find((item) => item.name === activeItem.item)
+                  .desc_class
+              }`}>
               {findItem(null, currentItemIdFound).desc_use}
             </div>
           </div>

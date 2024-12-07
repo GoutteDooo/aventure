@@ -166,7 +166,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         >
           <div className="combat__ennemy__stats--name">{enemy.name}</div>
           <p>Vie : {enemy.health}</p>
-          <p>Atk : {enemy.attack}</p>
+          <p>Atk : {enemy.attack * enemy.accuracy} ~ {enemy.attack}</p>
           <p>Def : {enemy.defense}</p>
         </div>
       </div>

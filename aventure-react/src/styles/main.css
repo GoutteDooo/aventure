@@ -151,6 +151,7 @@ button:active {
   height: 35px;
   border-radius: 500px;
   padding: 5px 20px;
+  text-shadow: 1px 1px 0 #394053;
   margin-bottom: 10px;
 }
 .combat-container .combat__player__stats p, .combat-container .combat__ennemy__stats p {
@@ -160,7 +161,8 @@ button:active {
   background: #394053;
 }
 .combat-container .combat__ennemy__stats--name {
-  color: darkred;
+  color: indianred;
+  text-shadow: 1px 1px 0 #394053;
   background: #4e4a59;
 }
 .combat-container .combat__ennemy__stats p {
@@ -497,23 +499,23 @@ button:active {
           animation: lootsAppear 5s forwards;
 }
 .bg__loots .loots {
+  position: relative;
   margin: 200px 0;
-  height: 600px;
+  min-height: 400px;
 }
 .bg__loots .loots__infos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 500px;
-  width: 800px;
-  top: 50%;
-  right: 50%;
+  width: 500px;
+  min-height: 400px;
   margin: 0 auto;
-  background: #839073;
-  border-radius: 50px;
-  color: #394053;
+  background: #4e4a59;
+  border-radius: 35px;
+  border: 10px solid #6E6362;
+  overflow: hidden;
 }
-.bg__loots .loots__infos .loots__drop, .bg__loots .loots__infos .loots__gain {
+.bg__loots .loots__infos .loots__gain {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -523,47 +525,53 @@ button:active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
-.bg__loots .loots__infos .loots__drop h1, .bg__loots .loots__infos .loots__gain h1 {
-  text-decoration: underline;
-  margin-top: 20px;
+.bg__loots .loots__infos .loots__gain h1 {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  padding-top: 30px;
+  color: #4f7e4e;
+  font-size: 2.5rem;
 }
-.bg__loots .loots__infos .loots__drop ul, .bg__loots .loots__infos .loots__gain ul {
-  padding: 1rem;
+.bg__loots .loots__infos .loots__gain ul {
+  text-align: center;
+  width: 100%;
+  color: #839073;
+  padding-bottom: 1rem;
 }
-.bg__loots .loots__infos .loots__drop ul li, .bg__loots .loots__infos .loots__gain ul li {
-  list-style-type: disc;
+.bg__loots .loots__infos .loots__gain ul li {
+  list-style-type: none;
   text-decoration: none;
-  margin-bottom: 20px;
   font-size: 1.3rem;
+  width: 100%;
+  padding: 1rem 0;
 }
-.bg__loots .loots__next {
-  position: absolute;
-  left: 50%;
-  margin-top: 50px;
+.bg__loots .loots__infos .loots__gain ul li:nth-child(even) {
+  background: #394053;
+}
+.bg__loots .loots__infos .loots__gain ul li:nth-child(odd) {
+  background: #6E6362;
+}
+.bg__loots .loots__infos .loots__gain button.loots__next {
+  margin-bottom: 30px;
   height: 75px;
   width: 200px;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
   border-radius: 5000px;
 }
-.bg__loots .loots__next:hover {
+.bg__loots .loots__infos .loots__gain button.loots__next:hover {
+  background: #6E6362;
   color: #edf6f9;
 }
-.bg__loots .loots__next:active {
+.bg__loots .loots__infos .loots__gain button.loots__next:active {
   -webkit-box-shadow: 0 0px 0 0 black;
           box-shadow: 0 0px 0 0 black;
-  -webkit-transform: translate(-50%, 10px);
-          transform: translate(-50%, 10px);
 }
 
 @-webkit-keyframes lootsAppear {
@@ -1010,6 +1018,15 @@ button:active {
   height: 50px;
   padding-top: 5px;
 }
+.sortInv__content__itemDesc__use.positive {
+  color: green;
+}
+.sortInv__content__itemDesc__use.neutral {
+  color: goldenrod;
+}
+.sortInv__content__itemDesc__use.negative {
+  color: salmon;
+}
 .sortInv__content__itemDesc__use__button {
   position: absolute;
   left: -10px;
@@ -1059,6 +1076,15 @@ button:active {
   color: #4f7e4e;
   font-size: 1.1rem;
   padding-top: 5px;
+}
+.sortInv__content__itemFound__desc__use.positive {
+  color: green;
+}
+.sortInv__content__itemFound__desc__use.neutral {
+  color: goldenrod;
+}
+.sortInv__content__itemFound__desc__use.negative {
+  color: salmon;
 }
 .sortInv__exchange {
   position: absolute;
@@ -1206,11 +1232,12 @@ button:active {
 .healthBar__percentage__fill {
   position: absolute;
   height: 100%;
-  background: rgba(0, 128, 0, 0.543);
+  background: green;
   padding: 5px 0;
 }
 .healthBar__percentage p {
   position: absolute;
+  color: #edf6f9;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);

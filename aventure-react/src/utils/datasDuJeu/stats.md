@@ -43,7 +43,11 @@
 - La formule de l'initiative est la suivante :
   - Chance de jouer le premier = `0.5 * 1,%(Initiative(Joueur) - Initiative(Adversaire))`
   - Un min à 0.0333 et un max a 0.9666 sont définis.
-  -
+- Si le différentiel d'initiative entre les deux entités s'affrontant est très élevé, parfois, l'entité ayant l'initiative la plus haute peut jouer deux fois d'affilées.
+  - Ce seuil se place à partir de 300% d'initiative de différentiel.
+  - Par exemple : Joueur a 10 en Initiative, et vilain en a 35.
+  - Le différentiel d'initiative sera de : 35 / 10 = 350%
+  - Un rng est donc lancé
 
 ### Concernant l'attaque par surprise
 
