@@ -44,7 +44,6 @@ const Stats = () => {
   const convertKey = (key) => {
     const translations = {
       maxHealth: "Santé max",
-      health: "Santé actuelle",
       attack: "Attaque max",
       defense: "Défense",
       chance: "Chance",
@@ -81,7 +80,9 @@ const Stats = () => {
           </thead>
           <tbody>
             {playerStatsFull &&
-              Object.entries(playerStatsFull).map(([key, value], index) => (
+              Object.entries(playerStatsFull)
+              .filter(([key]) => key !== "health")
+              .map(([key, value], index) => (
                 <tr key={index}>
                   <td>{convertKey(key)}</td>
                   <td>{Math.trunc(convertStat(key, value))}</td>

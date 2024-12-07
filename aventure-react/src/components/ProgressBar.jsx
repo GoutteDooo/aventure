@@ -15,13 +15,15 @@ const ProgressBar = () => {
     return (
         <div className="progressBar">
           <div className="progressBar__actualLevel">
-            Niveau {playerStats.statsLevel.actualLevel}
             <div className="progressBar__actualLevel__percentage"
               onMouseEnter={() => setShowToolTip(true)}
               onMouseLeave={() => setShowToolTip(false)}>
               <div className="progressBar__fill"
               style={{width:`${progressPercentage}%`}}
               ></div>
+               <p>
+                Niveau {playerStats.statsLevel.actualLevel}
+              </p> 
             </div>
           </div>
           {/* ToolTip */}
