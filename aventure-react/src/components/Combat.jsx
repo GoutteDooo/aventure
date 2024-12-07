@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Loot from "./Loot";
 import { PlayerContext } from "../utils/Context";
+import AnimatedText from "./functions/AnimatedText";
 
 const Combat = ({ enemy, onCombatFinish }) => {
   const {playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull} = useContext(PlayerContext);
@@ -140,6 +141,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     );
   }
 
+
   const handleCombatDesc = () => {
     if (enemyAttacking) {
       setCombatDesc(enemy.combatData.attacks[0].desc);
@@ -190,7 +192,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         </div>
         {/* Fenêtre de description */}
           <div className="combat__display__container">
-            <p>{combatDesc}</p>
+            <p>{combatDesc && (<AnimatedText text={combatDesc} ms={20} />)}</p>
           </div>
         <div
           className={`combat__ennemy__stats ${
