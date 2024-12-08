@@ -129,7 +129,7 @@ const enemiesData = [
           id: 3,
           name: "Soins",
           timerForAttack: 0,
-          hasDescBeforeAtk: true,
+          hasDescBeforeAtk: false,
           desc: "L'épouvantail prend quelques-uns de ses morceaux tombés au sol et se reconstitue comme il peut.",
           damages: 0,
           heal: 20,

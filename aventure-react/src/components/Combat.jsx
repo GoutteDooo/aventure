@@ -111,11 +111,12 @@ const Combat = ({ enemy, onCombatFinish }) => {
         }
       });
       const attack = findAttack();
+      /*
       console.log(attack);
       console.log("a-t-il une descBA ? ", findDescBeforeAtk(attack));
 
       console.log(enemy.combatData.narrative.attack[2](enemy));
-
+      */
       //fin setAttack
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
@@ -179,11 +180,18 @@ const Combat = ({ enemy, onCombatFinish }) => {
     onCombatFinish();
   };
 
+  /**Gère la description lors du combat de A à Z */
   const handleCombatDesc = () => {
+    const attack = findAttack();
+    console.log("attaque : ", attack, ", ordre : ", indexOrderAttack);
     if (enemyAttacking) {
-      setCombatDesc(enemy.combatData.attacks[0].desc);
+      setCombatDesc(attack.desc);
     }
     if (playerTurn) {
+      if (findDescBeforeAtk(attack)) {
+        setCombatDesc(attack.descBeforeAtk);
+        return;
+      }
       let rng = null;
       let narrativeOptions = null;
       let randomIndex = null;
@@ -194,9 +202,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
         randomIndex = Math.floor(rng * narrativeOptions.length);
         randomText = narrativeOptions[randomIndex];
       } while (randomText === combatDesc);
-
       setCombatDesc(randomText);
     }
+    //Toujours en dernier pour avoir tout le temps l'intro
     if (isIntro) {
       setIsIntro(false);
       setCombatDesc(enemy.combatData.narrative.intro);
