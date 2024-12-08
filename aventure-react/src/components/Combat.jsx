@@ -78,10 +78,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
     }
   };
 
-  const findAttack = () => {
-    const idAttack = orderAttack[indexOrderAttack];
+  const findAttack = (id = orderAttack[indexOrderAttack]) => {
     const attack = enemy.combatData.attacks.find(
-      (attack) => attack.id === idAttack
+      (attack) => attack.id === id
     );
     return attack;
   };
@@ -98,22 +97,40 @@ const Combat = ({ enemy, onCombatFinish }) => {
     return false;
   };
   
+  /**Gère l'ordre de l'attaque de l'ennemi
+   * La fonction s'active à chaque tour de l'ennemi.
+   * @actualIndex est l'index de l'attaque actuelle
+   * @actualIndex + 1 sera l'index au prochain tour
+   * Si la @condition de la prochaine attaque n'est pas remplie, alors l'index reste tel qu'il est. Sinon, index + 1.
+   */
   const upOrderAttack = () => {
+    console.log("MAJ ORDER pr next enemy turn :");
+    const nextAttackId = orderAttack[indexOrderAttack+1];
+    const nextAttack = findAttack(nextAttackId);
+    let nextId = indexOrderAttack + 1;
+    console.log(orderAttack,", index nextAtk : ", indexOrderAttack + 1);
+    console.log("nextId : ", nextId);
+    console.log("atk apres playerTurn : ", nextAttack);
+    
+    
+    //Check si nextAttack existe && Check si condition i+1 remplie
+    if (nextAttack.isConditional && !nextAttack.condition(enemy)) {
+      nextId = indexOrderAttack; //On reset l'index à sa valeur initiale
+      console.log("condition non remplie pour up l'id !! nextAttack : ", findAttack(orderAttack[indexOrderAttack]));
+    }
       if (orderName === "orderForwards") {
-        setIndexOrderAttack((prevIndex) => {
-        if (prevIndex === orderAttack.length - 1) {
-          return orderAttack.length - 1;
+        setIndexOrderAttack((actualIndex) => {
+        if (actualIndex === orderAttack.length - 1) {
+          return orderAttack.length - 1;//valeur cappée
         }
-        return prevIndex + 1;
+        return nextId;
       });
     }
   }
 
   /**Gère la description lors du combat de A à Z */
   const handleCombatDesc = () => {
-    const attack = findAttack();
-    console.log("description atk ordre : ", indexOrderAttack);
-    console.log("enemyAttack: ",enemyAttack);
+    console.log("description is launched");
     
     if (enemyAttacking && enemyAttack) {
       setCombatDesc(enemyAttack.desc);
@@ -154,9 +171,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
   useEffect(() => {
     if (!playerTurn && enemy.health > 0) {
       setEnemyAttacking(true);
-      //setAttack
-      console.log("index lors de l'attaque : ",indexOrderAttack);
-      //fin setAttack
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
           Math.trunc(1 + enemy.attack * 0.1),
@@ -219,10 +233,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
     onCombatFinish();
   };
 
-  useEffect(() => {
-    handleCombatDesc();
-    }, [enemyAttacking, enemy]);
-
     /**A chaque fois que c'est le tour du joueur,
      * l'ennemi aura son compteur d'orderAttack incrémenté de 1
      * upOrderAttack vérifie également si la condition d'attaque d'ennemi est respectée pour pouvoir la lancer
@@ -230,9 +240,14 @@ const Combat = ({ enemy, onCombatFinish }) => {
      * Update aussi l'attaque de l'ennemi
      */
   useEffect(() => {
-      if (playerTurn && !isIntro) upOrderAttack();
-      setEnemyAttack(findAttack());
+    if (playerTurn && !isIntro) upOrderAttack();
+    setEnemyAttack(findAttack(orderAttack[indexOrderAttack]));
+    if (enemyAttack) console.log("descBefore sensée s'afficher : ", enemyAttack);
   },[playerTurn])
+
+  useEffect(() => {
+    handleCombatDesc();
+    }, [enemyAttacking, enemy]);
 
   return !showLoot ? (
     <div
