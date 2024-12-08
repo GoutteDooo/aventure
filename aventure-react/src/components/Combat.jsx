@@ -4,7 +4,8 @@ import { PlayerContext } from "../utils/Context";
 import AnimatedText from "./functions/AnimatedText";
 
 const Combat = ({ enemy, onCombatFinish }) => {
-  const {playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull} = useContext(PlayerContext);
+  const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
+    useContext(PlayerContext);
   const [playerTurn, setPlayerTurn] = useState(true); //vérifie si joueur a l'initiative avant de pouvoir attaquer
   const [playerName, setPlayerName] = useState(() => {
     const savedPlayerName = localStorage.getItem("playerName");
@@ -14,8 +15,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [isAttacking, setIsAttacking] = useState(false);
   const [isAttacked, setIsAttacked] = useState(false);
   const [isInAction, setIsInAction] = useState(false);
-  const [enemyAttacked, setEnemyAttacked] = useState(false);
-  const [enemyAttacking, setEnemyAttacking] = useState(false);
   const [combatFinished, setCombatFinished] = useState(false);
   const [showLoot, setShowLoot] = useState(false);
   const [combatDesc, setCombatDesc] = useState("");
@@ -23,6 +22,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const orderName = enemy.combatData.attackSyst.orderUsed;
   const orderAttack = enemy.combatData.attackSyst[orderName];
   const [indexOrderAttack, setIndexOrderAttack] = useState(0);
+  const [enemyAttacked, setEnemyAttacked] = useState(false);
+  const [enemyAttacking, setEnemyAttacking] = useState(false);
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -78,10 +79,23 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   const findAttack = () => {
     const idAttack = orderAttack[indexOrderAttack];
-    const attack = enemy.combatData.attacks.find((attack) => attack.id === idAttack);
+    const attack = enemy.combatData.attacks.find(
+      (attack) => attack.id === idAttack
+    );
     return attack;
+  };
 
-  }
+  /**
+   * Cherche s'il y'a une descBeforeAtk et
+   * retourne true le cas échéant
+   * sinon false
+   * @param {object} researchingAttack - attack
+   * @returns {boolean}
+   */
+  const findDescBeforeAtk = (researchingAttack) => {
+    if (researchingAttack.hasDescBeforeAtk) return true;
+    return false;
+  };
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
@@ -90,16 +104,18 @@ const Combat = ({ enemy, onCombatFinish }) => {
       //setAttack
       setIndexOrderAttack((prevIndex) => {
         if (orderName === "orderForwards") {
-          if (prevIndex == orderAttack.length - 1) {
+          if (prevIndex === orderAttack.length - 1) {
             return orderAttack.length - 1;
           }
           return prevIndex + 1;
         }
       });
       const attack = findAttack();
-      console.log(attack.desc);
-      console.log(enemy.combatData.narrative.attack2(enemy));
-      
+      console.log(attack);
+      console.log("a-t-il une descBA ? ", findDescBeforeAtk(attack));
+
+      console.log(enemy.combatData.narrative.attack[2](enemy));
+
       //fin setAttack
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
@@ -107,7 +123,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
           damage(enemy.attack, enemy.accuracy, enemy.chance) -
             playerStatsFull.defense
         );
-        
+
         setPlayerStats((prevStats) => ({
           ...prevStats,
           stats: {
@@ -153,15 +169,15 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Gère l'état lorsque le combat est terminé
   useEffect(() => {
-    if (combatFinished  && !showLoot) {
+    if (combatFinished && !showLoot) {
       setShowLoot(true);
-      }
+    }
   }, [combatFinished, showLoot]);
 
   const handleCloseLoot = () => {
     setShowLoot(false);
     onCombatFinish();
-  }
+  };
 
   const handleCombatDesc = () => {
     if (enemyAttacking) {
@@ -177,26 +193,25 @@ const Combat = ({ enemy, onCombatFinish }) => {
         narrativeOptions = enemy.combatData.narrative.playerTurn;
         randomIndex = Math.floor(rng * narrativeOptions.length);
         randomText = narrativeOptions[randomIndex];
-        
-      } while (randomText === combatDesc)
-      
+      } while (randomText === combatDesc);
+
       setCombatDesc(randomText);
     }
     if (isIntro) {
       setIsIntro(false);
       setCombatDesc(enemy.combatData.narrative.intro);
     }
-  }
+  };
 
   const handleMsAnimatedText = () => {
     if (playerTurn) return 30;
     if (enemyAttacking) return 10;
     return 1000;
-  }
+  };
 
   useEffect(() => {
     handleCombatDesc();
-  },[enemyAttacking, enemy])
+  }, [enemyAttacking, enemy]);
 
   return !showLoot ? (
     <div
@@ -210,16 +225,21 @@ const Combat = ({ enemy, onCombatFinish }) => {
         >
           <div className="combat__player__stats--name">{playerName}</div>
           <p>Vie : {playerStatsFull.health}</p>
-          <p>Atk : {Math.trunc(playerStatsFull.attack)} ~ {Math.trunc(playerStatsFull.attack * playerStatsFull.accuracy)}</p>
+          <p>
+            Atk : {Math.trunc(playerStatsFull.attack)} ~{" "}
+            {Math.trunc(playerStatsFull.attack * playerStatsFull.accuracy)}
+          </p>
           <p>Def : {playerStatsFull.defense}</p>
           <p>Adr : {Math.trunc(playerStatsFull.accuracy * 100)}</p>
           <p>Ch : {playerStatsFull.chance * 100}</p>
           <p>Init : {playerStatsFull.initiative}</p>
         </div>
         {/* Fenêtre de description */}
-          <div className="combat__display__container">
-            {combatDesc && (<AnimatedText text={combatDesc} ms={handleMsAnimatedText()} />)}
-          </div>
+        <div className="combat__display__container">
+          {combatDesc && (
+            <AnimatedText text={combatDesc} ms={handleMsAnimatedText()} />
+          )}
+        </div>
         <div
           className={`combat__ennemy__stats ${
             playerTurn ? "combat__ennemy__wait" : "combat__ennemy__play"
@@ -230,7 +250,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
         >
           <div className="combat__ennemy__stats--name">{enemy.name}</div>
           <p>Vie : {enemy.health}</p>
-          <p>Atk : {enemy.attack * enemy.accuracy} ~ {enemy.attack}</p>
+          <p>
+            Atk : {enemy.attack * enemy.accuracy} ~ {enemy.attack}
+          </p>
           <p>Def : {enemy.defense}</p>
         </div>
       </div>

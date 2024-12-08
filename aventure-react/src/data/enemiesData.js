@@ -107,7 +107,7 @@ const enemiesData = [
         {
           id: 1,
           name: "Charge",
-          isAttackSpecial: false,
+          hasDescBeforeAtk: false,
           timerForAttack: 0, //# de tours avant l'attaque (0 étant le tour actuel)
           desc: "L'épouvantail se place à un angle de 60° et s'envole droit sur vous !",
           damages: 1,
@@ -117,7 +117,7 @@ const enemiesData = [
           id: 2,
           name: "Jet de Paille",
           timerForAttack: 1, //Il faudra attendre 1 tour avant de lancer cette attaque
-          isAttackSpecial: true,
+          hasDescBeforeAtk: true,
           descBeforeAtk:
             "L'épouvantail se comporte de manière étrange. Il arrache vigoureusement ses tiges de paille.", //description 1 temps avant l'attaque
           desc: "L'épouvantail s'est fabriqué une sarbacane, et vous envoie maintenant ses tiges de paille à la figure.",
@@ -129,7 +129,7 @@ const enemiesData = [
           id: 3,
           name: "Soins",
           timerForAttack: 0,
-          isAttackSpecial: true,
+          hasDescBeforeAtk: true,
           desc: "L'épouvantail prend quelques-uns de ses morceaux tombés au sol et se reconstitue comme il peut.",
           damages: 0,
           heal: 20,
@@ -154,9 +154,9 @@ const enemiesData = [
         playerTurn: [
           "L'épouvantail se pavane fièrement en attendant que vous ayez fini de vous décider.",
           "L'épouvantail essaie de se curer le semblant de nez dessiné sur son visage en attendant que vous ayez fini de réfléchir.",
-          "L'épouvantail tente de s'asseoir sur le rocher à côté de la porte pour se reposer, mais constate qu'il n'a pas d'articulations pour effectuer cette action.",
+          "L'épouvantail tente de s'asseoir sur le rocher à côté de la porte pour se reposer, mais constate qu'il n'a pas les articulations nécessaires pour effectuer cette action.",
         ],
-        attack2: (enemy) => enemy.combatData.attacks[1].descBeforeAtk,
+        attack: [, , (enemy) => enemy.combatData.attacks[1].descBeforeAtk],
       },
     },
   },
