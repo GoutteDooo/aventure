@@ -61,7 +61,7 @@ const enemiesData = [
         //N'en prendre qu'un, et remove l'array
         orderAChoisir: {
           orderRNG: [0.7, 0.2, 0.1], //Set proportion des attacks (somme === 1). Si une attaque est sous condition et qu'elle n'est pas respectée, alors prendre l'attaque à l'index n-1 et revérifier les conditions
-          orderForwards: [1, 1, 3, 2], //Une fois le tableau atteint, on n'utilise plus que la dernière attaque en boucle
+          orderForwards: [1, 1, 3, 2], //Une fois le tableau atteint, on n'utilise plus que la dernière attaque (ID) en boucle
           //Ne peut pas jouer une attaque si la condition de cette dernière n'est pas remplie, utilisera l'attaque n-1 du coup et restera sur l'index jusqu'à ce qu'elle peut la jouer
           //Lorsqu'il joue une attaque avec timer, patienter jusqu'à la fin de ce dernier avant de passer à l'index suivant
           orderInfinite: [], // Arrivé au bout, on redémarre à l'index 0
@@ -120,10 +120,10 @@ const enemiesData = [
           isAttackSpecial: true,
           descBeforeAtk:
             "L'épouvantail se comporte de manière étrange. Il arrache vigoureusement ses tiges de paille.", //description 1 temps avant l'attaque
-          desc: "L'épouvantail vient de se fabriquer une sarbacane, et vous envoie maintenant ses tiges de paille à la figure.",
+          desc: "L'épouvantail s'est fabriqué une sarbacane, et vous envoie maintenant ses tiges de paille à la figure.",
           damages: 10,
           isConditional: true,
-          condition: "health < maxHealth * 0.5",
+          condition: (enemy) => enemy.health < enemy.maxHealth * 0.5,
         },
         {
           id: 3,
@@ -148,6 +148,7 @@ const enemiesData = [
         physical: 0,
       },
       narrative: {
+        //description lors du playerTurn
         intro:
           "L'épouvantail se dresse face à vous, le regard fixe. Il a l'air totalement indifférent face à vos provocations.",
         playerTurn: [
@@ -155,6 +156,7 @@ const enemiesData = [
           "L'épouvantail essaie de se curer le semblant de nez dessiné sur son visage en attendant que vous ayez fini de réfléchir.",
           "L'épouvantail tente de s'asseoir sur le rocher à côté de la porte pour se reposer, mais constate qu'il n'a pas d'articulations pour effectuer cette action.",
         ],
+        attack2: (enemy) => enemy.combatData.attacks[1].descBeforeAtk,
       },
     },
   },

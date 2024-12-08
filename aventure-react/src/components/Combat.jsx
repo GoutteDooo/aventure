@@ -19,6 +19,10 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [combatFinished, setCombatFinished] = useState(false);
   const [showLoot, setShowLoot] = useState(false);
   const [combatDesc, setCombatDesc] = useState("");
+  //Relatifs à/aux ennemi-s
+  const orderName = enemy.combatData.attackSyst.orderUsed;
+  const orderAttack = enemy.combatData.attackSyst[orderName];
+  const [indexOrderAttack, setIndexOrderAttack] = useState(0);
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -28,6 +32,14 @@ const Combat = ({ enemy, onCombatFinish }) => {
     }
   }, []);
 
+  //Ecran de chargement
+  if (!playerStats) {
+    return (
+      <p className="animate-pulsing animate-iteration-count-infinite">
+        Chargement des données du joueur...
+      </p>
+    );
+  }
   //Fonction calcul des dommages avec coup critique
   const damage = (attack, accuracy, chance) => {
     const rngStrike = Math.random();
@@ -64,19 +76,38 @@ const Combat = ({ enemy, onCombatFinish }) => {
     }
   };
 
+  const findAttack = () => {
+    const idAttack = orderAttack[indexOrderAttack];
+    const attack = enemy.combatData.attacks.find((attack) => attack.id === idAttack);
+    return attack;
+
+  }
+
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
     if (!playerTurn && enemy.health > 0) {
       setEnemyAttacking(true);
+      //setAttack
+      setIndexOrderAttack((prevIndex) => {
+        if (orderName === "orderForwards") {
+          if (prevIndex == orderAttack.length - 1) {
+            return orderAttack.length - 1;
+          }
+          return prevIndex + 1;
+        }
+      });
+      const attack = findAttack();
+      console.log(attack.desc);
+      console.log(enemy.combatData.narrative.attack2(enemy));
+      
+      //fin setAttack
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
           Math.trunc(1 + enemy.attack * 0.1),
           damage(enemy.attack, enemy.accuracy, enemy.chance) -
             playerStatsFull.defense
         );
-        console.log("dommages adverses : ",enemyDamage);
         
-
         setPlayerStats((prevStats) => ({
           ...prevStats,
           stats: {
@@ -98,7 +129,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     }
   }, [playerTurn]);
 
-  //Si n'est plus en action, alors on décoche tout les states de combat
+  //Si joueur n'est plus en action, alors on décoche tout les states de combat
   useEffect(() => {
     if (!isInAction) {
       setIsAttacking(false);
@@ -131,16 +162,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
     setShowLoot(false);
     onCombatFinish();
   }
-
-  //Ecran de chargement
-  if (!playerStats) {
-    return (
-      <p className="animate-pulsing animate-iteration-count-infinite">
-        Chargement des données du joueur...
-      </p>
-    );
-  }
-
 
   const handleCombatDesc = () => {
     if (enemyAttacking) {
@@ -197,7 +218,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         </div>
         {/* Fenêtre de description */}
           <div className="combat__display__container">
-            <p>{combatDesc && (<AnimatedText text={combatDesc} ms={handleMsAnimatedText()} />)}</p>
+            {combatDesc && (<AnimatedText text={combatDesc} ms={handleMsAnimatedText()} />)}
           </div>
         <div
           className={`combat__ennemy__stats ${
