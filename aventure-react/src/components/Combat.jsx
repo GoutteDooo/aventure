@@ -24,6 +24,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [indexOrderAttack, setIndexOrderAttack] = useState(0);
   const [enemyAttacked, setEnemyAttacked] = useState(false);
   const [enemyAttacking, setEnemyAttacking] = useState(false);
+  const [enemyAttack, setEnemyAttack] = useState(null);
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -96,27 +97,65 @@ const Combat = ({ enemy, onCombatFinish }) => {
     if (researchingAttack.hasDescBeforeAtk) return true;
     return false;
   };
+  
+  const upOrderAttack = () => {
+      if (orderName === "orderForwards") {
+        setIndexOrderAttack((prevIndex) => {
+        if (prevIndex === orderAttack.length - 1) {
+          return orderAttack.length - 1;
+        }
+        return prevIndex + 1;
+      });
+    }
+  }
+
+  /**Gère la description lors du combat de A à Z */
+  const handleCombatDesc = () => {
+    const attack = findAttack();
+    console.log("description atk ordre : ", indexOrderAttack);
+    console.log("enemyAttack: ",enemyAttack);
+    
+    if (enemyAttacking && enemyAttack) {
+      setCombatDesc(enemyAttack.desc);
+    }
+    if (playerTurn && enemyAttack) {
+      if (findDescBeforeAtk(enemyAttack)) {
+        setCombatDesc(enemyAttack.descBeforeAtk);
+        return;
+      }
+      let rng = null;
+      let narrativeOptions = null;
+      let randomIndex = null;
+      let randomText = "";
+      do {
+        rng = Math.random();
+        narrativeOptions = enemy.combatData.narrative.playerTurn;
+        randomIndex = Math.floor(rng * narrativeOptions.length);
+        randomText = narrativeOptions[randomIndex];
+      } while (randomText === combatDesc);
+      setCombatDesc(randomText);
+    }
+    //Toujours en dernier pour avoir tout le temps l'intro
+    if (isIntro) {
+      setIsIntro(false);
+      setCombatDesc(enemy.combatData.narrative.intro);
+    }
+  };
+
+  const handleMsAnimatedText = () => {
+    if (playerTurn) return 30;
+    if (enemyAttacking) return 10;
+    return 1000;
+  };
+
+  /*---------- USE EFFECTS ----------*/
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
     if (!playerTurn && enemy.health > 0) {
       setEnemyAttacking(true);
       //setAttack
-      setIndexOrderAttack((prevIndex) => {
-        if (orderName === "orderForwards") {
-          if (prevIndex === orderAttack.length - 1) {
-            return orderAttack.length - 1;
-          }
-          return prevIndex + 1;
-        }
-      });
-      const attack = findAttack();
-      /*
-      console.log(attack);
-      console.log("a-t-il une descBA ? ", findDescBeforeAtk(attack));
-
-      console.log(enemy.combatData.narrative.attack[2](enemy));
-      */
+      console.log("index lors de l'attaque : ",indexOrderAttack);
       //fin setAttack
       const enemyAction = setTimeout(() => {
         const enemyDamage = Math.max(
@@ -180,46 +219,20 @@ const Combat = ({ enemy, onCombatFinish }) => {
     onCombatFinish();
   };
 
-  /**Gère la description lors du combat de A à Z */
-  const handleCombatDesc = () => {
-    const attack = findAttack();
-    console.log("attaque : ", attack, ", ordre : ", indexOrderAttack);
-    if (enemyAttacking) {
-      setCombatDesc(attack.desc);
-    }
-    if (playerTurn) {
-      if (findDescBeforeAtk(attack)) {
-        setCombatDesc(attack.descBeforeAtk);
-        return;
-      }
-      let rng = null;
-      let narrativeOptions = null;
-      let randomIndex = null;
-      let randomText = "";
-      do {
-        rng = Math.random();
-        narrativeOptions = enemy.combatData.narrative.playerTurn;
-        randomIndex = Math.floor(rng * narrativeOptions.length);
-        randomText = narrativeOptions[randomIndex];
-      } while (randomText === combatDesc);
-      setCombatDesc(randomText);
-    }
-    //Toujours en dernier pour avoir tout le temps l'intro
-    if (isIntro) {
-      setIsIntro(false);
-      setCombatDesc(enemy.combatData.narrative.intro);
-    }
-  };
-
-  const handleMsAnimatedText = () => {
-    if (playerTurn) return 30;
-    if (enemyAttacking) return 10;
-    return 1000;
-  };
-
   useEffect(() => {
     handleCombatDesc();
-  }, [enemyAttacking, enemy]);
+    }, [enemyAttacking, enemy]);
+
+    /**A chaque fois que c'est le tour du joueur,
+     * l'ennemi aura son compteur d'orderAttack incrémenté de 1
+     * upOrderAttack vérifie également si la condition d'attaque d'ennemi est respectée pour pouvoir la lancer
+     * 
+     * Update aussi l'attaque de l'ennemi
+     */
+  useEffect(() => {
+      if (playerTurn && !isIntro) upOrderAttack();
+      setEnemyAttack(findAttack());
+  },[playerTurn])
 
   return !showLoot ? (
     <div
