@@ -112,6 +112,7 @@ const enemiesData = [
           desc: "L'épouvantail se place à un angle de 60° et s'envole droit sur vous !",
           damages: 1,
           isConditional: false, //Savoir si l'algo peut utiliser l'attaque par défaut ou non
+          animation: "charge",
         },
         {
           id: 2,
@@ -124,6 +125,7 @@ const enemiesData = [
           damages: 10,
           isConditional: true,
           condition: (enemy) => enemy.health < enemy.maxHealth * 0.5,
+          animation: "jetDePaille",
         },
         {
           id: 3,
@@ -136,6 +138,7 @@ const enemiesData = [
           heal: 20,
           isConditional: true,
           condition: (enemy) => enemy.health < enemy.maxHealth * 0.5,
+          animation: "classicHeal",
         },
       ],
       attackSyst: {

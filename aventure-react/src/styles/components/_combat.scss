@@ -44,7 +44,15 @@
       }
     }
     &__ennemy__attack {
-      animation: enemyAttack 1s forwards ease-out;
+      &.charge {
+        animation: charge 1s forwards ease-out;
+      }
+      &.classicHeal {
+        animation: classicHeal 0.5s forwards ease-out;
+      }
+      &.jetDePaille {
+        animation: jetDePaille 1s forwards ease-out;
+      }
     }
 
     /* STYLES PLAYING */
@@ -214,7 +222,8 @@
   }
 }
 
-@keyframes enemyAttack {
+/* ANIMATIONS DE COMBAT */
+@keyframes charge {
   0%,
   100% {
     transform: translateX(0);
@@ -227,6 +236,23 @@
   }
 }
 
+@keyframes classicHeal {
+  0% ,100% {
+    background: green;
+  }
+}
+
+@keyframes jetDePaille {
+  20% {
+    transform: translateY(0px) scaleY(0.02);
+  }
+  70%,80%,90% {
+    transform: translate(200px,0px) scaleY(0.02);
+  }
+  75%,85%,100% {
+    transform:translate(-1000px,0px) scaleY(0.02);
+  }
+}
 /* COMBAT FINISHED */
 .combat__finished__container {
   width: 100%;

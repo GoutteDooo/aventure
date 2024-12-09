@@ -131,6 +131,12 @@ const Combat = ({ enemy, onCombatFinish }) => {
     return 1000;
   };
 
+  const setAnimationAttack = () => {
+    console.log(enemyAttack.animation);
+    const animation = enemyAttack.animation;
+    return `combat__ennemy__attack ${animation}`;
+  }
+
   /*---------- USE EFFECTS ----------*/
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
@@ -203,7 +209,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   useEffect(() => {
     if (actionCounter > 0) if (isIntro) setIsIntro(false);
   }, [actionCounter])
-  
+
   /**A chaque fois que c'est le tour du joueur,
    * l'ennemi aura son compteur d'orderAttack incrémenté de 1
    * upOrderAttack vérifie également si la condition d'attaque d'ennemi est respectée pour pouvoir la lancer
@@ -213,7 +219,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
   useEffect(() => {
     if (playerTurn && !isIntro) {
       upOrderAttack()
-      console.log("upOrder joué. indexOrder actuel : ", indexOrderAttack);
     };
   },[playerTurn])
 
@@ -222,18 +227,14 @@ const Combat = ({ enemy, onCombatFinish }) => {
     setEnemyAttack(findAttack(orderAttack[indexOrderAttack]));
     //Toujours en dernier pour avoir tout le temps l'intro
     if (isIntro) { //seul state dépendant d'un autre useEffect
-      console.log("intro lancée");
       setCombatDesc(enemy.combatData.narrative.intro);
       return;
     } else if (enemyAttacking && enemyAttack) {
-      console.log("test");
       setCombatDesc(enemyAttack.desc);
     } else if (playerTurn) {
-      console.log("test");
       if (enemyAttack && findDescBeforeAtk(enemyAttack)) {
         setCombatDesc(enemyAttack.descBeforeAtk);
       } else {
-        
         setCombatDesc((prevDesc) => {
           const narrativeOptions = enemy.combatData.narrative.playerTurn;
         
@@ -284,7 +285,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
           className={`combat__ennemy__stats ${
             playerTurn ? "combat__ennemy__wait" : "combat__ennemy__play"
           } ${enemyAttacked ? "combat__hit" : ""} ${
-            enemyAttacking ? "combat__ennemy__attack" : ""
+            enemyAttacking ? setAnimationAttack() : ""
           }`}
           onClick={handleEnemyClick}
         >

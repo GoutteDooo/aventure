@@ -172,9 +172,17 @@ button:active {
   -webkit-filter: brightness(0.8);
           filter: brightness(0.8);
 }
-.combat-container .combat__ennemy__attack {
-  -webkit-animation: enemyAttack 1s forwards ease-out;
-          animation: enemyAttack 1s forwards ease-out;
+.combat-container .combat__ennemy__attack.charge {
+  -webkit-animation: charge 1s forwards ease-out;
+          animation: charge 1s forwards ease-out;
+}
+.combat-container .combat__ennemy__attack.classicHeal {
+  -webkit-animation: classicHeal 0.5s forwards ease-out;
+          animation: classicHeal 0.5s forwards ease-out;
+}
+.combat-container .combat__ennemy__attack.jetDePaille {
+  -webkit-animation: jetDePaille 1s forwards ease-out;
+          animation: jetDePaille 1s forwards ease-out;
 }
 .combat-container .combat__play {
   background: #4f7e4e;
@@ -389,7 +397,8 @@ button:active {
             transform: translateX(0);
   }
 }
-@-webkit-keyframes enemyAttack {
+/* ANIMATIONS DE COMBAT */
+@-webkit-keyframes charge {
   0%, 100% {
     -webkit-transform: translateX(0);
             transform: translateX(0);
@@ -403,7 +412,7 @@ button:active {
             transform: translateX(-350px) rotate(-20deg);
   }
 }
-@keyframes enemyAttack {
+@keyframes charge {
   0%, 100% {
     -webkit-transform: translateX(0);
             transform: translateX(0);
@@ -415,6 +424,44 @@ button:active {
   90% {
     -webkit-transform: translateX(-350px) rotate(-20deg);
             transform: translateX(-350px) rotate(-20deg);
+  }
+}
+@-webkit-keyframes classicHeal {
+  0%, 100% {
+    background: green;
+  }
+}
+@keyframes classicHeal {
+  0%, 100% {
+    background: green;
+  }
+}
+@-webkit-keyframes jetDePaille {
+  20% {
+    -webkit-transform: translateY(0px) scaleY(0.02);
+            transform: translateY(0px) scaleY(0.02);
+  }
+  70%, 80%, 90% {
+    -webkit-transform: translate(200px, 0px) scaleY(0.02);
+            transform: translate(200px, 0px) scaleY(0.02);
+  }
+  75%, 85%, 100% {
+    -webkit-transform: translate(-1000px, 0px) scaleY(0.02);
+            transform: translate(-1000px, 0px) scaleY(0.02);
+  }
+}
+@keyframes jetDePaille {
+  20% {
+    -webkit-transform: translateY(0px) scaleY(0.02);
+            transform: translateY(0px) scaleY(0.02);
+  }
+  70%, 80%, 90% {
+    -webkit-transform: translate(200px, 0px) scaleY(0.02);
+            transform: translate(200px, 0px) scaleY(0.02);
+  }
+  75%, 85%, 100% {
+    -webkit-transform: translate(-1000px, 0px) scaleY(0.02);
+            transform: translate(-1000px, 0px) scaleY(0.02);
   }
 }
 /* COMBAT FINISHED */
