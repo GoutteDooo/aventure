@@ -157,7 +157,11 @@ const enemiesData = [
           "L'épouvantail essaie de se curer le semblant de nez dessiné sur son visage en attendant que vous ayez fini de réfléchir.",
           "L'épouvantail tente de s'asseoir sur le rocher à côté de la porte pour se reposer, mais constate qu'il n'a pas les articulations nécessaires pour effectuer cette action.",
         ],
-        attack: [, , (enemy) => enemy.combatData.attacks[1].descBeforeAtk],
+        attack: [
+          ,
+          (enemy) => enemy.combatData.attacks[2].descBeforeAtk,
+          (enemy) => enemy.combatData.attacks[1].descBeforeAtk,
+        ],
       },
     },
   },
