@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* BASE */
 /* http://meyerweb.com/eric/tools/css/reset/
    v5.0.2 | 20191019
@@ -177,12 +178,12 @@ button:active {
           animation: charge 1s forwards ease-out;
 }
 .combat-container .combat__ennemy__attack.classicHeal {
-  -webkit-animation: classicHeal 0.5s forwards ease-out;
-          animation: classicHeal 0.5s forwards ease-out;
+  -webkit-animation: classicHeal 2s forwards ease-out;
+          animation: classicHeal 2s forwards ease-out;
 }
 .combat-container .combat__ennemy__attack.jetDePaille {
-  -webkit-animation: jetDePaille 1s forwards ease-out;
-          animation: jetDePaille 1s forwards ease-out;
+  -webkit-animation: jetDePaille 3s forwards ease-in;
+          animation: jetDePaille 3s forwards ease-in;
 }
 .combat-container .combat__play {
   background: #4f7e4e;
@@ -408,8 +409,8 @@ button:active {
             transform: translateX(50px) rotate(10deg);
   }
   90% {
-    -webkit-transform: translateX(-350px) rotate(-20deg);
-            transform: translateX(-350px) rotate(-20deg);
+    -webkit-transform: translateX(-550px) rotate(-20deg);
+            transform: translateX(-550px) rotate(-20deg);
   }
 }
 @keyframes charge {
@@ -422,46 +423,88 @@ button:active {
             transform: translateX(50px) rotate(10deg);
   }
   90% {
-    -webkit-transform: translateX(-350px) rotate(-20deg);
-            transform: translateX(-350px) rotate(-20deg);
+    -webkit-transform: translateX(-550px) rotate(-20deg);
+            transform: translateX(-550px) rotate(-20deg);
   }
 }
 @-webkit-keyframes classicHeal {
-  0%, 100% {
+  0%, 20%, 40%, 60%, 80%, 100% {
     background: green;
+  }
+  10%, 30%, 50%, 70%, 90% {
+    background: #6E6362;
   }
 }
 @keyframes classicHeal {
-  0%, 100% {
+  0%, 20%, 40%, 60%, 80%, 100% {
     background: green;
+  }
+  10%, 30%, 50%, 70%, 90% {
+    background: #6E6362;
   }
 }
 @-webkit-keyframes jetDePaille {
-  20% {
-    -webkit-transform: translateY(0px) scaleY(0.02);
-            transform: translateY(0px) scaleY(0.02);
+  10% {
+    -webkit-transform: translateY(-50px) scaleY(0.02);
+            transform: translateY(-50px) scaleY(0.02);
   }
-  70%, 80%, 90% {
-    -webkit-transform: translate(200px, 0px) scaleY(0.02);
-            transform: translate(200px, 0px) scaleY(0.02);
+  /*tirs*/
+  66% {
+    -webkit-transform: translate(50px, -50px) scaleY(0.02);
+            transform: translate(50px, -50px) scaleY(0.02);
   }
-  75%, 85%, 100% {
-    -webkit-transform: translate(-1000px, 0px) scaleY(0.02);
-            transform: translate(-1000px, 0px) scaleY(0.02);
+  72% {
+    -webkit-transform: translate(50px, -110px) scaleY(0.02);
+            transform: translate(50px, -110px) scaleY(0.02);
+  }
+  78% {
+    -webkit-transform: translate(50px, -20px) scaleY(0.02);
+            transform: translate(50px, -20px) scaleY(0.02);
+  }
+  84% {
+    -webkit-transform: translate(50px, -70px) scaleY(0.02);
+            transform: translate(50px, -70px) scaleY(0.02);
+  }
+  90% {
+    -webkit-transform: translate(50px, 0px) scaleY(0.02);
+            transform: translate(50px, 0px) scaleY(0.02);
+  }
+  /*réceptions*/
+  69%, 75%, 81%, 87%, 93%, 100% {
+    -webkit-transform: translate(-2000px, -50px) scaleY(0.02);
+            transform: translate(-2000px, -50px) scaleY(0.02);
   }
 }
 @keyframes jetDePaille {
-  20% {
-    -webkit-transform: translateY(0px) scaleY(0.02);
-            transform: translateY(0px) scaleY(0.02);
+  10% {
+    -webkit-transform: translateY(-50px) scaleY(0.02);
+            transform: translateY(-50px) scaleY(0.02);
   }
-  70%, 80%, 90% {
-    -webkit-transform: translate(200px, 0px) scaleY(0.02);
-            transform: translate(200px, 0px) scaleY(0.02);
+  /*tirs*/
+  66% {
+    -webkit-transform: translate(50px, -50px) scaleY(0.02);
+            transform: translate(50px, -50px) scaleY(0.02);
   }
-  75%, 85%, 100% {
-    -webkit-transform: translate(-1000px, 0px) scaleY(0.02);
-            transform: translate(-1000px, 0px) scaleY(0.02);
+  72% {
+    -webkit-transform: translate(50px, -110px) scaleY(0.02);
+            transform: translate(50px, -110px) scaleY(0.02);
+  }
+  78% {
+    -webkit-transform: translate(50px, -20px) scaleY(0.02);
+            transform: translate(50px, -20px) scaleY(0.02);
+  }
+  84% {
+    -webkit-transform: translate(50px, -70px) scaleY(0.02);
+            transform: translate(50px, -70px) scaleY(0.02);
+  }
+  90% {
+    -webkit-transform: translate(50px, 0px) scaleY(0.02);
+            transform: translate(50px, 0px) scaleY(0.02);
+  }
+  /*réceptions*/
+  69%, 75%, 81%, 87%, 93%, 100% {
+    -webkit-transform: translate(-2000px, -50px) scaleY(0.02);
+            transform: translate(-2000px, -50px) scaleY(0.02);
   }
 }
 /* COMBAT FINISHED */

@@ -26,6 +26,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [enemyAttacked, setEnemyAttacked] = useState(false);
   const [enemyAttacking, setEnemyAttacking] = useState(false);
   const [enemyAttack, setEnemyAttack] = useState(null);
+  const [animationAttack, setAnimationAttack] = useState(null);
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -131,10 +132,31 @@ const Combat = ({ enemy, onCombatFinish }) => {
     return 1000;
   };
 
-  const setAnimationAttack = () => {
-    console.log(enemyAttack.animation);
+  const handleAnimationAttack = () => {
     const animation = enemyAttack.animation;
     return `combat__ennemy__attack ${animation}`;
+  }
+
+  //Joueur s'est pris des damages
+  const playerGetHit = () => { 
+    console.log("L'ennemi inflige un total de ", enemyAttack.effects.getDamages(enemy)," dégâts");
+    const enemyDamage = Math.max(
+      Math.trunc(1 + enemy.attack * 0.1),
+      damage(enemy.attack, enemy.accuracy, enemy.chance) -
+        playerStatsFull.defense
+    );
+    setPlayerStats((prevStats) => ({
+      ...prevStats,
+      stats: {
+        ...prevStats.stats,
+        health: prevStats.stats.health - enemyDamage,
+      },
+    }));
+  }
+
+  const enemyHealed = () => {
+    console.log("L'ennemi s'est soigné de ", enemyAttack.effects.heal);
+    
   }
 
   /*---------- USE EFFECTS ----------*/
@@ -142,25 +164,29 @@ const Combat = ({ enemy, onCombatFinish }) => {
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
     if (!playerTurn && enemy.health > 0) {
-    setActionCounter(() => actionCounter+1);
-    setEnemyAttacking(true);
+      setActionCounter(() => actionCounter+1);
+      setEnemyAttacking(true);// = Son animation se joue
+      const animation = enemyAttack.animation;
+      const animationDuration = enemyAttack.animationDuration;
+      setAnimationAttack(() => ({
+        animation,
+        animationDuration,
+      }));
       const enemyAction = setTimeout(() => {
-        const enemyDamage = Math.max(
-          Math.trunc(1 + enemy.attack * 0.1),
-          damage(enemy.attack, enemy.accuracy, enemy.chance) -
-            playerStatsFull.defense
-        );
+        //animation + effets
+      if (typeof enemyAttack.effects.getDamages === "function") {//ennemi attaque joueur
+        if (enemyAttack.effects.getDamages(enemy)) { 
+          playerGetHit();
+        }
+      } else if (enemyAttack.effects.heal) { 
+          enemyHealed();
+      }
+        
 
-        setPlayerStats((prevStats) => ({
-          ...prevStats,
-          stats: {
-            ...prevStats.stats,
-            health: prevStats.stats.health - enemyDamage,
-          },
-        }));
         setIsAttacked(true);
         setPlayerTurn(true); // Retourne au tour du joueur
-      }, 2000);
+      }, animationDuration);
+      
 
       // Nettoyage du timeout si le composant est démonté ou si la dépendance change
       return () => {
@@ -285,7 +311,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
           className={`combat__ennemy__stats ${
             playerTurn ? "combat__ennemy__wait" : "combat__ennemy__play"
           } ${enemyAttacked ? "combat__hit" : ""} ${
-            enemyAttacking ? setAnimationAttack() : ""
+            enemyAttacking ? handleAnimationAttack() : ""
           }`}
           onClick={handleEnemyClick}
         >

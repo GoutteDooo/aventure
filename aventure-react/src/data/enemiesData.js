@@ -110,9 +110,14 @@ const enemiesData = [
           hasDescBeforeAtk: false,
           timerForAttack: 0, //# de tours avant l'attaque (0 étant le tour actuel)
           desc: "L'épouvantail se place à un angle de 60° et s'envole droit sur vous !",
-          damages: 1,
+          effects: {
+            getDamages(parent) {
+              return parent.attack;
+            },
+          },
           isConditional: false, //Savoir si l'algo peut utiliser l'attaque par défaut ou non
           animation: "charge",
+          animationDuration: 1500, //en secondes
         },
         {
           id: 2,
@@ -122,10 +127,15 @@ const enemiesData = [
           descBeforeAtk:
             "L'épouvantail se comporte de manière étrange. Il arrache vigoureusement ses tiges de paille.", //description 1 temps avant l'attaque
           desc: "L'épouvantail s'est fabriqué une sarbacane, et vous envoie maintenant ses tiges de paille à la figure.",
-          damages: 10,
+          effects: {
+            getDamages(parent) {
+              return parent.attack * 10;
+            },
+          },
           isConditional: true,
           condition: (enemy) => enemy.health < enemy.maxHealth * 0.5,
           animation: "jetDePaille",
+          animationDuration: 3000, //en secondes
         },
         {
           id: 3,
@@ -134,11 +144,13 @@ const enemiesData = [
           hasDescBeforeAtk: true,
           descBeforeAtk: "dev : soins arrive",
           desc: "L'épouvantail prend quelques-uns de ses morceaux tombés au sol et se reconstitue comme il peut.",
-          damages: 0,
-          heal: 20,
+          effects: {
+            heal: 20,
+          },
           isConditional: true,
           condition: (enemy) => enemy.health < enemy.maxHealth * 0.5,
           animation: "classicHeal",
+          animationDuration: 3000, //en secondes
         },
       ],
       attackSyst: {

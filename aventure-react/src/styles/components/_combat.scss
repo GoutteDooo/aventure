@@ -48,10 +48,10 @@
         animation: charge 1s forwards ease-out;
       }
       &.classicHeal {
-        animation: classicHeal 0.5s forwards ease-out;
+        animation: classicHeal 2s forwards ease-out;
       }
       &.jetDePaille {
-        animation: jetDePaille 1s forwards ease-out;
+        animation: jetDePaille 3s forwards ease-in;
       }
     }
 
@@ -232,27 +232,45 @@
     transform: translateX(50px) rotate(10deg);
   }
   90% {
-    transform: translateX(-350px) rotate(-20deg);
+    transform: translateX(-550px) rotate(-20deg);
   }
 }
 
 @keyframes classicHeal {
-  0% ,100% {
+  0% ,20%,40%,60%,80%,100% {
     background: green;
+  }
+  10%,30%,50%,70%,90% {
+    background: $dark1;
   }
 }
 
 @keyframes jetDePaille {
-  20% {
-    transform: translateY(0px) scaleY(0.02);
+  10% {
+    transform: translateY(-50px) scaleY(0.02);
   }
-  70%,80%,90% {
-    transform: translate(200px,0px) scaleY(0.02);
+  /*tirs*/
+  66% {
+    transform: translate(50px,-50px) scaleY(0.02);
   }
-  75%,85%,100% {
-    transform:translate(-1000px,0px) scaleY(0.02);
+  72% {
+    transform: translate(50px,-110px) scaleY(0.02);
+  }
+  78% {
+    transform: translate(50px,-20px) scaleY(0.02);
+  }
+  84% {
+    transform: translate(50px,-70px) scaleY(0.02);
+  }
+  90% {
+    transform: translate(50px, 0px) scaleY(0.02);
+  }
+  /*réceptions*/
+  69%,75%,81%,87%,93%,100% {
+    transform:translate(-2000px,-50px) scaleY(0.02);
   }
 }
+
 /* COMBAT FINISHED */
 .combat__finished__container {
   width: 100%;
