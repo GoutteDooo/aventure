@@ -138,7 +138,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   }
 
   //Joueur s'est pris des damages
-  const playerGetHit = () => { 
+  const playerGetsHit = () => { 
     console.log("L'ennemi inflige un total de ", enemyAttack.effects.getDamages(enemy)," dégâts");
     const enemyDamage = Math.max(
       Math.trunc(1 + enemy.attack * 0.1),
@@ -176,7 +176,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         //animation + effets
       if (typeof enemyAttack.effects.getDamages === "function") {//ennemi attaque joueur
         if (enemyAttack.effects.getDamages(enemy)) { 
-          playerGetHit();
+          playerGetsHit();
         }
       } else if (enemyAttack.effects.heal) { 
           enemyHealed();
