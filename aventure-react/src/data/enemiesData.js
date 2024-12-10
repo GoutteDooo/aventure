@@ -92,7 +92,7 @@ const enemiesData = [
     attack: 2,
     defense: 0,
     chance: 0.1,
-    accuracy: 0.5,
+    accuracy: 0.7,
     initiative: 10,
     gain: {
       lootPool: [
@@ -129,7 +129,7 @@ const enemiesData = [
           desc: "L'épouvantail s'est fabriqué une sarbacane, et vous envoie maintenant ses tiges de paille à la figure.",
           effects: {
             getDamages(parent) {
-              return parent.attack * 10;
+              return parent.attack * 8;
             },
           },
           isConditional: true,

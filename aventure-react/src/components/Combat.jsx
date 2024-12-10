@@ -46,10 +46,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
   }
   //Fonction calcul des dommages avec coup critique
   const damage = (attack, accuracy, chance) => {
-    const rngStrike = Math.random();
-    const rngAttack = Math.random();
-    let brutDamages = Math.round(attack - (1 - accuracy) * rngAttack * attack);
-    if (rngStrike >= 1 - chance) brutDamages *= 2;
+    let brutDamages = Math.round(attack - (1 - accuracy) * Math.random() * attack);
+    if (Math.random() >= 1 - chance) brutDamages *= 2;
 
     return brutDamages;
   };
@@ -139,12 +137,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Joueur s'est pris des damages
   const playerGetsHit = () => { 
-    console.log("L'ennemi inflige un total de ", enemyAttack.effects.getDamages(enemy)," dégâts");
-    const enemyDamage = Math.max(
-      Math.trunc(1 + enemy.attack * 0.1),
-      damage(enemy.attack, enemy.accuracy, enemy.chance) -
-        playerStatsFull.defense
-    );
+    const enemyDamage = damage(enemyAttack.effects.getDamages(enemy), enemy.accuracy, enemy.chance) - playerStatsFull.defense;
+    console.log("L'ennemi inflige un total de ", enemyDamage," dégâts");
     setPlayerStats((prevStats) => ({
       ...prevStats,
       stats: {
@@ -156,6 +150,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   const enemyHealed = () => {
     console.log("L'ennemi s'est soigné de ", enemyAttack.effects.heal);
+    
     
   }
 
@@ -318,7 +313,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
           <div className="combat__ennemy__stats--name">{enemy.name}</div>
           <p>Vie : {enemy.health}</p>
           <p>
-            Atk : {enemy.attack * enemy.accuracy} ~ {enemy.attack}
+            Atk : {Math.trunc(enemy.attack * enemy.accuracy)} ~ {enemy.attack}
           </p>
           <p>Def : {enemy.defense}</p>
         </div>
