@@ -20,8 +20,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [combatDesc, setCombatDesc] = useState("");
   const [actionCounter, setActionCounter] = useState(0);
   //Relatifs à/aux ennemi-s
-  const orderName = enemy.combatData.attackSyst.orderUsed;
-  const orderAttack = enemy.combatData.attackSyst[orderName];
+  const [enemyState, setEnemyState] = useState(enemy);
+  const orderName = enemyState.combatData.attackSyst.orderUsed;
+  const orderAttack = enemyState.combatData.attackSyst[orderName];
   const [indexOrderAttack, setIndexOrderAttack] = useState(0);
   const [enemyAttacked, setEnemyAttacked] = useState(false);
   const [enemyAttacking, setEnemyAttacking] = useState(false);
@@ -69,9 +70,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
           playerStatsFull.attack,
           playerStatsFull.accuracy,
           playerStatsFull.chance
-        ) - enemy.defense
+        ) - enemyState.defense
       );
-      enemy.health -= damages;
+      enemyState.health -= damages;
       setIsAttacking(false);
       setIsInAction(false);
       setPlayerTurn(false);
@@ -79,7 +80,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   };
 
   const findAttack = (id = orderAttack[indexOrderAttack]) => {
-    const attack = enemy.combatData.attacks.find(
+    const attack = enemyState.combatData.attacks.find(
       (attack) => attack.id === id
     );
     return attack;
@@ -110,7 +111,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     
     
     //Check si nextAttack existe && Check si condition i+1 remplie
-    if (nextAttack.isConditional && !nextAttack.condition(enemy)) {
+    if (nextAttack.isConditional && !nextAttack.condition(enemyState)) {
       nextId = indexOrderAttack; //On reset l'index à sa valeur initiale
     }
       if (orderName === "orderForwards") {
@@ -137,7 +138,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Joueur s'est pris des damages
   const playerGetsHit = () => { 
-    const enemyDamage = damage(enemyAttack.effects.getDamages(enemy), enemy.accuracy, enemy.chance) - playerStatsFull.defense;
+    const enemyDamage = damage(enemyAttack.effects.getDamages(enemyState), enemyState.accuracy, enemyState.chance) - playerStatsFull.defense;
     console.log("L'ennemi inflige un total de ", enemyDamage," dégâts");
     setPlayerStats((prevStats) => ({
       ...prevStats,
@@ -150,15 +151,18 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   const enemyHealed = () => {
     console.log("L'ennemi s'est soigné de ", enemyAttack.effects.heal);
-    
-    
+    const healPoints = enemyAttack.effects.heal;
+    setEnemyState((prevStats) => ({
+      ...prevStats,
+      health: prevStats.health + healPoints,
+    }))
   }
 
   /*---------- USE EFFECTS ----------*/
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
-    if (!playerTurn && enemy.health > 0) {
+    if (!playerTurn && enemyState.health > 0) {
       setActionCounter(() => actionCounter+1);
       setEnemyAttacking(true);// = Son animation se joue
       const animation = enemyAttack.animation;
@@ -170,7 +174,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
       const enemyAction = setTimeout(() => {
         //animation + effets
       if (typeof enemyAttack.effects.getDamages === "function") {//ennemi attaque joueur
-        if (enemyAttack.effects.getDamages(enemy)) { 
+        if (enemyAttack.effects.getDamages(enemyState)) { 
           playerGetsHit();
         }
       } else if (enemyAttack.effects.heal) { 
@@ -188,7 +192,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         setEnemyAttacking(false);
         clearTimeout(enemyAction);
       };
-    } else if (enemy.health <= 0) {
+    } else if (enemyState.health <= 0) {
       setCombatFinished(true);
     }
   }, [playerTurn]);
@@ -248,7 +252,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     setEnemyAttack(findAttack(orderAttack[indexOrderAttack]));
     //Toujours en dernier pour avoir tout le temps l'intro
     if (isIntro) { //seul state dépendant d'un autre useEffect
-      setCombatDesc(enemy.combatData.narrative.intro);
+      setCombatDesc(enemyState.combatData.narrative.intro);
       return;
     } else if (enemyAttacking && enemyAttack) {
       setCombatDesc(enemyAttack.desc);
@@ -257,7 +261,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         setCombatDesc(enemyAttack.descBeforeAtk);
       } else {
         setCombatDesc((prevDesc) => {
-          const narrativeOptions = enemy.combatData.narrative.playerTurn;
+          const narrativeOptions = enemyState.combatData.narrative.playerTurn;
         
           if (narrativeOptions.length === 1) {
             return narrativeOptions[0]; // Si un seul texte, pas besoin de randomiser
@@ -273,7 +277,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         });
       }
     }
-    }, [enemyAttacking, enemyAttack, enemy, playerTurn, isIntro]);
+    }, [enemyAttacking, enemyAttack, enemyState, playerTurn, isIntro]);
 
   return !showLoot ? (
     <div
@@ -310,12 +314,12 @@ const Combat = ({ enemy, onCombatFinish }) => {
           }`}
           onClick={handleEnemyClick}
         >
-          <div className="combat__ennemy__stats--name">{enemy.name}</div>
-          <p>Vie : {enemy.health}</p>
+          <div className="combat__ennemy__stats--name">{enemyState.name}</div>
+          <p>Vie : {enemyState.health}</p>
           <p>
-            Atk : {Math.trunc(enemy.attack * enemy.accuracy)} ~ {enemy.attack}
+            Atk : {Math.trunc(enemyState.attack * enemyState.accuracy)} ~ {enemyState.attack}
           </p>
-          <p>Def : {enemy.defense}</p>
+          <p>Def : {enemyState.defense}</p>
         </div>
       </div>
       {/* Si tour du joueur, alors afficher*/}
@@ -352,7 +356,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         <p>Combat terminé</p>
       </div>
       <div className="finish__pop-up">
-        <Loot loots={enemy.loots} gain={enemy.gain} onClose={handleCloseLoot} />
+        <Loot loots={enemyState.loots} gain={enemyState.gain} onClose={handleCloseLoot} />
       </div>
     </div>
   );
