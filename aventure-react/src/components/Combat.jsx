@@ -29,6 +29,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [enemyAttack, setEnemyAttack] = useState(null);
   const [animationAttack, setAnimationAttack] = useState(null);
 
+  //Relatifs au Joueur pendant le combat
+  const [animationPlayer, setAnimationPlayer] = useState("");
+
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
     const storedPlayerData = localStorage.getItem("playerData");
@@ -136,6 +139,14 @@ const Combat = ({ enemy, onCombatFinish }) => {
     return `combat__ennemy__attack ${animation}`;
   }
 
+  const handleAnimationPlayer = (damagesTaken) => {
+    if (damagesTaken <= playerStatsFull.maxHealth * 0.1) {
+      setAnimationPlayer("combat__hit");
+    } else if (damagesTaken <= playerStatsFull.maxHealth * 0.4) {
+      setAnimationPlayer("combat__hit__middle");
+    }
+  }
+
   //Joueur s'est pris des damages
   const playerGetsHit = () => { 
     const enemyDamage = damage(enemyAttack.effects.getDamages(enemyState), enemyState.accuracy, enemyState.chance) - playerStatsFull.defense;
@@ -147,6 +158,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
         health: prevStats.stats.health - enemyDamage,
       },
     }));
+    //Gère l'animation du joueur lors des damages reçus
+    handleAnimationPlayer(enemyDamage);
   }
 
   const enemyHealed = () => {
@@ -287,7 +300,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         <div
           className={`combat__player__stats ${
             playerTurn ? "combat__play" : "combat__wait"
-          } ${isAttacked ? "combat__hit" : ""}`}
+          } ${isAttacked ? animationPlayer : ""}`}
         >
           <div className="combat__player__stats--name">{playerName}</div>
           <p>Vie : {playerStatsFull.health}</p>
