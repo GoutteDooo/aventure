@@ -139,8 +139,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
     return `combat__ennemy__attack ${animation}`;
   }
 
-  const handleAnimationPlayer = (damagesTaken) => {
-    if (damagesTaken <= playerStatsFull.maxHealth * 0.1) {
+  const handleAnimationPlayer = (damagesTaken = null) => {
+    if (damagesTaken == 0) setAnimationPlayer("")
+    else if (damagesTaken <= playerStatsFull.maxHealth * 0.1) {
       setAnimationPlayer("combat__hit");
     } else if (damagesTaken <= playerStatsFull.maxHealth * 0.4) {
       setAnimationPlayer("combat__hit__middle");
@@ -169,6 +170,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
       ...prevStats,
       health: prevStats.health + healPoints,
     }))
+    handleAnimationPlayer(0);
   }
 
   /*---------- USE EFFECTS ----------*/
@@ -191,6 +193,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
           playerGetsHit();
         }
       } else if (enemyAttack.effects.heal) { 
+        console.log("heal !");
           enemyHealed();
       }
         

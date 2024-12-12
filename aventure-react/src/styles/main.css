@@ -403,15 +403,23 @@ button:active {
   }
 }
 @-webkit-keyframes hitMiddle {
-  0%, 30%, 50%, 65%, 75%, 82%, 88%, 95% {
+  0%, 30%, 50%, 65%, 75% {
     background: red;
-    -webkit-transform: translateX(-40px);
-            transform: translateX(-40px);
+    -webkit-transform: translateX(-25px);
+            transform: translateX(-25px);
   }
-  20%, 40%, 57%, 70%, 78%, 85%, 92%, 98% {
+  20%, 40%, 57%, 70%, 78% {
     background: #edf6f9;
-    -webkit-transform: translateX(40px);
-            transform: translateX(40px);
+    -webkit-transform: translateX(25px);
+            transform: translateX(25px);
+  }
+  82%, 88%, 95% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  85%, 92%, 98% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
   }
   100% {
     -webkit-transform: translateX(0);
@@ -419,15 +427,23 @@ button:active {
   }
 }
 @keyframes hitMiddle {
-  0%, 30%, 50%, 65%, 75%, 82%, 88%, 95% {
+  0%, 30%, 50%, 65%, 75% {
     background: red;
-    -webkit-transform: translateX(-40px);
-            transform: translateX(-40px);
+    -webkit-transform: translateX(-25px);
+            transform: translateX(-25px);
   }
-  20%, 40%, 57%, 70%, 78%, 85%, 92%, 98% {
+  20%, 40%, 57%, 70%, 78% {
     background: #edf6f9;
-    -webkit-transform: translateX(40px);
-            transform: translateX(40px);
+    -webkit-transform: translateX(25px);
+            transform: translateX(25px);
+  }
+  82%, 88%, 95% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  85%, 92%, 98% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
   }
   100% {
     -webkit-transform: translateX(0);
