@@ -88,7 +88,7 @@ const enemiesData = [
     id: 1,
     name: "Epouvantail",
     maxHealth: 1000,
-    health: 30,
+    health: 500,
     attack: 2,
     defense: 0,
     chance: 0.1,
@@ -143,8 +143,8 @@ const enemiesData = [
           timerForAttack: 0,
           hasDescBeforeAtk: true,
           descBeforeAtk:
-            "L'épouvantail se penche vers le sol, il a l'air de préparer quelque chose d'incongru.",
-          desc: "L'épouvantail prend quelques-uns de ses morceaux tombés au sol et se reconstitue comme il peut.",
+            "L'épouvantail se penche vers le sol, il a l'air de préparer une charge bien plus conséquente.",
+          desc: "L'épouvantail ramasse quelques-uns de ses morceaux tombés au sol et se reconstitue comme il peut !",
           effects: {
             heal: 8,
           },
