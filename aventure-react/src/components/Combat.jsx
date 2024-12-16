@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Loot from "./Loot";
 import { PlayerContext } from "../utils/Context";
 import AnimatedText from "./functions/AnimatedText";
+import CombatTurns from "./CombatTurns";
 
 const Combat = ({ enemy, onCombatFinish }) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
@@ -50,7 +51,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
   }
   //Fonction calcul des dommages avec coup critique
   const damage = (attack, accuracy, chance) => {
-    let brutDamages = Math.round(attack - (1 - accuracy) * Math.random() * attack);
+    let brutDamages = Math.round(
+      attack - (1 - accuracy) * Math.random() * attack
+    );
     if (Math.random() >= 1 - chance) brutDamages *= 2;
 
     return brutDamages;
@@ -100,7 +103,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     if (researchingAttack.hasDescBeforeAtk) return true;
     return false;
   };
-  
+
   /**Gère l'ordre de l'attaque de l'ennemi
    * La fonction s'active à chaque tour de l'ennemi.
    * @actualIndex est l'index de l'attaque actuelle
@@ -108,25 +111,23 @@ const Combat = ({ enemy, onCombatFinish }) => {
    * Si la @condition de la prochaine attaque n'est pas remplie, alors l'index reste tel qu'il est. Sinon, index + 1.
    */
   const upOrderAttack = () => {
-    const nextAttackId = orderAttack[indexOrderAttack+1];
+    const nextAttackId = orderAttack[indexOrderAttack + 1];
     const nextAttack = findAttack(nextAttackId);
     let nextId = indexOrderAttack + 1;
-    
-    
+
     //Check si nextAttack existe && Check si condition i+1 remplie
     if (nextAttack.isConditional && !nextAttack.condition(enemyState)) {
       nextId = indexOrderAttack; //On reset l'index à sa valeur initiale
     }
-      if (orderName === "orderForwards") {
-        setIndexOrderAttack((actualIndex) => {
+    if (orderName === "orderForwards") {
+      setIndexOrderAttack((actualIndex) => {
         if (actualIndex === orderAttack.length - 1) {
-          return orderAttack.length - 1;//valeur cappée
+          return orderAttack.length - 1; //valeur cappée
         }
         return nextId;
       });
     }
-  }
-
+  };
 
   const handleMsAnimatedText = () => {
     if (playerTurn) return 30;
@@ -137,21 +138,26 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const handleAnimationAttack = () => {
     const animation = enemyAttack.animation;
     return `combat__ennemy__attack ${animation}`;
-  }
+  };
 
   const handleAnimationPlayer = (damagesTaken = null) => {
-    if (damagesTaken == 0) setAnimationPlayer("")
+    if (damagesTaken == 0) setAnimationPlayer("");
     else if (damagesTaken <= playerStatsFull.maxHealth * 0.1) {
       setAnimationPlayer("combat__hit");
     } else if (damagesTaken <= playerStatsFull.maxHealth * 0.4) {
       setAnimationPlayer("combat__hit__middle");
     }
-  }
+  };
 
   //Joueur s'est pris des damages
-  const playerGetsHit = () => { 
-    const enemyDamage = damage(enemyAttack.effects.getDamages(enemyState), enemyState.accuracy, enemyState.chance) - playerStatsFull.defense;
-    console.log("L'ennemi inflige un total de ", enemyDamage," dégâts");
+  const playerGetsHit = () => {
+    const enemyDamage =
+      damage(
+        enemyAttack.effects.getDamages(enemyState),
+        enemyState.accuracy,
+        enemyState.chance
+      ) - playerStatsFull.defense;
+    console.log("L'ennemi inflige un total de ", enemyDamage, " dégâts");
     setPlayerStats((prevStats) => ({
       ...prevStats,
       stats: {
@@ -161,7 +167,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     }));
     //Gère l'animation du joueur lors des damages reçus
     handleAnimationPlayer(enemyDamage);
-  }
+  };
 
   const enemyHealed = () => {
     console.log("L'ennemi s'est soigné de ", enemyAttack.effects.heal);
@@ -169,17 +175,17 @@ const Combat = ({ enemy, onCombatFinish }) => {
     setEnemyState((prevStats) => ({
       ...prevStats,
       health: prevStats.health + healPoints,
-    }))
+    }));
     handleAnimationPlayer(0);
-  }
+  };
 
   /*---------- USE EFFECTS ----------*/
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
     if (!playerTurn && enemyState.health > 0) {
-      setActionCounter(() => actionCounter+1);
-      setEnemyAttacking(true);// = Son animation se joue
+      setActionCounter(() => actionCounter + 1);
+      setEnemyAttacking(true); // = Son animation se joue
       const animation = enemyAttack.animation;
       const animationDuration = enemyAttack.animationDuration;
       setAnimationAttack(() => ({
@@ -188,20 +194,19 @@ const Combat = ({ enemy, onCombatFinish }) => {
       }));
       const enemyAction = setTimeout(() => {
         //animation + effets
-      if (typeof enemyAttack.effects.getDamages === "function") {//ennemi attaque joueur
-        if (enemyAttack.effects.getDamages(enemyState)) { 
-          playerGetsHit();
-        }
-      } else if (enemyAttack.effects.heal) { 
-        console.log("heal !");
+        if (typeof enemyAttack.effects.getDamages === "function") {
+          //ennemi attaque joueur
+          if (enemyAttack.effects.getDamages(enemyState)) {
+            playerGetsHit();
+          }
+        } else if (enemyAttack.effects.heal) {
+          console.log("heal !");
           enemyHealed();
-      }
-        
+        }
 
         setIsAttacked(true);
         setPlayerTurn(true); // Retourne au tour du joueur
       }, animationDuration);
-      
 
       // Nettoyage du timeout si le composant est démonté ou si la dépendance change
       return () => {
@@ -249,25 +254,26 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   useEffect(() => {
     if (actionCounter > 0) if (isIntro) setIsIntro(false);
-  }, [actionCounter])
+  }, [actionCounter]);
 
   /**A chaque fois que c'est le tour du joueur,
    * l'ennemi aura son compteur d'orderAttack incrémenté de 1
    * upOrderAttack vérifie également si la condition d'attaque d'ennemi est respectée pour pouvoir la lancer
-   * 
+   *
    * Update aussi l'attaque de l'ennemi
    */
   useEffect(() => {
     if (playerTurn && !isIntro) {
-      upOrderAttack()
-    };
-  },[playerTurn])
+      upOrderAttack();
+    }
+  }, [playerTurn]);
 
   /**Gère la description lors du combat de A à Z */
   useEffect(() => {
     setEnemyAttack(findAttack(orderAttack[indexOrderAttack]));
     //Toujours en dernier pour avoir tout le temps l'intro
-    if (isIntro) { //seul state dépendant d'un autre useEffect
+    if (isIntro) {
+      //seul state dépendant d'un autre useEffect
       setCombatDesc(enemyState.combatData.narrative.intro);
       return;
     } else if (enemyAttacking && enemyAttack) {
@@ -278,27 +284,30 @@ const Combat = ({ enemy, onCombatFinish }) => {
       } else {
         setCombatDesc((prevDesc) => {
           const narrativeOptions = enemyState.combatData.narrative.playerTurn;
-        
+
           if (narrativeOptions.length === 1) {
             return narrativeOptions[0]; // Si un seul texte, pas besoin de randomiser
           }
-        
+
           let randomText;
           do {
-            const indexRandom = Math.floor(Math.random() * narrativeOptions.length);
+            const indexRandom = Math.floor(
+              Math.random() * narrativeOptions.length
+            );
             randomText = narrativeOptions[indexRandom];
           } while (randomText === prevDesc);
-        
+
           return randomText;
         });
       }
     }
-    }, [enemyAttacking, enemyAttack, enemyState, playerTurn, isIntro]);
+  }, [enemyAttacking, enemyAttack, enemyState, playerTurn, isIntro]);
 
   return !showLoot ? (
     <div
       className={`combat-container ${isAttacking ? "combat--attacking" : ""}`}
     >
+      <CombatTurns playerTurn={playerTurn} enemy={enemy} />
       <div className="combat">
         <div
           className={`combat__player__stats ${
@@ -333,7 +342,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
           <div className="combat__ennemy__stats--name">{enemyState.name}</div>
           <p>Vie : {enemyState.health}</p>
           <p>
-            Atk : {Math.trunc(enemyState.attack * enemyState.accuracy)} ~ {enemyState.attack}
+            Atk : {Math.trunc(enemyState.attack * enemyState.accuracy)} ~{" "}
+            {enemyState.attack}
           </p>
           <p>Def : {enemyState.defense}</p>
         </div>
@@ -372,7 +382,11 @@ const Combat = ({ enemy, onCombatFinish }) => {
         <p>Combat terminé</p>
       </div>
       <div className="finish__pop-up">
-        <Loot loots={enemyState.loots} gain={enemyState.gain} onClose={handleCloseLoot} />
+        <Loot
+          loots={enemyState.loots}
+          gain={enemyState.gain}
+          onClose={handleCloseLoot}
+        />
       </div>
     </div>
   );
