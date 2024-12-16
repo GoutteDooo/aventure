@@ -41,7 +41,8 @@
 - Plus son initiative est élevée, plus le joueur aura de chance de démarrer en premier.
 - Cela dit, ça ne veut pas dire que le joueur démarrera toujours en premier, une variance sera appliquée.
 - La formule de l'initiative est la suivante :
-  - Chance de jouer le premier = `0.5 * 1,%(Initiative(Joueur) - Initiative(Adversaire))`
+  - Si l'un a plus d'initiative que l'autre, la probabilité de jouer pour le personnage dominant est de 70% par défaut.
+  - Ensuite, Chance de jouer le premier = `0.7 * 1,%(Initiative(Joueur) - Initiative(Adversaire))`
   - Un min à 0.0333 et un max a 0.9666 sont définis.
 - Si le différentiel d'initiative entre les deux entités s'affrontant est très élevé, **parfois, l'entité ayant l'initiative la plus haute peut jouer deux fois d'affilées**.
   - Ce seuil se place à partir de 300% d'initiative de différentiel.
@@ -84,13 +85,13 @@
 | 9     | 55            |
 | 10    | 89            |
 
-| Caractère du joueur | Stat priorisée | Points pris | Points restants à répartir|
-| ------------------- | -------------- | ----------- | ------------------------- |
-| Attaque             | Attaque        | 60%         | 40%                       |
-| Défense             | Défense        | 40%         | 60%                       |
-| Magie               | Chance         | 33%         | 67%                       |
-| Fuite               | Initiative     | 80%         | 20%                       |
-| Tank                | maxHealth      | 50%         | 50%                       |
+| Caractère du joueur | Stat priorisée | Points pris | Points restants à répartir |
+| ------------------- | -------------- | ----------- | -------------------------- |
+| Attaque             | Attaque        | 60%         | 40%                        |
+| Défense             | Défense        | 40%         | 60%                        |
+| Magie               | Chance         | 33%         | 67%                        |
+| Fuite               | Initiative     | 80%         | 20%                        |
+| Tank                | maxHealth      | 50%         | 50%                        |
 
 - Une fois que le caractère dominant du joueur est tracé, il suit son cours au fil du jeu.
 - Le caractère peut changer en cours de jeu.
@@ -100,17 +101,18 @@
 - Le caractère prend de la valeur après chaque combat.
 
 ### Arbre des compétences
+
 - Il y'aura un arbre des compétences.
 - Chaque level gagné offre plusieurs points de compétences à distribuer dans l'arbre des compétences.
 - Chaque branche de l'arbre détermine une spécialité
 - Attaque / Vie ou Défense / Magie
-  
-| Niveau br | Attaque | Vie/Défense | Magie |
-| --------- | ------- | ----------- | ----- |
-| 1         | +2 Atk  | +10 Santé   | Feu   |
-| 2         |         | +5 Défense  |       |
-| 3         |         | "Se blinder"|       |
-| 4         | +15 Atk | +50 santé   |       |
-| 5         |         |             |       |
-| 6         |         |             |       |
-| 7         | Perce 50% de la défense adv |             |       |
+
+| Niveau br | Attaque                     | Vie/Défense  | Magie |
+| --------- | --------------------------- | ------------ | ----- |
+| 1         | +2 Atk                      | +10 Santé    | Feu   |
+| 2         |                             | +5 Défense   |       |
+| 3         |                             | "Se blinder" |       |
+| 4         | +15 Atk                     | +50 santé    |       |
+| 5         |                             |              |       |
+| 6         |                             |              |       |
+| 7         | Perce 50% de la défense adv |              |       |

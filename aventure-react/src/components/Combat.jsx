@@ -179,6 +179,11 @@ const Combat = ({ enemy, onCombatFinish }) => {
     handleAnimationPlayer(0);
   };
 
+  const handleTurns = (turnInfo) => {
+    if (turnInfo === 0) setPlayerTurn(true);
+    else setPlayerTurn(false);
+  };
+
   /*---------- USE EFFECTS ----------*/
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
@@ -307,7 +312,11 @@ const Combat = ({ enemy, onCombatFinish }) => {
     <div
       className={`combat-container ${isAttacking ? "combat--attacking" : ""}`}
     >
-      <CombatTurns playerTurn={playerTurn} enemy={enemy} />
+      <CombatTurns
+        playerTurn={playerTurn}
+        enemy={enemy}
+        handleTurns={handleTurns}
+      />
       <div className="combat">
         <div
           className={`combat__player__stats ${

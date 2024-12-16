@@ -1,7 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { PlayerContext } from "../utils/Context";
 
-const CombatTurns = ({ playerTurn, enemy }) => {
-  const [turns, setTurns] = useState([0, enemy.name]);
+const CombatTurns = ({ playerTurn, enemy, handleTurns }) => {
+  const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
+    useContext(PlayerContext);
+  const diffInit = playerStatsFull.initiative - enemy.initiative;
+
+  const [turns, setTurns] = useState(() => {
+    const diffInit = (playerStatsFull.initiative - enemy.initiative) / 100;
+    let calcul = diffInit === 0 ? 0.5 : diffInit > 0 ? 0.7 : 0.3;
+    calcul = Math.max(0.033, Math.min(0.9666, calcul * (1 + diffInit)));
+    return Math.random() < calcul ? [0] : [enemy.name];
+  });
 
   /**
    * Calcule au premier rendu qui doit jouer
@@ -11,16 +21,41 @@ const CombatTurns = ({ playerTurn, enemy }) => {
    * Il y'aura un total de 10 tours visibles à l'écran (ou plus si je me rends compte que c'est pas assez), et à chaque fois qu'un tour passe, un nouveau s'ajoute à la liste.
    */
   const calculateTurns = () => {
-    if (playerTurn)
-      setTurns({
-        return: turns.filter((turn, i) => i > 0).concat([...turns, 0]),
+    setTurns(() => {
+      const updatedTurns = turns.slice(1);
+      console.log("updTurns : ", updatedTurns);
+
+      const newTurn = playerTurn ? 0 : enemy.name;
+      return [...updatedTurns, newTurn];
+    });
+    console.log("apres rerendu : ", turns);
+    handleTurns(turns[0]);
+  };
+
+  const generateTurns = () => {
+    let sw = true;
+    for (let i = 0; i < 10; i++) {
+      setTurns((prevTurns) => {
+        const newTurn = sw ? 0 : enemy.name;
+        sw = !sw;
+        return [...prevTurns, newTurn];
       });
-    else setTurns([...turns, enemy.name]);
+    }
+  };
+
+  const firstToPlay = () => {};
+
+  const isPlayingTwice = () => {
+    return Math.random();
   };
 
   useEffect(() => {
     calculateTurns();
   }, [playerTurn]);
+
+  useEffect(() => {
+    generateTurns();
+  }, []);
 
   return (
     <div className="combatTurns">
