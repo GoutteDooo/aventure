@@ -180,6 +180,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
   };
 
   const handleTurns = (turnInfo) => {
+    console.log("handleTurns activated : ", turnInfo);
+
     if (turnInfo === 0) setPlayerTurn(true);
     else setPlayerTurn(false);
   };

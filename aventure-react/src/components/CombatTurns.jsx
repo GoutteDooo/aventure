@@ -28,7 +28,7 @@ const CombatTurns = ({ playerTurn, enemy, handleTurns }) => {
       const newTurn = playerTurn ? 0 : enemy.name;
       return [...updatedTurns, newTurn];
     });
-    console.log("apres rerendu : ", turns);
+    console.log("appel handleTurns");
     handleTurns(turns[0]);
   };
 
