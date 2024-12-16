@@ -81,7 +81,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
       enemyState.health -= damages;
       setIsAttacking(false);
       setIsInAction(false);
-      setPlayerTurn(false);
     }
   };
 
@@ -212,7 +211,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
         }
 
         setIsAttacked(true);
-        setPlayerTurn(true); // Retourne au tour du joueur
       }, animationDuration);
 
       // Nettoyage du timeout si le composant est démonté ou si la dépendance change
@@ -316,8 +314,10 @@ const Combat = ({ enemy, onCombatFinish }) => {
     >
       <CombatTurns
         playerTurn={playerTurn}
+        setPlayerTurn={setPlayerTurn}
         enemy={enemy}
-        handleTurns={handleTurns}
+        enemyAttacked={enemyAttacked}
+        isAttacked={isAttacked}
       />
       <div className="combat">
         <div
