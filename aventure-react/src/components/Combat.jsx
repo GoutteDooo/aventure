@@ -131,7 +131,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const handleMsAnimatedText = () => {
     if (playerTurn) return 30;
     if (enemyAttacking) return 10;
-    return 1000;
+    return 10;
   };
 
   const handleAnimationAttack = () => {
