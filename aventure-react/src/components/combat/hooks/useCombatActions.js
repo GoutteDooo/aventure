@@ -4,14 +4,23 @@ const useCombatActions = () => {
   const [isInAction, setIsInAction] = useState(false);
 
   const handleAttack = () => {
-    setIsInAction(true);
+    if (!isInAction) {
+      setIsInAction(true);
+      console.log("isInAction!", isInAction);
+    }
+  };
+
+  const cancelAction = () => {
+    setIsInAction(false);
   };
 
   const handleDefense = () => {
-    setIsInAction(true);
+    if (!isInAction) {
+      setIsInAction(true);
+    }
   };
 
-  return { isInAction, handleAttack, handleDefense };
+  return { isInAction, cancelAction, handleAttack, handleDefense };
 };
 
 export default useCombatActions;

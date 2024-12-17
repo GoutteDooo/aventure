@@ -4,6 +4,7 @@ import { PlayerContext } from "../../utils/Context";
 import AnimatedText from "../functions/AnimatedText";
 import CombatTurns from "../CombatTurns";
 import Buttons from "./buttons/Buttons";
+import useCombatActions from "./hooks/useCombatActions";
 
 const Combat = ({ enemy, onCombatFinish }) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
@@ -16,7 +17,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [isIntro, setIsIntro] = useState(true);
   const [isAttacking, setIsAttacking] = useState(false);
   const [isAttacked, setIsAttacked] = useState(false);
-  const [isInAction, setIsInAction] = useState(false);
+  // const [isInAction, setIsInAction] = useState(false);
   const [combatFinished, setCombatFinished] = useState(false);
   const [showLoot, setShowLoot] = useState(false);
   const [combatDesc, setCombatDesc] = useState("");
@@ -34,6 +35,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
   //Relatifs au Joueur pendant le combat
   const [animationPlayer, setAnimationPlayer] = useState("");
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false); //Met en pause tout le composant lorsqu'actif
+
+  //hooks perso
+  const {isInAction, cancelAction, handleAttack, handleDefense} = useCombatActions();
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -60,19 +64,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
     return brutDamages;
   };
-
-  const handleAttack = () => {
-    if (!isInAction) {
-      setIsInAction(true);
-      setIsAttacking(true);
-    }
-  };
-
-  const handleDefense = () => {
-    if (!isInAction) {
-      setIsInAction(true);
-    }
-  }
 
   //Lorsque le joueur attaque l'ennemi
   const handleEnemyClick = () => {
@@ -371,7 +362,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
           {isInAction ? (
             <button
               className="combat__button__cancel"
-              onClick={() => setIsInAction(false)}
+              onClick={cancelAction}
             >
               Annuler
             </button>
