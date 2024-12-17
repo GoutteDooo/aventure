@@ -180,7 +180,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
-    if (!playerTurn && enemyState.health > 0) {
+    if ((!playerTurn && enemyState.health > 0) || (!playerTurn && isAttacked)) {
       console.log("PLAYERTURN !");
       setActionCounter(() => actionCounter + 1);
       setEnemyAttacking(true); // = Son animation se joue
@@ -201,17 +201,18 @@ const Combat = ({ enemy, onCombatFinish }) => {
           enemyHealed();
         }
 
+        setEnemyAttacking(false);
         setIsAttacked(true);
+        console.log("enemyAttacking : ", enemyAttacking);
       }, animationDuration);
       // Nettoyage du timeout si le composant est démonté ou si la dépendance change
       return () => {
-        setEnemyAttacking(false);
         clearTimeout(enemyAction);
       };
     } else if (enemyState.health <= 0) {
       setCombatFinished(true);
     }
-  }, [playerTurn]);
+  }, [playerTurn, isAttacked]);
 
   //Si joueur n'est plus en action, alors on décoche tout les states de combat
   useEffect(() => {

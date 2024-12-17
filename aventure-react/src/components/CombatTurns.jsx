@@ -28,11 +28,14 @@ const CombatTurns = ({
    * Il y'aura un total de 10 tours visibles à l'écran (ou plus si je me rends compte que c'est pas assez), et à chaque fois qu'un tour passe, un nouveau s'ajoute à la liste.
    */
   const calculateTurns = () => {
+    /*
     setTurns(() => {
       const updatedTurns = turns.slice(1);
       const newTurn = playerTurn ? 0 : enemy.name;
       return [...updatedTurns, newTurn];
-    });
+    });*/
+    //test
+    setTurns([enemy.name, enemy.name, enemy.name]);
     handleTurns(turns[0]);
   };
 
