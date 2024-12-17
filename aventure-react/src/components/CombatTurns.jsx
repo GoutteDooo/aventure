@@ -7,6 +7,7 @@ const CombatTurns = ({
   playerTurn,
   setPlayerTurn,
   enemy,
+  isIntro,
 }) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
     useContext(PlayerContext);
@@ -64,7 +65,10 @@ const CombatTurns = ({
         calculateTurns();
       }, timer);
     }
-  }, [isAttacked, enemyAttacked]);
+    if (isIntro) {
+      calculateTurns();
+    }
+  }, [isIntro, isAttacked, enemyAttacked]);
 
   useEffect(() => {
     generateTurns();

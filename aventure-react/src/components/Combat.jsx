@@ -181,6 +181,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
     if (!playerTurn && enemyState.health > 0) {
+      console.log("PLAYERTURN !");
       setActionCounter(() => actionCounter + 1);
       setEnemyAttacking(true); // = Son animation se joue
       const animation = enemyAttack.animation;
@@ -311,6 +312,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         enemy={enemy}
         enemyAttacked={enemyAttacked}
         isAttacked={isAttacked}
+        isIntro={isIntro}
       />
       <div className="combat">
         <div
