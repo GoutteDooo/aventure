@@ -88,7 +88,7 @@ const CombatTurns = ({
       <div className="combatTurns__wheel">
         {turns &&
           turns.map((turn, i) => (
-            <div className="turn" key={i}>
+            <div className={`${turn === 0 ? "player-turn" : "enemy-turn"} ${i === 0 && turn === 0 ? "first-turn" : ""}`} key={i}>
               {turn === 0 ? "Player" : `${turn}`}
             </div>
           ))}

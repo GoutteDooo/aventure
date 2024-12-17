@@ -1,8 +1,28 @@
 .combatTurns {
   position: absolute;
-  background: red;
-  width: 100px;
+  background: $dark2;
+  border: 10px solid $light2;
+  width: 150px;
   height: 500px;
   right: 20px;
   top: 220px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 2000px 2000px 5000px 5000px;
+  &__wheel {
+    .player-turn, .enemy-turn, .first-turn {
+      height: 50px;
+      border-bottom: 5px solid $dark1;
+      padding-top: 10px;
+    }
+    .first-turn {
+      background: blue !important;
+    }
+    .player-turn {
+      background: $light1;
+    }
+    .enemy-turn {
+      background: darkred;
+    }
+  }
 }
