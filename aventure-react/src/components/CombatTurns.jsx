@@ -68,10 +68,7 @@ const CombatTurns = ({
         calculateTurns();
       }, timer);
     }
-    if (isIntro) {
-      calculateTurns();
-    }
-  }, [isIntro, isAttacked, enemyAttacked]);
+  }, [isAttacked, enemyAttacked]);
 
   useEffect(() => {
     generateTurns();

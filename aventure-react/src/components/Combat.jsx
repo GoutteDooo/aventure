@@ -180,7 +180,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
-    if ((!playerTurn && enemyState.health > 0) || (!playerTurn && isAttacked)) {
+    if (playerTurn === null) return; //Permet une bonne actualisation lors des doubles tours
+    if (!playerTurn && enemyState.health > 0){
       console.log("PLAYERTURN !");
       setActionCounter(() => actionCounter + 1);
       setEnemyAttacking(true); // = Son animation se joue
@@ -212,7 +213,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     } else if (enemyState.health <= 0) {
       setCombatFinished(true);
     }
-  }, [playerTurn, isAttacked]);
+  }, [playerTurn]);
 
   //Si joueur n'est plus en action, alors on décoche tout les states de combat
   useEffect(() => {
