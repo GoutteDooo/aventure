@@ -38,11 +38,11 @@ const CombatTurns = ({
   };
 
   const generateTurns = () => {
-    let sw = true;
+    let sw = true;//true == joueur, false == ennemi
     for (let i = 0; i < 10; i++) {
       setTurns((prevTurns) => {
         const newTurn = sw ? 0 : enemy.name;
-        sw = !sw;
+        sw = searchPlayTwice(sw);
         return [...prevTurns, newTurn];
       });
     }
@@ -61,8 +61,18 @@ const CombatTurns = ({
   };
   const firstToPlay = () => {};
 
-  const isPlayingTwice = () => {
-    return Math.random();
+  /**
+   * 
+   * @returns {number}
+   */
+  const searchPlayTwice = (levier) => {
+    if (diffInit >= 3) {
+      console.log("play twice !");
+      return Math.random() > 0.9 ? true : !levier;//JOUEUR
+    } else if (diffInit <= -3) {
+      return Math.random() > 0.9 ? false : !levier;//ENNEMI
+    }
+    return !levier;
   };
 
   useEffect(() => {
@@ -89,7 +99,7 @@ const CombatTurns = ({
         {turns &&
           turns.map((turn, i) => (
             <div className={`${turn === 0 ? "player-turn" : "enemy-turn"} ${i === 0 && turn === 0 ? "first-turn" : ""}`} key={i}>
-              {turn === 0 ? "Player" : `${turn}`}
+              {turn === 0 ? "Joueur" : `${turn}`}
             </div>
           ))}
       </div>

@@ -4,7 +4,7 @@ import storySteps from "../data/adventureData";
 import enemiesData from "../data/enemiesData";
 import itemsData from "../data/itemsData";
 import popUps from "../data/popUpsData";
-import Combat from "../components/Combat";
+import Combat from "../components/combat/Combat";
 import { useNavigate } from "react-router-dom";
 import { PlayerContext } from "../utils/Context";
 import SortInventory from "../components/SortInventory";

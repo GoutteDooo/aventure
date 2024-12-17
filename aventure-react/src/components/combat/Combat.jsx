@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import Loot from "./Loot";
-import { PlayerContext } from "../utils/Context";
-import AnimatedText from "./functions/AnimatedText";
-import CombatTurns from "./CombatTurns";
+import Loot from "../Loot";
+import { PlayerContext } from "../../utils/Context";
+import AnimatedText from "../functions/AnimatedText";
+import CombatTurns from "../CombatTurns";
+import Buttons from "./buttons/Buttons";
 
 const Combat = ({ enemy, onCombatFinish }) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
@@ -32,6 +33,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Relatifs au Joueur pendant le combat
   const [animationPlayer, setAnimationPlayer] = useState("");
+  const [isAnimationPlaying, setIsAnimationPlaying] = useState(false); //Met en pause tout le composant lorsqu'actif
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -65,6 +67,12 @@ const Combat = ({ enemy, onCombatFinish }) => {
       setIsAttacking(true);
     }
   };
+
+  const handleDefense = () => {
+    if (!isInAction) {
+      setIsInAction(true);
+    }
+  }
 
   //Lorsque le joueur attaque l'ennemi
   const handleEnemyClick = () => {
@@ -368,15 +376,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
               Annuler
             </button>
           ) : (
-            <div className="combat__player__turn">
-              <button className="combat__button__attack" onClick={handleAttack}>
-                Attaquer
-              </button>
-              <button className="combat__button__defense">Se protéger</button>
-              <button className="combat__button__magic">Magie</button>
-              <button className="combat__button__use">Utiliser</button>
-              <button className="combat__button__fled">Fuir</button>
-            </div>
+            <Buttons handleAttack={handleAttack} handleDefense={handleDefense} />
           )}
         </>
       ) : (
