@@ -180,9 +180,10 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
+    console.log("playerTurn useEffect : ",playerTurn);
+    
     if (playerTurn === null) return; //Permet une bonne actualisation lors des doubles tours
     if (!playerTurn && enemyState.health > 0){
-      console.log("PLAYERTURN !");
       setActionCounter(() => actionCounter + 1);
       setEnemyAttacking(true); // = Son animation se joue
       const animation = enemyAttack.animation;
@@ -204,7 +205,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
         setEnemyAttacking(false);
         setIsAttacked(true);
-        console.log("enemyAttacking : ", enemyAttacking);
       }, animationDuration);
       // Nettoyage du timeout si le composant est démonté ou si la dépendance change
       return () => {
