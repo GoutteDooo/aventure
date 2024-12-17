@@ -1,7 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../utils/Context";
 
-const CombatTurns = ({enemyAttacked, isAttacked, playerTurn, setPlayerTurn, enemy }) => {
+const CombatTurns = ({
+  enemyAttacked,
+  isAttacked,
+  playerTurn,
+  setPlayerTurn,
+  enemy,
+}) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
     useContext(PlayerContext);
   const diffInit = playerStatsFull.initiative - enemy.initiative;
@@ -56,8 +62,8 @@ const CombatTurns = ({enemyAttacked, isAttacked, playerTurn, setPlayerTurn, enem
   };
 
   useEffect(() => {
-    calculateTurns();
-  }, [isAttacked,enemyAttacked]);
+    if (isAttacked || enemyAttacked) calculateTurns();
+  }, [isAttacked, enemyAttacked]);
 
   useEffect(() => {
     generateTurns();
