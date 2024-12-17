@@ -202,7 +202,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
         setIsAttacked(true);
       }, animationDuration);
-
       // Nettoyage du timeout si le composant est démonté ou si la dépendance change
       return () => {
         setEnemyAttacking(false);
@@ -354,7 +353,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         </div>
       </div>
       {/* Si tour du joueur, alors afficher*/}
-      {playerTurn ? (
+      {playerTurn && !enemyAttacked ? (
         <>
           <div className="your-turn">C'est votre tour</div>
           {isInAction ? (

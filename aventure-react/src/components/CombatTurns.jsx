@@ -59,7 +59,7 @@ const CombatTurns = ({
   useEffect(() => {
     if ((isAttacked && !enemyAttacked) || (!isAttacked && enemyAttacked)) {
       let timer = 600;
-      if (enemyAttacked) timer = 0;
+      if (enemyAttacked) timer = 600;
       setTimeout(() => {
         calculateTurns();
       }, timer);
