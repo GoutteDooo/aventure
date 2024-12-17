@@ -156,7 +156,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
         enemyState.accuracy,
         enemyState.chance
       ) - playerStatsFull.defense;
-    console.log("L'ennemi inflige un total de ", enemyDamage, " dégâts");
     setPlayerStats((prevStats) => ({
       ...prevStats,
       stats: {
@@ -169,7 +168,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
   };
 
   const enemyHealed = () => {
-    console.log("L'ennemi s'est soigné de ", enemyAttack.effects.heal);
     const healPoints = enemyAttack.effects.heal;
     setEnemyState((prevStats) => ({
       ...prevStats,
@@ -199,7 +197,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
             playerGetsHit();
           }
         } else if (enemyAttack.effects.heal) {
-          console.log("heal !");
           enemyHealed();
         }
 
@@ -218,6 +215,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Si joueur n'est plus en action, alors on décoche tout les states de combat
   useEffect(() => {
+    console.log("enemyattacked : ", enemyAttacked);
+
     if (!isInAction) {
       setIsAttacking(false);
     }
@@ -230,6 +229,8 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Gère l'animation du joueur quand attaqué & localStorage sa health
   useEffect(() => {
+    console.log("isAttacked: ", isAttacked);
+
     if (isAttacked) {
       localStorage.setItem("playerData", JSON.stringify(playerStats));
       setTimeout(() => {

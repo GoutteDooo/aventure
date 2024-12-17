@@ -29,12 +29,9 @@ const CombatTurns = ({
   const calculateTurns = () => {
     setTurns(() => {
       const updatedTurns = turns.slice(1);
-      console.log("updTurns : ", updatedTurns);
-
       const newTurn = playerTurn ? 0 : enemy.name;
       return [...updatedTurns, newTurn];
     });
-    console.log("appel handleTurns");
     handleTurns(turns[0]);
   };
 
@@ -50,8 +47,6 @@ const CombatTurns = ({
   };
 
   const handleTurns = (turnInfo) => {
-    console.log("playerTurn : ", playerTurn);
-
     if (turnInfo === 0) setPlayerTurn(true);
     else setPlayerTurn(false);
   };
