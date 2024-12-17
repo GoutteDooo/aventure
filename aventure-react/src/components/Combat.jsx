@@ -178,13 +178,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
     handleAnimationPlayer(0);
   };
 
-  const handleTurns = (turnInfo) => {
-    console.log("handleTurns activated : ", turnInfo);
-
-    if (turnInfo === 0) setPlayerTurn(true);
-    else setPlayerTurn(false);
-  };
-
   /*---------- USE EFFECTS ----------*/
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
