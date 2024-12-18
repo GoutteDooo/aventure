@@ -219,7 +219,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
   /**A chaque fois que c'est le tour du joueur,
    * l'ennemi aura son compteur d'orderAttack incrémenté de 1
    * upOrderAttack vérifie également si la condition d'attaque d'ennemi est respectée pour pouvoir la lancer
-   *
    * Update aussi l'attaque de l'ennemi
    */
   useEffect(() => {
@@ -228,40 +227,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
     }
   }, [playerTurn]);
 
-  /**Gère la description lors du combat de A à Z */
-  useEffect(() => {
-    setEnemyAttack(findAttack(orderAttack[indexOrderAttack]));
-    //Toujours en dernier pour avoir tout le temps l'intro
-    if (isIntro) {
-      //seul state dépendant d'un autre useEffect
-      setCombatDesc(enemyState.combatData.narrative.intro);
-      return;
-    } else if (enemyAttacking && enemyAttack) {
-      setCombatDesc(enemyAttack.desc);
-    } else if (playerTurn) {
-      if (enemyAttack && findDescBeforeAtk(enemyAttack)) {
-        setCombatDesc(enemyAttack.descBeforeAtk);
-      } else {
-        setCombatDesc((prevDesc) => {
-          const narrativeOptions = enemyState.combatData.narrative.playerTurn;
-
-          if (narrativeOptions.length === 1) {
-            return narrativeOptions[0]; // Si un seul texte, pas besoin de randomiser
-          }
-
-          let randomText;
-          do {
-            const indexRandom = Math.floor(
-              Math.random() * narrativeOptions.length
-            );
-            randomText = narrativeOptions[indexRandom];
-          } while (randomText === prevDesc);
-
-          return randomText;
-        });
-      }
-    }
-  }, [enemyAttacking, enemyAttack, enemyState, playerTurn, isIntro]);
 
   return !showLoot ? (
     <div
@@ -276,7 +241,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         isIntro={isIntro}
       />
 
-      <FightZone playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} combatDesc={combatDesc} enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} handleAnimationAttack={handleAnimationAttack} handleEnemyClick={handleEnemyClick} enemyState={enemyState} />
+      <FightZone playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} combatDesc={combatDesc} setCombatDesc={setCombatDesc} enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} isIntro={isIntro} handleAnimationAttack={handleAnimationAttack} handleEnemyClick={handleEnemyClick} enemyState={enemyState} enemyAttack={enemyAttack} setEnemyAttack={setEnemyAttack} findAttack={findAttack} orderAttack={orderAttack} indexOrderAttack={indexOrderAttack} findDescBeforeAtk={findDescBeforeAtk}/>
 
       {/* Affichage tour du joueur et ennemi */}
       <DisplayTurns playerTurn={playerTurn} enemyAttacked={enemyAttacked} isInAction={isInAction} cancelAction={cancelAction} handleAttack={handleAttack} handleDefense={handleDefense} />
