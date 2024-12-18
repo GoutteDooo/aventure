@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const useCombatActions = () => {
   const [isInAction, setIsInAction] = useState(false);
+  const [isAttacking, setIsAttacking] = useState(false);
 
   const handleAttack = () => {
     if (!isInAction) {
       setIsInAction(true);
+      setIsAttacking(true);
       console.log("isInAction!", isInAction);
     }
   };
@@ -20,7 +22,15 @@ const useCombatActions = () => {
     }
   };
 
-  return { isInAction, cancelAction, handleAttack, handleDefense };
+  return {
+    isInAction,
+    setIsInAction,
+    isAttacking,
+    setIsAttacking,
+    cancelAction,
+    handleAttack,
+    handleDefense,
+  };
 };
 
 export default useCombatActions;

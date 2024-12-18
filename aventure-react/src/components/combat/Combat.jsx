@@ -15,7 +15,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     return savedPlayerName ? savedPlayerName : "John Doe";
   });
   const [isIntro, setIsIntro] = useState(true);
-  const [isAttacking, setIsAttacking] = useState(false);
+  // const [isAttacking, setIsAttacking] = useState(false);
   const [isAttacked, setIsAttacked] = useState(false);
   // const [isInAction, setIsInAction] = useState(false);
   const [combatFinished, setCombatFinished] = useState(false);
@@ -37,7 +37,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false); //Met en pause tout le composant lorsqu'actif
 
   //hooks perso
-  const {isInAction, cancelAction, handleAttack, handleDefense} = useCombatActions();
+  const {isInAction,setIsInAction, isAttacking,setIsAttacking, cancelAction, handleAttack, handleDefense} = useCombatActions();
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -67,7 +67,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Lorsque le joueur attaque l'ennemi
   const handleEnemyClick = () => {
-    if (isAttacking && playerTurn) {
+    if (isAttacking) {
       setEnemyAttacked(true);
       const damages = Math.max(
         playerStatsFull.attack * 0.1,
@@ -217,10 +217,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
   //Si joueur n'est plus en action, alors on décoche tout les states de combat
   useEffect(() => {
     console.log("enemyattacked : ", enemyAttacked);
-
-    if (!isInAction) {
-      setIsAttacking(false);
-    }
     if (enemyAttacked) {
       setTimeout(() => {
         setEnemyAttacked(false);
