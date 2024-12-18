@@ -5,6 +5,7 @@ import AnimatedText from "../functions/AnimatedText";
 import CombatTurns from "../CombatTurns";
 import Buttons from "./buttons/Buttons";
 import useCombatActions from "./hooks/useCombatActions";
+import { calculateDamage } from "../../utils/CombatUtils";
 
 const Combat = ({ enemy, onCombatFinish }) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
@@ -55,15 +56,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
       </p>
     );
   }
-  //Fonction calcul des dommages avec coup critique
-  const damage = (attack, accuracy, chance) => {
-    let brutDamages = Math.round(
-      attack - (1 - accuracy) * Math.random() * attack
-    );
-    if (Math.random() >= 1 - chance) brutDamages *= 2;
-
-    return brutDamages;
-  };
 
   //Lorsque le joueur attaque l'ennemi
   const handleEnemyClick = () => {
@@ -71,7 +63,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
       setEnemyAttacked(true);
       const damages = Math.max(
         playerStatsFull.attack * 0.1,
-        damage(
+        calculateDamage(
           playerStatsFull.attack,
           playerStatsFull.accuracy,
           playerStatsFull.chance
@@ -150,7 +142,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   //Joueur s'est pris des damages
   const playerGetsHit = () => {
     const enemyDamage =
-      damage(
+      calculateDamage(
         enemyAttack.effects.getDamages(enemyState),
         enemyState.accuracy,
         enemyState.chance
