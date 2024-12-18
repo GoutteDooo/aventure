@@ -20,7 +20,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [isAttacked, setIsAttacked] = useState(false);
   const [combatFinished, setCombatFinished] = useState(false);
   const [showLoot, setShowLoot] = useState(false);
-  const [combatDesc, setCombatDesc] = useState("");
   const [actionCounter, setActionCounter] = useState(0);
   //Relatifs au Joueur pendant le combat
   const [animationPlayer, setAnimationPlayer] = useState("");
@@ -95,11 +94,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
         return nextId;
       });
     }
-  };
-
-  const handleAnimationAttack = () => {
-    const animation = enemyAttack.animation;
-    return `combat__ennemy__attack ${animation}`;
   };
 
   const handleAnimationPlayer = (damagesTaken = null) => {
@@ -212,7 +206,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
     onCombatFinish();
   };
 
-  useEffect(() => {
+  useEffect(() => {//Gère l'intro
     if (actionCounter > 0) if (isIntro) setIsIntro(false);
   }, [actionCounter]);
 
@@ -241,7 +235,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         isIntro={isIntro}
       />
 
-      <FightZone playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} combatDesc={combatDesc} setCombatDesc={setCombatDesc} enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} isIntro={isIntro} handleAnimationAttack={handleAnimationAttack} handleEnemyClick={handleEnemyClick} enemyState={enemyState} enemyAttack={enemyAttack} setEnemyAttack={setEnemyAttack} findAttack={findAttack} orderAttack={orderAttack} indexOrderAttack={indexOrderAttack} findDescBeforeAtk={findDescBeforeAtk}/>
+      <FightZone playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName}  enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} isIntro={isIntro} handleEnemyClick={handleEnemyClick} enemyState={enemyState} enemyAttack={enemyAttack} setEnemyAttack={setEnemyAttack} findAttack={findAttack} orderAttack={orderAttack} indexOrderAttack={indexOrderAttack} findDescBeforeAtk={findDescBeforeAtk}/>
 
       {/* Affichage tour du joueur et ennemi */}
       <DisplayTurns playerTurn={playerTurn} enemyAttacked={enemyAttacked} isInAction={isInAction} cancelAction={cancelAction} handleAttack={handleAttack} handleDefense={handleDefense} />

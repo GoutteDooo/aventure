@@ -8,12 +8,11 @@ export const calculateDamage = (attack, accuracy, chance) => {
 
   
   /**
-   * Cherche s'il y'a une descBeforeAtk et
-   * retourne true le cas échéant
-   * sinon false
    * @param {object} researchingAttack - attack
    * @returns {boolean}
    */
+  /**
+   * Cherche s'il y'a une descBeforeAtk et retourne true le cas échéant sinon false */
   export const findDescBeforeAtk = (researchingAttack) => {
     if (researchingAttack.hasDescBeforeAtk) return true;
     return false;

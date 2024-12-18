@@ -1,6 +1,11 @@
 import React from 'react';
 
-const EnemyStats = ({playerTurn, enemyAttacked, enemyAttacking, handleAnimationAttack, handleEnemyClick, enemyState}) => {
+const EnemyStats = ({playerTurn, enemyAttacked, enemyAttacking, handleEnemyClick, enemyState, enemyAttack}) => {
+
+  const handleAnimationAttack = () => {
+    const animation = enemyAttack.animation;
+    return `combat__ennemy__attack ${animation}`;
+  };
     return (
         
         <div

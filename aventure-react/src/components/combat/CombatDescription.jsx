@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AnimatedText from '../functions/AnimatedText';
 
-const CombatDescription = ({enemyAttacking, enemyAttack, setEnemyAttack, enemyState, playerTurn, isIntro,combatDesc, setCombatDesc, handleMsAnimatedText,findAttack, orderAttack, indexOrderAttack, findDescBeforeAtk}) => {
+const CombatDescription = ({enemyAttacking, enemyAttack, setEnemyAttack, enemyState, playerTurn, isIntro, handleMsAnimatedText,findAttack, orderAttack, indexOrderAttack, findDescBeforeAtk}) => {
+    const [combatDesc, setCombatDesc] = useState("");
   
   /**Gère la description lors du combat de A à Z */
   useEffect(() => {
