@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import Loot from "../Loot";
 import { PlayerContext } from "../../utils/Context";
 import AnimatedText from "../functions/AnimatedText";
-import CombatTurns from "../CombatTurns";
+import CombatTurns from "./CombatTurns";
 import Buttons from "./buttons/Buttons";
 import useCombatActions from "./hooks/useCombatActions";
 import { calculateDamage } from "../../utils/CombatUtils";
 import PlayerStats from "./PlayerStats";
 import EnemyStats from "./EnemyStats";
 import CombatDescription from "./CombatDescription";
+import FightZone from "./FightZone";
+import DisplayTurns from "./DisplayTurns";
 
 const Combat = ({ enemy, onCombatFinish }) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
@@ -306,29 +308,11 @@ const Combat = ({ enemy, onCombatFinish }) => {
         isAttacked={isAttacked}
         isIntro={isIntro}
       />
-      <div className="combat">
-        <PlayerStats playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} />
-        <CombatDescription combatDesc={combatDesc} handleMsAnimatedText={handleMsAnimatedText} />
-        <EnemyStats playerTurn={playerTurn} enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} handleAnimationAttack={handleAnimationAttack} handleEnemyClick={handleEnemyClick} enemyState={enemyState} />
-      </div>
+
+      <FightZone playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} combatDesc={combatDesc} handleMsAnimatedText={handleMsAnimatedText} enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} handleAnimationAttack={handleAnimationAttack} handleEnemyClick={handleEnemyClick} enemyState={enemyState} />
+
       {/* Si tour du joueur, alors afficher*/}
-      {playerTurn && !enemyAttacked ? (
-        <>
-          <div className="your-turn">C'est votre tour</div>
-          {isInAction ? (
-            <button
-              className="combat__button__cancel"
-              onClick={cancelAction}
-            >
-              Annuler
-            </button>
-          ) : (
-            <Buttons handleAttack={handleAttack} handleDefense={handleDefense} />
-          )}
-        </>
-      ) : (
-        <div className="ennemy-turn">Au tour de votre adversaire</div>
-      )}
+      <DisplayTurns playerTurn={playerTurn} enemyAttacked={enemyAttacked} isInAction={isInAction} cancelAction={cancelAction} handleAttack={handleAttack} handleDefense={handleDefense} />
     </div>
   ) : (
     /* IF COMBAT FINISHED */
