@@ -11,6 +11,7 @@ import EnemyStats from "./EnemyStats";
 import CombatDescription from "./CombatDescription";
 import FightZone from "./FightZone";
 import DisplayTurns from "./DisplayTurns";
+import FinishCombat from "./FinishCombat";
 
 const Combat = ({ enemy, onCombatFinish }) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
@@ -311,23 +312,12 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
       <FightZone playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} combatDesc={combatDesc} handleMsAnimatedText={handleMsAnimatedText} enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} handleAnimationAttack={handleAnimationAttack} handleEnemyClick={handleEnemyClick} enemyState={enemyState} />
 
-      {/* Si tour du joueur, alors afficher*/}
+      {/* Affichage tour du joueur et ennemi */}
       <DisplayTurns playerTurn={playerTurn} enemyAttacked={enemyAttacked} isInAction={isInAction} cancelAction={cancelAction} handleAttack={handleAttack} handleDefense={handleDefense} />
     </div>
   ) : (
     /* IF COMBAT FINISHED */
-    <div className="combat__finished__container">
-      <div className="pop-up__finished--bg">
-        <p>Combat terminé</p>
-      </div>
-      <div className="finish__pop-up">
-        <Loot
-          loots={enemyState.loots}
-          gain={enemyState.gain}
-          onClose={handleCloseLoot}
-        />
-      </div>
-    </div>
+    <FinishCombat enemyState={enemyState} handleCloseLoot={handleCloseLoot} />
   );
 };
 
