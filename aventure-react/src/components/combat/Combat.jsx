@@ -4,7 +4,7 @@ import { PlayerContext } from "../../utils/Context";
 import AnimatedText from "../functions/AnimatedText";
 import CombatTurns from "./CombatTurns";
 import Buttons from "./buttons/Buttons";
-import useCombatActions from "./hooks/useCombatActions";
+import usePlayerActions from "./hooks/usePlayerActions";
 import { calculateDamage } from "../../utils/CombatUtils";
 import PlayerStats from "./PlayerStats";
 import EnemyStats from "./EnemyStats";
@@ -12,6 +12,7 @@ import CombatDescription from "./CombatDescription";
 import FightZone from "./FightZone";
 import DisplayTurns from "./DisplayTurns";
 import FinishCombat from "./FinishCombat";
+import useEnemyState from "./hooks/useEnemyState";
 
 const Combat = ({ enemy, onCombatFinish }) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
@@ -22,29 +23,19 @@ const Combat = ({ enemy, onCombatFinish }) => {
     return savedPlayerName ? savedPlayerName : "John Doe";
   });
   const [isIntro, setIsIntro] = useState(true);
-  // const [isAttacking, setIsAttacking] = useState(false);
   const [isAttacked, setIsAttacked] = useState(false);
-  // const [isInAction, setIsInAction] = useState(false);
   const [combatFinished, setCombatFinished] = useState(false);
   const [showLoot, setShowLoot] = useState(false);
   const [combatDesc, setCombatDesc] = useState("");
   const [actionCounter, setActionCounter] = useState(0);
   //Relatifs à/aux ennemi-s
-  const [enemyState, setEnemyState] = useState(enemy);
-  const orderName = enemyState.combatData.attackSyst.orderUsed;
-  const orderAttack = enemyState.combatData.attackSyst[orderName];
-  const [indexOrderAttack, setIndexOrderAttack] = useState(0);
-  const [enemyAttacked, setEnemyAttacked] = useState(false);
-  const [enemyAttacking, setEnemyAttacking] = useState(false);
-  const [enemyAttack, setEnemyAttack] = useState(null);
-  const [animationAttack, setAnimationAttack] = useState(null);
-
+  const {orderName, orderAttack, enemyState, setEnemyState, indexOrderAttack, setIndexOrderAttack, enemyAttacked, setEnemyAttacked, enemyAttacking, setEnemyAttacking, enemyAttack, setEnemyAttack, animationAttack, setAnimationAttack} = useEnemyState(enemy);
   //Relatifs au Joueur pendant le combat
   const [animationPlayer, setAnimationPlayer] = useState("");
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false); //Met en pause tout le composant lorsqu'actif
 
   //hooks perso
-  const {isInAction,setIsInAction, isAttacking,setIsAttacking, cancelAction, handleAttack, handleDefense} = useCombatActions();
+  const {isInAction,setIsInAction, isAttacking,setIsAttacking, cancelAction, handleAttack, handleDefense} = usePlayerActions();
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {

@@ -15,7 +15,7 @@ const PlayerStats = ({playerTurn,isAttacked,animationPlayer, playerStatsFull, pl
           </p>
           <p>Def : {playerStatsFull.defense}</p>
           <p>Adr : {Math.trunc(playerStatsFull.accuracy * 100)}</p>
-          <p>Ch : {playerStatsFull.chance * 100}</p>
+          <p>Ch : {Math.trunc(playerStatsFull.chance * 100)}</p>
           <p>Init : {playerStatsFull.initiative}</p>
         </div>
     );

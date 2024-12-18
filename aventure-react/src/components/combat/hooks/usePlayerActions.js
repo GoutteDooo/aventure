@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useCombatActions = () => {
+const usePlayerActions = () => {
   const [isInAction, setIsInAction] = useState(false);
   const [isAttacking, setIsAttacking] = useState(false);
 
@@ -33,4 +33,4 @@ const useCombatActions = () => {
   };
 };
 
-export default useCombatActions;
+export default usePlayerActions;

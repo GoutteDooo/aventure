@@ -88,7 +88,7 @@ const enemiesData = [
     id: 1,
     name: "Epouvantail",
     maxHealth: 1000,
-    health: 20,
+    health: 100,
     attack: 2,
     defense: 0,
     chance: 0.1,
