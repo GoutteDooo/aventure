@@ -97,12 +97,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
     }
   };
 
-  const handleMsAnimatedText = () => {
-    if (playerTurn) return 30;
-    if (enemyAttacking) return 10;
-    return 10;
-  };
-
   const handleAnimationAttack = () => {
     const animation = enemyAttack.animation;
     return `combat__ennemy__attack ${animation}`;
@@ -282,7 +276,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
         isIntro={isIntro}
       />
 
-      <FightZone playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} combatDesc={combatDesc} handleMsAnimatedText={handleMsAnimatedText} enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} handleAnimationAttack={handleAnimationAttack} handleEnemyClick={handleEnemyClick} enemyState={enemyState} />
+      <FightZone playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} combatDesc={combatDesc} enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} handleAnimationAttack={handleAnimationAttack} handleEnemyClick={handleEnemyClick} enemyState={enemyState} />
 
       {/* Affichage tour du joueur et ennemi */}
       <DisplayTurns playerTurn={playerTurn} enemyAttacked={enemyAttacked} isInAction={isInAction} cancelAction={cancelAction} handleAttack={handleAttack} handleDefense={handleDefense} />
