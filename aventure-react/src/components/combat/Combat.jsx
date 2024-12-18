@@ -1,14 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import Loot from "../Loot";
 import { PlayerContext } from "../../utils/Context";
-import AnimatedText from "../functions/AnimatedText";
 import CombatTurns from "./CombatTurns";
-import Buttons from "./buttons/Buttons";
 import usePlayerActions from "./hooks/usePlayerActions";
-import { calculateDamage } from "../../utils/CombatUtils";
-import PlayerStats from "./PlayerStats";
-import EnemyStats from "./EnemyStats";
-import CombatDescription from "./CombatDescription";
+import { calculateDamage, findDescBeforeAtk } from "../../utils/CombatUtils";
 import FightZone from "./FightZone";
 import DisplayTurns from "./DisplayTurns";
 import FinishCombat from "./FinishCombat";
@@ -28,13 +22,11 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [showLoot, setShowLoot] = useState(false);
   const [combatDesc, setCombatDesc] = useState("");
   const [actionCounter, setActionCounter] = useState(0);
-  //Relatifs à/aux ennemi-s
-  const {orderName, orderAttack, enemyState, setEnemyState, indexOrderAttack, setIndexOrderAttack, enemyAttacked, setEnemyAttacked, enemyAttacking, setEnemyAttacking, enemyAttack, setEnemyAttack, animationAttack, setAnimationAttack} = useEnemyState(enemy);
   //Relatifs au Joueur pendant le combat
   const [animationPlayer, setAnimationPlayer] = useState("");
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false); //Met en pause tout le composant lorsqu'actif
-
   //hooks perso
+  const {orderName, orderAttack, enemyState, setEnemyState, indexOrderAttack, setIndexOrderAttack, enemyAttacked, setEnemyAttacked, enemyAttacking, setEnemyAttacking, enemyAttack, setEnemyAttack, animationAttack, setAnimationAttack} = useEnemyState(enemy);
   const {isInAction,setIsInAction, isAttacking,setIsAttacking, cancelAction, handleAttack, handleDefense} = usePlayerActions();
 
   //Charger les données du joueur depuis le localStorage
@@ -79,17 +71,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
     return attack;
   };
 
-  /**
-   * Cherche s'il y'a une descBeforeAtk et
-   * retourne true le cas échéant
-   * sinon false
-   * @param {object} researchingAttack - attack
-   * @returns {boolean}
-   */
-  const findDescBeforeAtk = (researchingAttack) => {
-    if (researchingAttack.hasDescBeforeAtk) return true;
-    return false;
-  };
 
   /**Gère l'ordre de l'attaque de l'ennemi
    * La fonction s'active à chaque tour de l'ennemi.

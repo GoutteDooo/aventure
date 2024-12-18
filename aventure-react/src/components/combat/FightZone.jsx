@@ -15,6 +15,13 @@ const FightZone = ({playerTurn,
     handleAnimationAttack,
     handleEnemyClick,
     enemyState}) => {
+
+      const handleMsAnimatedText = () => {
+        if (playerTurn) return 30;
+        if (enemyAttacking) return 10;
+        return 10;
+      };
+      
     return (
         <div className="combat">
           <PlayerStats playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} />
