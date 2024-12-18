@@ -1,9 +1,12 @@
 import React from 'react';
+import AnimatedText from '../functions/AnimatedText';
 
-const CombatDescription = () => {
+const CombatDescription = ({combatDesc, handleMsAnimatedText}) => {
     return (
-        <div>
-            
+        <div className="combat__display__container">
+          {combatDesc && (
+            <AnimatedText text={combatDesc} ms={handleMsAnimatedText()} />
+          )}
         </div>
     );
 };

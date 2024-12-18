@@ -6,6 +6,9 @@ import CombatTurns from "../CombatTurns";
 import Buttons from "./buttons/Buttons";
 import useCombatActions from "./hooks/useCombatActions";
 import { calculateDamage } from "../../utils/CombatUtils";
+import PlayerStats from "./PlayerStats";
+import EnemyStats from "./EnemyStats";
+import CombatDescription from "./CombatDescription";
 
 const Combat = ({ enemy, onCombatFinish }) => {
   const { playerStats, setPlayerStats, playerStatsFull, setPlayerStatsFull } =
@@ -304,44 +307,9 @@ const Combat = ({ enemy, onCombatFinish }) => {
         isIntro={isIntro}
       />
       <div className="combat">
-        <div
-          className={`combat__player__stats ${
-            playerTurn ? "combat__play" : "combat__wait"
-          } ${isAttacked ? animationPlayer : ""}`}
-        >
-          <div className="combat__player__stats--name">{playerName}</div>
-          <p>Vie : {playerStatsFull.health}</p>
-          <p>
-            Atk : {Math.trunc(playerStatsFull.attack)} ~{" "}
-            {Math.trunc(playerStatsFull.attack * playerStatsFull.accuracy)}
-          </p>
-          <p>Def : {playerStatsFull.defense}</p>
-          <p>Adr : {Math.trunc(playerStatsFull.accuracy * 100)}</p>
-          <p>Ch : {playerStatsFull.chance * 100}</p>
-          <p>Init : {playerStatsFull.initiative}</p>
-        </div>
-        {/* Fenêtre de description */}
-        <div className="combat__display__container">
-          {combatDesc && (
-            <AnimatedText text={combatDesc} ms={handleMsAnimatedText()} />
-          )}
-        </div>
-        <div
-          className={`combat__ennemy__stats ${
-            playerTurn ? "combat__ennemy__wait" : "combat__ennemy__play"
-          } ${enemyAttacked ? "combat__hit" : ""} ${
-            enemyAttacking ? handleAnimationAttack() : ""
-          }`}
-          onClick={handleEnemyClick}
-        >
-          <div className="combat__ennemy__stats--name">{enemyState.name}</div>
-          <p>Vie : {enemyState.health}</p>
-          <p>
-            Atk : {Math.trunc(enemyState.attack * enemyState.accuracy)} ~{" "}
-            {enemyState.attack}
-          </p>
-          <p>Def : {enemyState.defense}</p>
-        </div>
+        <PlayerStats playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName} />
+        <CombatDescription combatDesc={combatDesc} handleMsAnimatedText={handleMsAnimatedText} />
+        <EnemyStats playerTurn={playerTurn} enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} handleAnimationAttack={handleAnimationAttack} handleEnemyClick={handleEnemyClick} enemyState={enemyState} />
       </div>
       {/* Si tour du joueur, alors afficher*/}
       {playerTurn && !enemyAttacked ? (
