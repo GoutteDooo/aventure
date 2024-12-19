@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../../utils/Context";
-import CombatTurns from "./CombatTurns";
+import CombatTurns from "./subcomponents/CombatTurns";
 import usePlayerActions from "./hooks/usePlayerActions";
 import { calculateDamage, findDescBeforeAtk } from "./utils/CombatUtils";
-import FightZone from "./FightZone";
-import DisplayTurns from "./DisplayTurns";
-import FinishCombat from "./FinishCombat";
+import FightZone from "./subcomponents/FightZone";
+import DisplayTurns from "./subcomponents/DisplayTurns";
+import FinishCombat from "./subcomponents/FinishCombat";
 import useEnemyState from "./hooks/useEnemyState";
 
 const Combat = ({ enemy, onCombatFinish }) => {

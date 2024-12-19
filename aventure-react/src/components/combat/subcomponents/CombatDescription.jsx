@@ -1,9 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import AnimatedText from '../functions/AnimatedText';
+import React, { useEffect, useState } from "react";
+import AnimatedText from "../../functions/AnimatedText";
 
-const CombatDescription = ({enemyAttacking, enemyAttack, setEnemyAttack, enemyState, playerTurn, isIntro, handleMsAnimatedText,findAttack, orderAttack, indexOrderAttack, findDescBeforeAtk}) => {
-    const [combatDesc, setCombatDesc] = useState("");
-  
+const CombatDescription = ({
+  enemyAttacking,
+  enemyAttack,
+  setEnemyAttack,
+  enemyState,
+  playerTurn,
+  isIntro,
+  handleMsAnimatedText,
+  findAttack,
+  orderAttack,
+  indexOrderAttack,
+  findDescBeforeAtk,
+}) => {
+  const [combatDesc, setCombatDesc] = useState("");
+
   /**Gère la description lors du combat de A à Z */
   useEffect(() => {
     setEnemyAttack(findAttack(orderAttack[indexOrderAttack]));
@@ -39,13 +51,13 @@ const CombatDescription = ({enemyAttacking, enemyAttack, setEnemyAttack, enemySt
     }
   }, [enemyAttacking, enemyAttack, enemyState, playerTurn, isIntro]);
 
-    return (
-        <div className="combat__display__container">
-          {combatDesc && (
-            <AnimatedText text={combatDesc} ms={handleMsAnimatedText()} />
-          )}
-        </div>
-    );
+  return (
+    <div className="combat__display__container">
+      {combatDesc && (
+        <AnimatedText text={combatDesc} ms={handleMsAnimatedText()} />
+      )}
+    </div>
+  );
 };
 
 export default CombatDescription;

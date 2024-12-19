@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { PlayerContext } from "../../utils/Context";
+import { PlayerContext } from "../../../utils/Context";
 
 const CombatTurns = ({
   enemyAttacked,
@@ -28,7 +28,6 @@ const CombatTurns = ({
    * Il y'aura un total de 10 tours visibles à l'écran (ou plus si je me rends compte que c'est pas assez), et à chaque fois qu'un tour passe, un nouveau s'ajoute à la liste.
    */
   const calculateTurns = () => {
-    
     setTurns(() => {
       const updatedTurns = turns.slice(1);
       const newTurn = playerTurn ? 0 : enemy.name;
@@ -38,7 +37,7 @@ const CombatTurns = ({
   };
 
   const generateTurns = () => {
-    let sw = true;//true == joueur, false == ennemi
+    let sw = true; //true == joueur, false == ennemi
     for (let i = 0; i < 10; i++) {
       setTurns((prevTurns) => {
         const newTurn = sw ? 0 : enemy.name;
@@ -56,21 +55,20 @@ const CombatTurns = ({
       if (turnInfo === 0) setPlayerTurn(true);
       else setPlayerTurn(false);
     }
-    console.log("Turns, playerTurn : ",playerTurn);
-    
+    console.log("Turns, playerTurn : ", playerTurn);
   };
   const firstToPlay = () => {};
 
   /**
-   * 
+   *
    * @returns {number}
    */
   const searchPlayTwice = (levier) => {
     if (diffInit >= 3) {
       console.log("play twice !");
-      return Math.random() > 0.9 ? true : !levier;//JOUEUR
+      return Math.random() > 0.9 ? true : !levier; //JOUEUR
     } else if (diffInit <= -3) {
-      return Math.random() > 0.9 ? false : !levier;//ENNEMI
+      return Math.random() > 0.9 ? false : !levier; //ENNEMI
     }
     return !levier;
   };
@@ -87,7 +85,7 @@ const CombatTurns = ({
 
   useEffect(() => {
     if (playerTurn === null) handleTurns(turns[0]);
-  }, [playerTurn])
+  }, [playerTurn]);
 
   useEffect(() => {
     generateTurns();
@@ -98,7 +96,12 @@ const CombatTurns = ({
       <div className="combatTurns__wheel">
         {turns &&
           turns.map((turn, i) => (
-            <div className={`${turn === 0 ? "player-turn" : "enemy-turn"} ${i === 0 && turn === 0 ? "first-turn" : ""}`} key={i}>
+            <div
+              className={`${turn === 0 ? "player-turn" : "enemy-turn"} ${
+                i === 0 && turn === 0 ? "first-turn" : ""
+              }`}
+              key={i}
+            >
               {turn === 0 ? "Joueur" : `${turn}`}
             </div>
           ))}
