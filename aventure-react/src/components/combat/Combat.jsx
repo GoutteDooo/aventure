@@ -25,8 +25,31 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [animationPlayer, setAnimationPlayer] = useState("");
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false); //Met en pause tout le composant lorsqu'actif
   //hooks perso
-  const {orderName, orderAttack, enemyState, setEnemyState, indexOrderAttack, setIndexOrderAttack, enemyAttacked, setEnemyAttacked, enemyAttacking, setEnemyAttacking, enemyAttack, setEnemyAttack, animationAttack, setAnimationAttack} = useEnemyState(enemy);
-  const {isInAction,setIsInAction, isAttacking,setIsAttacking, cancelAction, handleAttack, handleDefense} = usePlayerActions();
+  const {
+    orderName,
+    orderAttack,
+    enemyState,
+    setEnemyState,
+    indexOrderAttack,
+    setIndexOrderAttack,
+    enemyAttacked,
+    setEnemyAttacked,
+    enemyAttacking,
+    setEnemyAttacking,
+    enemyAttack,
+    setEnemyAttack,
+    animationAttack,
+    setAnimationAttack,
+  } = useEnemyState(enemy);
+  const {
+    isInAction,
+    setIsInAction,
+    isAttacking,
+    setIsAttacking,
+    cancelAction,
+    handleAttack,
+    handleDefense,
+  } = usePlayerActions();
 
   //Charger les données du joueur depuis le localStorage
   useEffect(() => {
@@ -69,7 +92,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
     );
     return attack;
   };
-
 
   /**Gère l'ordre de l'attaque de l'ennemi
    * La fonction s'active à chaque tour de l'ennemi.
@@ -137,10 +159,15 @@ const Combat = ({ enemy, onCombatFinish }) => {
 
   //Gère la réaction de l'ennemi une fois que le joueur a fait son action
   useEffect(() => {
-    console.log("playerTurn useEffect : ",playerTurn);
-    
+    console.log("playerTurn useEffect : ", playerTurn);
+    /* A chaque fois que c'est le tour du joueur,l'ennemi aura son compteur d'orderAttack incrémenté de 1
+    upOrderAttack vérifie également si la condition d'attaque d'ennemi est respectée pour pouvoir la lancer
+    Update aussi l'attaque de l'ennemi */
+    if (playerTurn && !isIntro) {
+      upOrderAttack();
+    }
     if (playerTurn === null) return; //Permet une bonne actualisation lors des doubles tours
-    if (!playerTurn && enemyState.health > 0){
+    if (!playerTurn && enemyState.health > 0) {
       setActionCounter(() => actionCounter + 1);
       setEnemyAttacking(true); // = Son animation se joue
       const animation = enemyAttack.animation;
@@ -206,21 +233,10 @@ const Combat = ({ enemy, onCombatFinish }) => {
     onCombatFinish();
   };
 
-  useEffect(() => {//Gère l'intro
+  useEffect(() => {
+    //Gère l'intro
     if (actionCounter > 0) if (isIntro) setIsIntro(false);
   }, [actionCounter]);
-
-  /**A chaque fois que c'est le tour du joueur,
-   * l'ennemi aura son compteur d'orderAttack incrémenté de 1
-   * upOrderAttack vérifie également si la condition d'attaque d'ennemi est respectée pour pouvoir la lancer
-   * Update aussi l'attaque de l'ennemi
-   */
-  useEffect(() => {
-    if (playerTurn && !isIntro) {
-      upOrderAttack();
-    }
-  }, [playerTurn]);
-
 
   return !showLoot ? (
     <div
@@ -235,10 +251,34 @@ const Combat = ({ enemy, onCombatFinish }) => {
         isIntro={isIntro}
       />
 
-      <FightZone playerTurn={playerTurn} isAttacked={isAttacked} animationPlayer={animationPlayer} playerStatsFull={playerStatsFull} playerName={playerName}  enemyAttacked={enemyAttacked} enemyAttacking={enemyAttacking} isIntro={isIntro} handleEnemyClick={handleEnemyClick} enemyState={enemyState} enemyAttack={enemyAttack} setEnemyAttack={setEnemyAttack} findAttack={findAttack} orderAttack={orderAttack} indexOrderAttack={indexOrderAttack} findDescBeforeAtk={findDescBeforeAtk}/>
+      <FightZone
+        playerTurn={playerTurn}
+        isAttacked={isAttacked}
+        animationPlayer={animationPlayer}
+        playerStatsFull={playerStatsFull}
+        playerName={playerName}
+        enemyAttacked={enemyAttacked}
+        enemyAttacking={enemyAttacking}
+        isIntro={isIntro}
+        handleEnemyClick={handleEnemyClick}
+        enemyState={enemyState}
+        enemyAttack={enemyAttack}
+        setEnemyAttack={setEnemyAttack}
+        findAttack={findAttack}
+        orderAttack={orderAttack}
+        indexOrderAttack={indexOrderAttack}
+        findDescBeforeAtk={findDescBeforeAtk}
+      />
 
       {/* Affichage tour du joueur et ennemi */}
-      <DisplayTurns playerTurn={playerTurn} enemyAttacked={enemyAttacked} isInAction={isInAction} cancelAction={cancelAction} handleAttack={handleAttack} handleDefense={handleDefense} />
+      <DisplayTurns
+        playerTurn={playerTurn}
+        enemyAttacked={enemyAttacked}
+        isInAction={isInAction}
+        cancelAction={cancelAction}
+        handleAttack={handleAttack}
+        handleDefense={handleDefense}
+      />
     </div>
   ) : (
     /* IF COMBAT FINISHED */
