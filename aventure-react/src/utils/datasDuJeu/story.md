@@ -48,20 +48,23 @@ Et la suite je l'écrirais plus tard.
 
 ## Chapitre 1
 
-### Introduction (Epouvantail)
+### 1. Introduction (Epouvantail)
 
 Le joueur démarre en face du donjon, il peut affronter l'épouvantail ou non comme un didacticiel.
 Un panneau descriptif apparemment écrit par le dragon Zrog met en garde tout individu comptant entrer dans le donjon. La mort les y attend.
 
 Une fois l'épouvantail battu, le joueur remporte un **"chapeau de paille"**, qui lui sera utile tout au long de l'aventure. (ce dernier augmentant sa statistique "chance" à chaque fin d'énigme résolue).
 
-### Salle principale (0,0)
+### 2. Salle principale (0,0)
 
 Dans le donjon, le joueur ne peut plus en sortir. Une fois entré, il pourra s'y balader de salle en salle comme il veut.
 
-La **première salle** est possède une fontaine à son centre. **A chaque étape du jeu, des objets y apparaîtront,** et le joueur pourra aller les chercher, ce qui le "forcera" à faire des
+La **première salle** est possède une fontaine avec trois têtes de dragons sculptées en son centre. **A chaque étape du jeu, des objets y apparaîtront,** et le joueur pourra aller les chercher, ce qui le "forcera" à faire des
 allers-retours.
-Liste des objets retrouvé dans la fontaine au fil du parcours : - Introduction : `Potion de santé` -
+*Liste des objets retrouvés dans la fontaine au fil du parcours :*
+ - Introduction : `Potion de santé`
+ - Après Enfer 1 : `Amanite tue-mouches`
+ - 
 
 Il y'a deux portes, une à droite (-1,0) et une à gauche (1,0), et en son centre (0,3), **un chemin encombré par un éboulement** (L'éboulement pourra être déboulé plus tard lors de l'aventure, lorsque le joueur aura reçu la compétence "Briser")
 
@@ -69,7 +72,24 @@ Si le joueur passe par la porte de droite, il arrivera à un moment donné à la
 
 Revenons à la salle principale, le joueur prend la porte de gauche.
 
-### Rencontre avec ???
+### 3. Le Buffet des Rats (save point)
+
+- La salle de sauvegarde : A n'importe quel moment, le joueur peut venir ici et sauvegarder ses données. S'il meurt pendant la partie, il réapparaîtra dans cette salle à l'instant T de l'histoire où il a sauvegardé.
+- **Snow**, le boss des rats sera votre principal allié, il :
+  - Proposera des échanges tout au long de la partie (parfois équitable, parfois non, c'est un rat après tout)
+  - Donnera des astuces sur le donjon ou le jeu
+  - Fera des blagues douteuses. Notamment la 1ere où il conseillera d'aller dans la salle Enfer au lieu de Paradis et se moquera du héros pour l'avoir cru. Puis s'excusera d'avoir fait une blague aussi stupide. (quand même !)
+- Ce sera le sanctuaire du joueur. Il s'y sentira comme chez lui, car accueilli par les rats.
+- Les rats sont présents dans tout le donjon. Ils se faufilent dans les trous présents partout dans les murs, et voient tout. Ils se racontent les choses entre eux et tout parvient jusqu'aux oreilles de Snow.
+- Snow saura tout le temps ce qui se passe, et parfois il aménera les rats jusqu'au joueur pour l'aider dans sa quête.
+
+#### Particularités du Buffet Des Rats
+- Des petits rats passeront ça et là dynamiquement sur la page. Le joueur pourra cliquer dessus pour savoir ce qu'ils ont à dire.
+- De temps en temps, il peut récolter un morceau de fromage.
+- Aucun rat ne voudra prêter sa bouffe, excepté si on lui pique, car c'est le jeu des rats après tout. Et Snow sera le seul rat qui acceptera de partager sa bouffe (bah oui, c'est pas pour rien que c'est notre pote), mais avec de grandes difficultés tout de même !
+
+### Salle des Enfers 1
+- 
 
 
 ## Rencontre avec La Sorcière
@@ -80,4 +100,4 @@ Elle lui lancera un sort, et le joueur devra le parer. S'il y parvient(et il va 
 
 ## Dernier chapitre
 
-La rencontre avec Zrog sera intéressante. Nouveau changement d'ambiance, fond qui change, nouvelle palette de couleur orienté rouge - dark.
+La rencontre avec Zrog sera intéressante. Nouveau changement d'ambiance, fond qui change, nouvelle palette de couleur orienté rouge - marron.
