@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../../utils/Context";
 import CombatTurns from "./CombatTurns";
 import usePlayerActions from "./hooks/usePlayerActions";
-import { calculateDamage, findDescBeforeAtk } from "../../utils/CombatUtils";
+import { calculateDamage, findDescBeforeAtk } from "./utils/CombatUtils";
 import FightZone from "./FightZone";
 import DisplayTurns from "./DisplayTurns";
 import FinishCombat from "./FinishCombat";
@@ -21,9 +21,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   const [combatFinished, setCombatFinished] = useState(false);
   const [showLoot, setShowLoot] = useState(false);
   const [actionCounter, setActionCounter] = useState(0);
-  //Relatifs au Joueur pendant le combat
   const [animationPlayer, setAnimationPlayer] = useState("");
-  const [isAnimationPlaying, setIsAnimationPlaying] = useState(false); //Met en pause tout le composant lorsqu'actif
   //hooks perso
   const {
     orderName,
@@ -58,7 +56,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
       setPlayerStats(JSON.parse(storedPlayerData));
     }
   }, []);
-
   //Ecran de chargement
   if (!playerStats) {
     return (
@@ -67,7 +64,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
       </p>
     );
   }
-
   //Lorsque le joueur attaque l'ennemi
   const handleEnemyClick = () => {
     if (isAttacking) {
@@ -234,8 +230,7 @@ const Combat = ({ enemy, onCombatFinish }) => {
   };
 
   useEffect(() => {
-    //Gère l'intro
-    if (actionCounter > 0) if (isIntro) setIsIntro(false);
+    if (actionCounter > 0) if (isIntro) setIsIntro(false); //Gère l'intro
   }, [actionCounter]);
 
   return !showLoot ? (
