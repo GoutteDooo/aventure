@@ -48,7 +48,7 @@ const SortInventory = ({ itemFound, setSortInventory, setShowPopUp }) => {
       )
     ) {
       useItem(findItem(activeItem.item), activeItem.index);
-      insertItem(itemFound, activeItem.index);
+      insertItem(currentItemIdFound, activeItem.index);
       setActiveItem(null);
       setShowPopUp(false);
       setSortInventory(false);

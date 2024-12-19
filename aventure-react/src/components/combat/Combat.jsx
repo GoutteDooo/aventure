@@ -182,7 +182,6 @@ const Combat = ({ enemy, onCombatFinish }) => {
         } else if (enemyAttack.effects.heal) {
           enemyHealed();
         }
-
         setEnemyAttacking(false);
         setIsAttacked(true);
       }, animationDuration);
