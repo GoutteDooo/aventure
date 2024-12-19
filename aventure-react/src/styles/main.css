@@ -122,6 +122,7 @@ button:active {
 
 /* COMPONENTS */
 .combat-container {
+  position: relative;
   width: 100%;
   font-size: 1.3rem;
 }
@@ -1423,10 +1424,11 @@ button:active {
   position: absolute;
   background: #4e4a59;
   border: 10px solid #394053;
-  width: 150px;
-  height: 400px;
-  right: 20px;
-  top: 220px;
+  width: 120px;
+  height: 430px;
+  right: 200px;
+  top: -100px;
+  right: -80px;
   overflow: hidden;
   text-align: center;
   border-radius: 50px 50px 100px 100px;
@@ -1438,10 +1440,21 @@ button:active {
 .combatTurns__wheel .player-turn, .combatTurns__wheel .enemy-turn, .combatTurns__wheel .first-turn {
   height: 50px;
   border-bottom: 5px solid #6E6362;
-  padding-top: 10px;
+  padding-top: 15px;
+  font-size: 1rem;
+  color: #6E6362;
 }
 .combatTurns__wheel .first-turn {
+  color: #edf6f9;
+  padding-top: 10px;
+  font-size: 1.2rem;
   background: blue !important;
+}
+.combatTurns__wheel .first-turn__enemy {
+  color: #edf6f9;
+  padding-top: 10px;
+  font-size: 1.2rem;
+  background: orangered !important;
 }
 .combatTurns__wheel .player-turn {
   background: #4f7e4e;

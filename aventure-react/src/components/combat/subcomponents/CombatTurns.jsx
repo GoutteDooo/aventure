@@ -99,6 +99,8 @@ const CombatTurns = ({
             <div
               className={`${turn === 0 ? "player-turn" : "enemy-turn"} ${
                 i === 0 && turn === 0 ? "first-turn" : ""
+              } ${
+                i === 0 && turn === enemy.name ? "first-turn__enemy" : ""
               }`}
               key={i}
             >
