@@ -8,6 +8,16 @@ Par exemple, les window.alert, le scroll horizontal ou d'autres trucs marrants, 
 Il y'aura aussi des instants difficiles comme le moment avec la sorcière, les enfers, le fait du tuer le dragon si le joueur se trompe, mais on n'a rien sans rien ! Il faut des instants difficiles si on veut être satisfait.
 Bref, je veux intégrer beaucoup d'humour, beaucoup de choses décalées et absurdes. Mais aussi du sérieux à certains instants.
 
+Le jeu sera assez fade si le joueur ne fait que tuer tuer tuer.
+En revanche, il sera beaucoup plus fun si le joueur cherche à s'intéresser à ce qui semble être ses ennemis.
+
+### Concernant les combats
+- Je veux que certains mobs tentent de fuir le combat, et que le joueur, s'il a suffisamment d'initiative, arrive à les intercepter, mais a le choix, s'il veut ou non, de les laisser fuir ou de les terminer. S'il les laisse fuir, son initiative sera augmentée. S'il les tue, ce sera plutôt la stats Force qui sera privilégiée. Niveau exp et gain, ce sera la même chose.
+(Je pense à une stat "Bonté" , mais je ne sais pas trop quoi faire avec...)
+- D'autres mobs seront tellement agressifs qu'ils ne fuiront jamais. Il faudra tout de même les terminer, si le joueur le veut bien.
+- L'action "Parler" sera toujours disponible, et tout les mobs pourront interagir avec le héros. Jusqu'à pouvoir désamorcer des combats comme ça. (La communication est la clé)
+
+
 ## Avant que l'histoire ne démarre (notes pour moi)
 Le héros de cette histoire est un jeune homme de 22 ans. Il démarre seul, face à un donjon et veut en découdre avec Zrog, le dangereux dragon qui menace d'exterminer l'humanité toute entière.
 Zrog a déjà détruit des villes entières, et décimé nombre d'être humains.
@@ -82,6 +92,7 @@ Revenons à la salle principale, le joueur prend la porte de gauche.
 - Ce sera le sanctuaire du joueur. Il s'y sentira comme chez lui, car accueilli par les rats.
 - Les rats sont présents dans tout le donjon. Ils se faufilent dans les trous présents partout dans les murs, et voient tout. Ils se racontent les choses entre eux et tout parvient jusqu'aux oreilles de Snow.
 - Snow saura tout le temps ce qui se passe, et parfois il aménera les rats jusqu'au joueur pour l'aider dans sa quête.
+- Le joueur pourra récupérer des PVs ici, il se sentira chez lui.
 
 #### Particularités du Buffet Des Rats
 - Des petits rats passeront ça et là dynamiquement sur la page. Le joueur pourra cliquer dessus pour savoir ce qu'ils ont à dire.
@@ -89,7 +100,31 @@ Revenons à la salle principale, le joueur prend la porte de gauche.
 - Aucun rat ne voudra prêter sa bouffe, excepté si on lui pique, car c'est le jeu des rats après tout. Et Snow sera le seul rat qui acceptera de partager sa bouffe (bah oui, c'est pas pour rien que c'est notre pote), mais avec de grandes difficultés tout de même !
 
 ### Salle des Enfers 1
-- 
+#### Intro - Combat avec le Loup
+- C'est un couloir, on affronte notre premier ennemi.
+- Le mob rencontré est un Loup humanoïde. Il est plein d'aggressivité, et se rue sur le héros.
+- Ce sera un mob assez fort en terme d'attaque. Pour le vaincre, il y'aura deux moyens :
+  - Le finir avec l'attaque
+  - Lui parler, de sorte à comprendre son être.
+    - C'est un loup devenu fou à cause de la Salle des enfers, juste derrière lui.
+    - On apprend qu'il a été envahi par l'incertitude. Son but était de venger sa femme louve qui s'est fait brûler dans un incendie commis par Zrog. En restant dans cette salle à la recherche de la clé, il n'a pas pu la trouver et a fini par se faire envahir par la haine. Jusqu'à atteindre cet état.
+- Une fois le combat terminé, le joueur récupère **l'Armure du Loup**, qui augmente sa défense de 3 points, ainsi que de l'EXP.
+
+#### L'Enigme de l'Enfer 1
+- C'est parti. Là le héros se retrouve confronté face à ses premiers démons de l'Aventure.
+- Le but étant de représenter l'incertitude, et la manière dont peut se laisser sombrer l'homme s'il se laisse aller à ces types de pensées négatives.
+- Une fenêtre descriptive s'affiche au centre de l'écran.
+- Pour chaque **bulle négative** affichée, trois ou deux nouveaux boutons apparaissent.
+- Une barre de progression **"Sentiment de sécurité"** apparaîtra, et variera de temps à autre, en fonction des réponses du joueur.
+- Si le Joueur choisi des réponses "Pensées positives", cela incrémentera le Sentiment de sécurité, mais il n'arrivera jamais à atteindre le maximum, quoi qu'il fasse.
+- S'il est d'accord avec ces pensées, alors le sentiment de sécurité s'amoindrira, et le décor changera, s'assombrissant de plus en plus.
+- Si le Compteur atteint zéro, alors c'est **Game over**, le Héros a perdu toute foi en son pouvoir. Le Joueur doit recommencer la partie.
+- Petit à petit, le Joueur comprendra que les Pensées Positives ne seront pas assez puissantes, car le compteur se décrémentera plus rapidement que les pensées sensées rassurer le personnage, jusqu'à même devenir carrément neutre au bout d'un moment.
+- D'ailleurs, plus le joueur passe de temps dans cette Salle, et plus les pensées se feront présentes.
+- **L'unique manière** de réussir le test, est de ne rien faire du tout pendant une dizaine de secondes.
+- Les pensées partent de plus en plus, et tout ce qui est autour disparaît progressivement.
+- Tout le décor, les backgrounds, les colors, les textes, les boutons, tout disparaît. Jusqu'à ne plus laisser que les "." ".." "...", "." ".." "..."... Représentant l'état méditatif.
+- Le joueur devra attendre une trentaine de secondes comme ça avant que l'énigme soit résolue, et acquérira la Compétence **Focus**, lui permettant de travers la **Salle des Tentations**.
 
 
 ## Rencontre avec La Sorcière
