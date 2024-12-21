@@ -99,7 +99,7 @@ Revenons à la salle principale, le joueur prend la porte de gauche.
 - De temps en temps, il peut récolter un morceau de fromage.
 - Aucun rat ne voudra prêter sa bouffe, excepté si on lui pique, car c'est le jeu des rats après tout. Et Snow sera le seul rat qui acceptera de partager sa bouffe (bah oui, c'est pas pour rien que c'est notre pote), mais avec de grandes difficultés tout de même !
 
-### Salle des Enfers 1
+### 4. Salle des Enfers 1
 #### Intro - Combat avec le Loup
 - C'est un couloir, on affronte notre premier ennemi.
 - Le mob rencontré est un Loup humanoïde. Il est plein d'aggressivité, et se rue sur le héros.
@@ -125,6 +125,26 @@ Revenons à la salle principale, le joueur prend la porte de gauche.
 - Les pensées partent de plus en plus, et tout ce qui est autour disparaît progressivement.
 - Tout le décor, les backgrounds, les colors, les textes, les boutons, tout disparaît. Jusqu'à ne plus laisser que les "." ".." "...", "." ".." "..."... Représentant l'état méditatif.
 - Le joueur devra attendre une trentaine de secondes comme ça avant que l'énigme soit résolue, et acquérira la Compétence **Focus**, lui permettant de travers la **Salle des Tentations**.
+
+### 5. De retour au Buffet des Rats
+- Snow se moquera du Héros de l'avoir cru, puis s'excusera pour ses blagues trop extrêmes.
+- Pour en revenir au Loup, il fera partie du Buffet des Rats, et on pourra lui parler, tout comme d'autres qu'on aura libéré.
+- Ils encourageront le joueur, et pourrons proposer des échanges, ou donneront des items trouvés au cours de la partie.
+
+### 6. Le petit passage au Paradis
+- Le Paradis est une tour immense. On peut monter chaque étage du donjon dans celle-ci, et voir un léger aperçu de ce qui nous attend.
+- Etage 1 : 
+- Etage 2 :
+- Etage 3 :
+- Etage 4 :
+- Et enfin, l'étage 5. Le joueur se retrouve à l'extérieur, au sommet du donjon.
+- J'imagine y ajouter des choses au cours de l'aventure, mais je ne vois pas pour l'instant.
+
+### 7. De retour à la Fontaine
+- Le joueur pourra récupérer l'**amanite tue-mouches** dans la fontaine.
+- Il pourra traverser le **Couloir des Ténèbres**, là où l'attendent deux Ogres féroces.
+- Il faudra donc intégrer un ou plusieurs ennemis aux combats.
+- 
 
 
 ## Rencontre avec La Sorcière
