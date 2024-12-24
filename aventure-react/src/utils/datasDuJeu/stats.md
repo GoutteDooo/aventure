@@ -1,118 +1,104 @@
-# stats expliquées
+# Stats Expliquées
 
-## Attaque (max)
+## Attaque (max) (ou Force)
 
 - L'attaque est calculée en fonction de la défense adverse.
 - La formule pour calculer l'attaque est la suivante :
-- `dégâts bruts = attaque - ((( 1 - %adresse) * rng) * attaque)`
-- exemple avec une atk de 10, une adresse de 0.5 et un rng de 0.2 : dégâts = 9 et rng de 0.8 = 6
-- La range de dégâts est comprise entre [attaque ; attaque * adresse]
-- Des coups critiques seront également disponibles. Ils seront appliqués avec une stat "Chance".
+- `dégâts bruts = Force - ((( 1 - Adresse%) * Max(0, (RNG - Chance%)) * Force)`
+- Exemple avec une Force de 100, une Adresse de 50 et un RNG de 20% : `dégâts = 81` / avec un RNG de 0.8, `dégâts = 60`
+- **La range de dégâts bruts** est comprise entre `[Force ; Force * Adresse]`
+- **La range de dégâts nets** est comprise entre `[Force - DéfenseMax ; Force * Adresse - DéfenseMax]`
+- Exemple avec une Force de 100, une Adresse de 50 et face à une DéfenseMax de 30: `[70 ; 20]`
+- Des **coups critiques** seront également disponibles. Ils seront appliqués avec une stat "Chance".
+
+### Coups critiques (chance)
+
+- Les coups critiques sont calculés **en fonction de la Chance du Héros**.
+- Lorsqu'un coup critique est donné, les **dégâts sont multipliés par deux**.
+- La probabilité de faire un coup critique est par défaut de **10%**.
+- Plus la chance du personnage est élevée, plus la probabilité de coup critique augmente, jusqu'à atteindre un **palier de 50%.**
+- **1 pt de chance équivaut à 1% de probabilité de faire un coup critique supplémentaire.**
+- Par défaut, **le Héros a une chance égale à 0.**
 
 ## Défense
 
-- La défense est calculée lors de l'attaque, quelle soit adverse ou notre.
+- La défense est calculée lors de l'attaque, qu'elle soit adverse ou notre.
 - La défense permet de soustraire quelques dégâts et est calculée avec la formule suivante :
-  - `dégats nets = dégâts bruts - défense`
-  - Soit, avec une atk de 10 contre une défense de 5, une adresse de 0.5 et une rng de 0.2, le résultat est le suivant : dégâts nets = 9 - 5 = 4
+  - `dégats nets = (100 - défense)% * dégâts bruts`
+  - Soit, face à une **attaque brute de 100** contre une **défense de 15**, le résultat est le suivant : **dégâts nets = 85**
 
-## Coups critiques (chance)
-
-- Les coups critiques sont calculés en fonction de la chance du personnage.
-- Lorsqu'un coup critique est donné, les dégâts sont multipliés par deux.
-- La probabilité de faire un coup critique est par défaut de 10%.
-- Plus la chance du personnage est élevée, plus la probabilité de coup critique augmente, jusqu'à atteindre un palier de 50%.
-- 1 pt de chance équivaut à 1% de probabilité de coup critique supplémentaire.
-- Par défaut, le joueur a une chance égale à 0.
+## Chance
+- La Chance représente **la probabilité de faire un coup critique**, ou de **favoriser un RNG**.
+- A chaque fois qu'un RNG est joué, la **Chance du Héros intervient** dans le calcul **en faveur de celui-ci**.
+- Par exemple, lorsque le Joueur attaque avec une Chance de 10, le RNG calculé aura une range de `[0; 1 - Chance%]` soit `[0; 90%]`.
+- Donc en faveur du Héros, puisque ses dégâts bruts ne sont plus compris entre `[100 ; 50]` mais entre `[100 ; 55]`.
 
 ## Adresse
 
-- L'adresse définie la variance de dégâts entre l'attaque max et l'attaque minimum.
-- Plus l'adresse est élevée, plus les dégâts sont proches de l'attaque max.
+- L'adresse définie la **variance de dégâts entre les dégâts bruts max et les dégâts bruts minimum**.
+- Plus l'adresse est élevée, plus les dégâts sont proches de l'attaque max. (attaque précise)
 
-## Vie
+## Santé
 
-- La vie représente la santé du joueur.
-- Si elle tombe à 0, le joueur perd la partie et doit tout recommencer à zéro.
+- La Santé représente la santé du joueur.
+- Si elle tombe à 0, le joueur perd la partie et doit recommencer au dernier checkpoint.
 
-## Initiative
+## Mental
 
-- L'initiative représente la capacité au joueur de pouvoir démarrer en premier lors d'un combat.
-- Plus son initiative est élevée, plus le joueur aura de chance de démarrer en premier.
-- Cela dit, ça ne veut pas dire que le joueur démarrera toujours en premier, une variance sera appliquée.
-- La formule de l'initiative est la suivante :
-  - Si l'un a plus d'initiative que l'autre, la probabilité de jouer pour le personnage dominant est de 70% par défaut.
-  - Ensuite, Chance de jouer le premier = `0.7 * 1,%(Initiative(Joueur) - Initiative(Adversaire))`
-  - Un min à 0.0333 et un max a 0.9666 sont définis.
-- Si le différentiel d'initiative entre les deux entités s'affrontant est très élevé, **parfois, l'entité ayant l'initiative la plus haute peut jouer deux fois d'affilées**.
-  - Ce seuil se place à partir de 300% d'initiative de différentiel.
-  - Par exemple : Joueur a 10 en Initiative, et vilain en a 35.
-  - Le différentiel d'initiative sera de : 35 / 10 = 350%
-  - Un rng est donc lancé et le joueur dominant aura 10% de chance d'avoir un double tour
+- Le Mental représente **la capacité au joueur de pouvoir démarrer en premier lors d'un combat**, **la capacité de pouvoir fuir le combat**, **la capacité pour Era de pouvoir bien healer**.
+- Le personnage ayant le Mental la plus élevée démarre en premier.
+- Si l'un des personnages a 2x plus de Mental que l'autre, il aura une **chance de 20%** de pouvoir jouer deux fois d'affilées. **Effets inclus.** `(L'attaque rapide de Vifou lui permettrait de pouvoir jouer trois fois d'affilées par exemple.)`
+- Pour la `fuite` :
+  - Si le joueur a plus de Mental que l'ennemi, la probabilité de pouvoir fuir est de 100%.
+  - Sinon, la probabilité de pouvoir fuir est de 50%.
 
-### Concernant l'attaque par surprise
+### Mental - Petit Aparté Concernant l'Attaque Par Surprise
 
-- Ces attaques apparaissent lorsque le joueur entre dans une salle où des mobs sont présents.
-- Lors d'une attaque surprise, ce sera toujours le mob qui commence en premier.
-- Lorsque le joueur entre dans une salle ou un mob est présent, il y aura 25% de chance d'attaque surprise par défaut. Ensuite, cela varie entre l'initiative du mob et celle du joueur.
-- La formule de la variance de l'attaque surprise se calcule ainsi :
-  - P(surprise) = max(Pmin, min(Pmax, base + diff \* facteur))
-  - avec Pmin définie a 3% et Pmax a 90%.
+- Ces attaques **apparaissent** lorsque le joueur entre dans une salle **où des mobs sont présents**.
+- Lors d'une attaque surprise, ce sera **toujours le mob qui commence en premier**.
+- Si le joueur a **moins de Mental que l'ennemi**, l'ennemi aura une **chance de 50%** de pouvoir attaquer par surprise.
+- Sinon, le joueur pourra choisir de lancer l'attaque ou non.
 
 ## Le Level
 
-- Je pense à faire un système qui reflète le caractère du joueur.
-- Par exemple :
-  - Si le joueur aime attaquer dans les combats, ce sera son attaque qui augmentera principalement
-  - S'il aime se protéger, ce sera sa défense
-  - S'il aime utiliser de la magie, sa magie sera priorisée
-  - S'il aime fuir, ce sera plutôt son initiative
-  - S'il prend bcp de dégâts, ce sera sa santé max.
-  - Toutes les stats prendront quoi qu'il arrive, mais le caractère du joueur influencera la distribution des points gagnés.
-  - Seule la chance ne prendra pas. Il faudra trouver des éléments pour combler cette stat. (le chapeau de paille prendra avec le temps mais le joueur devra le remarquer)
-- J'imagine un système progressif. Plus le level du joueur est élevé, plus les points gagnés pour la distribution des stats seront nombreux. Quelque chose comme ça par exemple (Fibonacci) :
+- Chaque personnage possède un **niveau**.
+- A chaque niveau gagné, les personnages augmentent leurs stats.
 
-| level | points gagnés |
-| ----- | ------------- |
-| 1     | X             |
-| 2     | 2             |
-| 3     | 3             |
-| 4     | 5             |
-| 5     | 8             |
-| 6     | 13            |
-| 7     | 21            |
-| 8     | 34            |
-| 9     | 55            |
-| 10    | 89            |
+### Tableau des stats
 
-| Caractère du joueur | Stat priorisée | Points pris | Points restants à répartir |
-| ------------------- | -------------- | ----------- | -------------------------- |
-| Attaque             | Attaque        | 60%         | 40%                        |
-| Défense             | Défense        | 40%         | 60%                        |
-| Magie               | Chance         | 33%         | 67%                        |
-| Fuite               | Initiative     | 80%         | 20%                        |
-| Tank                | maxHealth      | 50%         | 50%                        |
+#### Héros
 
-- Une fois que le caractère dominant du joueur est tracé, il suit son cours au fil du jeu.
-- Le caractère peut changer en cours de jeu.
-- Un caractère se renforce au fur et à mesure des actions jouées qui vont dans son sens. Mais la valeur d'un caractère atteint un plafond à un moment donné pour ne pas que le caractère devienne irratrapable lors d'un revirement de comportement de la part du joueur.
-- Un caractère qui a été "débloqué" précédemment perd de la valeur lorsqu'il est remplacé par un autre, mais prends beaucoup moins de temps à repartir.
-- Je pense m'inspirer une nouvelle fois de la suite de Fibonacci pour déterminer un trait de caractère.
-- Le caractère prend de la valeur après chaque combat.
+| Niveau | Force  | Défense (%) | Mental | Santé | Chance (%) | Adresse (%) |
+| ------ | -----  | ----------- | ------ | ----- | ---------- | ----------- |
+| 1      | 100    | 0           | 100    | 200   | 0          | 50          |
+| 2      | 150    | 5           | 110    | 300   | 0          | 52          |
+| 3      | 250    | 8           | 120    | 500   | 0          | 55          |
+| 4      | 400    | 13          | 150    | 800   | 0          | 58          |
+| 5      | 700    | 21          | 170    | 1200  | 0          | 63          |
+| 6      | 1000   | 28          | 220    | 2000  | 0          | 70          |
+| 7      | 1800   | 33          | 300    | 3200  | 0          | 80          |
 
-### Arbre des compétences
+#### Vifou
 
-- Il y'aura un arbre des compétences.
-- Chaque level gagné offre plusieurs points de compétences à distribuer dans l'arbre des compétences.
-- Chaque branche de l'arbre détermine une spécialité
-- Attaque / Vie ou Défense / Magie
+| Niveau | Force  | Défense (%) | Mental | Santé | Chance (%) | Adresse (%) |
+| ------ | -----  | ----------- | ------ | ----- | ---------- | ----------- |
+| 1      | 70     | 0           | 100    | 120   | 5          | 70          |
+| 2      | 105    | 2           | 180    | 200   | 6          | 72          |
+| 3      | 175    | 4           | 280    | 300   | 7          | 75          |
+| 4      | 280    | 7           | 400    | 420   | 8          | 78          |
+| 5      | 490    | 10          | 600    | 770   | 9          | 82          |
+| 6      | 700    | 13          | 800    | 1200  | 10         | 85          |
+| 7      | 1260   | 18          | 1000   | 2100  | 15         | 90          |
 
-| Niveau br | Attaque                     | Vie/Défense  | Magie |
-| --------- | --------------------------- | ------------ | ----- |
-| 1         | +2 Atk                      | +10 Santé    | Feu   |
-| 2         |                             | +5 Défense   |       |
-| 3         |                             | "Se blinder" |       |
-| 4         | +15 Atk                     | +50 santé    |       |
-| 5         |                             |              |       |
-| 6         |                             |              |       |
-| 7         | Perce 50% de la défense adv |              |       |
+
+#### Era
+
+| Niveau | Force  | Défense (%) | Mental | Santé | Chance (%) | Adresse (%) |
+| ------ | -----  | ----------- | ------ | ----- | ---------- | ----------- |
+| 1      | 20     | 5           | 220    | 120   | 5          | 70          |
+| 2      | 30     | 8           | 330    | 200   | 6          | 72          |
+| 3      | 50     | 15          | 280    | 300   | 7          | 75          |
+| 4      | 80     | 22          | 400    | 420   | 8          | 78          |
+| 5      | 150    | 30          | 600    | 770   | 9          | 82          |
+| 6      | 200    | 38          | 800    | 1200  | 10         | 85          |
+| 7      | 300    | 45          | 1000   | 2100  | 15         | 90          |

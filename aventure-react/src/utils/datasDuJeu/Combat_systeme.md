@@ -51,7 +51,7 @@
 1. Attaque : 
    - Léchouilles
    - Heal
-   - Effet :  : Mental * 10 ou 30% d'HP minimum si la base ne permet pas d'atteindre ce seuil. (Sur tout les personnages)
+   - Effet :  : Mental * 0.5 ou 30% d'HP minimum si la base ne permet pas d'atteindre ce seuil. (Sur tout les personnages)
 
 2. Colère :
   - Crachouilles
