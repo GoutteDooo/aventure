@@ -26,8 +26,9 @@
 
 - La défense est calculée lors de l'attaque, qu'elle soit adverse ou notre.
 - La défense permet de soustraire quelques dégâts et est calculée avec la formule suivante :
-  - `dégats nets = (100 - défense)% * dégâts bruts`
+  - `dégats nets = Max(0.1, (100 - défense)%) * dégâts bruts`
   - Soit, face à une **attaque brute de 100** contre une **défense de 15**, le résultat est le suivant : **dégâts nets = 85**
+  - Face à une Attaque brute de 100 contre une Défense de 200, le résultat est de : **dégâts nets = 10**
 
 ## Chance
 - La Chance représente **la probabilité de faire un coup critique**, ou de **favoriser un RNG**.
@@ -42,8 +43,8 @@
 
 ## Santé
 
-- La Santé représente la santé du joueur.
-- Si elle tombe à 0, le joueur perd la partie et doit recommencer au dernier checkpoint.
+- La Santé représente **la vie** du Personnage.
+- Si elle tombe à 0, le joueur **perd la partie** et doit **recommencer au dernier checkpoint**.
 
 ## Mental
 

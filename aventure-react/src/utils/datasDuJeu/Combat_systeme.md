@@ -87,38 +87,40 @@
 ### 6.  Choco
 1. Attaque :
    - Crachat enflammé
-   - Dégâts : Mental * 1
+   - Dégâts : Mental * 1 * Adresse * (RNG - Chance)
    - Type : Feu
   
 2. Colère :
    - Souffle de feu
-   - Dégâts : Mental * 2.5
+   - Dégâts : Mental * 2.5 * Adresse * (RNG - Chance)
    - Type : Feu - Perçant
    - Effet : Brûle l'adversaire - Il perd 3% de ses HP pendant 3 tours
 
 ## La fenêtre de description
-- Elle sera dynamique, et affichera tout ce qui se passe dans le combat.
-- Chaque tour, il y aura un saut à la ligne pour la prochaine description.
-- Les descriptions peuvent être très longues, et un overflow peut se produire si le combat dure.
+- Elle sera **dynamique**, et affichera tout ce qui se passe dans le combat.
+- Chaque tour, il y aura un **saut à la ligne** pour la prochaine description.
+- Les descriptions peuvent être très longues, et un **overflow** peut se produire si le combat dure.
 
 ## Les actions
-- Chaque personnage possède deux actions qui lui sont uniques : 1. Attaque et 2. Colère.
-- Ensuite, les autres sont des actions communes à tous les personnages.
-- "Se Défendre", "Utiliser" et "Fuir" sont les actions communes.
+- Chaque personnage possède **deux actions** qui lui sont uniques : 1. **Attaque** et 2. **Colère**.
+- Ensuite, les autres sont des **actions communes** à tous les personnages.
+- "**Se Défendre**", "**Utiliser**" et "**Fuir**" sont les actions communes.
 
 ### Se défendre
-- Permet de se protéger des attaques des ennemis.
-- La défense augmente temporairement de 300% jusqu'au prochain tour.
+- Permet de **se protéger** des attaques des ennemis.
+- La défense **augmente de 300%** jusqu'au prochain tour.
 
 ### Utiliser
-- Permet d'utiliser un objet activable en combat.
-- L'objet est déclenché et détruit.
+- Permet d'**utiliser** un **objet activable** en combat.
+- L'objet est **déclenché et détruit**.
+- Exemple : Joueur utilise une `Potion de santé`.
+  - Son Personnage récupère x pts de Santé, et la potion est retirée de l'équipement.
 
 ### Fuir
-- Permet de fuir le combat.
-- Si l'initiative du personnage est plus élevée que l'ennemi, la fuite a 100% de chance de succès.
-- Sinon, la fuite a 50% de chance de succès.
+- Permet de **fuir le combat en cours**.
+- Si l'initiative du personnage est plus élevée que l'ennemi, la fuite a **100% de chance** de succès.
+- Sinon, la fuite a **50% de chance** de succès.
 
 ## COLERE
-- Attaque spéciale lorsque les personnages ont pris un certain nombre de dégâts.
-- Le nombre de points de COLERE accumulé est calculé en fonction du Mental du Personnage. (Plus de détails dans les Stats)
+- **Attaque spéciale** lorsque les personnages ont pris un certain nombre de dégâts.
+- Le nombre de points de COLERE accumulé est **calculé en fonction du Mental** du Personnage. (Plus de détails dans les Stats)
