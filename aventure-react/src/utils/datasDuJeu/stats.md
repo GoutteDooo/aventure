@@ -75,6 +75,10 @@
 
 ### Tableau des stats
 
+| Niveau | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 
+| ------------------- | ----- | ---- | ----- | ---- | ----- | ---- | ----- |
+| Expérience à gagner | 100    | 220    | 480    | 1200    | 2700    | 6500    | 15000    |
+
 #### Héros
 
 | Niveau | Force  | Défense (%) | Mental | Santé | Chance (%) | Adresse (%) |

@@ -9,17 +9,11 @@ Il y'aura aussi des instants difficiles comme le moment avec la sorcière, les e
 Bref, je veux intégrer beaucoup d'humour, beaucoup de choses décalées et absurdes. Mais aussi du sérieux à certains instants.
 
 Le jeu sera assez fade si le joueur ne fait que tuer tuer tuer.
-En revanche, il sera beaucoup plus fun si le joueur cherche à s'intéresser à ce qui semble être ses ennemis.
-
-### Concernant les combats
-- Je veux que certains mobs tentent de fuir le combat, et que le joueur, s'il a suffisamment d'initiative, arrive à les intercepter, mais a le choix, s'il veut ou non, de les laisser fuir ou de les terminer. S'il les laisse fuir, son initiative sera augmentée. S'il les tue, ce sera plutôt la stats Force qui sera privilégiée. Niveau exp et gain, ce sera la même chose.
-(Je pense à une stat "Bonté" , mais je ne sais pas trop quoi faire avec...)
-- D'autres mobs seront tellement agressifs qu'ils ne fuiront jamais. Il faudra tout de même les terminer, si le joueur le veut bien.
-- L'action "Parler" sera toujours disponible, et tout les mobs pourront interagir avec le héros. Jusqu'à pouvoir désamorcer des combats comme ça. (La communication est la clé)
+En revanche, il sera beaucoup plus fun si le joueur cherche à s'intéresser à ce qui semble être ses ennemis en utilisant la compétence "Parler" de Snow.
 
 
 ## Avant que l'histoire ne démarre (notes pour moi)
-Le héros de cette histoire est un jeune homme de 22 ans. Il démarre seul, face à un donjon et veut en découdre avec Zrog, le dangereux dragon qui menace d'exterminer l'humanité toute entière.
+
 Zrog a déjà détruit des villes entières, et décimé nombre d'être humains.
 Il est apparu lors de son enfance, lorsqu'il jouait avec son frère à la balle devant chez lui.
 La forêt sombre était à deux pas de sa maison, et ses parents lui avaient interdits à lui et son frère d'y aller. Ils ne pouvaient que jouer devant le pas de la porte.
@@ -55,94 +49,110 @@ Depuis, c'est une sorcière maléfique qui se nourrit de la haine des autres. El
 Le fait de lui pardonner déclenche la même réaction qu'avec son grand frère.
 Et la suite je l'écrirais plus tard.
 
+## Chapitre 1 - Le Premier Etage
 
-## Chapitre 1
+### 1. Introduction (Epouvantail) (0,-1)
 
-### 1. Introduction (Epouvantail)
+Le héros de cette histoire est un jeune personnage. **On ne saura jamais si c'est un garçon ou une fille**. Il démarre seul, après avoir fait un rêve.
+Ce rêve, c'est un combat avec un Dragon du nom de Zrog.
+Lors de ce combat, il se bat avec cinq compagnons. Snow, Era, Choco, Grisouille et Vifou. Ils sont tous à bout de souffle. N'ont plus que très peu de HP, et Zrog met un terme à ce combat en leur infligeant le coup de grâce (attaque ultime).
 
-Le joueur démarre en face du donjon, il peut affronter l'épouvantail ou non comme un didacticiel.
-Un panneau descriptif apparemment écrit par le dragon Zrog met en garde tout individu comptant entrer dans le donjon. La mort les y attend.
+Le Héros se réveille, dans sa tente, et **récupère ses objets** (système de drag n drop).
+Il sort de sa tente, et se dirige vers le donjon. Il y trouve un épouvantail en face, avec un **panneau sur le côté**.
+Le panneau indique un **message provocateur** de la part de Zrog. Et tout à coup, **l'épouvantail prend vie**, et l'attaque.
 
-Une fois l'épouvantail battu, le joueur remporte un **"chapeau de paille"**, qui lui sera utile tout au long de l'aventure. (ce dernier augmentant sa statistique "chance" à chaque fin d'énigme résolue).
+Un combat démarre alors (tutoriel) face à cet épouvantail. (Plus de détails dans les notes du combat)
+Rien de spécial ne se passe dans ce combat, mais le Héros récupère un `Chapeau De Paille` qui améliore la Stat "Chance", et aura l'effet d'améliorer sa stat "Chance" tout au long de l'aventure, au fil des Chapitres.
 
 ### 2. Salle principale (0,0)
 
-Dans le donjon, le joueur ne peut plus en sortir. Une fois entré, il pourra s'y balader de salle en salle comme il veut.
+Dans le donjon, **le joueur ne peut plus en sortir** puisque la porte s'est refermée brutalement derrière lui. D'ailleurs, elle a fait un bruit si puissant que l'on va supposer que tout les habitants à l'intérieur ont dû entendre notre entrée.
 
-La **première salle** est possède une fontaine avec trois têtes de dragons sculptées en son centre. **A chaque étape du jeu, des objets y apparaîtront,** et le joueur pourra aller les chercher, ce qui le "forcera" à faire des
+La **première salle** possède une fontaine avec trois têtes de dragons sculptées en son centre. **A chaque étape du jeu, des objets y apparaîtront,** et le joueur pourra aller les chercher, ce qui le "**forcera**" à faire des
 allers-retours.
+
 *Liste des objets retrouvés dans la fontaine au fil du parcours :*
  - Introduction : `Potion de santé`
  - Après Enfer 1 : `Amanite tue-mouches`
  - 
 
-Il y'a deux portes, une à droite (-1,0) et une à gauche (1,0), et en son centre (0,3), **un chemin encombré par un éboulement** (L'éboulement pourra être déboulé plus tard lors de l'aventure, lorsque le joueur aura reçu la compétence "Briser")
+Il y'a deux portes, une à droite (-1,0) et une à gauche (1,0), et en son centre (0,3), **un chemin encombré par un éboulement** (L'éboulement pourra être déboulé plus tard lors de l'aventure, lorsque le joueur aura débloqué l'accès à l'étage 3).
 
-Si le joueur passe par la porte de droite, il arrivera à un moment donné à la **Salle des tentations**. Le personnage sentira de fortes émotions monter en lui, fesant perdre le contrôle au joueur. Il devra patienter, le temps que son personnage reprenne conscience de lui-même, avant de pouvoir rebrousser chemin et revenir à la salle précédente. Il lui faudra absolument la compétence **focus** pour pouvoir passer cette salle.
+Si le joueur passe par la porte de droite, il passera dans le **Couloir Interdit** (1,0), les **Deux Ogres** ne seront pas là.
+Il arrivera ensuite à la **Salle des tentations** (2,0). Le personnage sentira de **fortes émotions** monter en lui, fesant perdre le contrôle au joueur. Il devra patienter une dizaine de secondes, le temps que son personnage reprenne conscience de lui-même, et n'aura qu'**une seule option** : rebrousser chemin.
 
-Revenons à la salle principale, le joueur prend la porte de gauche.
+Il faudra d'abord passer la **Salle des Etincelles** (-2,0) avant de pouvoir être suffisamment fort mentalement pour passer cette salle.
 
-### 3. Le Buffet des Rats (save point)
+### 3. Le Buffet des Rats (Sanctuaire) (-1,0)
 
-- La salle de sauvegarde : A n'importe quel moment, le joueur peut venir ici et sauvegarder ses données. S'il meurt pendant la partie, il réapparaîtra dans cette salle à l'instant T de l'histoire où il a sauvegardé.
-- **Snow**, le boss des rats sera votre principal allié, il :
+- La salle de sauvegarde : **A n'importe quel moment**, le joueur peut venir ici et **sauvegarder ses données**. S'il meurt pendant la partie, il réapparaîtra dans cette salle à l'instant T de l'histoire où il a sauvegardé.
+
+- **Snow** sera le premier personnage rencontré dans l'aventure. Il :
   - Proposera des échanges tout au long de la partie (parfois équitable, parfois non, c'est un rat après tout)
   - Donnera des astuces sur le donjon ou le jeu
   - Fera des blagues douteuses. Notamment la 1ere où il conseillera d'aller dans la salle Enfer au lieu de Paradis et se moquera du héros pour l'avoir cru. Puis s'excusera d'avoir fait une blague aussi stupide. (quand même !)
 - Ce sera le sanctuaire du joueur. Il s'y sentira comme chez lui, car accueilli par les rats.
 - Les rats sont présents dans tout le donjon. Ils se faufilent dans les trous présents partout dans les murs, et voient tout. Ils se racontent les choses entre eux et tout parvient jusqu'aux oreilles de Snow.
 - Snow saura tout le temps ce qui se passe, et parfois il aménera les rats jusqu'au joueur pour l'aider dans sa quête.
-- Le joueur pourra récupérer des PVs ici, il se sentira chez lui.
+- Le joueur pourra récupérer tout ses HP ici grâce à un "Se reposer".
+
+Il faudra **d'abord parler à Snow** avant de pouvoir accéder aux autres salles.
+Une discussion se déclenchera avec, et il posera des questions au joueur sur ses motivations.
+Snow sera alors intéressé et sera étonné du courage du Héros, admettant que l'Epouvantail n'était pas si facile à vaincre. Il prendra alors partie avec le Héros et voudra "l'accompagner un peu dans son voyage". (En réalité, il l'accompagnera tout du long)
+C'est alors que l'accès à la **Salle des Etincelles** sera permis. Snow avertira le Joueur quant à cette salle, mais admettra qu'il lui sera nécessaire d'y passer s'il veut passer la *Salle des Tentations*.
 
 #### Particularités du Buffet Des Rats
-- Des petits rats passeront ça et là dynamiquement sur la page. Le joueur pourra cliquer dessus pour savoir ce qu'ils ont à dire.
-- De temps en temps, il peut récolter un morceau de fromage.
+- Des petits rats passeront ça et là dynamiquement sur la page. Le joueur pourra **cliquer dessus** pour savoir ce qu'ils ont à dire.
+- De temps en temps, il peut récolter un **morceau de fromage**.
 - Aucun rat ne voudra prêter sa bouffe, excepté si on lui pique, car c'est le jeu des rats après tout. Et Snow sera le seul rat qui acceptera de partager sa bouffe (bah oui, c'est pas pour rien que c'est notre pote), mais avec de grandes difficultés tout de même !
+- Tout les personnages, lorsqu'ils feront partie de l'aventure, seront présents dans cette salle. Le joueur pourra tous leur parler uniquement dans cette salle.
+- **Snow** donnera des conseils avisés au joueur.
+- Les autres aussi parfois, mais ce sera plus souvent du dialogue pour la vie du jeu.
 
-### 4. Salle des Enfers 1
-#### Intro - Combat avec le Loup
-- C'est un couloir, on affronte notre premier ennemi.
-- Le mob rencontré est un Loup humanoïde. Il est plein d'aggressivité, et se rue sur le héros.
-- Ce sera un mob assez fort en terme d'attaque. Pour le vaincre, il y'aura deux moyens :
-  - Le finir avec l'attaque
-  - Lui parler, de sorte à comprendre son être.
+### 4. Salle des Etincelles (Enfer 1) (-2,0)
+#### Intro - Combat avec le Loup Frisé
+- C'est un couloir, on affronte notre **premier ennemi**.
+- Le mob rencontré est un **Loup humanoïde**. Il est **plein d'aggressivité**, et se rue sur le héros dés qu'il le voit.
+- Ce sera un mob fort en terme d'attaque. Pour le vaincre, il y'aura deux moyens :
+  - Le battre.
+  - Lui parler avec Snow, de sorte à comprendre son être.
     - C'est un loup devenu fou à cause de la Salle des enfers, juste derrière lui.
-    - On apprend qu'il a été envahi par l'incertitude. Son but était de venger sa femme louve qui s'est fait brûler dans un incendie commis par Zrog. En restant dans cette salle à la recherche de la clé, il n'a pas pu la trouver et a fini par se faire envahir par la haine. Jusqu'à atteindre cet état.
-- Une fois le combat terminé, le joueur récupère **l'Armure du Loup**, qui augmente sa défense de 3 points, ainsi que de l'EXP.
+    - On apprend qu'il a été envahi par le doute. Son but était de venger sa femme louve qui s'est faite brûler dans un incendie commis par Zrog. En restant dans cette salle à la **recherche de la solution**, il n'a pas pu la trouver et a fini par se faire *envahir par la haine*. Jusqu'à atteindre cet état.
+    - Lui parler lui fait beaucoup de bien. Il se rend compte de la folie qui l'a atteint jusque là, et s'en voudra. Il s'excusera pour son aggressivité gratuite, et donnera au Joueur en récompense sa **Hache du Loup Frisé**.
 
 #### L'Enigme de l'Enfer 1
+
 - C'est parti. Là le héros se retrouve confronté face à ses premiers démons de l'Aventure.
-- Le but étant de représenter l'incertitude, et la manière dont peut se laisser sombrer l'homme s'il se laisse aller à ces types de pensées négatives.
+- Le but étant de représenter l'**incertitude**, et la manière dont peut se laisser sombrer l'homme s'il se laisse aller à ces pensées négatives.
 - Une fenêtre descriptive s'affiche au centre de l'écran.
-- Pour chaque **bulle négative** affichée, trois ou deux nouveaux boutons apparaissent.
-- Une barre de progression **"Sentiment de sécurité"** apparaîtra, et variera de temps à autre, en fonction des réponses du joueur.
-- Si le Joueur choisi des réponses "Pensées positives", cela incrémentera le Sentiment de sécurité, mais il n'arrivera jamais à atteindre le maximum, quoi qu'il fasse.
-- S'il est d'accord avec ces pensées, alors le sentiment de sécurité s'amoindrira, et le décor changera, s'assombrissant de plus en plus.
-- Si le Compteur atteint zéro, alors c'est **Game over**, le Héros a perdu toute foi en son pouvoir. Le Joueur doit recommencer la partie.
-- Petit à petit, le Joueur comprendra que les Pensées Positives ne seront pas assez puissantes, car le compteur se décrémentera plus rapidement que les pensées sensées rassurer le personnage, jusqu'à même devenir carrément neutre au bout d'un moment.
-- D'ailleurs, plus le joueur passe de temps dans cette Salle, et plus les pensées se feront présentes.
-- **L'unique manière** de réussir le test, est de ne rien faire du tout pendant une dizaine de secondes.
-- Les pensées partent de plus en plus, et tout ce qui est autour disparaît progressivement.
+- Pour chaque **bulle négative** affichée, **trois ou deux nouveaux boutons** apparaissent.
+- Une barre de progression **"Confiance"** apparaîtra, et **variera** de temps à autre, en fonction des **réponses du joueur**.
+- Si le Joueur choisi des réponses "**Pensées positives**", cela **incrémentera** la Confiance, mais il **n'arrivera jamais** à atteindre le maximum s'il persiste dans cette voie.
+- S'il est d'accord avec ces pensées, alors la Confiance décroîtra, et un filtre s'appliquera, s'assombrissant de plus en plus.
+- Si le Compteur atteint zéro, alors c'est **Game over**, le Héros a perdu toute foi en son pouvoir. Le Joueur doit recommencer.
+- Petit à petit, le Joueur comprendra que les **Pensées Positives ne seront pas assez puissantes**, car le compteur se **décrémentera de plus en plus rapidement** que les pensées sensées rassurer le personnage, jusqu'à même devenir **carrément neutre** au bout d'un moment.
+- **L'unique manière** de réussir le test, est de ne rien faire du tout pendant une vingtaine de secondes.
+- Les pensées apparaîtront de moins en moins visible, jusqu'à disparaître complètement.
 - Tout le décor, les backgrounds, les colors, les textes, les boutons, tout disparaît. Jusqu'à ne plus laisser que les "." ".." "...", "." ".." "..."... Représentant l'état méditatif.
-- Le joueur devra attendre une trentaine de secondes comme ça avant que l'énigme soit résolue, et acquérira la Compétence **Focus**, lui permettant de travers la **Salle des Tentations**.
+- Le joueur devra attendre une quinzaine de secondes comme ça avant que l'énigme soit résolue.
+- Un message apparaîtra alors, indiquant : "Vous vous sentez en paix avec vous-même. Tout est clair dans votre esprit. Vous vous sentez prêt à continuer votre aventure dans le donjon."
 
 ### 5. De retour au Buffet des Rats
-- Snow se moquera du Héros de l'avoir cru, puis s'excusera pour ses blagues trop extrêmes.
-- Pour en revenir au Loup, il fera partie du Buffet des Rats, et on pourra lui parler, tout comme d'autres qu'on aura libéré.
-- Ils encourageront le joueur, et pourrons proposer des échanges, ou donneront des items trouvés au cours de la partie.
+- Snow se retrouvera amusé, et plaisantera sur la tête que faisait le Héros pendant l'énigme.
+- Il le félicitera ensuite, et ajoutera qu'ils sont peu à avoir réussi aussi vite.
+- Il sera indiqué que le Loup Frisé est présent, et on pourra lui parler uniquement cette fois. Il félicitera le Joueur de son succès.
 
 ### 6. Le petit passage au Paradis
-- Le Paradis est une tour immense. On peut monter chaque étage du donjon dans celle-ci, et voir un léger aperçu de ce qui nous attend.
-- Etage 1 : 
-- Etage 2 :
-- Etage 3 :
-- Etage 4 :
+- Le Paradis est une tour immense. On peut monter chaque étage du donjon dans celle-ci, et voir un léger aperçu de ce qui nous attend. Aussi, si l'étage a déjà été dévérouillé, on peut y revenir plus rapidement, plutôt que de devoir tout redescendre à chaque fois.
+- Etage 1 : Etage du Soleil
+- Etage 2 : Etage des Ténèbres
+- Etage 3 : Etage des Fleurs
 - Et enfin, l'étage 5. Le joueur se retrouve à l'extérieur, au sommet du donjon.
-- J'imagine y ajouter des choses au cours de l'aventure, mais je ne vois pas pour l'instant.
+- C'est là où le Joueur devra faire son dernier combat contre Zrog et La Sorcière.
 
 ### 7. De retour à la Fontaine
 - Le joueur pourra récupérer l'**amanite tue-mouches** dans la fontaine.
-- Il pourra traverser le **Couloir des Ténèbres**, là où l'attendent deux Ogres féroces.
+- Il pourra traverser le **Couloir des Ténèbres**, là où l'attendent **deux Ogres féroces.**
 - Il faudra donc intégrer un ou plusieurs ennemis aux combats.
 - 
 
