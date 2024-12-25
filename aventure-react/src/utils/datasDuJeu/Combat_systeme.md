@@ -51,7 +51,7 @@
 1. Attaque : 
    - Léchouilles
    - Heal
-   - Effet :  : Mental * 0.5 ou 30% d'HP minimum si la base ne permet pas d'atteindre ce seuil. (Sur tout les personnages)
+   - Effet :  : Mental * 1 * Adresse * (RNG - Chance) ou 30% d'HP minimum si la base ne permet pas d'atteindre ce seuil. (Sur tout les personnages)
 
 2. Colère :
   - Crachouilles
@@ -66,8 +66,9 @@
 
 2. Colère :
   - Coup De Queue
-  - Dégâts : Force * 3.5
+  - Dégâts : Force * 2.5
   - Type : Terre - Perçant
+  - Effet : Inflige des dégâts à tous les ennemis simultanément.
 
 ### 5. Snow
 1. Attaque : 
@@ -120,4 +121,4 @@
 
 ## COLERE
 - Attaque spéciale lorsque les personnages ont pris un certain nombre de dégâts.
-- Je fixe ce seuil de 300% d'HP perdu (à voir si c'est trop ou assez) pour déclencher la colère.
+- Le nombre de points de COLERE accumulé est calculé en fonction du Mental du Personnage. (Plus de détails dans les Stats)
