@@ -124,3 +124,19 @@
 ## COLERE
 - **Attaque spéciale** lorsque les personnages ont pris un certain nombre de dégâts.
 - Le nombre de points de COLERE accumulé est **calculé en fonction du Mental** du Personnage. (Plus de détails dans les Stats)
+
+## FIN DU COMBAT
+
+### Distribution de l'EXP
+- **Pour chaque personnage** ayant participé au combat, il **recevra l'EXP que l'ennemi distribue**.
+- Si l'ennemi distribue 50 EXP par exemple, et que le Joueur n'a joué qu'avec le Héros, alors, seul Héros recevra 50 EXP.
+- Si le Joueur joue avec d'autres personnages, alors, l'EXP est un peu splittée de cette manière :
+  - 1 Personnage = 100 % EXP
+  - 2 Personnages = 90 % EXP/Perso
+  - 3 Personnages = 80 % EXP/Perso
+  - 4 Personnages = 70 % EXP/Perso
+  - 5 Personnages = 60 % EXP/Perso !! Max d'EXP pouvant être récupéré !!
+  - 6 Personnages = 50 % EXP/Perso !! Max d'EXP pouvant être récupéré !!
+- Cela incite le joueur a jouer avec tout le monde.
+- Un Personnage qui a **participé au combat** est un Personnage ayant effectué **une action lors de son tour**.
+- On coche chaque Personnage qui a participé au combat, et à la fin, on fait le calcul de l'EXP.

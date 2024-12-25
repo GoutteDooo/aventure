@@ -11,6 +11,10 @@ Bref, je veux intégrer beaucoup d'humour, beaucoup de choses décalées et absu
 Le jeu sera assez fade si le joueur ne fait que tuer tuer tuer.
 En revanche, il sera beaucoup plus fun si le joueur cherche à s'intéresser à ce qui semble être ses ennemis en utilisant la compétence "Parler" de Snow.
 
+Si le Joueur décide d'éliminer tout le monde, alors il récupérera la haine de Zrog, et sentira une flamme de rage en lui qui lui brûlera l'esprit.
+La Sorcière ressuscitera en lui, et il deviendra Maître du donjon.
+Il ne pourra plus jamais en sortir.
+
 
 ## Avant que l'histoire ne démarre (notes pour moi)
 
@@ -74,7 +78,7 @@ allers-retours.
 *Liste des objets retrouvés dans la fontaine au fil du parcours :*
  - Introduction : `Potion de santé`
  - Après Enfer 1 : `Amanite tue-mouches`
- - 
+ - Après le Combat des Deux Ogres : `Potion de Vivacité`
 
 Il y'a deux portes, une à droite (-1,0) et une à gauche (1,0), et en son centre (0,3), **un chemin encombré par un éboulement** (L'éboulement pourra être déboulé plus tard lors de l'aventure, lorsque le joueur aura débloqué l'accès à l'étage 3).
 
@@ -153,8 +157,41 @@ C'est alors que l'accès à la **Salle des Etincelles** sera permis. Snow averti
 ### 7. De retour à la Fontaine
 - Le joueur pourra récupérer l'**amanite tue-mouches** dans la fontaine.
 - Il pourra traverser le **Couloir des Ténèbres**, là où l'attendent **deux Ogres féroces.**
-- Il faudra donc intégrer un ou plusieurs ennemis aux combats.
-- 
+
+
+### 8. Dans le Couloir des Ténèbres
+- Le joueur devra traverser le couloir, et y trouvera deux Ogres féroces.
+- Si attaque surprise il y'a, alors les Ogres lui parleront directement avant de démarrer le combat.
+- Sinon, le joueur aura le choix de repartir ou d'aller les affronter.
+- Les deux Ogres étaient en train de se taper une fringale dans la salle d'à côté tout à l'heure, et ils n'en pouvaient plus. L'un d'eux a terminé aux toilettes à cause d'une indigestion. Ils sont en colère à cause du repas qu'ils ont mangé, et veulent se défouler sur le Héros.
+- Le combat démarre alors.
+- Ce sera le premier combat multi-combattant. Il y'aura deux ennemis, Azuro et Bazur.
+- Azuro est celui qui a eu une indigestion, Bazur n'est pas content parce qu'il a été dégoûté. Le cochon n'était pas bien cuit.
+  
+- Les Ogres sont sensé protéger la **Salle des Tentations**, mais il n'y a jamais personne, donc ils prennent quelques libertés.
+- Ce combat sera un combat de **survie**. Soit le Héros décide de se battre jusqu'au bout, mais il ne parviendra pas à vaincre les Ogres, soit il utilise la compétence "Parler" de Snow, et là une intense discussion entre Snow et les Ogres se déroulera.
+- Si le Joueur a choisit de se battre, alors :
+  - Il faudra survivre jusqu'au moment où Azuro a de nouveau mal au ventre. Là il abandonnera le combat. Et il faudra battre Bazur, qui sera désorienté sans son ami. (Et là c'est possible)
+  - Lorsque le Joueur repassera dans cette salle, elle sera vide et froide.
+
+- Si le Joueur a choisit de parler avec Snow, alors : 
+  - Snow proposera de leur cuisiner plein de plats délicieux s'ils les laissent passer.
+  - Il leur expliquera qu'ils ne sont pas méchants, et qu'ils sont des amis de Zrog. Qu'ils veulent leur rendre visite.
+  - Ils ne sont pas dupes, et refuseront.
+  - Il les menacera de se plaindre à Zrog, et sous pression, ils accepteront de les laisser passer.
+  - A chaque fois que le Joueur repassera dans cette salle, les deux Ogres seront présents, au garde-à-vous.
+
+- S'il tue Bazur, il récupérera sa **Corne d'Ogre**.
+- Le combat terminé, le joueur gagnera 150 expériences.
+
+### 9. La Salle des Tentations
+
+- Si le Joueur a passé la **Salle des Etincelles**, alors il arrivera droit aux escaliers menant vers le prochain étage.
+  
+- Si le Joueur n'a pas passé la **Salle des Etincelles**, alors le Héros perdra conscience, et le Joueur son contrôle pendant une dizaine de secondes. Il devra attendre, que le Héros reprenne conscience avant de ne pouvoir que quitter la salle et revenir en arrière.
+
+## Chapitre 2 - L'étage de la Sorcière
+
 
 
 ## Rencontre avec La Sorcière
