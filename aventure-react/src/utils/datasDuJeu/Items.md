@@ -31,7 +31,7 @@ _slot_ : Arme
 
 ## Vieil Heaume en argent
 
-_Description_ : Cet heaume est tellement grand qu'il vous recouvre presque les épaules. Cela dit, il consitue un excellent moyen défensif.
+_Description_ : Cet heaume est tellement grand qu'il vous recouvre presque les épaules. Cela dit, il constitue une excellente protection.
 _slot_ : Chapeau
 
 - Augmente la défense de 5.
