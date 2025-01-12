@@ -1,4 +1,12 @@
 # Le Système de Combat
+
+## A base d'Objets
+- Le système de combat est basé sur des objets.
+- Chaque objet possède des propriétés, et des méthodes.
+- Le Composant Combat qui sera monté lorsqu'un combat est détecté, s'occupera simplement de gérer les objets.
+- Il fera la correspondance entre les objets et les actions. Gérera leurs interactions.
+- Il s'occupera également de gérer les animations.
+
 - J a Gauche
 - Ennemi(s) à droite
 ## Les ennemis

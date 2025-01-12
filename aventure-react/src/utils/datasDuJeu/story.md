@@ -55,27 +55,33 @@ Là, elle s'est réfugiée dans la grotte, et rencontra une entité maléfique, 
 
 ## Chapitre 1 - Le Premier Etage
 
-### 1. Introduction (Epouvantail) (0,-1)
+### 1. Introduction (Srog) (0,-1)
 
 Le héros de cette histoire est un jeune personnage. **On ne saura jamais si c'est un garçon ou une fille**. Il démarre seul, après avoir fait un rêve.
 Ce rêve, c'est un combat avec un Dragon du nom de Zrog.
 Lors de ce combat, il se bat avec cinq compagnons. Snow, Era, Choco, Grisouille et Vifou. Ils sont tous à bout de souffle. N'ont plus que très peu de HP, et Zrog met un terme à ce combat en leur infligeant le coup de grâce (attaque ultime).
 
 Le Héros se réveille, dans sa tente, et **récupère ses objets** (système de drag n drop).
-Il sort de sa tente, et se dirige vers le donjon. Il y trouve un épouvantail en face, avec un **panneau sur le côté**.
-Le panneau indique un **message provocateur** de la part de Zrog. Et tout à coup, **l'épouvantail prend vie**, et l'attaque.
-
-Un combat démarre alors (tutoriel) face à cet épouvantail. (Plus de détails dans les notes du combat)
-Rien de spécial ne se passe dans ce combat, mais le Héros récupère un `Chapeau De Paille` qui améliore la Stat "Chance", et aura l'effet d'améliorer sa stat "Chance" tout au long de l'aventure, au fil des Chapitres.
+Il sort de sa tente, et se dirige vers le donjon. Il y trouve un **panneau sur le côté**.
+Le panneau indique un **message provocateur** de la part de Zrog.
+Là, apparaît Srog, un **D'Ratgon**. Un mélange de rat et de dragon. Il arrive tout d'abord, intéressé, puis se moque du Héros. Il lui dit que vu sa carrure, il ne pourra jamais vaincre Zrog. Sa quête est dénuée de sens, bref il le rabaisse.
+Le Héros a plusieurs styles de réponses, mais au final il finira par se battre avec Srog.
+#### Le combat avec Srog
+Un combat démarre alors (tutoriel) face à Srog. (Plus de détails dans les notes du combat)
+Le combat ne donnera rien, le Héros sera de force égale avec Srog. Il lui dira "qu'il n'est pas si mauvais".
+Son **chapeau de paille** tombera de sa tête, et il sera récupérable par le Héros.
+Srog dira qu'il n'a pas le temps pour ces broutilles et a un adversaire bien plus puissant à affronter (parlant de la sorcière), partant réaliser sa **vraie quête**.
 
 ### 2. Salle principale (0,0)
 
-Dans le donjon, **le joueur ne peut plus en sortir** puisque la porte s'est refermée brutalement derrière lui. D'ailleurs, elle a fait un bruit si puissant que l'on va supposer que tout les habitants à l'intérieur ont dû entendre notre entrée.
+Dans le donjon, **le joueur ne peut plus en sortir** puisque la porte s'est refermée brutalement derrière lui, a clé. D'ailleurs, elle a fait un bruit si puissant que l'on va supposer que tout les habitants à l'intérieur ont dû entendre notre entrée.
 
-La **première salle** possède une fontaine avec trois têtes de dragons sculptées en son centre. **A chaque étape du jeu, des objets y apparaîtront,** et le joueur pourra aller les chercher, ce qui le "**forcera**" à faire des
-allers-retours.
+**Le Donjon représentera l'esprit humain, et tout ce qu'il peut y avoir de bon et de moins bon.**
 
-_Liste des objets retrouvés dans la fontaine au fil du parcours :_
+La **première salle** possède une fontaine avec trois têtes de dragons sculptées en son centre. **A chaque étape du jeu, des objets y apparaîtront,** et le joueur pourra aller les chercher, ce qui le "**forcera**" à faire des allers-retours.
+Il sera averti par Snow. Les rats sont partout dans le donjon, et ils diront à Snow qu'ils ont récupéré des objets entre temps, et qu'ils ont déposé en "offrande" au Héros, ces objets dans la fontaine.
+
+__Liste des objets retrouvés dans la fontaine au fil du parcours :__
 
 - Introduction : `Potion de santé`
 - Après Enfer 1 : `Amanite tue-mouches`
@@ -83,7 +89,7 @@ _Liste des objets retrouvés dans la fontaine au fil du parcours :_
 - Après le Combat contre Grisouille : `x2 Moustache de Rat`
 - Après la Rencontre avec Choco : `2 Potions de Santé`
 
-_Note_ : Si l'inventaire de la fontaine est plein, alors les items les plus anciens seront détruits et remplacés par les plus récents.
+_Note_ : Si l'inventaire de la fontaine est plein, alors les items les plus anciens seront remplacés par les plus récents.
 
 Il y'a deux portes, une à droite (-1,0) et une à gauche (1,0), et en son centre (0,3), **un chemin encombré par un éboulement** (L'éboulement pourra être déboulé plus tard lors de l'aventure, lorsque le joueur aura débloqué l'accès à l'étage 3).
 
@@ -166,7 +172,7 @@ C'est alors que l'accès à la **Salle des Etincelles** sera permis. Snow averti
 
 ### 7. De retour à la Fontaine
 
-- Le joueur pourra récupérer l'**amanite tue-mouches** dans la fontaine.
+- Le joueur pourra récupérer l'*amanite tue-mouches* dans la fontaine.
 - Il pourra traverser le **Couloir des Ténèbres**, là où l'attendent **deux Ogres féroces.**
 
 ### 8. Dans le Couloir des Ténèbres
@@ -199,19 +205,18 @@ C'est alors que l'accès à la **Salle des Etincelles** sera permis. Snow averti
 ### 9. La Salle des Tentations
 
 - Si le Joueur a passé la **Salle des Etincelles**, alors il arrivera droit aux escaliers menant vers le prochain étage.
-- Face aux escaliers se trouve **Grisouille**, **Vifou** et **Era**.
+- Face aux escaliers se trouve **Grisouille** et **Era**.
 - Ils veulent savoir ce que Snow compte faire avec le Héros. Pourquoi d'un coup un Rat s'intéresse à un humain.
 - Snow leur répond qu'il a confiance en l'humain, et qu'ils doivent aussi lui faire confiance. Il le sent bien.
-- Era n'est pas difficile à convaincre, mais Vifou et Grisouille ne sont pas de cet avis.
-- Vifou se demande si Snow ne fait pas n'importe quoi, mais Snow a toujours été un Rat droit.
+- Era n'est pas difficile à convaincre, mais Grisouille n'est pas de cet avis.
+- Grisouille demande à Snow si il ne fait pas n'importe quoi, mais Snow a toujours été un Rat droit dit Era.
 - Snow répond que l'humain pourrait les aider à s'échapper du donjon, et à découvrir la liberté hors du donjon.
-- Grisouille ne dit rien, et écoute la conversation.
-- Vifou répond qu'il est intéressé, mais n'a pas confiance en l'humain.
-- Snow leur dit qu'il a passé la **Salle des Etincelles** sans son aide. Et cela suffira a Vifou pour qu'il lui accorde sa confiance et rejoigne l'équipe.
-- Grisouille sera le seul pas convaincu. Il ne donnera jamais la raison, mais aura peur de confier le destin des rats à un inconnu, même s'il a passé la **Salle des Etincelles**.
-- Alors, Grisouille ne bougera pas, et il faudra l'affronter en individuel.
+- Grisouille ne dit rien, et écoute la conversation, Era a l'air plus enjoué en revanche.
+- Snow leur dit qu'il a passé la **Salle des Etincelles** sans son aide. Et cela suffira à Era pour qu'il lui accorde sa confiance et rejoigne l'équipe.
+- Grisouille ne sera pas convaincu. Il ne donnera jamais la raison, mais aura peur dans le fond de confier le destin des rats à un inconnu, même s'il a passé la **Salle des Etincelles**.
+- Alors, Grisouille ne bougera pas, et leur dira qu'il ne fait pas confiance en l'Humain. Qu'il faudra lui passer sur le corps s'ils veulent avancer. Il faudra l'affronter en 1v1.
 - Un combat Héros vs Grisouille aura lieu, et sera le premier **boss** à affronter (mini-boss).
-- Une fois que Grisouille aura 20% de HP-, le combat s'arrêtera. Il ne pourra pas être vaincu, une limite sera placée.
+- Une fois que Grisouille aura 5% de HP-, le combat s'arrêtera. Il ne pourra pas être vaincu, une limite de 1 HP restant sera placée.
 - Il terminera le combat en disant quelque chose du genre "...Pas mauvais.", puis s'en ira, laissant l'ouverture à l'Etage suivant.
 - Snow dira au Joueur "qu'il peut retourner au Buffet s'il le souhaite, ça permettra de se requinquer un peu, au cas où ça se passe mal." sous-entendu de sauvegarder la partie.
 
@@ -219,19 +224,22 @@ C'est alors que l'accès à la **Salle des Etincelles** sera permis. Snow averti
 
 ### Notes
 
-Dans ce chapitre, le Joueur se retrouve avec une équipe de 4. **Le Héros, Snow, Era et Vifou**.
-Il fera la rencontre de **Choco**, et Grisouille rejoindra l'équipe à **la fin du chapitre**.
+Dans ce chapitre, le Joueur se retrouve avec une équipe de 3. **Le Héros, Snow et Era**.
+Il fera la rencontre de **Choco et Vifou**, et Grisouille rejoindra l'équipe à **la fin du chapitre**.
 Il aura la **possibilité de farmer** un peu dans une salle.
-Deux boss composeront l'étage. **La Sorcière** et **Srog**.
-La Sorcière sera plutôt un **mini-boss**, et Srog sera **réellement à vaincre**.
+Il y'aura un combat contre **Vifou** léger, et un autre contre **Srog**, de nouveau.
+Il y'aura aussi la rencontre avec **La Sorcière**.
 Le **Thème** de cet étage va changer. Il sera **lumineux**. Les couleurs seront **vives** et **claires**.
 Cet étage sera **l'étage du Soleil**. Il représente la **joie de l'ignorance.**
 Le Joueur n'est pas encore au courant de tout ce qui découle du donjon, il commencera à comprendre après avoir découvert la Sorcière.
 Donc cette partie sera lumineuse, mais les étages supérieurs seront bien plus sombres, une fois que les compréhensions seront plus claires.
 Chaque salle de cet étage est une illusion causée par la Sorcière.
+Le Joueur n'affrontera pas encore La Sorcière, mais il aura une interaction avec elle qui fera avancé le déroulé de l'histoire.
+Srog apprendra au joueur qu'il est celle qu'il doit vaincre, et que Zrog n'est qu'une victime de la sorcière.
+D'ailleurs, Zrog apparaîtra aussi dans ce chapitre, et tuera quelques rats qui barreront son chemin dans une salle.
+Il lâchera un truc comme "Je souhaite la mort a tout le monde. Car lorsque l'on meurt, plus personne ne souffre." "Je veux libérer le monde de la souffrance." "Il n'y a qu'ainsi que les gens puissent être heureux, et que les guerres s'arrêteront." (Toujours se trouver une bonne excuse pour justifier ses actes, les plus horribles qu'ils soient)
 
 ### 1. Les Dunes (2,1)
-
 Le désert. La salle est immense. A tel point qu'on ne voit pas les murs.
 Le but ici sera de retrouver son chemin dans le désert, mais le Joueur peut s'y perdre, alors attention !
 D'ailleurs, le Joueur va rapidement se perdre (automatique), et il fera la rencontre avec **Choco**.
@@ -245,6 +253,14 @@ Une fois terminée, Choco est soulagée et montre au Héros que la Porte est jus
 
 ### 2. L'Oasis (1,2) (Enfer II)
 
+#### Vifou :
+**Musique : "Fight On" - FFVII**
+A peine entré dans cette salle, le Joueur se fait attaquer par Vifou, qui lui fait un coup critique.
+Vifou dira qu'il doit protéger ses proches, et qu'il refuse toute anomalie pouvant lui causer la perte de ses alliés.
+Au bout de quelques tours, il arrêtera le combat, reconnaissant Snow, Era et Choco, et s'excusera de son action. Il admettra qu'il était pris dans le feu de l'action, et qu'il n'a même pas vu qui il combattait.
+Après une petite discussion avec Snow et Era, il finira par rejoindre l'équipe.
+
+#### L'Oasis :
 Une grande Oasis, avec des fleurs et des arbres tout autour. C'est paradisiaque.
 Puis, une grande porte en acier en face d'eux.
 Derrière la porte, on entend de grand cris, de grands cris de dragons.
@@ -264,8 +280,8 @@ Une autre voie lui sera d'ailleurs proposée, un portail apparaîtra entre deux,
 
 - **Si le Joueur ouvre la porte**, il découvrira La Sorcière. Elle le félicitera de son courage.
   Elle lui dira que même s'il a été courageux, il ne sera pas à la hauteur contre Zrog, qu'il n'en fera qu'une bouchée et que ce n'est qu'un misérable.
-  Elle sera très en colère, car elle ne s'attendait pas à ce que le Joueur fasse cela, et finira par l'attaquer.
-  Un combat débutera alors, un combat difficile avec la Sorcière, et, lorsqu'elle se retrouvera avec 20% de HP, elle s'enfuira, laissant derrière elle une belle récompense.
+  Elle montrera un peu d'agacement, ne s'attendant pas à ce que le Joueur fasse cela.
+  Elle finira quand même par se moquer de lui, et partira, laissant une petite récompense pour le Joueur.
 
 ## Rencontre avec La Sorcière
 
